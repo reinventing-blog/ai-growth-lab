@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI로 가격 전략 자동화하는 법: 경쟁사 가격 데이터 수집부터 동적 가격 시나리오 설계까지 ChatGPT 활용 완전 가이드 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<link rel="apple-touch-icon" href="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="ChatGPT로 경쟁사 가격 데이터를 분석하고 동적 가격 시나리오를 설계하는 실무 프레임워크. 제조업·서비스업 사례와 함께 AI 가격 전략 자동화의 단계별 방법을 안내합니다.">
+<meta property="og:title" content="AI로 가격 전략 자동화하는 법: 경쟁사 가격 데이터 수집부터 동적 가격 시나리오 설계까지 ChatGPT 활용 완전 가이드"><meta property="og:description" content="ChatGPT로 경쟁사 가격 데이터를 분석하고 동적 가격 시나리오를 설계하는 실무 프레임워크. 제조업·서비스업 사례와 함께 AI 가격 전략 자동화의 단계별 방법을 안내합니다.">
+<meta property="og:url" content="https://reinventing-blog.github.io/ai-growth-lab/posts/lab-019.html">
+<meta property="og:image" content="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#1e3a5f;color:#93c5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){
+  .post-title{font-size:23px;}
+}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="https://reinventing-blog.github.io/ai-growth-lab/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=crm">CRM & 그로스</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=ai">AI 실무 활용</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://reinventing-blog.github.io/ai-growth-lab/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 5. 26.</span></div>
+  <h1 class="post-title">AI로 가격 전략 자동화하는 법: 경쟁사 가격 데이터 수집부터 동적 가격 시나리오 설계까지 ChatGPT 활용 완전 가이드</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1712904322016-9c8f5aef351f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw5fHxwcmljaW5nJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwbGFwdG9wJTIwd29ya3NwYWNlfGVufDF8MHx8fDE3Nzk3NTUwMTd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI로 가격 전략 자동화하는 법: 경쟁사 가격 데이터 수집부터 동적 가격 시나리오 설계까지 ChatGPT 활용 완전 가이드" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가격 결정은 여전히 많은 기업에서 담당자의 감각과 경험에 의존한다. AI 가격 전략 자동화는 이 오래된 관행을 데이터 기반 의사결정 체계로 전환하는 실질적인 방법을 제공한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 가격 전략은 아직도 수작업인가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 기업에서 가격 책정 프로세스는 다음과 같이 흘러간다. 담당자가 경쟁사 웹사이트를 직접 방문해 가격을 메모하고, 스프레드시트에 정리한 뒤, 팀 회의에서 "우리는 경쟁사보다 5% 낮게 가자"는 결론을 낸다. 이 과정은 빠르면 며칠, 느리면 몇 주가 걸린다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">문제는 속도만이 아니다. 수집한 데이터가 이미 낡아 있고, 비교 기준이 일관되지 않으며, 시장 변동에 실시간으로 반응할 수 없다. 항공사와 호텔 업계는 수십 년 전부터 동적 가격 모델을 운영해왔지만, 제조업·서비스업·B2B 분야의 중소기업들은 여전히 분기 단위 가격 검토에 머물러 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">ChatGPT를 중심으로 한 AI 도구들은 이 격차를 좁힐 수 있는 현실적인 수단이 되었다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">가격 자동화에서 AI가 실제로 할 수 있는 것</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI를 가격 전략에 도입할 때 흔한 오해는 "AI가 최적 가격을 자동으로 계산해준다"는 기대다. 현실은 다르다. AI는 판단을 대체하지 않는다. <strong style="color:#f1f5f9;font-weight:700;">AI가 실제로 하는 일은 판단에 필요한 정보를 빠르고 구조적으로 처리하는 것</strong>이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구체적으로 ChatGPT가 가격 전략 워크플로에서 담당할 수 있는 역할은 세 가지다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">경쟁사 가격 데이터를 정형화된 형식으로 분석하고 요약</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">다양한 가격 시나리오를 조건 기반으로 시뮬레이션</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">가격 변동 커뮤니케이션 문구 및 내부 보고서 초안 작성</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">반면 실시간 웹 크롤링이나 자동 가격 변경 실행은 ChatGPT 단독으로는 불가능하다. 이 부분은 별도 도구와의 연계가 필요하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">AI 가격 전략 자동화 프레임워크</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 데이터 수집 체계 구축</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가격 데이터 수집은 AI 도입 이전에 구조를 먼저 잡아야 한다. 수집 대상은 세 가지로 분류한다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">경쟁사 공개 가격</strong>: 웹사이트, 견적서, 공개 제안서</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">내부 거래 데이터</strong>: 실제 계약 단가, 할인율, 고객군별 가격 이력</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">시장 신호 데이터</strong>: 원자재 가격, 환율, 수요 지표</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수집한 데이터를 CSV나 표 형식으로 정리한 뒤 ChatGPT에 붙여넣으면, 자연어 분석이 가능해진다. 이 단계에서 Make(구 Integromat)나 Zapier를 활용하면 특정 웹페이지의 가격 변동을 자동으로 스프레드시트에 기록하고, 그 데이터를 ChatGPT API로 전달하는 파이프라인을 구성할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: ChatGPT 프롬프트 설계</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">데이터를 넣는 것만큼 중요한 것이 질문 방식이다. 단순히 "이 데이터 분석해줘"라고 입력하면 일반적인 요약만 돌아온다. 가격 전략에 유효한 프롬프트는 조건과 목적을 명시해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">효과적인 프롬프트 구조 예시:</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><code style="background:#1e293b;color:#a5b4fc;padding:2px 7px;border-radius:4px;font-size:14px;">`</code></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음은 [업종]의 경쟁사 3곳의 가격 데이터입니다. [첨부 데이터]</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">우리 제품의 현재 가격은 [X원]이며, 목표 마진율은 [Y%]입니다.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 세 가지 시나리오에서 권장 가격 범위와 근거를 제시해주세요.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">시나리오 1: 시장 점유율 확대 우선</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">시나리오 2: 수익성 최적화 우선</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">시나리오 3: 프리미엄 포지셔닝 전환</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><code style="background:#1e293b;color:#a5b4fc;padding:2px 7px;border-radius:4px;font-size:14px;">`</code></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 구조는 단일 답변이 아닌 비교 가능한 옵션을 생성하게 만든다. 의사결정자는 숫자가 아닌 전략적 맥락을 함께 받아볼 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 동적 가격 시나리오 설계</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">동적 가격이란 수요, 재고, 경쟁 상황에 따라 가격을 유연하게 조정하는 방식이다. 이를 AI로 설계할 때는 트리거 조건을 먼저 정의해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거 조건 예시:</p>
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">경쟁사 A의 가격이 우리보다 15% 이상 낮아질 경우</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">월간 문의 건수가 전월 대비 20% 이상 감소할 경우</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">원자재 비용이 기준 대비 10% 상승할 경우</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">각 트리거에 대응하는 가격 조정 룰을 ChatGPT와 함께 설계하고, 이를 내부 의사결정 매뉴얼로 문서화한다. 완전 자동화보다 "조건 발생 시 담당자에게 AI 분석 리포트를 자동 발송"하는 반자동화 구조가 현실적이고 안전하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">4단계: 가격 변동 커뮤니케이션 자동화</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가격 인상은 실행보다 커뮤니케이션이 더 어렵다. ChatGPT는 고객 공지문, 영업팀 설명 스크립트, 내부 보고서를 동시에 생성할 수 있다. 동일한 가격 변동 정보를 대상에 따라 다른 톤과 논리로 재구성하는 작업이 몇 분 안에 가능해진다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1584291527908-033f4d6542c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxOHx8YXV0b21hdGlvbiUyMHdvcmtmbG93JTIwZGF0YSUyMHZpc3VhbGl6YXRpb24lMjBzY2VuYXJpbyUyMGFuYWx5c2lzfGVufDF8MHx8fDE3Nzk3NTUwMTl8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI로 가격 전략 자동화하는 법: 경쟁사 가격 데이터 수집부터 동적 가격 시나리오 설계까지 ChatGPT 활용 완전 가이드" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">제조업 B2B 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">금속 가공 부품을 납품하는 중소 제조사를 가정해보자. 이 기업은 원자재인 알루미늄 가격이 분기마다 변동하지만, 고객사와의 계약 단가는 연간 단위로 고정되어 있었다. 원가 상승분이 마진을 잠식하는 구조였다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 도입 후 가정한 시나리오에서, 원자재 가격 데이터를 월 1회 ChatGPT에 입력해 계약 재협상 시점과 조정 폭을 시뮬레이션했다. 약 3개월의 운영 후 마진율이 기존 대비 약 3~4%p 개선되었다고 가정할 경우, 이는 담당자 1인이 수작업으로 처리하던 분석 업무를 주 2시간 이내로 압축한 결과다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">전문직 서비스 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세무·회계 서비스를 제공하는 중소 법인을 가정해보자. 이 업종은 경쟁사 가격이 공개되지 않아 시장 가격 파악 자체가 어렵다. 담당자가 경쟁사 웹사이트, 구인공고의 연봉 데이터, 업계 커뮤니티 게시글 등을 수집해 ChatGPT에 분석을 요청했다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI는 서비스 유형별 시장 가격 범위를 추정하고, 현재 요금표의 포지셔닝을 진단했다. 이를 바탕으로 특정 서비스 항목의 가격을 15~20% 인상하는 시나리오를 설계했고, 고객 이탈 없이 수익성이 개선되었다는 가정 하에 이 접근법은 가격 정보가 불투명한 서비스 업종에서 특히 유효하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">도입 전 반드시 확인할 것</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 가격 전략 자동화는 도구 선택보다 전제 조건이 중요하다. 내부 가격 데이터가 정리되어 있지 않으면 AI에 넣을 인풋 자체가 없다. 데이터 정비가 선행되어야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">또한 AI의 분석 결과를 최종 가격으로 그대로 사용하는 것은 위험하다. AI는 시장 심리, 장기 고객 관계, 규제 환경 같은 비정형 요소를 충분히 반영하지 못한다. AI 분석을 의사결정의 출발점으로 활용하되, 최종 판단은 사람이 내리는 구조를 유지해야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">Q. ChatGPT만으로 경쟁사 가격을 실시간으로 수집할 수 있나요?</strong></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">ChatGPT 단독으로는 실시간 웹 데이터 수집이 불가능합니다. 경쟁사 가격 모니터링을 자동화하려면 Make, Apify, 또는 Python 기반 크롤러 같은 별도 수집 도구와 연계해야 합니다. ChatGPT는 수집된 데이터를 분석하고 해석하는 역할을 담당합니다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">Q. AI 가격 전략 자동화는 어떤 규모의 기업에 적합한가요?</strong></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">직원 10인 이상, 취급 SKU 또는 서비스 항목이 5개 이상인 기업이라면 도입 효과를 기대할 수 있습니다. 규모가 작을수록 완전 자동화보다 ChatGPT를 활용한 반자동 분석 체계가 현실적입니다. 대기업은 전용 가격 최적화 솔루션과 병행하는 방식이 적합합니다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">Q. 가격 시나리오를 ChatGPT로 설계할 때 가장 흔한 실수는 무엇인가요?</strong></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가장 흔한 실수는 맥락 없이 숫자만 입력하는 것입니다. 업종, 고객군, 경쟁 구도, 목표 마진 같은 전략적 맥락을 함께 제공해야 유의미한 시나리오가 생성됩니다. 또한 단일 시나리오만 요청하는 것보다 복수의 조건 기반 시나리오를 동시에 요청하는 것이 의사결정에 훨씬 유용합니다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 편에서는 실제 ChatGPT 프롬프트 템플릿 10종과 Make 자동화 워크플로 설계 방법을 단계별로 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
