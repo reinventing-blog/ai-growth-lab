@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>왜 마케팅 자동화팀은 반복 작업을 끊지 못하는가 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<link rel="apple-touch-icon" href="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="마케팅 자동화를 도입해도 반복 작업이 사라지지 않는 이유는 도구가 아니라 구조에 있다. 프로세스 맵, 예외 설계, 소유권 정의 3단계로 반복 작업을 끊는 방법을 설명한다.">
+<meta property="og:title" content="왜 마케팅 자동화팀은 반복 작업을 끊지 못하는가"><meta property="og:description" content="마케팅 자동화를 도입해도 반복 작업이 사라지지 않는 이유는 도구가 아니라 구조에 있다. 프로세스 맵, 예외 설계, 소유권 정의 3단계로 반복 작업을 끊는 방법을 설명한다.">
+<meta property="og:url" content="https://reinventing-blog.github.io/ai-growth-lab/posts/lab-032.html">
+<meta property="og:image" content="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#3b1d8a;color:#c4b5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="https://reinventing-blog.github.io/ai-growth-lab/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=crm">CRM & 그로스</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=ai">AI 실무 활용</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://reinventing-blog.github.io/ai-growth-lab/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">자동화 & 워크플로우</span><span class="post-date">2026. 5. 29.</span></div>
+  <h1 class="post-title">왜 마케팅 자동화팀은 반복 작업을 끊지 못하는가</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1722503585597-548c99b0320c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxOHx8bWFya2V0aW5nJTIwYXV0b21hdGlvbiUyMHdvcmtmbG93JTIwZGFzaGJvYXJkJTIwbGFwdG9wfGVufDF8MHx8fDE3Nzk4NDIxNjR8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="왜 마케팅 자동화팀은 반복 작업을 끊지 못하는가" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 자동화를 도입한 팀이 여전히 수작업에 묶여 있는 이유는 도구의 부재가 아니다. 마케팅 자동화 반복작업 문제의 핵심은 구조적 사고 없이 도구만 쌓아올린 데 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">자동화 도구를 도입했는데 왜 일은 줄지 않는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 팀은 자동화 도구를 '작업 대행자'로 인식한다. 이메일 발송을 자동화하면 이메일 업무가 사라질 것이라 기대한다. 그러나 실제로는 자동화 설정을 관리하는 작업, 오류를 점검하는 작업, 예외 케이스를 수동으로 처리하는 작업이 새롭게 생겨난다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이를 '자동화의 역설'이라 부를 수 있다. 도구가 늘수록 관리 접점도 늘고, 관리 접점이 늘수록 반복 작업의 총량은 오히려 증가한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구체적인 패턴을 보면 명확하다. 한 B2B SaaS 팀이 있다고 가정할 때, 리드 스코어링 자동화를 도입한 이후 스코어 기준 재검토, 세그먼트 오류 수정, 영업팀과의 기준 정렬 회의가 주 단위로 반복된다면, 자동화 이전보다 커뮤니케이션 비용이 늘어난 셈이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">반복 작업이 끊기지 않는 3가지 구조적 원인</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">프로세스가 아닌 작업 단위로 자동화한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화의 단위가 '작업'이면 반복은 사라지지 않는다. 예를 들어 SNS 게시물 예약 발행을 자동화해도, 콘텐츠 소재를 수집하고 카피를 검토하고 이미지를 조정하는 앞뒤 작업은 수동으로 남는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프로세스 전체를 조망하지 않으면 자동화는 파이프라인 중간에 섬처럼 존재한다. 앞뒤 구간이 수동이면 그 섬은 오히려 병목이 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">예외 처리 설계가 빠져 있다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 시스템은 정상 케이스에만 작동한다. 고객 데이터가 불완전하거나, 캠페인 조건이 변경되거나, 외부 API가 지연되면 사람이 개입한다. 문제는 이 예외 처리가 설계된 것이 아니라 즉흥적으로 발생한다는 점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">의료기기 유통사를 예로 들면, 규제 변경으로 특정 제품군의 마케팅 문구를 수정해야 할 때, 자동화된 이메일 시퀀스를 일시 중단하고 수동으로 검토하는 작업이 매 분기 반복된다고 가정할 수 있다. 예외 처리 프로토콜이 없으면 이 작업은 항상 긴급 업무로 처리된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">소유권이 분산되어 있다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 워크플로우를 누가 관리하는지 명확하지 않은 팀에서 반복 작업은 구성원 각자가 임시방편으로 해결한다. 한 명이 오류를 수정하면 다른 한 명이 같은 오류를 다시 만든다. 소유권 부재는 반복 작업의 가장 조용한 원인이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">반복 작업을 끊기 위한 3단계 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">프로세스 맵 → 예외 설계 → 소유권 정의</strong>, 이 세 단계를 순서대로 실행해야 구조가 바뀐다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 프로세스 맵 작성</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 대상 작업의 앞단과 뒷단을 포함해 전체 흐름을 시각화한다. 기준은 단순하다. 사람이 개입하는 지점을 모두 표시한다. 이 지점이 5개 이상이면 자동화가 아닌 프로세스 재설계가 먼저다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 예외 케이스 목록화</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 도입 전, 지난 3개월간 발생한 예외 상황을 유형별로 분류한다. 데이터 오류, 외부 요인, 내부 정책 변경 등으로 구분하고, 각 유형에 대한 처리 기준을 문서화한다. 예외 처리가 설계된 자동화는 긴급 업무를 만들지 않는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 워크플로우 오너 지정</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">각 자동화 워크플로우에 단일 오너를 배정한다. 오너는 성과 지표를 정의하고, 월 1회 이상 워크플로우 상태를 점검하며, 예외 발생 시 1차 대응 권한을 갖는다. 오너가 없는 자동화는 시간이 지날수록 방치된다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1691643158804-d3f02eb456a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwzMHx8ZGF0YSUyMHZpc3VhbGl6YXRpb24lMjBhbmFseXRpY3MlMjBkYXNoYm9hcmQlMjB3b3JrZmxvdyUyMGF1dG9tYXRpb258ZW58MXwwfHx8MTc4MDAxNDk4MXww&ixlib=rb-4.1.0&q=80&w=1080" alt="왜 마케팅 자동화팀은 반복 작업을 끊지 못하는가" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례: 구조를 바꾼 팀의 공통점</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 중개법인 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">매물 등록 후 잠재 고객에게 자동 알림을 발송하는 워크플로우를 운영한다고 가정하자. 초기에는 알림 발송 자동화만 구축했으나, 매물 상태 변경(계약 완료, 일시 중단)이 실시간으로 반영되지 않아 잘못된 알림이 발송되는 오류가 반복됐을 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프로세스 맵을 작성한 결과, 매물 상태 업데이트와 알림 발송 사이에 수동 확인 단계가 존재했음을 파악했다면, 이 구간을 자동 동기화로 연결하고 예외 케이스(계약 진행 중 상태)에 대한 발송 유예 조건을 추가함으로써 오류 발생률을 대폭 낮출 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">교육 콘텐츠 기업 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">온라인 강의 플랫폼에서 수강 완료 후 리뷰 요청 이메일을 자동 발송한다고 가정하자. 수강 완료율이 낮은 학습자에게도 동일한 메시지가 발송되면서 리뷰 응답률이 기대치를 밑돌 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트 기준을 수강 진도율 80% 이상으로 설정하고 오너를 CRM 담당자로 지정한 이후, 발송 대상이 정교화되고 예외 케이스(환불 처리 중 학습자)가 자동 제외되는 구조로 전환할 수 있다. 이런 구조 변화는 응답률 개선보다 반복 오류 제거에 더 직접적인 영향을 준다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">생성형 AI는 반복 작업 문제를 해결하는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 콘텐츠 생성, 데이터 요약, 초안 작성 속도를 높인다. 그러나 프로세스 구조가 잘못된 상태에서 AI를 도입하면 속도만 빨라진 반복 작업이 된다. 잘못된 방향으로 더 빠르게 달리는 것과 같다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI가 마케팅 자동화 반복작업 문제를 해결하려면, 먼저 어떤 작업이 반복되고 있는지, 왜 반복되는지를 구조적으로 파악한 이후에 적용 지점을 찾아야 한다. 도구는 구조 위에서만 작동한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">Q. 마케팅 자동화를 도입했는데도 반복 작업이 줄지 않는 이유는 무엇인가</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 도구가 작업 단위로만 적용되고 프로세스 전체가 설계되지 않았기 때문이다. 앞뒤 수동 구간이 남아 있으면 자동화 구간은 병목이 된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">Q. 마케팅 자동화에서 예외 처리를 설계하는 방법은 무엇인가</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">지난 3개월간 발생한 예외 상황을 유형별로 분류하고, 각 유형에 대한 처리 기준을 문서화한다. 예외가 설계되지 않으면 모든 예외는 긴급 업무가 된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">Q. 마케팅 자동화 워크플로우 소유권을 어떻게 설정해야 하는가</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">워크플로우 단위로 단일 오너를 지정하고, 오너에게 성과 지표 정의와 월 1회 점검 책임을 부여한다. 공동 소유는 실질적으로 무소유와 같다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 이 프레임워크를 실제 워크플로우 감사(Audit) 체크리스트로 구체화한다. 팀 규모별로 적용 방식이 달라지는 지점을 함께 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
