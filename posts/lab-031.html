@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>당신의 리드 스코어링이 작동하지 않는 진짜 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<link rel="apple-touch-icon" href="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="리드 스코어링 마케팅이 실패하는 원인은 점수 설계 철학에 있다. 피트와 인게이지먼트 분리, 네거티브 스코어링, 영업 피드백 루프 구축까지 실무 재설계 프레임워크를 정리했다.">
+<meta property="og:title" content="당신의 리드 스코어링이 작동하지 않는 진짜 원인"><meta property="og:description" content="리드 스코어링 마케팅이 실패하는 원인은 점수 설계 철학에 있다. 피트와 인게이지먼트 분리, 네거티브 스코어링, 영업 피드백 루프 구축까지 실무 재설계 프레임워크를 정리했다.">
+<meta property="og:url" content="https://reinventing-blog.github.io/ai-growth-lab/posts/lab-031.html">
+<meta property="og:image" content="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#1e3a5f;color:#93c5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="https://reinventing-blog.github.io/ai-growth-lab/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=crm">CRM & 그로스</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=ai">AI 실무 활용</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://reinventing-blog.github.io/ai-growth-lab/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 5. 29.</span></div>
+  <h1 class="post-title">당신의 리드 스코어링이 작동하지 않는 진짜 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1580983559367-0dc2f8934365?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxNHx8bGVhZCUyMHNjb3JpbmclMjBkYXNoYm9hcmQlMjBhbmFseXRpY3MlMjBsYXB0b3B8ZW58MXwwfHx8MTc4MDAxMzc2OXww&ixlib=rb-4.1.0&q=80&w=1080" alt="당신의 리드 스코어링이 작동하지 않는 진짜 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 B2B 마케터가 리드 스코어링 시스템을 구축하고도 영업팀으로부터 같은 말을 듣는다. "이 리드, 별로인데요." 점수는 높은데 전환은 없다. 리드 스코어링 마케팅의 문제는 도구가 아니라 설계 철학에 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">점수를 매기는 것과 의도를 읽는 것은 다르다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 리드 스코어링 모델은 행동 빈도를 기준으로 점수를 쌓는다. 웹사이트 방문 3회에 5점, 이메일 오픈 2회에 4점, 백서 다운로드 1회에 10점. 이 방식의 문제는 행동의 양을 측정할 뿐, 행동의 맥락을 무시한다는 점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 SaaS 기업의 경우, 경쟁사 분석을 위해 콘텐츠를 훑는 마케터와 실제 도입을 검토하는 구매 담당자가 동일한 점수를 받는 일이 생긴다. 제조업에서도 마찬가지다. 설비 도입을 앞두고 사양서를 반복 열람하는 구매팀 실무자와, 단순 시장 조사 중인 컨설턴트가 같은 스코어 구간에 묶인다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">행동 빈도가 아닌 행동 패턴을 봐야 한다. 단일 세션에서 가격 페이지와 도입 사례 페이지를 연속 방문한 리드는, 30일에 걸쳐 블로그 5편을 읽은 리드보다 구매 의도가 높을 가능성이 크다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">리드 스코어링이 실패하는 3가지 구조적 원인</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1. 피트(Fit)와 인게이지먼트(Engagement)를 혼합 계산한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">피트는 이 리드가 우리 제품을 살 수 있는 사람인가를 묻는다. 인게이지먼트는 지금 살 의향이 있는가를 묻는다. 두 축은 분리되어야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">피트가 낮은 리드가 콘텐츠를 많이 소비하면 점수가 높아지는 구조에서는, 영업팀이 도달할 수 없는 리드에 시간을 쓰게 된다. 피트 점수는 회사 규모, 직책, 산업군, 기술 스택 등 정적 데이터로 구성하고, 인게이지먼트 점수는 별도 축으로 운영해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실무 기준으로는 피트 점수 70점 이상이면서 인게이지먼트 점수 60점 이상인 리드만 영업 이관 대상으로 분류하는 방식이 현실적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2. 네거티브 스코어링이 없다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">리드 점수는 올라가기만 한다. 6개월 전에 높은 점수를 받은 리드가 이후 아무 활동도 하지 않아도 점수는 유지된다. 이 리드는 여전히 핫 리드로 분류된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">네거티브 스코어링은 두 방향으로 설계한다. 첫째, 비활동 패널티다. 30일 무활동 시 -10점, 60일 무활동 시 추가 -20점 방식으로 점수를 감쇄한다. 둘째, 비적합 행동 패널티다. 경쟁사 도메인 이메일, 학생 직책, 채용 관련 페이지만 반복 방문하는 패턴에는 마이너스 점수를 부여한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">법률 서비스 업종을 예로 들면, 법무팀 소속 직원이 아닌 개인이 기업 계약 관련 콘텐츠를 조회하는 경우, 이 행동 자체는 인게이지먼트처럼 보이지만 실제 구매 가능성은 낮다. 이런 패턴을 감지해 점수를 조정하는 로직이 필요하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3. 영업 피드백이 모델에 반영되지 않는다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">리드 스코어링은 마케팅이 설계하고 영업이 사용하는 구조다. 그런데 영업이 "이 리드 별로다"라고 판단한 근거가 다시 모델에 들어가지 않는다. 이 루프가 끊겨 있으면 모델은 개선되지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">영업 피드백을 정량화하는 방법</strong>이 있다. 영업팀이 리드를 받을 때 3가지 항목에 간단히 응답하도록 한다. 예산 확인 여부, 의사결정 권한 여부, 도입 시점 명확성 여부. 이 응답 데이터를 분기 단위로 분석하면, 어떤 스코어 구간의 리드가 실제로 전환되는지 패턴이 드러난다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1763568258367-1c52beb60be7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNHx8bWFya2V0aW5nJTIwYXV0b21hdGlvbiUyMHdvcmtmbG93JTIwZGF0YSUyMHZpc3VhbGl6YXRpb24lMjBzY3JlZW58ZW58MXwwfHx8MTc4MDAxMzc3MHww&ixlib=rb-4.1.0&q=80&w=1080" alt="당신의 리드 스코어링이 작동하지 않는 진짜 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">리드 스코어링을 재설계하는 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">리드 스코어링 모델을 처음부터 다시 설계할 때 사용할 수 있는 3단계 구조다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">1단계: 과거 전환 리드 역분석</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">최근 12개월 내 실제로 계약으로 이어진 리드 50건을 추출한다. 이들의 공통 행동 패턴, 직책, 회사 규모, 최초 접점 채널, 전환까지 소요 기간을 정리한다. 이 데이터가 스코어링 기준의 토대가 된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">2단계: 피트/인게이지먼트 이중 축 설계</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">피트 점수(최대 100점)와 인게이지먼트 점수(최대 100점)를 분리 운영한다. 영업 이관 기준은 두 점수의 합이 아닌, 두 점수 각각의 임계값을 동시에 넘는 조건으로 설정한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">3단계: 분기 단위 모델 재보정</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">영업 피드백 데이터, 실제 전환율, 스코어 분포를 분기마다 검토한다. 점수 기준은 고정값이 아니라 시장 변화와 제품 변화에 따라 조정되는 변수다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">HR SaaS 기업 사례 (가정)</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">중소기업 대상 HR 솔루션을 판매하는 기업이 리드 스코어링을 재설계했다고 가정하면, 피트 기준을 직원 수 50~300명, 인사팀 보유 여부, 직책이 HR 매니저 이상으로 좁히는 것만으로도 영업 이관 리드 중 실제 미팅 성사율이 기존 대비 약 30~40% 개선되는 효과를 기대할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">건설 자재 유통 기업 사례 (가정)</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">오프라인 중심의 건설 자재 유통사가 디지털 리드 스코어링을 도입한다고 가정하면, 웹 행동보다 오프라인 전시회 참가 이력, 견적 요청 이력, 지역 기반 매칭을 피트 점수에 반영하는 방식이 더 정확한 리드 분류로 이어질 가능성이 높다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">법인 보험 중개 기업 사례 (가정)</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">법인 보험 중개사가 콘텐츠 소비 기반 스코어링을 운영한다고 가정하면, 단순 블로그 조회보다 보험료 계산기 사용, 비교 견적 요청, 담당자 직접 문의 등 의도가 명확한 행동에 가중치를 집중 부여하는 구조가 실질적인 영업 전환으로 연결될 가능성이 크다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">Q. 리드 스코어링은 몇 점을 기준으로 영업에 넘겨야 하나요?</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">임계값은 업종과 영업 조직의 처리 용량에 따라 달라진다. 일반적으로 영업팀이 월간 처리할 수 있는 리드 수를 먼저 정하고, 그 수량에 맞는 상위 리드가 임계값을 넘도록 기준을 역산하는 방식이 현실적이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">Q. 소규모 팀도 리드 스코어링을 운영할 수 있나요?</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">CRM이나 마케팅 자동화 툴 없이도 스프레드시트 기반으로 간단한 피트/인게이지먼트 이중 축 모델을 운영할 수 있다. 핵심은 도구가 아니라 기준의 명확성이다. 피트 조건 3가지, 인게이지먼트 행동 5가지만 정의해도 시작할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">Q. AI를 리드 스코어링에 어떻게 활용하나요?</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 과거 전환 리드 데이터를 분석해 공통 패턴을 추출하거나, 영업 피드백 텍스트를 정량화하는 데 활용할 수 있다. 또한 리드의 이메일, 직책, 회사 정보를 기반으로 피트 점수를 자동 추정하는 분류 작업에도 적용 가능하다. 단, 모델의 판단 기준은 사람이 설계하고 검증해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 편에서는 리드 스코어링 모델을 실제로 구축하는 단계별 워크시트와, 영업-마케팅 정렬을 위한 SLA 설계 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
