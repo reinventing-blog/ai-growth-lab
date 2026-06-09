@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AI로 경쟁사 모니터링 자동화하는 법: 데이터 수집부터 인사이트 리포트 생성까지 ChatGPT 활용 완전 가이드 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<link rel="apple-touch-icon" href="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<meta name="theme-color" content="#0a0f1e">
 <meta name="description" content="ChatGPT와 자동화 도구를 활용해 경쟁사 모니터링을 자동화하는 4단계 프레임워크를 소개한다. 데이터 수집부터 인사이트 리포트 생성까지 업종별 사례와 함께 실전 적용 방법을 안내한다.">
-<meta property="og:title" content="AI로 경쟁사 모니터링 자동화하는 법: 데이터 수집부터 인사이트 리포트 생성까지 ChatGPT 활용 완전 가이드">
-<meta property="og:description" content="ChatGPT와 자동화 도구를 활용해 경쟁사 모니터링을 자동화하는 4단계 프레임워크를 소개한다. 데이터 수집부터 인사이트 리포트 생성까지 업종별 사례와 함께 실전 적용 방법을 안내한다.">
+<meta property="og:title" content="AI로 경쟁사 모니터링 자동화하는 법: 데이터 수집부터 인사이트 리포트 생성까지 ChatGPT 활용 완전 가이드"><meta property="og:description" content="ChatGPT와 자동화 도구를 활용해 경쟁사 모니터링을 자동화하는 4단계 프레임워크를 소개한다. 데이터 수집부터 인사이트 리포트 생성까지 업종별 사례와 함께 실전 적용 방법을 안내한다.">
 <meta property="og:url" content="https://reinventing-blog.github.io/ai-growth-lab/posts/lab-005.html">
+<meta property="og:image" content="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
@@ -29,40 +35,45 @@ nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px
 .post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
 .post-content strong{color:#f1f5f9;font-weight:700;}
 .post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
-.post-content figure{margin:32px 0;}
-.post-content figure img{width:100%;border-radius:10px;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
 .back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
 .back-link:hover{background:#334155;color:#e2e8f0;}
 .post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
 .post-footer a{color:#818cf8;}
 footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
-footer p{font-size:13px;color:#475569;}
-footer a{color:#818cf8;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
 </style>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a href="https://reinventing-blog.github.io/ai-growth-lab/" class="logo">AI Growth Lab</a>
-    <div class="nav-links">
-      <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=crm">CRM & 그로스</a>
-      <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=ai">AI 실무 활용</a>
-      <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=automation">자동화 & 워크플로우</a>
-      <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=content">AI 콘텐츠 & 프롬프트</a>
-    </div>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://reinventing-blog.github.io/ai-growth-lab/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=crm">CRM & 그로스</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=ai">AI 실무 활용</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=content">AI 콘텐츠 & 프롬프트</a>
   </div>
-</nav>
-
+</div></nav>
 <div class="post-container">
   <a href="https://reinventing-blog.github.io/ai-growth-lab/" class="back-link">← 전체 글 목록</a>
-
-  <div class="post-meta">
-    <span class="cat-badge">자동화 & 워크플로우</span>
-    <span class="post-date">2026. 5. 21.</span>
-  </div>
-
+  <div class="post-meta"><span class="cat-badge">자동화 & 워크플로우</span><span class="post-date">2026. 5. 21.</span></div>
   <h1 class="post-title">AI로 경쟁사 모니터링 자동화하는 법: 데이터 수집부터 인사이트 리포트 생성까지 ChatGPT 활용 완전 가이드</h1>
-
   <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1686061592689-312bbfb5c055?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxNnx8Y29tcGV0aXRpdmUlMjBhbmFseXRpY3MlMjBkYXNoYm9hcmQlMjBsYXB0b3AlMjBzY3JlZW58ZW58MXwwfHx8MTc3OTM0MzQ1Nnww&ixlib=rb-4.1.0&q=80&w=1080" alt="AI로 경쟁사 모니터링 자동화하는 법: 데이터 수집부터 인사이트 리포트 생성까지 ChatGPT 활용 완전 가이드" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
 <p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">경쟁사 모니터링 자동화를 도입하지 않은 팀은 여전히 담당자가 수작업으로 웹사이트를 돌아다니며 변경 사항을 기록하고 있다. 이 방식은 느리고, 누락이 많으며, 인사이트가 아니라 데이터 더미만 쌓인다.</p>
 
@@ -146,8 +157,6 @@ footer a{color:#818cf8;}
 
 <p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">ChatGPT는 이 패턴을 분석해 "경쟁사가 기업 법무 시장에서 중소기업 HR 담당자로 타깃을 확장하고 있다"는 해석을 제시하고, 자사 콘텐츠 전략에 대한 대응 방향을 제안한다.</p>
 
-
-<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw3fHx3b3JrZmxvdyUyMGF1dG9tYXRpb24lMjBwaXBlbGluZSUyMGRhdGElMjByZXBvcnQlMjBzY3JlZW58ZW58MXwwfHx8MTc3OTM0MzQ1N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="AI로 경쟁사 모니터링 자동화하는 법: 데이터 수집부터 인사이트 리포트 생성까지 ChatGPT 활용 완전 가이드" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
 <h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
 
 <h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">ChatGPT 없이도 경쟁사 모니터링 자동화가 가능한가</h4>
@@ -162,20 +171,8 @@ footer a{color:#818cf8;}
 
 <p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">공개된 웹페이지 데이터 수집은 일반적으로 허용 범위 내에 있지만, 각 웹사이트의 robots.txt 정책과 이용약관을 확인해야 한다. 로그인이 필요한 영역이나 API 사용 제한이 있는 플랫폼 데이터는 별도의 법적 검토가 필요하다.</p>
 
-<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 편에서는 이 프레임워크를 실제 Make 워크플로우로 구현하는 단계별 설정 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
-
-  <div class="post-footer">
-    <em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em>
-  </div>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 편에서는 이 프레임워크를 실제 Make 워크플로우로 구현하는 단계별 설정 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-005&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-005',cta_type:'flywheel_consult',category:'자동화 & 워크플로우'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
 </div>
-
-<footer>
-  <p>
-    AI Growth Lab ·
-    <a href="https://www.reinventing.kr/">Reinventing</a> ·
-    <a href="https://www.reinventing.kr/retous">Retous</a> ·
-    <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a>
-  </p>
-</footer>
-</body>
-</html>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
