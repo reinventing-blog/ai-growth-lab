@@ -6,13 +6,15 @@
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AI로 가격 전략 자동화하는 법: 경쟁사 가격 데이터 수집부터 동적 가격 시나리오 설계까지 ChatGPT 활용 완전 가이드 | AI Growth Lab</title>
-<link rel="icon" type="image/png" href="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
-<link rel="apple-touch-icon" href="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
 <meta name="theme-color" content="#0a0f1e">
 <meta name="description" content="ChatGPT로 경쟁사 가격 데이터를 분석하고 동적 가격 시나리오를 설계하는 실무 프레임워크. 제조업·서비스업 사례와 함께 AI 가격 전략 자동화의 단계별 방법을 안내합니다.">
 <meta property="og:title" content="AI로 가격 전략 자동화하는 법: 경쟁사 가격 데이터 수집부터 동적 가격 시나리오 설계까지 ChatGPT 활용 완전 가이드"><meta property="og:description" content="ChatGPT로 경쟁사 가격 데이터를 분석하고 동적 가격 시나리오를 설계하는 실무 프레임워크. 제조업·서비스업 사례와 함께 AI 가격 전략 자동화의 단계별 방법을 안내합니다.">
-<meta property="og:url" content="https://reinventing-blog.github.io/ai-growth-lab/posts/lab-019.html">
-<meta property="og:image" content="https://reinventing-blog.github.io/ai-growth-lab/logo.png">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-019.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-019.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI로 가격 전략 자동화하는 법: 경쟁사 가격 데이터 수집부터 동적 가격 시나리오 설계까지 ChatGPT 활용 완전 가이드","description":"ChatGPT로 경쟁사 가격 데이터를 분석하고 동적 가격 시나리오를 설계하는 실무 프레임워크. 제조업·서비스업 사례와 함께 AI 가격 전략 자동화의 단계별 방법을 안내합니다.","image":"https://images.unsplash.com/photo-1712904322016-9c8f5aef351f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw5fHxwcmljaW5nJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwbGFwdG9wJTIwd29ya3NwYWNlfGVufDF8MHx8fDE3Nzk3NTUwMTd8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-019.html"},"datePublished":"2026-05-26","dateModified":"2026-05-26"}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
@@ -62,16 +64,16 @@ footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <nav><div class="nav-inner">
-  <a href="https://reinventing-blog.github.io/ai-growth-lab/" class="logo">AI Growth Lab</a>
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
   <div class="nav-links">
-    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=crm">CRM & 그로스</a>
-    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=ai">AI 실무 활용</a>
-    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=automation">자동화 & 워크플로우</a>
-    <a href="https://reinventing-blog.github.io/ai-growth-lab/?cat=content">AI 콘텐츠 & 프롬프트</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
   </div>
 </div></nav>
 <div class="post-container">
-  <a href="https://reinventing-blog.github.io/ai-growth-lab/" class="back-link">← 전체 글 목록</a>
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
   <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 5. 26.</span></div>
   <h1 class="post-title">AI로 가격 전략 자동화하는 법: 경쟁사 가격 데이터 수집부터 동적 가격 시나리오 설계까지 ChatGPT 활용 완전 가이드</h1>
   <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1712904322016-9c8f5aef351f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw5fHxwcmljaW5nJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwbGFwdG9wJTIwd29ya3NwYWNlfGVufDF8MHx8fDE3Nzk3NTUwMTd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI로 가격 전략 자동화하는 법: 경쟁사 가격 데이터 수집부터 동적 가격 시나리오 설계까지 ChatGPT 활용 완전 가이드" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
