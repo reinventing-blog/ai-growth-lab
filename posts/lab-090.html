@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 프롬프트 템플릿 비교: 자유 입력 방식과 템플릿 방식, 무엇을 선택해야 하나 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 프롬프트 템플릿 비교를 통해 자유 입력 방식과 구조화된 템플릿 방식의 차이를 분석한다. 업종별 선택 기준과 하이브리드 운용 전략을 구체적으로 정리했다.">
+<meta property="og:title" content="AI 프롬프트 템플릿 비교: 자유 입력 방식과 템플릿 방식, 무엇을 선택해야 하나"><meta property="og:description" content="AI 프롬프트 템플릿 비교를 통해 자유 입력 방식과 구조화된 템플릿 방식의 차이를 분석한다. 업종별 선택 기준과 하이브리드 운용 전략을 구체적으로 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-090.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-090.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 프롬프트 템플릿 비교: 자유 입력 방식과 템플릿 방식, 무엇을 선택해야 하나","description":"AI 프롬프트 템플릿 비교를 통해 자유 입력 방식과 구조화된 템플릿 방식의 차이를 분석한다. 업종별 선택 기준과 하이브리드 운용 전략을 구체적으로 정리했다.","image":"https://images.unsplash.com/photo-1622050756792-5b1180bbb873?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxMXx8QUklMjBwcm9tcHQlMjB0ZW1wbGF0ZSUyMGxhcHRvcCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODE3NDMyNTN8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-090.html"},"datePublished":"2026-06-18","dateModified":"2026-06-18"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"템플릿을 만들면 AI 출력이 획일화되지 않나요?","acceptedAnswer":{"@type":"Answer","text":"템플릿은 입력 구조를 고정하는 것이지 출력을 고정하는 것이 아니다. 동일한 템플릿이라도 핵심 변수 필드에 어떤 값을 입력하느냐에 따라 결과물은 충분히 다양해진다. 획일화는 템플릿의 문제가 아니라 변수 설계의 문제다. 템플릿 내에 맥락 입력 공간을 충분히 확보하면 이 우려는 해소된다."}},{"@type":"Question","name":"자유 프롬프트 방식에서 품질을 높이려면 어떻게 해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"자유 방식에서 품질을 결정하는 변수는 세 가지다. 역할 설정, 맥락 제공, 출력 형식 지정이다. 이 세 요소를 매번 의식적으로 포함하는 습관을 만들면 템플릿 없이도 일정 수준 이상의 결과를 확보할 수 있다. 팀 차원에서는 이 세 요소를 체크리스트 형태로 공유하는 방식이 현실적이다."}},{"@type":"Question","name":"어떤 업종에서 템플릿 도입 효과가 가장 빠르게 나타나나요?","acceptedAnswer":{"@type":"Answer","text":"반복 문서 생성 비중이 높은 업종에서 효과가 빠르다. 세무·회계, 부동산, 고객 서비스, 교육 콘텐츠 제작이 대표적이다. 이 업종들은 입력 구조가 이미 업무 프로세스 안에 내재되어 있기 때문에 템플릿화가 기존 워크플로우와 자연스럽게 결합된다. 반면 전략 기획이나 창작 중심 업무는 도입 효과가 느리게 나타나는 경향이 있다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 6. 18.</span></div>
+  <h1 class="post-title">AI 프롬프트 템플릿 비교: 자유 입력 방식과 템플릿 방식, 무엇을 선택해야 하나</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1622050756792-5b1180bbb873?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxMXx8QUklMjBwcm9tcHQlMjB0ZW1wbGF0ZSUyMGxhcHRvcCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODE3NDMyNTN8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 템플릿 비교: 자유 입력 방식과 템플릿 방식, 무엇을 선택해야 하나" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI를 업무에 도입한 팀들이 가장 먼저 부딪히는 갈림길이 있다. AI 프롬프트 템플릿 비교 관점에서 보면, 매번 직접 입력하는 자유 프롬프트 방식과 사전에 구조화된 템플릿 방식 사이의 선택이다. 이 선택은 단순한 편의의 문제가 아니라 팀의 생산성 구조 전체에 영향을 미친다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">두 방식이 만들어내는 결과의 차이</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자유 프롬프트 방식은 사용자가 매번 맥락을 직접 구성한다. 숙련된 개인에게는 유연성이 강점이지만, 같은 팀 안에서도 사람마다 결과물 품질이 크게 달라진다. 반면 템플릿 방식은 입력 구조를 고정함으로써 출력의 일관성을 확보한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실제로 업무 현장에서 이 차이는 수치로 드러난다. 예를 들어 콘텐츠 제작팀이 자유 프롬프트로 주 20개의 초안을 생산한다고 가정하면, 그 중 재작업이 필요한 비율이 40%에 달할 수 있다. 동일한 팀이 구조화된 템플릿을 도입한 이후에는 재작업 비율이 15% 수준으로 낮아지는 경우가 보고된다. 핵심은 프롬프트의 품질이 개인 역량에 의존하는가, 시스템에 의존하는가의 차이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 방식의 근본적인 대비는 여기에 있다. <strong style="color:#f1f5f9;font-weight:700;">자유 방식은 개인 역량을 증폭하고, 템플릿 방식은 조직 역량을 표준화한다.</strong></p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별로 달라지는 선택 기준</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">방식의 선택은 업종과 업무 유형에 따라 달라진다. 단일 정답은 없다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">반복성이 높은 업무: 템플릿이 우위</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">법무 서비스 분야를 예로 들면, 계약서 검토 요약이나 조항 비교 작업은 매번 동일한 구조의 입력이 요구된다. 이 경우 템플릿은 오류 발생 지점을 줄이고 검토 속도를 높인다. 가령 중소 법무법인이 계약 검토 프롬프트를 표준화했다고 가정할 때, 건당 처리 시간이 기존 대비 30% 단축되는 시나리오는 충분히 현실적이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개업에서도 마찬가지다. 매물 설명문 초안, 임차인 안내 메시지, 계약 조건 요약 등은 구조가 고정되어 있어 템플릿화가 즉각적인 효율을 만든다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">창의성과 맥락 판단이 필요한 업무: 자유 방식이 우위</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">브랜드 전략 컨설팅이나 UX 리서치처럼 매 프로젝트마다 맥락이 다른 업무에서는 템플릿이 오히려 사고를 제한한다. 전략 컨설턴트가 클라이언트의 특수한 시장 상황을 분석할 때, 미리 정해진 입력 구조는 중요한 맥락 변수를 누락시킬 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">의료 커뮤니케이션 분야도 마찬가지다. 환자 대상 교육 콘텐츠는 질환의 성격, 대상 연령, 의료 리터러시 수준에 따라 접근이 달라지기 때문에 자유 프롬프트로 매번 세밀하게 조정하는 방식이 결과물의 정확도를 높인다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1666148670142-2f01b117e6e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOXx8c3RydWN0dXJlZCUyMHdvcmtmbG93JTIwYXV0b21hdGlvbiUyMGFuYWx5dGljcyUyMGRhc2hib2FyZHxlbnwxfDB8fHwxNzgxNzQzMjU0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 템플릿 비교: 자유 입력 방식과 템플릿 방식, 무엇을 선택해야 하나" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">선택을 위한 3단계 판단 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">어떤 방식을 선택할지 결정하는 기준을 세 단계로 구성할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 업무의 반복 구조 분석</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">해당 업무에서 입력 변수의 70% 이상이 매번 동일하다면 템플릿화 대상이다. 반대로 맥락 변수가 매번 달라진다면 자유 방식을 유지하는 것이 낫다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 팀 규모와 숙련도 격차 확인</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">팀원 간 AI 활용 숙련도 격차가 크다면 템플릿이 격차를 줄이는 레버리지로 작동한다. 5인 이하의 소규모 팀에서 모두가 숙련된 경우라면 자유 방식의 유연성이 더 큰 가치를 만든다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 출력 품질의 일관성 요구 수준</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객에게 직접 전달되는 결과물이거나 법적·의료적 정확성이 요구되는 경우라면 템플릿 기반의 구조화가 리스크를 줄인다. 내부 검토용 초안이라면 자유 방식으로 빠르게 생성하는 것이 합리적이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">두 방식을 결합하는 하이브리드 운용</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실제로 성과를 내는 팀들은 두 방식을 배타적으로 선택하지 않는다. 구조는 템플릿으로 고정하되, 핵심 맥락 변수는 자유 입력으로 남겨두는 방식이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 교육 콘텐츠 기업이 강의 스크립트 초안을 생성한다고 가정하면, 학습 목표, 대상 연령, 난이도 설정은 템플릿 필드로 고정하고, 강의 스타일이나 예시 소재는 작성자가 자유롭게 입력하도록 구성할 수 있다. 이 구조에서는 일관성과 유연성을 동시에 확보한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 에이전시의 경우도 마찬가지다. 클라이언트 브리핑 요약, 캠페인 목표, 타깃 정의는 템플릿으로 표준화하고, 크리에이티브 방향성과 톤은 자유 입력으로 남겨둔다고 가정하면, 브리핑 처리 시간을 단축하면서도 결과물의 다양성을 유지하는 구조가 완성된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">하이브리드 방식의 핵심은 템플릿 필드와 자유 입력 필드의 경계를 명확히 정의하는 데 있다. 이 경계가 모호하면 두 방식의 단점만 결합된 결과가 나온다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 템플릿을 만들면 AI 출력이 획일화되지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">템플릿은 입력 구조를 고정하는 것이지 출력을 고정하는 것이 아니다. 동일한 템플릿이라도 핵심 변수 필드에 어떤 값을 입력하느냐에 따라 결과물은 충분히 다양해진다. 획일화는 템플릿의 문제가 아니라 변수 설계의 문제다. 템플릿 내에 맥락 입력 공간을 충분히 확보하면 이 우려는 해소된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 자유 프롬프트 방식에서 품질을 높이려면 어떻게 해야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자유 방식에서 품질을 결정하는 변수는 세 가지다. 역할 설정, 맥락 제공, 출력 형식 지정이다. 이 세 요소를 매번 의식적으로 포함하는 습관을 만들면 템플릿 없이도 일정 수준 이상의 결과를 확보할 수 있다. 팀 차원에서는 이 세 요소를 체크리스트 형태로 공유하는 방식이 현실적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 어떤 업종에서 템플릿 도입 효과가 가장 빠르게 나타나나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">반복 문서 생성 비중이 높은 업종에서 효과가 빠르다. 세무·회계, 부동산, 고객 서비스, 교육 콘텐츠 제작이 대표적이다. 이 업종들은 입력 구조가 이미 업무 프로세스 안에 내재되어 있기 때문에 템플릿화가 기존 워크플로우와 자연스럽게 결합된다. 반면 전략 기획이나 창작 중심 업무는 도입 효과가 느리게 나타나는 경향이 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 실제 업종별 프롬프트 템플릿 구조 예시와 필드 설계 원칙을 구체적으로 다룬다. 지금까지의 판단 기준을 실제 템플릿 형태로 적용하는 방법을 확인할 수 있다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-090&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-090',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
