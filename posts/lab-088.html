@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>그로스 자동화 매출 연결이 끊기는 진짜 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="그로스 자동화 매출 연결이 끊기는 원인은 도구가 아니라 방향과 구조에 있다. 인풋·아웃풋 지표 혼동, 의사결정 루프 부재, 미들 퍼널 공백 등 세 가지 핵심 단절 지점과 해결 프레임워크를 정리했다.">
+<meta property="og:title" content="그로스 자동화 매출 연결이 끊기는 진짜 원인"><meta property="og:description" content="그로스 자동화 매출 연결이 끊기는 원인은 도구가 아니라 방향과 구조에 있다. 인풋·아웃풋 지표 혼동, 의사결정 루프 부재, 미들 퍼널 공백 등 세 가지 핵심 단절 지점과 해결 프레임워크를 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-088.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-088.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"그로스 자동화 매출 연결이 끊기는 진짜 원인","description":"그로스 자동화 매출 연결이 끊기는 원인은 도구가 아니라 방향과 구조에 있다. 인풋·아웃풋 지표 혼동, 의사결정 루프 부재, 미들 퍼널 공백 등 세 가지 핵심 단절 지점과 해결 프레임워크를 정리했다.","image":"https://images.unsplash.com/photo-1659018966825-43297e655ccf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOXx8bWFya2V0aW5nJTIwYXV0b21hdGlvbiUyMGRhc2hib2FyZCUyMHJldmVudWUlMjBhbmFseXRpY3N8ZW58MXwwfHx8MTc4MTc0MTc2NXww&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-088.html"},"datePublished":"2026-06-18","dateModified":"2026-06-18"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"그로스 자동화를 처음 도입할 때 어디서 시작해야 하는가","acceptedAnswer":{"@type":"Answer","text":"매출 전환이 가장 많이 발생하는 단일 채널을 먼저 식별한다. 그 채널의 수동 프로세스를 먼저 정비하고, 전환율이 안정된 이후에 자동화를 적용한다. 전환율이 낮은 채널을 자동화하면 낮은 전환율이 더 빠르게 반복될 뿐이다."}},{"@type":"Question","name":"자동화 도입 후 매출 기여를 측정하는 기준은 무엇인가","acceptedAnswer":{"@type":"Answer","text":"채널별 귀속 전환을 기준으로 삼는다. 자동화된 이메일 시퀀스라면 해당 시퀀스를 통해 전환된 건수와 전환율을 별도로 추적해야 한다. 전체 매출 증감과 자동화 채널의 전환 기여를 분리해서 보지 않으면 자동화의 실제 효과를 알 수 없다."}},{"@type":"Question","name":"자동화 리뷰 루프를 운영할 인력이 부족한 경우 어떻게 접근해야 하는가","acceptedAnswer":{"@type":"Answer","text":"자동화 채널 수를 줄이고 리뷰 가능한 수준으로 범위를 좁힌다. 채널 3개를 운영하면서 리뷰가 없는 것보다, 채널 1개를 운영하면서 2주마다 전환 데이터를 검토하는 것이 매출 연결에 더 가깝다. 자동화의 규모보다 학습 루프의 존재 여부가 결과를 결정한다. 다음 편에서는 실제 그로스 자동화 리뷰 루프를 설계하는 구체적인 템플릿과 운영 기준을 다룬다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#1e3a5f;color:#93c5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 6. 18.</span></div>
+  <h1 class="post-title">그로스 자동화 매출 연결이 끊기는 진짜 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1659018966825-43297e655ccf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOXx8bWFya2V0aW5nJTIwYXV0b21hdGlvbiUyMGRhc2hib2FyZCUyMHJldmVudWUlMjBhbmFseXRpY3N8ZW58MXwwfHx8MTc4MTc0MTc2NXww&ixlib=rb-4.1.0&q=80&w=1080" alt="그로스 자동화 매출 연결이 끊기는 진짜 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 팀이 그로스 자동화를 도입한 뒤 오히려 매출 연결이 흐릿해지는 경험을 한다. 자동화 도구는 늘었고, 콘텐츠 생산량도 늘었는데, 실제 전환 지표는 제자리다. 이 글은 그 단절이 어디서 발생하는지를 구조적으로 짚는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">자동화는 실행을 빠르게 할 뿐, 방향을 바꾸지 않는다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">그로스 자동화의 핵심 오해는 "자동화하면 결과도 자동으로 개선된다"는 전제다. 자동화는 기존 프로세스를 가속할 뿐이다. 방향이 잘못된 프로세스를 자동화하면 잘못된 결과를 더 빠르게 만들어낸다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어, B2B SaaS 팀이 리드 너처링 이메일을 자동화했다고 가정하자. 발송 빈도는 주 1회에서 주 3회로 늘었고, 오픈율은 유지됐다. 그러나 데모 신청 전환율이 오히려 하락했다면, 문제는 자동화 도구가 아니라 각 이메일이 구매 여정의 어느 단계에 맞춰 설계됐는지에 있다. 발송 빈도를 높이기 전에 퍼널 단계별 메시지 정합성을 먼저 점검해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 도입 전에 물어야 할 질문은 하나다. "지금 이 프로세스를 수동으로 했을 때 매출로 이어지는가?"</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">매출 연결이 끊기는 세 가지 구조적 지점</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1. 인풋 지표를 아웃풋 지표로 착각한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">콘텐츠 발행 수, 이메일 발송 수, 광고 소재 생성량은 인풋 지표다. 이것들이 늘어나는 것은 자동화의 결과이지, 매출의 원인이 아니다. 그러나 많은 팀이 이 수치가 늘어나면 성과가 나고 있다고 판단한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실제 매출 연결을 확인하려면 각 자동화 채널에 귀속 전환(attributed conversion)을 설정해야 한다. 콘텐츠 자동화를 운영하는 헬스케어 클리닉 팀이라면, 블로그 발행 수가 아니라 블로그 유입 후 예약 전환율을 기준 지표로 삼아야 한다. 자동화 대시보드에 인풋 지표만 있다면, 그 대시보드는 매출 판단에 쓸 수 없다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2. 자동화 레이어와 의사결정 레이어가 분리되어 있다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 시스템이 데이터를 수집하고 콘텐츠를 생성하고 메시지를 발송하더라도, 그 결과를 해석하고 다음 액션을 결정하는 사람이 없으면 루프가 닫히지 않는다. 자동화는 실행 루프를 만들지만, 학습 루프는 사람이 만든다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프랜차이즈 외식 브랜드가 SNS 콘텐츠 자동화를 도입했다고 가정하자. 게시물은 매일 올라가고 도달 수치도 안정적이다. 그러나 월 단위로 어떤 콘텐츠 유형이 매장 방문 예약으로 이어졌는지를 분석하고 다음 달 소재 방향에 반영하는 회의가 없다면, 자동화는 단순한 스케줄러에 불과하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3. 고객 여정의 중간 단계가 비어 있다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화는 흔히 퍼널의 양 끝, 즉 인지 단계와 구매 단계에 집중된다. 광고 자동화로 상단 트래픽을 끌어오고, CRM 자동화로 기존 고객을 재구매로 유도한다. 그러나 처음 인지한 잠재 고객이 구매를 고려하는 중간 단계, 즉 비교·검토 단계에 자동화된 접점이 없으면 전환은 발생하지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">교육 플랫폼 사례를 가정하면, 광고를 통해 랜딩 페이지에 도달한 사용자가 수강 신청을 하지 않고 이탈했을 때, 그 사용자에게 커리큘럼 비교 자료나 수강생 후기를 자동으로 전달하는 미들 퍼널 시퀀스가 없다면 광고비는 인지 비용으로만 소진된다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1599413955192-1d5eb8099a9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8YnVzaW5lc3MlMjBhbmFseXRpY3MlMjBsYXB0b3B8ZW58MXwwfHx8MTc4MTc0MTc2OXww&ixlib=rb-4.1.0&q=80&w=1080" alt="그로스 자동화 매출 연결이 끊기는 진짜 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">매출로 이어지는 그로스 자동화 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화를 매출에 연결하려면 세 가지 레이어를 순서대로 정렬해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">첫째, 전환 기준점을 먼저 정의한다.</strong> 자동화 설계 전에 "어떤 행동이 매출로 이어지는가"를 구체적으로 정의해야 한다. 상담 신청, 체험판 활성화, 견적 요청 등 업종마다 다른 전환 기준점을 먼저 설정한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 각 자동화 채널에 전환 기준점까지의 경로를 설계한다. 채널별로 유입부터 전환까지의 단계를 명시하고, 각 단계에서 이탈이 발생할 경우 어떤 자동화 트리거가 작동하는지를 문서화한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 주기적인 리뷰 루프를 구조화한다. 2주 단위로 채널별 전환 기여도를 검토하고, 기여도가 낮은 자동화 시퀀스는 메시지 또는 타이밍을 수정한다. 수정 후 2주를 다시 관찰한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 레이어가 정렬되지 않은 상태에서 자동화 도구를 추가하는 것은 문제를 복잡하게 만들 뿐이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 단절 지점 사례</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개 플랫폼이 매물 알림 자동화를 운영한다고 가정하자. 알림 발송 수는 하루 수천 건이지만 문의 전환율이 낮다면, 알림 메시지가 사용자의 현재 탐색 단계와 맞지 않을 가능성이 높다. 처음 가입한 사용자와 3개월 이상 탐색 중인 사용자에게 동일한 알림을 보내는 구조라면, 자동화는 개인화 없이 반복될 뿐이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">IT 서비스 기업이 생성형 AI를 활용해 기술 블로그를 자동 발행한다고 가정하자. 월 20편 발행으로 검색 트래픽은 증가했지만 리드 전환이 없다면, 콘텐츠가 구매 의도 키워드가 아닌 정보 탐색 키워드에만 집중되어 있을 가능성이 있다. 이 경우 콘텐츠 자동화의 방향 자체를 재설정해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 사례의 공통점은 자동화 자체의 결함이 아니라 자동화가 향하는 방향의 결함이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 그로스 자동화를 처음 도입할 때 어디서 시작해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">매출 전환이 가장 많이 발생하는 단일 채널을 먼저 식별한다. 그 채널의 수동 프로세스를 먼저 정비하고, 전환율이 안정된 이후에 자동화를 적용한다. 전환율이 낮은 채널을 자동화하면 낮은 전환율이 더 빠르게 반복될 뿐이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 자동화 도입 후 매출 기여를 측정하는 기준은 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널별 귀속 전환을 기준으로 삼는다. 자동화된 이메일 시퀀스라면 해당 시퀀스를 통해 전환된 건수와 전환율을 별도로 추적해야 한다. 전체 매출 증감과 자동화 채널의 전환 기여를 분리해서 보지 않으면 자동화의 실제 효과를 알 수 없다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 자동화 리뷰 루프를 운영할 인력이 부족한 경우 어떻게 접근해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 채널 수를 줄이고 리뷰 가능한 수준으로 범위를 좁힌다. 채널 3개를 운영하면서 리뷰가 없는 것보다, 채널 1개를 운영하면서 2주마다 전환 데이터를 검토하는 것이 매출 연결에 더 가깝다. 자동화의 규모보다 학습 루프의 존재 여부가 결과를 결정한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 편에서는 실제 그로스 자동화 리뷰 루프를 설계하는 구체적인 템플릿과 운영 기준을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-088&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-088',cta_type:'flywheel_consult',category:'AI 실무 활용'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
