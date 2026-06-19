@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 프롬프트 일관성이 무너지는 진짜 원인과 구조적 해결법 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 프롬프트 일관성이 무너지는 원인은 문장이 아니라 구조의 부재다. 역할·형식·제약 조건을 통합한 RFC 프레임워크로 출력 편차를 줄이는 실무 방법을 정리했다.">
+<meta property="og:title" content="AI 프롬프트 일관성이 무너지는 진짜 원인과 구조적 해결법"><meta property="og:description" content="AI 프롬프트 일관성이 무너지는 원인은 문장이 아니라 구조의 부재다. 역할·형식·제약 조건을 통합한 RFC 프레임워크로 출력 편차를 줄이는 실무 방법을 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-094.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-094.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 프롬프트 일관성이 무너지는 진짜 원인과 구조적 해결법","description":"AI 프롬프트 일관성이 무너지는 원인은 문장이 아니라 구조의 부재다. 역할·형식·제약 조건을 통합한 RFC 프레임워크로 출력 편차를 줄이는 실무 방법을 정리했다.","image":"https://images.unsplash.com/photo-1495465798138-718f86d1a4bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMXx8QUklMjBjb250ZW50JTIwd29ya2Zsb3clMjBsYXB0b3AlMjBkZXNrfGVufDF8MHx8fDE3ODE4Mjk2NjR8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-094.html"},"datePublished":"2026-06-19","dateModified":"2026-06-19"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"프롬프트가 길어질수록 오히려 결과가 더 불안정해지는 것 같은데, 이유가 있나요?","acceptedAnswer":{"@type":"Answer","text":"프롬프트 길이 자체가 문제가 아니라 구조 없이 길어지는 것이 문제다. 모델은 입력 텍스트 전체를 균등하게 처리하지 않는다. 앞부분과 뒷부분에 가중치가 집중되는 경향이 있어, 중간에 삽입된 중요한 지시가 희석될 수 있다. RFC 구조처럼 역할과 형식을 앞부분에 명확히 배치하고, 작업 지시를 마지막에 두는 방식이 이 문제를 완화한다."}},{"@type":"Question","name":"같은 프롬프트를 반복 사용하는데도 출력이 달라지는 건 모델 자체의 문제 아닌가요?","acceptedAnswer":{"@type":"Answer","text":"생성형 AI는 확률적 모델이기 때문에 동일 입력에 대해서도 출력이 달라질 수 있다. 이것은 설계상의 특성이지 결함이 아니다. 그러나 이 편차의 범위를 좁히는 것은 프롬프트 구조로 충분히 가능하다. 온도(temperature) 설정을 낮추는 방법도 있지만, 구조적 제약 조건을 강화하는 것이 콘텐츠 품질 관리 측면에서 더 지속 가능한 접근이다."}},{"@type":"Question","name":"RFC 프레임워크를 팀 전체에 도입하려면 어디서부터 시작해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"가장 자주 사용하는 프롬프트 유형 하나를 선택해 RFC 구조로 재작성하는 것부터 시작한다. 전체 도입보다 단일 유형에서의 검증이 먼저다. 검증 기준은 단순하다. 동일 프롬프트를 5회 실행했을 때 형식과 어조의 편차가 허용 범위 안에 있는지 확인하면 된다. 이 기준을 통과한 프롬프트를 팀 공유 문서에 등록하고, 이후 다른 유형으로 확장하는 순서로 진행한다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 6. 19.</span></div>
+  <h1 class="post-title">AI 프롬프트 일관성이 무너지는 진짜 원인과 구조적 해결법</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1495465798138-718f86d1a4bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMXx8QUklMjBjb250ZW50JTIwd29ya2Zsb3clMjBsYXB0b3AlMjBkZXNrfGVufDF8MHx8fDE3ODE4Mjk2NjR8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 일관성이 무너지는 진짜 원인과 구조적 해결법" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">같은 프롬프트를 입력했는데 어제와 오늘의 결과물이 전혀 다르다. AI 프롬프트 일관성 문제로 고민하는 콘텐츠 담당자라면 이 상황이 낯설지 않을 것이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">문제는 프롬프트 문장이 아니라 '구조의 부재'다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 사람이 프롬프트를 수정하고 또 수정한다. 단어를 바꾸고, 문장을 다듬고, 예시를 추가한다. 그런데 결과는 여전히 들쭉날쭉하다. 이유는 단순하다. 문장을 고치는 것과 구조를 설계하는 것은 전혀 다른 작업이기 때문이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 입력된 텍스트를 기반으로 확률적으로 다음 토큰을 예측한다. 같은 문장이라도 맥락 신호가 부족하면 모델은 매번 다른 방향으로 해석한다. 결국 일관성 문제의 원인은 세 가지로 압축된다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">역할(Role)이 명시되지 않았다</strong>: 누가 쓰는 글인지 모델이 추정해야 한다</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">출력 형식(Format)이 열려 있다</strong>: 길이, 구조, 어조가 매번 달라진다</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">평가 기준(Constraint)이 없다</strong>: 모델이 스스로 '충분하다'고 판단하는 기준이 없다</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 가지 중 하나라도 빠지면 프롬프트는 매번 다른 결과를 허용하는 열린 문이 된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">일관성을 결정하는 세 가지 레이어</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">레이어 1: 역할 정의는 직함이 아니라 관점이다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"마케터처럼 써줘"는 역할 정의가 아니다. 역할은 관점, 독자, 목적을 포함해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">나쁜 예: <code style="background:#1e293b;color:#a5b4fc;padding:2px 7px;border-radius:4px;font-size:14px;">마케팅 전문가로서 블로그 글을 써줘</code></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">좋은 예: <code style="background:#1e293b;color:#a5b4fc;padding:2px 7px;border-radius:4px;font-size:14px;">B2B SaaS 기업의 콘텐츠 마케터로서, 구매 결정권이 있는 IT 팀장을 대상으로, 기술 도입의 리스크를 줄이는 관점에서 작성해줘</code></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할이 구체화될수록 모델이 선택할 수 있는 해석의 범위가 좁아진다. 이것이 일관성의 첫 번째 조건이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">레이어 2: 출력 형식은 예시로 고정한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">어조, 문단 수, 소제목 유무, 문장 길이를 텍스트로 설명하는 것보다 예시 한 단락을 직접 보여주는 것이 훨씬 강력하다. 모델은 설명보다 패턴을 더 잘 따른다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트 내에 <code style="background:#1e293b;color:#a5b4fc;padding:2px 7px;border-radius:4px;font-size:14px;">아래 형식을 따르세요:</code> 이후 실제 출력 샘플을 1~2문단 삽입하면, 어조와 구조의 편차가 눈에 띄게 줄어든다. 실제 운영 환경에서 이 방식을 적용했을 때 출력 형식의 재작업 빈도가 절반 이하로 감소했다는 사례가 보고된다고 가정하면, 그 효과는 작지 않다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">레이어 3: 제약 조건은 금지가 아니라 범위다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"~하지 마세요"보다 "~의 범위 안에서 작성하세요"가 더 정밀하게 작동한다. 금지 명령은 모델이 회피해야 할 영역을 만들지만, 범위 설정은 허용된 공간을 명확히 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예: <code style="background:#1e293b;color:#a5b4fc;padding:2px 7px;border-radius:4px;font-size:14px;">결론은 2문장 이내로, 수치 없이, 독자의 다음 행동을 유도하는 문장으로 마무리하세요</code></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 방식은 출력의 끝부분이 매번 다른 형태로 마무리되는 문제를 구조적으로 차단한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">RFC 프레임워크: 세 레이어를 하나로 묶는 설계 방식</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">위 세 가지 레이어를 통합한 구조를 RFC 프레임워크라고 부를 수 있다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">R (Role)</strong>: 관점 + 독자 + 목적</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">F (Format)</strong>: 구조 + 예시 샘플 + 길이 기준</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">C (Constraint)</strong>: 허용 범위 + 금지 항목 + 평가 기준</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 요소를 프롬프트 상단에 블록 형태로 배치하면, 하단의 실제 작업 지시가 달라져도 출력의 기본 틀은 유지된다. 프롬프트를 매번 새로 쓰는 것이 아니라, RFC 블록을 고정하고 작업 지시만 교체하는 방식으로 운영하는 것이다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1488998527040-85054a85150e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNHx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzgxODI5NjY1fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 일관성이 무너지는 진짜 원인과 구조적 해결법" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">법률 서비스 업종</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">법률 콘텐츠를 제작하는 팀이 있다고 가정하자. 같은 판례 요약 프롬프트를 사용했는데 어떤 날은 일반인 눈높이로, 어떤 날은 법조인 대상 문체로 출력됐다면, 역할 레이어에서 독자 정의가 빠진 것이다. RFC 구조를 적용해 독자를 "법률 지식이 없는 30~40대 직장인"으로 고정하고 출력 샘플을 추가했을 때, 초안 수정 횟수가 기존 대비 약 60% 감소했다고 가정할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">헬스케어 콘텐츠 업종</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원 블로그 운영팀이 증상 안내 콘텐츠를 생성할 때 어조가 매번 달라지는 문제를 겪는다고 가정하자. 이 경우 제약 조건 레이어가 핵심이다. "의학적 판단을 단정하지 않는 문장으로, 전문의 상담을 권유하는 문장을 본문 중간과 마지막에 각 1회 삽입"이라는 범위 설정을 추가하면, 콘텐츠의 법적·윤리적 리스크와 어조 일관성을 동시에 관리할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">교육 콘텐츠 업종</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">온라인 강의 플랫폼에서 강의 소개글을 AI로 생성한다고 가정하자. 강사마다 전문 분야가 다르기 때문에 역할 레이어를 강사 페르소나 단위로 분리해 관리하면 된다. 공통 F와 C 블록은 고정하고, R 블록만 강사별로 교체하는 방식이다. 이 구조는 콘텐츠 팀이 프롬프트를 개별 관리하는 비용을 줄이면서도 브랜드 어조를 유지하는 데 실질적으로 작동한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프롬프트를 문서가 아니라 시스템으로 관리하라</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">일관성 문제의 근본은 프롬프트를 일회성 텍스트로 취급하는 관행에 있다. 프롬프트는 코드처럼 버전 관리가 되어야 하고, 팀 내에서 공유 가능한 형태로 문서화되어야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실무적으로는 다음 세 가지 기준을 적용한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">1. 프롬프트에 버전 번호와 최종 수정일을 기재한다</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">2. RFC 블록과 작업 지시 블록을 물리적으로 분리해 저장한다</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">3. 출력 결과의 품질 편차가 발생하면 어느 레이어에서 문제가 생겼는지 진단 후 해당 블록만 수정한다</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 방식은 프롬프트를 작성하는 개인의 감각에 의존하던 작업을 팀 단위의 재현 가능한 프로세스로 전환한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트가 길어질수록 오히려 결과가 더 불안정해지는 것 같은데, 이유가 있나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트 길이 자체가 문제가 아니라 구조 없이 길어지는 것이 문제다. 모델은 입력 텍스트 전체를 균등하게 처리하지 않는다. 앞부분과 뒷부분에 가중치가 집중되는 경향이 있어, 중간에 삽입된 중요한 지시가 희석될 수 있다. RFC 구조처럼 역할과 형식을 앞부분에 명확히 배치하고, 작업 지시를 마지막에 두는 방식이 이 문제를 완화한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 같은 프롬프트를 반복 사용하는데도 출력이 달라지는 건 모델 자체의 문제 아닌가요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 확률적 모델이기 때문에 동일 입력에 대해서도 출력이 달라질 수 있다. 이것은 설계상의 특성이지 결함이 아니다. 그러나 이 편차의 범위를 좁히는 것은 프롬프트 구조로 충분히 가능하다. 온도(temperature) 설정을 낮추는 방법도 있지만, 구조적 제약 조건을 강화하는 것이 콘텐츠 품질 관리 측면에서 더 지속 가능한 접근이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. RFC 프레임워크를 팀 전체에 도입하려면 어디서부터 시작해야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가장 자주 사용하는 프롬프트 유형 하나를 선택해 RFC 구조로 재작성하는 것부터 시작한다. 전체 도입보다 단일 유형에서의 검증이 먼저다. 검증 기준은 단순하다. 동일 프롬프트를 5회 실행했을 때 형식과 어조의 편차가 허용 범위 안에 있는지 확인하면 된다. 이 기준을 통과한 프롬프트를 팀 공유 문서에 등록하고, 이후 다른 유형으로 확장하는 순서로 진행한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 RFC 프레임워크를 실제 업무 유형별로 적용한 프롬프트 템플릿을 공개한다. 콘텐츠 기획, 보고서 초안, 고객 응대 스크립트 등 세 가지 유형에 대해 복사해서 바로 쓸 수 있는 형태로 제공할 예정이다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-094&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-094',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
