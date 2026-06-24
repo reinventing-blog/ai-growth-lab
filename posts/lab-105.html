@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>트리거 기반 자동화가 작동하는 원리 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="트리거 기반 자동화가 작동하는 원리를 이벤트·시간·조건 유형별로 분류하고, 제조·법률·교육·금융 업종 사례와 함께 설계 기준을 구체적으로 설명합니다.">
+<meta property="og:title" content="트리거 기반 자동화가 작동하는 원리"><meta property="og:description" content="트리거 기반 자동화가 작동하는 원리를 이벤트·시간·조건 유형별로 분류하고, 제조·법률·교육·금융 업종 사례와 함께 설계 기준을 구체적으로 설명합니다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-105.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-105.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"트리거 기반 자동화가 작동하는 원리","description":"트리거 기반 자동화가 작동하는 원리를 이벤트·시간·조건 유형별로 분류하고, 제조·법률·교육·금융 업종 사례와 함께 설계 기준을 구체적으로 설명합니다.","image":"https://images.unsplash.com/photo-1559163499-413811fb2344?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw2fHxidXNpbmVzcyUyMHdvcmtmbG93JTIwbGFwdG9wfGVufDF8MHx8fDE3ODIxNzI4OTN8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-105.html"},"datePublished":"2026-06-24","dateModified":"2026-06-24"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"트리거 기반 자동화를 시작하려면 어떤 도구가 필요한가","acceptedAnswer":{"@type":"Answer","text":"특정 도구보다 먼저 자동화할 업무 흐름을 정의하는 것이 앞선다. 흐름도가 없는 상태에서 도구를 먼저 고르면 도구의 기능에 맞춰 업무를 끼워 맞추게 된다. 현재 반복적으로 수동 처리하는 작업 목록을 작성하고, 각 작업의 시작 조건을 명시한 다음 도구를 선택하는 순서가 맞다."}},{"@type":"Question","name":"트리거 조건이 너무 자주 발동하면 어떻게 조정하는가","acceptedAnswer":{"@type":"Answer","text":"발동 빈도가 과도하다면 조건에 시간 쿨다운이나 중복 방지 로직을 추가한다. 예를 들어 동일 고객에 대해 알림이 24시간 내에 두 번 이상 발송되지 않도록 제한하거나, 특정 상태 플래그가 켜진 경우에만 실행되도록 조건을 좁히는 방식이 일반적이다. 트리거 로그를 주기적으로 검토해 발동 패턴을 확인하는 습관이 장기적으로 정확도를 높인다."}},{"@type":"Question","name":"트리거 기반 자동화와 AI 자동화는 어떻게 다른가","acceptedAnswer":{"@type":"Answer","text":"트리거 기반 자동화는 조건이 명확하게 정의된 흐름을 처리한다. AI를 결합하면 조건이 명확하지 않은 상황, 예를 들어 고객 문의 내용을 분류하거나 문서에서 핵심 정보를 추출하는 작업을 트리거 흐름 안에 포함시킬 수 있다. 두 방식은 대립하지 않는다. 구조적 흐름은 트리거로 설계하고, 판단이 필요한 구간에 AI를 배치하는 방식이 현재 가장 많이 쓰이는 조합이다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#3b1d8a;color:#c4b5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">자동화 & 워크플로우</span><span class="post-date">2026. 6. 24.</span></div>
+  <h1 class="post-title">트리거 기반 자동화가 작동하는 원리</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1559163499-413811fb2344?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw2fHxidXNpbmVzcyUyMHdvcmtmbG93JTIwbGFwdG9wfGVufDF8MHx8fDE3ODIxNzI4OTN8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="트리거 기반 자동화가 작동하는 원리" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거 기반 자동화는 특정 조건이 충족되는 순간 사전에 정의된 행동을 자동으로 실행하는 구조다. 사람이 개입하지 않아도 시스템이 스스로 판단하고 움직인다는 점에서, 단순 반복 업무를 줄이는 수준을 넘어 비즈니스 운영 방식 자체를 바꾼다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 지금 자동화 설계를 다시 봐야 하는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 조직이 자동화 도구를 도입했지만, 실제로는 여전히 사람이 버튼을 누르거나 파일을 옮기는 일이 반복된다. 도구가 없어서가 아니라, 자동화의 작동 원리를 구조적으로 이해하지 못한 채 기능만 붙여넣었기 때문이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거 없는 자동화는 존재하지 않는다. 어떤 자동화 흐름이든 반드시 "무언가가 일어났을 때"라는 출발점을 가진다. 이 출발점을 명확히 설계하지 않으면, 자동화는 작동하다가 멈추거나 엉뚱한 시점에 실행된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">트리거의 세 가지 유형</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거는 크게 세 가지로 분류된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">이벤트 기반 트리거</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">특정 행동이 발생했을 때 실행된다. 폼 제출, 결제 완료, 파일 업로드, 데이터베이스 레코드 생성 등이 해당한다. 반응 속도가 빠르고 조건이 명확하기 때문에 가장 많이 쓰이는 유형이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 병원 예약 시스템에서 환자가 예약을 확정하는 순간, 담당 의사에게 알림이 가고 EMR 시스템에 일정이 등록되며 환자에게 안내 문자가 발송되는 흐름이 이벤트 트리거로 구성된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">시간 기반 트리거</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">정해진 시각이나 주기에 따라 실행된다. 매일 오전 9시 리포트 생성, 매주 월요일 팀 업무 현황 집계, 계약 만료 30일 전 알림 발송 등이 여기에 속한다. 이벤트가 발생하지 않아도 흐름이 시작된다는 점이 핵심이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 관리 업무에서는 임대차 계약 만료일을 기준으로 역산해 자동 알림을 보내는 방식이 시간 기반 트리거의 전형적인 활용이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">조건 기반 트리거</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">데이터가 특정 임계값을 넘거나, 복수의 조건이 동시에 충족될 때 실행된다. "재고가 50개 미만이고 발주 대기 상태가 아닐 때", "고객 응답이 72시간 이상 없을 때" 같은 복합 조건이 여기에 해당한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 유형은 설계가 정교할수록 오작동이 줄어든다. 조건을 느슨하게 잡으면 불필요한 실행이 쌓이고, 너무 좁히면 트리거가 아예 발동하지 않는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">트리거-액션-피드백 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거 기반 자동화의 구조는 세 단계로 이루어진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">트리거 → 액션 → 피드백</strong></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거는 흐름의 시작점이고, 액션은 실행되는 작업이며, 피드백은 실행 결과를 다음 트리거나 사람에게 전달하는 루프다. 이 세 단계가 연결되지 않으면 자동화는 단방향 실행에 그친다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">피드백 루프가 없는 자동화의 한계</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거가 발동하고 액션이 실행됐지만 그 결과가 어디에도 기록되지 않으면, 동일한 오류가 반복되어도 시스템은 알지 못한다. 실무에서 자동화가 "어느 순간부터 안 된다"는 문제가 생기는 원인 중 하나가 피드백 루프의 부재다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">피드백은 반드시 사람이 확인하는 형태일 필요는 없다. 실행 로그를 데이터베이스에 쌓고, 실패 횟수가 일정 기준을 초과하면 담당자에게 알림을 보내는 방식으로 자동화 안에 피드백을 내재화할 수 있다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1728981815235-a9aae8685524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNnx8YXV0b21hdGlvbiUyMGFuYWx5dGljcyUyMGRhc2hib2FyZCUyMGRhdGElMjB2aXN1YWxpemF0aW9uJTIwc2NyZWVufGVufDF8MHx8fDE3ODIyNjEzODl8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="트리거 기반 자동화가 작동하는 원리" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">제조업: 설비 이상 감지</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">센서 데이터가 정상 범위를 벗어나는 순간 트리거가 발동하고, 유지보수 팀에 알림이 전송되며 작업 지시서가 자동 생성된다. 가정하자면, 이 흐름을 도입한 중소 제조사에서 설비 점검 대응 시간이 기존 대비 절반 수준으로 단축되는 사례가 나올 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">법률 서비스: 계약 기한 관리</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">계약서 데이터베이스에서 만료일을 읽어 60일, 30일, 7일 전에 각각 다른 내용의 알림을 담당 변호사와 의뢰인에게 발송한다. 사람이 달력을 보며 체크하는 방식과 달리, 누락 가능성이 구조적으로 제거된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">교육 기관: 학습 이탈 감지</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학습 관리 시스템에서 수강생의 마지막 접속일이 7일을 초과하면 트리거가 발동해 담당 튜터에게 알림이 간다. 단순 독려 메시지를 자동 발송하는 것과 달리, 사람이 직접 연락하도록 연결하는 구조가 이탈률 관리에 더 실질적인 변화를 만든다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">금융 서비스: 이상 거래 탐지</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">특정 계좌에서 평균 거래 금액의 3배 이상 출금이 발생하면 조건 기반 트리거가 실행되어 추가 인증 요청이 발송되고 내부 모니터링 대시보드에 플래그가 표시된다. 이 흐름은 규정 준수와 고객 보호를 동시에 처리한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">자동화 설계 전 확인해야 할 세 가지 기준</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거를 설계하기 전에 다음 세 가지를 먼저 정의해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">1. 어떤 조건이 충족될 때 실행되어야 하는가 (트리거 조건)</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">2. 실행 결과가 어디에 기록되는가 (피드백 경로)</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">3. 예외 상황에서 사람이 개입해야 하는 지점은 어디인가 (에스컬레이션 기준)</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세 번째 기준이 빠진 자동화는 예외 상황에서 오히려 문제를 키운다. 자동화는 정상 흐름을 빠르게 처리하고, 비정상 흐름은 사람에게 넘기는 구조로 설계되어야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 트리거 기반 자동화를 시작하려면 어떤 도구가 필요한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">특정 도구보다 먼저 자동화할 업무 흐름을 정의하는 것이 앞선다. 흐름도가 없는 상태에서 도구를 먼저 고르면 도구의 기능에 맞춰 업무를 끼워 맞추게 된다. 현재 반복적으로 수동 처리하는 작업 목록을 작성하고, 각 작업의 시작 조건을 명시한 다음 도구를 선택하는 순서가 맞다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 트리거 조건이 너무 자주 발동하면 어떻게 조정하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">발동 빈도가 과도하다면 조건에 시간 쿨다운이나 중복 방지 로직을 추가한다. 예를 들어 동일 고객에 대해 알림이 24시간 내에 두 번 이상 발송되지 않도록 제한하거나, 특정 상태 플래그가 켜진 경우에만 실행되도록 조건을 좁히는 방식이 일반적이다. 트리거 로그를 주기적으로 검토해 발동 패턴을 확인하는 습관이 장기적으로 정확도를 높인다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 트리거 기반 자동화와 AI 자동화는 어떻게 다른가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거 기반 자동화는 조건이 명확하게 정의된 흐름을 처리한다. AI를 결합하면 조건이 명확하지 않은 상황, 예를 들어 고객 문의 내용을 분류하거나 문서에서 핵심 정보를 추출하는 작업을 트리거 흐름 안에 포함시킬 수 있다. 두 방식은 대립하지 않는다. 구조적 흐름은 트리거로 설계하고, 판단이 필요한 구간에 AI를 배치하는 방식이 현재 가장 많이 쓰이는 조합이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 실제 자동화 흐름을 설계할 때 자주 발생하는 오류 유형과 그 수정 방법을 다룬다. 트리거 조건을 올바르게 설정했음에도 자동화가 예상대로 작동하지 않는 이유를 구체적인 케이스로 살펴볼 것이다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-105&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-105',cta_type:'flywheel_consult',category:'자동화 & 워크플로우'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
