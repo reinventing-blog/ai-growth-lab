@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 프롬프트 구조 설계로 결과물 품질을 3배 안정시키는 4가지 원칙 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 프롬프트 구조 설계의 4가지 원칙을 통해 결과물 품질을 안정시키는 방법을 역할 정의, 맥락 설정, 출력 형식, 단계 분리 기준으로 업종별 사례와 함께 설명한다.">
+<meta property="og:title" content="AI 프롬프트 구조 설계로 결과물 품질을 3배 안정시키는 4가지 원칙"><meta property="og:description" content="AI 프롬프트 구조 설계의 4가지 원칙을 통해 결과물 품질을 안정시키는 방법을 역할 정의, 맥락 설정, 출력 형식, 단계 분리 기준으로 업종별 사례와 함께 설명한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-110.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-110.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 프롬프트 구조 설계로 결과물 품질을 3배 안정시키는 4가지 원칙","description":"AI 프롬프트 구조 설계의 4가지 원칙을 통해 결과물 품질을 안정시키는 방법을 역할 정의, 맥락 설정, 출력 형식, 단계 분리 기준으로 업종별 사례와 함께 설명한다.","image":"https://images.unsplash.com/photo-1529603992250-a55acb77d146?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMHx8bGFwdG9wJTIwc2NyZWVuJTIwc3RydWN0dXJlZCUyMHdvcmtmbG93JTIwYXV0b21hdGlvbnxlbnwxfDB8fHwxNzgyMzQ4MDU3fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-110.html"},"datePublished":"2026-06-25","dateModified":"2026-06-25"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"프롬프트 구조를 매번 새로 작성해야 하는가","acceptedAnswer":{"@type":"Answer","text":"그렇지 않다. 4가지 요소(역할, 맥락, 형식, 단계)를 갖춘 프롬프트는 템플릿으로 저장해 재사용한다. 변경이 필요한 부분만 교체하는 방식으로 운영하면 팀 전체가 일관된 품질을 유지할 수 있다."}},{"@type":"Question","name":"프롬프트가 길어질수록 결과물이 좋아지는가","acceptedAnswer":{"@type":"Answer","text":"길이와 품질은 비례하지 않는다. 불필요한 설명이 길어지면 AI는 핵심 조건을 희석시킨다. 각 요소를 명확하게 한 줄씩 기술하는 것이 장문의 서술보다 구조적으로 안정된 결과를 만든다."}},{"@type":"Question","name":"구조 설계 원칙이 창의적인 작업에도 적용되는가","acceptedAnswer":{"@type":"Answer","text":"적용된다. 창의적 작업일수록 방향성의 범위를 설정하는 것이 결과물의 질을 높인다. 역할과 맥락을 고정하되 형식 조건을 느슨하게 설정하면 창의성과 일관성을 동시에 확보할 수 있다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 6. 25.</span></div>
+  <h1 class="post-title">AI 프롬프트 구조 설계로 결과물 품질을 3배 안정시키는 4가지 원칙</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1529603992250-a55acb77d146?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMHx8bGFwdG9wJTIwc2NyZWVuJTIwc3RydWN0dXJlZCUyMHdvcmtmbG93JTIwYXV0b21hdGlvbnxlbnwxfDB8fHwxNzgyMzQ4MDU3fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 구조 설계로 결과물 품질을 3배 안정시키는 4가지 원칙" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI를 업무에 도입한 팀 대부분이 같은 문제를 겪는다. 어제는 만족스러운 결과가 나왔는데 오늘은 전혀 다른 방향의 답변이 돌아온다. 원인은 AI의 성능 차이가 아니라 <strong style="color:#f1f5f9;font-weight:700;">AI 프롬프트 구조 설계</strong>의 부재다. 프롬프트를 매번 즉흥적으로 작성하면 결과물의 품질은 작성자의 그날 컨디션에 종속된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 같은 질문인데 결과가 매번 다른가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트를 문장 하나로 던지는 방식은 대화창에 말을 걸듯 AI를 사용하는 것이다. 이 방식은 결과물의 방향성을 AI의 기본 추론 패턴에 전적으로 위임한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">반면 구조화된 프롬프트는 다르다. 역할, 맥락, 조건, 출력 형식을 각각 분리해서 명시하면 AI는 해석의 여지를 줄이고 의도에 맞는 범위 안에서만 응답을 생성한다. 즉흥 프롬프트와 구조 설계 프롬프트의 차이는 구두 지시와 작업 명세서의 차이와 같다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실제로 동일한 주제를 다루더라도 맥락 없이 던진 프롬프트와 4개 요소를 갖춘 프롬프트를 비교하면, 후자가 재사용 시 동일한 품질 수준을 유지할 가능성이 가정상 2~3배 이상 높다고 볼 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">구조 설계 원칙 1: 역할 정의는 직함이 아니라 관점으로 설정한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"마케터로서 답해줘"는 역할 정의가 아니다. 역할 정의는 AI가 어떤 시각으로 정보를 처리할지를 결정하는 렌즈다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원 원무팀이 환자 안내 문자를 작성한다고 가정하자. "의료 커뮤니케이션 전문가로서 의학 용어를 피하고 60대 이상 환자가 이해할 수 있는 언어로 작성해줘"라고 설정하면, AI는 단어 선택 기준과 독자 수준을 동시에 인식한다. 직함만 던지는 것과 결과물의 밀도가 달라진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할 설정 시 포함해야 할 요소는 세 가지다. 전문 영역, 독자와의 관계, 커뮤니케이션 목적. 이 세 가지가 한 문장 안에 들어가면 역할 정의가 완성된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">구조 설계 원칙 2: 맥락은 배경이 아니라 제약 조건으로 기술한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">맥락을 "우리 회사는 B2B SaaS 기업입니다"처럼 배경 설명으로 넣으면 AI는 이를 참고 정보로만 처리한다. 맥락을 제약 조건으로 바꾸면 결과물의 방향이 고정된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">건설 현장 안전교육 자료를 만든다고 가정하자. "현장 근무자 대상, 문해력 편차가 크므로 문장은 15자 이내, 전문 용어 사용 금지, 행동 지침은 동사로 시작"이라고 기술하면 이것은 배경이 아니라 출력 조건이 된다. AI는 이 조건을 필터로 사용해 응답을 생성한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">맥락 기술에서 흔히 빠지는 항목은 '사용하지 말아야 할 것'이다. 포함할 요소만큼 제외할 요소도 명시해야 결과물의 범위가 좁아진다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1585417239901-f3a4085218b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOXx8ZGF0YSUyMHZpc3VhbGl6YXRpb24lMjBkYXNoYm9hcmQlMjBhbmFseXRpY3MlMjByZXN1bHRzfGVufDF8MHx8fDE3ODIzNDgwNTh8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 구조 설계로 결과물 품질을 3배 안정시키는 4가지 원칙" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">구조 설계 원칙 3: 출력 형식은 용도 기준으로 명세화한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"표로 정리해줘"는 형식 지시가 아니다. 형식 명세는 결과물이 어디에 어떻게 쓰일지를 기준으로 설계한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">법무팀이 계약서 검토 체크리스트를 만든다고 가정하자. "항목별로 위험도(상/중/하) 표기, 각 항목에 검토 근거 한 줄 포함, 전체 항목 수 10개 이내"라고 명세하면 AI는 분량 조절과 구조를 동시에 맞춘다. 출력 형식이 용도와 연결될 때 결과물은 수정 없이 바로 사용할 수 있는 상태로 나온다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">형식 명세에 포함할 기준 항목은 다음과 같다. 구조 유형(표, 목록, 서술), 분량 기준(단어 수 또는 항목 수), 필수 포함 요소, 출력 언어 톤.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">구조 설계 원칙 4: 단계 분리로 복합 작업의 오류율을 낮춘다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">하나의 프롬프트에 분석, 작성, 편집을 동시에 요청하면 AI는 각 단계를 병렬로 처리하려다 우선순위를 스스로 결정한다. 이 과정에서 의도하지 않은 생략이 발생한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">교육 콘텐츠 스타트업이 강의 스크립트를 제작한다고 가정하자. 프롬프트를 세 단계로 나누면 오류율이 줄어든다. 1단계: 핵심 개념 3가지 추출 및 학습 목표 정의. 2단계: 추출된 개념을 바탕으로 스크립트 초안 작성. 3단계: 초안을 대상 수강생 수준에 맞게 언어 조정. 각 단계의 출력이 다음 단계의 입력이 되는 구조다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단계 분리는 시간이 더 걸리는 것처럼 보이지만, 전체 수정 횟수를 줄이면 실제 작업 시간은 단축된다. 가정상 복합 요청 대비 수정 사이클이 절반 이하로 줄어드는 경우도 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 중개업: 매물 설명문 표준화</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">매물 설명문을 담당자마다 다르게 작성하면 브랜드 톤이 흔들린다. 역할(지역 거주자에게 친숙한 중개사), 맥락(30평대 아파트, 역세권 500m, 주 타깃 3040 실수요자), 형식(200자 이내, 장점 2가지, 생활 편의 언급 필수)을 고정한 프롬프트를 팀 공용으로 운영하면 설명문의 품질 편차가 줄어든다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">제조업 기술문서: 매뉴얼 번역 품질 유지</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기술 매뉴얼을 번역할 때 전문 용어의 일관성이 무너지는 경우가 많다. 맥락 조건에 용어집을 첨부하고 "이 용어집 외의 번역어 사용 금지"를 제약으로 명시하면 용어 혼용 오류를 구조적으로 차단한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">공공기관 민원 응대: 답변 톤 표준화</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">민원 응대 문자의 톤이 담당자마다 달라지면 기관 신뢰도에 영향을 준다. 역할(공공 서비스 안내자), 맥락(민원 처리 완료 안내, 추가 문의 유도 금지), 형식(2문장 이내, 존댓말, 수동태 금지)을 설정하면 응대 품질이 균일해진다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트 구조를 매번 새로 작성해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">그렇지 않다. 4가지 요소(역할, 맥락, 형식, 단계)를 갖춘 프롬프트는 템플릿으로 저장해 재사용한다. 변경이 필요한 부분만 교체하는 방식으로 운영하면 팀 전체가 일관된 품질을 유지할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트가 길어질수록 결과물이 좋아지는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">길이와 품질은 비례하지 않는다. 불필요한 설명이 길어지면 AI는 핵심 조건을 희석시킨다. 각 요소를 명확하게 한 줄씩 기술하는 것이 장문의 서술보다 구조적으로 안정된 결과를 만든다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 구조 설계 원칙이 창의적인 작업에도 적용되는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">적용된다. 창의적 작업일수록 방향성의 범위를 설정하는 것이 결과물의 질을 높인다. 역할과 맥락을 고정하되 형식 조건을 느슨하게 설정하면 창의성과 일관성을 동시에 확보할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 이 4가지 원칙을 하나의 프롬프트 템플릿으로 통합하는 방법과, 팀 단위로 프롬프트 자산을 관리하는 운영 체계를 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-110&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-110',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
