@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 프롬프트 구조 설계가 실전에서 무너지는 3가지 구조적 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 프롬프트 구조 설계의 3가지 결함을 분석한다. 역할-맥락 분리, 출력 형식 지정, 검증 기준 내장 등 실전에서 바로 적용 가능한 프레임워크를 업종별 사례와 함께 제시한다.">
+<meta property="og:title" content="AI 프롬프트 구조 설계가 실전에서 무너지는 3가지 구조적 원인"><meta property="og:description" content="AI 프롬프트 구조 설계의 3가지 결함을 분석한다. 역할-맥락 분리, 출력 형식 지정, 검증 기준 내장 등 실전에서 바로 적용 가능한 프레임워크를 업종별 사례와 함께 제시한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-114.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-114.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 프롬프트 구조 설계가 실전에서 무너지는 3가지 구조적 원인","description":"AI 프롬프트 구조 설계의 3가지 결함을 분석한다. 역할-맥락 분리, 출력 형식 지정, 검증 기준 내장 등 실전에서 바로 적용 가능한 프레임워크를 업종별 사례와 함께 제시한다.","image":"https://images.unsplash.com/photo-1758626104169-6835c0bd03e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxNHx8QUklMjBwcm9tcHQlMjB3b3JrZmxvdyUyMGxhcHRvcCUyMGRlc2t8ZW58MXwwfHx8MTc4MjQzNDQ1NHww&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-114.html"},"datePublished":"2026-06-26","dateModified":"2026-06-26"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"프롬프트가 길어지면 오히려 AI가 혼란스러워하지 않나요?","acceptedAnswer":{"@type":"Answer","text":"길이 자체가 문제가 되는 경우는 드물다. 실제로 문제가 되는 것은 길이가 아니라 구조의 일관성이다. 역할, 요청, 형식, 검증 기준이 순서 없이 뒤섞인 프롬프트는 짧아도 출력이 불안정하다. 반대로 각 요소가 명확하게 구분된 프롬프트는 길더라도 출력의 일관성이 높다. 단락 구분이나 번호 목록을 활용해 구조를 시각적으로 분리하면 길이에 따른 혼선을 줄일 수 있다."}},{"@type":"Question","name":"업종마다 프롬프트 구조를 다르게 설계해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"기본 구조는 동일하게 유지하되, 역할 정의와 검증 기준은 업종에 맞게 조정한다. 의료 분야는 정확성과 법적 표현 회피가 검증 기준에 들어가고, 광고 업종은 톤과 타깃 적합성이 기준이 된다. 프레임워크를 업종별로 완전히 새로 만드는 것은 비효율적이다. 공통 구조를 유지하면서 역할 설명과 검증 항목만 교체하는 방식이 실용적이다."}},{"@type":"Question","name":"같은 프롬프트를 반복 사용하는데 결과가 매번 달라지는 이유는 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"생성형 AI는 동일한 입력에도 확률적으로 다른 출력을 만든다. 이를 완전히 제거할 수는 없지만, 출력 편차를 줄이는 방법은 있다. 형식 조건을 더 구체적으로 명시하고, 자기 검토 기준을 포함시키면 허용 범위 밖의 출력이 나올 가능성이 낮아진다. 또한 성공적인 출력 결과를 예시로 프롬프트에 포함시키는 방식이 편차를 줄이는 데 실질적으로 작동한다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 6. 26.</span></div>
+  <h1 class="post-title">AI 프롬프트 구조 설계가 실전에서 무너지는 3가지 구조적 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1758626104169-6835c0bd03e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxNHx8QUklMjBwcm9tcHQlMjB3b3JrZmxvdyUyMGxhcHRvcCUyMGRlc2t8ZW58MXwwfHx8MTc4MjQzNDQ1NHww&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 구조 설계가 실전에서 무너지는 3가지 구조적 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI를 업무에 도입한 팀 중 상당수가 초기에는 만족스러운 결과를 얻다가 어느 시점부터 출력 품질이 들쭉날쭉해지는 경험을 한다. 이 현상의 핵심은 도구의 한계가 아니라 <strong style="color:#f1f5f9;font-weight:700;">AI 프롬프트 구조 설계</strong>의 결함에 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">1. 역할과 맥락이 분리되지 않은 구조</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트를 작성할 때 가장 흔한 실수는 '무엇을 해달라'는 지시만 넣고, '누가 어떤 상황에서 이 결과물을 쓰는지'를 생략하는 것이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 입력된 텍스트의 패턴을 기반으로 출력을 구성한다. 역할 정의가 없으면 모델은 가장 일반적인 응답 패턴을 선택한다. 이 경우 출력은 틀리지 않지만 쓸모없는 결과물이 된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 병원 원무팀이 환자 안내문 초안을 요청할 때, "안내문 써줘"라는 입력과 "당신은 3차 병원 원무팀 직원입니다. 초진 환자가 접수 절차를 이해하지 못해 창구 혼잡이 발생하고 있습니다. 이 상황을 해결하기 위한 A4 1장 분량의 안내문을 작성하세요"라는 입력은 전혀 다른 출력을 만든다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할(Role), 상황(Context), 목적(Purpose)을 프롬프트 앞단에 명시적으로 분리해 배치하는 것이 구조 설계의 첫 번째 원칙이다. 이 세 요소 중 하나라도 빠지면 출력의 방향성이 흔들린다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">2. 출력 형식을 열어두는 구조</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트에 형식 지정이 없으면 AI는 스스로 형식을 결정한다. 문제는 AI가 선택하는 기본 형식이 실제 사용 환경과 맞지 않는 경우가 많다는 점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">법무팀이 계약서 검토 요약을 요청했다고 가정하면, 형식 지정 없이 받은 결과물은 자유 서술형 단락으로 구성될 가능성이 높다. 그러나 실무에서 필요한 것은 조항별 리스크 등급, 수정 권고 사항, 우선순위가 구조화된 표 형태일 수 있다. 형식이 다르면 결과물을 다시 가공하는 데 오히려 더 많은 시간이 소요된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">출력 형식 설계 시 포함해야 할 요소는 세 가지다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">형식 설계의 3요소</h4>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">출력 단위</strong>: 문장인지, 항목 목록인지, 표인지 명시</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">길이 기준: 글자 수, 문장 수, 섹션 수 중 하나를 수치로 제시</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">제외 조건: 포함하지 말아야 할 표현, 형식, 내용을 구체적으로 명시</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">건축 설계 사무소가 클라이언트용 프로젝트 제안 요약본을 요청한다고 가정할 때, "3개 섹션, 각 섹션 3문장 이내, 전문 용어 없이 비전문가 독자 기준, 가격 언급 제외"라는 형식 조건이 붙은 프롬프트는 재작업 없이 바로 사용 가능한 결과물을 만들 확률이 높다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">형식을 열어두는 것은 자유도를 주는 것이 아니라 재작업 비용을 증가시키는 구조적 선택이다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1667906962043-a3e82dea23a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMnx8c3RydWN0dXJlZCUyMGRhc2hib2FyZCUyMGRhdGElMjB2aXN1YWxpemF0aW9uJTIwd29ya2Zsb3d8ZW58MXwwfHx8MTc4MjQzNDQ1NXww&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 구조 설계가 실전에서 무너지는 3가지 구조적 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">3. 검증 기준이 없는 단방향 구조</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 프롬프트는 요청으로 끝난다. AI가 결과물을 출력하면 사용자가 판단하는 방식이다. 이 구조는 결과물의 품질 편차가 클 때 원인을 파악하기 어렵게 만든다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트 구조 설계에서 검증 기준을 내장하는 방식은 두 가지다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자기 검토 지시 삽입</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트 말미에 "작성 후 다음 기준으로 자기 검토를 수행하고 결과를 함께 출력하라"는 지시를 추가한다. 기준은 구체적일수록 유효하다. 예를 들어 마케팅 기획사가 캠페인 카피를 요청할 때, "작성 후 타깃 연령대 적합성, 브랜드 톤 일치 여부, 행동 유도 문구 포함 여부를 각각 O/X로 자기 평가하라"는 지시를 포함하면 출력 품질의 하한선이 올라간다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">대안 출력 요청</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단일 결과물 대신 조건이 다른 2~3개의 버전을 동시에 요청하는 구조다. 교육 콘텐츠 기업이 강의 소개문을 작성한다고 가정하면, "초보자 대상 버전과 실무 경험자 대상 버전을 각각 작성하라"는 방식으로 비교 기준을 만들 수 있다. 단일 출력보다 선택 가능성이 생기고, 반복 사용 시 어떤 조건이 더 나은 결과를 만드는지 패턴을 파악할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">검증 기준 없는 프롬프트는 매번 처음부터 판단해야 하는 구조다. 이는 프롬프트를 재사용할수록 비효율이 누적되는 구조적 문제로 이어진다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프롬프트 구조 점검 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세 가지 원인을 종합하면 실전에서 작동하는 프롬프트 구조는 다음 순서로 구성된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">1. 역할 + 상황 + 목적 (앞단 배치)</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">2. 핵심 요청 (단일 동사로 명확하게)</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">3. 출력 형식 + 길이 기준 + 제외 조건</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">4. 자기 검토 기준 또는 대안 출력 조건</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 네 단계를 갖추지 못한 프롬프트는 결과물의 품질을 운에 맡기는 구조다. 업종과 무관하게 이 프레임은 동일하게 적용된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트가 길어지면 오히려 AI가 혼란스러워하지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">길이 자체가 문제가 되는 경우는 드물다. 실제로 문제가 되는 것은 길이가 아니라 구조의 일관성이다. 역할, 요청, 형식, 검증 기준이 순서 없이 뒤섞인 프롬프트는 짧아도 출력이 불안정하다. 반대로 각 요소가 명확하게 구분된 프롬프트는 길더라도 출력의 일관성이 높다. 단락 구분이나 번호 목록을 활용해 구조를 시각적으로 분리하면 길이에 따른 혼선을 줄일 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 업종마다 프롬프트 구조를 다르게 설계해야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기본 구조는 동일하게 유지하되, 역할 정의와 검증 기준은 업종에 맞게 조정한다. 의료 분야는 정확성과 법적 표현 회피가 검증 기준에 들어가고, 광고 업종은 톤과 타깃 적합성이 기준이 된다. 프레임워크를 업종별로 완전히 새로 만드는 것은 비효율적이다. 공통 구조를 유지하면서 역할 설명과 검증 항목만 교체하는 방식이 실용적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 같은 프롬프트를 반복 사용하는데 결과가 매번 달라지는 이유는 무엇인가요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 동일한 입력에도 확률적으로 다른 출력을 만든다. 이를 완전히 제거할 수는 없지만, 출력 편차를 줄이는 방법은 있다. 형식 조건을 더 구체적으로 명시하고, 자기 검토 기준을 포함시키면 허용 범위 밖의 출력이 나올 가능성이 낮아진다. 또한 성공적인 출력 결과를 예시로 프롬프트에 포함시키는 방식이 편차를 줄이는 데 실질적으로 작동한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 위 프레임워크를 실제 업무 유형별로 적용한 프롬프트 템플릿을 공개한다. 인사팀, 콘텐츠팀, 법무팀, 영업팀 각각의 반복 업무에 바로 적용 가능한 구조로 구성할 예정이다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-114&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-114',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
