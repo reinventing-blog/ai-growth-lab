@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>그로스 루프 전환율을 3배 높이는 5가지 재활성화 신호 설계 원칙 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="그로스 루프 전환율이 정체되는 진짜 원인은 이탈 사용자의 재진입 실패다. 재활성화 신호를 설계하는 5가지 원칙으로 루프 전환율을 구조적으로 개선하는 방법을 확인한다.">
+<meta property="og:title" content="그로스 루프 전환율을 3배 높이는 5가지 재활성화 신호 설계 원칙"><meta property="og:description" content="그로스 루프 전환율이 정체되는 진짜 원인은 이탈 사용자의 재진입 실패다. 재활성화 신호를 설계하는 5가지 원칙으로 루프 전환율을 구조적으로 개선하는 방법을 확인한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-119.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-119.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"그로스 루프 전환율을 3배 높이는 5가지 재활성화 신호 설계 원칙","description":"그로스 루프 전환율이 정체되는 진짜 원인은 이탈 사용자의 재진입 실패다. 재활성화 신호를 설계하는 5가지 원칙으로 루프 전환율을 구조적으로 개선하는 방법을 확인한다.","image":"https://images.unsplash.com/photo-1572274408891-758281498b72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyN3x8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzgyNjkxMzEyfDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-119.html"},"datePublished":"2026-06-30","dateModified":"2026-06-30"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"재활성화 신호를 보낼 사용자 세그먼트는 어떻게 구분하나요?","acceptedAnswer":{"@type":"Answer","text":"세그먼트는 이탈 시점이 아닌 마지막 완료 행동 기준으로 나눈다. 가입 후 핵심 기능 미경험 사용자, 핵심 기능 경험 후 반복 사용 미전환 사용자, 반복 사용 중 갑작스럽게 이탈한 사용자 세 그룹은 각각 다른 신호 설계가 필요하다. 동일한 메시지를 세 그룹에 동시에 보내면 어느 그룹에도 최적화되지 않는다."}},{"@type":"Question","name":"재활성화 신호 설계에 생성형 AI를 활용할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"생성형 AI는 세그먼트별 메시지 초안 생성, 채널별 문구 변형, A/B 테스트 시나리오 설계에 활용할 수 있다. 다만 AI가 생성한 메시지는 반드시 실제 사용자 행동 데이터와 대조해서 검증해야 한다. AI는 문구를 생성하지만 어떤 맥락에서 어떤 신호를 보낼지의 판단은 데이터 기반 설계자가 결정해야 한다."}},{"@type":"Question","name":"재활성화 신호가 오히려 사용자를 이탈시키는 경우는 어떻게 방지하나요?","acceptedAnswer":{"@type":"Answer","text":"신호 과잉이 이탈을 가속하는 주요 원인이다. 동일 사용자에게 7일 내 3회 이상 재활성화 메시지를 보내면 수신 거부율이 급격히 올라간다. 방지 기준은 채널별 발송 빈도 상한을 설정하고, 사용자가 신호에 반응하지 않을 경우 다음 신호 발송 간격을 자동으로 늘리는 쿨다운 로직을 적용하는 것이다. 신호의 양보다 타이밍과 맥락의 정밀도가 이탈 방지의 핵심 변수다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#065f46;color:#6ee7b7;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">CRM & 그로스</span><span class="post-date">2026. 6. 30.</span></div>
+  <h1 class="post-title">그로스 루프 전환율을 3배 높이는 5가지 재활성화 신호 설계 원칙</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1572274408891-758281498b72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyN3x8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzgyNjkxMzEyfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="그로스 루프 전환율을 3배 높이는 5가지 재활성화 신호 설계 원칙" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">그로스 루프 전환율이 정체되는 시점은 대부분 신규 유입이 줄어서가 아니다. 루프 안에 이미 들어온 사용자가 다음 행동으로 넘어가지 못하고 이탈하는 구간에서 발생한다. 재활성화 신호는 그 구간을 메우는 설계 요소다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">1. 재활성화 신호가 전환율 정체의 핵심 변수인 이유</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 팀은 퍼널 상단, 즉 획득 비용과 유입량에 집중한다. 그러나 루프 구조에서 전환율을 결정하는 변수는 루프 내 재진입 빈도다. 사용자가 루프에 한 번 진입했다가 이탈한 뒤 돌아오지 않으면, 신규 유입을 아무리 늘려도 루프는 돌지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">재활성화 신호란 이탈 직전 또는 이탈 직후의 사용자에게 다음 행동을 유도하는 트리거 설계를 말한다. 이 신호가 정교하게 설계되면, 동일한 획득 비용으로 루프 전환율이 구조적으로 개선된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">2. 원칙 1: 이탈 시점이 아닌 이탈 예측 시점에 신호를 보내라</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">신호를 이탈 후에 보내는 방식은 이미 늦다. 사용자가 앱을 삭제하거나 서비스를 7일 이상 미사용한 시점에 푸시를 보내는 것은 반응률이 낮다. 가정 수치로 예를 들면, 이탈 후 14일이 지난 사용자의 재활성화율은 이탈 예측 시점에 개입한 경우 대비 약 60~70% 낮다고 볼 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예측 신호의 기준은 업종마다 다르게 설정해야 한다. SaaS 서비스라면 로그인 후 핵심 기능 미사용 3일, 피트니스 앱이라면 세션 빈도가 주 3회에서 1회로 감소한 시점, B2B 플랫폼이라면 팀원 초대 기능 미사용 5일이 각각 이탈 예측 기준이 된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">3. 원칙 2: 신호의 내용은 사용자가 멈춘 지점의 맥락을 담아야 한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"다시 돌아오세요"라는 일반 메시지는 신호가 아니다. 사용자가 어떤 행동 직전에 멈췄는지를 기반으로 메시지를 설계해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어, 온라인 교육 플랫폼에서 강의 3강까지 수강한 뒤 2주간 접속하지 않은 사용자에게는 "4강에서 다루는 내용이 이 커리큘럼의 핵심입니다"라는 맥락 기반 메시지가 유효하다. 반면 회원가입만 하고 첫 강의를 시작하지 않은 사용자에게는 동일한 메시지가 오히려 혼란을 준다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">맥락 기반 신호 설계의 핵심은 사용자의 마지막 행동 단계를 세그먼트의 기준으로 삼는 것이다.</strong></p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">4. 원칙 3: 채널 조합은 단일 채널보다 시차를 둔 멀티 터치로 설계한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">재활성화 신호를 단일 채널에만 의존하면 도달률 자체가 낮아진다. 이메일만 보내거나 푸시 알림만 사용하는 방식은 채널 포화 상태에서 무력화된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">효과적인 설계는 시차를 둔 멀티 터치 구조다. 예를 들어, 이탈 예측 D+1에 인앱 메시지, D+3에 이메일, D+7에 SMS 또는 카카오 알림톡 순서로 배치하면, 각 채널의 특성에 맞게 사용자에게 도달할 수 있다. 부동산 중개 플랫폼이라면 매물 관심 등록 후 5일 무반응 시 이메일, 10일 후 문자 알림 순으로 설계하는 방식이 해당된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단, 채널 간 메시지가 동일하면 사용자는 반복 노출로 인식한다. 채널마다 메시지의 각도를 달리해야 한다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1692255359792-bc8bf9985925?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwzMHx8bWFya2V0aW5nJTIwYXV0b21hdGlvbiUyMHdvcmtmbG93JTIwcmVhY3RpdmF0aW9uJTIwZGFzaGJvYXJkfGVufDF8MHx8fDE3ODI3Nzc2ODh8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="그로스 루프 전환율을 3배 높이는 5가지 재활성화 신호 설계 원칙" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">5. 원칙 4: 재활성화 신호에는 행동 비용을 낮추는 장치가 포함되어야 한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">사용자가 신호를 받고도 행동하지 않는 이유는 관심이 없어서가 아니라 행동에 드는 인지적 비용이 높기 때문이다. 재활성화 메시지가 서비스 메인 화면으로만 연결된다면, 사용자는 다시 어디서 시작해야 할지 판단해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">신호에는 딥링크, 미리 채워진 입력 폼, 이전 작업 상태 복원 같은 장치가 붙어야 한다. 세무 SaaS를 예로 들면, 작성 중이던 신고서를 자동으로 불러오는 링크를 포함한 이메일은 그렇지 않은 이메일 대비 클릭률이 가정 기준으로 약 2배 이상 높을 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">행동 비용을 낮추는 설계는 전환 의도가 있는 사용자를 실제 전환으로 연결하는 마지막 장치다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">6. 원칙 5: 신호의 성과는 재활성화율이 아닌 루프 재진입률로 측정한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">재활성화 신호의 성과를 단순 클릭률이나 앱 재오픈율로 측정하면 오판이 생긴다. 사용자가 앱을 열었다가 바로 닫으면 재활성화 수치는 올라가지만 루프는 돌지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">측정 기준은 루프 재진입률이어야 한다. 즉, 재활성화 이후 핵심 행동(구독 갱신, 콘텐츠 소비, 팀원 초대, 리뷰 작성 등)을 실제로 수행한 비율이 지표가 된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">헬스케어 앱이라면 재활성화 후 72시간 내 건강 데이터 입력 완료율, HR SaaS라면 재활성화 후 1주일 내 보고서 생성 여부가 루프 재진입의 기준이 된다. 이 기준이 명확해야 신호 설계의 방향도 정렬된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 재활성화 신호를 보낼 사용자 세그먼트는 어떻게 구분하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트는 이탈 시점이 아닌 마지막 완료 행동 기준으로 나눈다. 가입 후 핵심 기능 미경험 사용자, 핵심 기능 경험 후 반복 사용 미전환 사용자, 반복 사용 중 갑작스럽게 이탈한 사용자 세 그룹은 각각 다른 신호 설계가 필요하다. 동일한 메시지를 세 그룹에 동시에 보내면 어느 그룹에도 최적화되지 않는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 재활성화 신호 설계에 생성형 AI를 활용할 수 있나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 세그먼트별 메시지 초안 생성, 채널별 문구 변형, A/B 테스트 시나리오 설계에 활용할 수 있다. 다만 AI가 생성한 메시지는 반드시 실제 사용자 행동 데이터와 대조해서 검증해야 한다. AI는 문구를 생성하지만 어떤 맥락에서 어떤 신호를 보낼지의 판단은 데이터 기반 설계자가 결정해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 재활성화 신호가 오히려 사용자를 이탈시키는 경우는 어떻게 방지하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">신호 과잉이 이탈을 가속하는 주요 원인이다. 동일 사용자에게 7일 내 3회 이상 재활성화 메시지를 보내면 수신 거부율이 급격히 올라간다. 방지 기준은 채널별 발송 빈도 상한을 설정하고, 사용자가 신호에 반응하지 않을 경우 다음 신호 발송 간격을 자동으로 늘리는 쿨다운 로직을 적용하는 것이다. 신호의 양보다 타이밍과 맥락의 정밀도가 이탈 방지의 핵심 변수다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계: 루프 전환율을 시스템으로 만드는 법</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">재활성화 신호 5가지 원칙은 개별 전술이 아니라 루프 구조 안에서 연결되어야 작동한다. 다음 글에서는 이 원칙들을 실제 CRM 자동화 플로우에 통합하는 방법과, 루프 전환율을 대시보드로 추적하는 측정 체계 설계를 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-119&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-119',cta_type:'retous_main',category:'CRM & 그로스'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
