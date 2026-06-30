@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>마케팅 자동화 워크플로우의 4가지 유형과 실전 설계 기준 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="마케팅 자동화 워크플로우의 4가지 유형인 온보딩, 리드 육성, 재참여, 이벤트 기반을 설계 기준과 업종별 사례로 정리했습니다. 어떤 유형부터 구축해야 하는지 우선순위 판단 기준도 함께 확인할 수 있습니다.">
+<meta property="og:title" content="마케팅 자동화 워크플로우의 4가지 유형과 실전 설계 기준"><meta property="og:description" content="마케팅 자동화 워크플로우의 4가지 유형인 온보딩, 리드 육성, 재참여, 이벤트 기반을 설계 기준과 업종별 사례로 정리했습니다. 어떤 유형부터 구축해야 하는지 우선순위 판단 기준도 함께 확인할 수 있습니다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-121.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-121.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"마케팅 자동화 워크플로우의 4가지 유형과 실전 설계 기준","description":"마케팅 자동화 워크플로우의 4가지 유형인 온보딩, 리드 육성, 재참여, 이벤트 기반을 설계 기준과 업종별 사례로 정리했습니다. 어떤 유형부터 구축해야 하는지 우선순위 판단 기준도 함께 확인할 수 있습니다.","image":"https://images.unsplash.com/photo-1625297673326-14790108da55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxN3x8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzgyNjkxMzEyfDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-121.html"},"datePublished":"2026-06-30","dateModified":"2026-06-30"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"마케팅 자동화 워크플로우를 처음 도입할 때 가장 흔한 실수는 무엇인가","acceptedAnswer":{"@type":"Answer","text":"트리거 조건을 너무 단순하게 설정하는 것이 가장 흔한 실수다. \"가입 후 1일\"처럼 시간만을 기준으로 삼으면 고객의 실제 맥락과 무관한 메시지가 발송된다. 트리거는 시간과 행동을 조합해 설정하는 것이 기본 원칙이다. 예를 들어 \"가입 후 1일이 경과했고, 첫 로그인을 아직 하지 않은 경우\"처럼 조건을 구체화해야 워크플로우가 의도대로 작동한다."}},{"@type":"Question","name":"소규모 팀에서도 마케팅 자동화 워크플로우를 운영할 수 있는가","acceptedAnswer":{"@type":"Answer","text":"가능하다. 오히려 소규모 팀일수록 자동화의 효율이 두드러진다. 단, 처음부터 복잡한 분기 구조를 만들 필요는 없다. 트리거 1개, 이메일 3~5개로 구성된 단순한 온보딩 워크플로우 하나를 먼저 완성하고 데이터를 쌓는 것이 현실적인 시작점이다. 복잡성은 운영 경험이 쌓인 후에 단계적으로 높이면 된다."}},{"@type":"Question","name":"마케팅 자동화 워크플로우의 성과를 어떻게 측정해야 하는가","acceptedAnswer":{"@type":"Answer","text":"워크플로우 유형별로 핵심 지표가 다르다. 온보딩은 활성화율과 Day 7 잔존율, 리드 육성은 단계별 전환율과 평균 전환 소요 기간, 재참여는 재활성화율과 리스트 정리 후 오픈율 변화, 이벤트 기반은 트리거 발생 후 목표 행동 완료율을 기준으로 측정한다. 전체 워크플로우를 단일 지표로 평가하면 개선 포인트를 찾기 어렵다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#3b1d8a;color:#c4b5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">자동화 & 워크플로우</span><span class="post-date">2026. 6. 30.</span></div>
+  <h1 class="post-title">마케팅 자동화 워크플로우의 4가지 유형과 실전 설계 기준</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1625297673326-14790108da55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxN3x8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzgyNjkxMzEyfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="마케팅 자동화 워크플로우의 4가지 유형과 실전 설계 기준" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 자동화 워크플로우를 도입하려는 팀 대부분은 어디서부터 시작해야 할지 명확한 기준 없이 툴 선택부터 시도한다. 결과는 예측 가능하다. 운영 비용은 늘고, 실제 전환에 기여하는 자동화는 손에 꼽는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 자동화 워크플로우는 기대와 다르게 작동하는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화를 도입한 팀이 6개월 후 "생각보다 효과가 없다"고 말할 때, 문제는 대부분 툴이 아니라 설계 구조에 있다. 트리거, 조건, 액션이라는 세 요소가 고객의 실제 행동 흐름과 맞지 않으면 자동화는 단순 발송 스케줄러로 전락한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화의 핵심 판단 기준은 하나다. <strong style="color:#f1f5f9;font-weight:700;">고객이 특정 행동을 했을 때, 그 맥락에 맞는 메시지가 적절한 타이밍에 전달되는가.</strong> 이 기준을 충족하지 못하는 워크플로우는 자동화가 아니라 소음이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">반면, 맥락 기반으로 설계된 워크플로우는 수동 발송 대비 응답률이 구조적으로 높을 수밖에 없다. 고객 입장에서 "왜 지금 이 메시지를 받았는지" 납득이 되기 때문이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">유형 1: 온보딩 워크플로우</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">신규 가입자 또는 첫 구매 고객을 대상으로 하는 온보딩 워크플로우는 초기 이탈을 막는 구조다. 트리거는 회원가입 완료, 첫 로그인, 서비스 최초 이용 등이 된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">설계 기준은 단계별 행동 유도다. 가입 직후 전체 기능을 한꺼번에 안내하는 방식은 인지 과부하를 유발한다. 대신 Day 0, Day 3, Day 7 등 시간 간격을 두고 핵심 기능 하나씩을 소개하는 구조가 실제 활성화율을 높인다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 B2B SaaS 업종이라면, 가입 후 첫 이메일은 로그인 유도, 3일 후에는 첫 번째 핵심 기능 사용 안내, 7일 후에는 팀원 초대 기능 소개로 이어지는 흐름이 일반적이다. 가정컨대, 이 구조를 적용한 팀이 온보딩 완료율을 기존 대비 30% 이상 끌어올렸다면, 그 차이는 콘텐츠 품질이 아니라 타이밍과 순서에서 비롯된 것이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">유형 2: 리드 육성(Nurturing) 워크플로우</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">리드 육성 워크플로우는 구매 의사결정까지 시간이 걸리는 업종에서 핵심 역할을 한다. 교육 서비스, 부동산, B2B 솔루션, 금융 상품 등이 대표적이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 유형의 설계 핵심은 리드의 관심 단계를 구분하는 것이다. 콘텐츠를 처음 소비한 잠재 고객과 견적 문의를 넣은 잠재 고객은 같은 메시지를 받아서는 안 된다. 행동 데이터를 기반으로 리드를 세분화하고, 각 단계에 맞는 정보를 순차적으로 제공하는 구조가 필요하다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">콘텐츠 유형도 단계에 따라 달라진다. 초기 단계에서는 문제 인식을 돕는 교육 콘텐츠, 중간 단계에서는 솔루션 비교 자료, 후반 단계에서는 사례 연구나 무료 상담 제안이 적합하다. 가정컨대, 리드 단계 구분 없이 동일 메시지를 발송하던 교육 기업이 3단계 세분화 구조로 전환했을 때 상담 신청 전환율이 두 배 가까이 달라졌다면, 그 변수는 메시지 자체가 아니라 적절성이다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1779278617909-f29b6064ca1f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw5fHxhdXRvbWF0aW9uJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkfGVufDF8MHx8fDE3ODI3Nzk3ODV8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="마케팅 자동화 워크플로우의 4가지 유형과 실전 설계 기준" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">유형 3: 재참여(Re-engagement) 워크플로우</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">일정 기간 동안 활동이 없는 구독자나 고객을 다시 끌어들이는 구조다. 트리거는 보통 "마지막 활동으로부터 N일 경과"로 설정한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">업종마다 기준 기간이 다르다. 뉴스레터 구독자라면 90일, 모바일 앱 사용자라면 30일, 멤버십 기반 서비스라면 60일이 일반적인 기준점이 된다. 이 기간을 넘기면 재참여 가능성이 급격히 낮아지기 때문에 타이밍 설정이 핵심 변수다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">재참여 워크플로우는 단순 "보고 싶었습니다" 메시지보다 구체적인 가치 제안이 포함될 때 반응률이 높다. 사용하지 않은 기능 안내, 업데이트된 콘텐츠 소개, 또는 개인화된 혜택 제시가 효과적인 구조다. 재참여 시도에도 반응이 없다면 리스트에서 정리하는 것이 전체 지표 관리 측면에서 합리적인 선택이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">유형 4: 이벤트 기반(Event-triggered) 워크플로우</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이벤트 기반 워크플로우는 고객의 특정 행동을 실시간으로 감지해 즉각 반응하는 구조다. 온보딩이나 리드 육성이 시간 흐름을 기반으로 한다면, 이 유형은 행동 발생 자체가 트리거다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대표적인 트리거 예시는 다음과 같다. 특정 페이지를 3회 이상 방문한 경우, 가격 페이지 체류 시간이 일정 기준을 초과한 경우, 웨비나 등록 후 미참석한 경우, 서비스 내 특정 기능을 처음 사용한 경우 등이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">헬스케어 앱을 예로 들면, 사용자가 특정 건강 목표 설정 기능을 처음 활성화했을 때 관련 가이드 콘텐츠를 즉시 발송하는 구조가 이 유형에 해당한다. 이 워크플로우는 AI 기반 행동 분석과 결합할 때 트리거 정밀도가 높아지며, 개인화 수준도 함께 올라간다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">4가지 유형의 설계 우선순위 결정 기준</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">어떤 유형부터 구축해야 하는지는 비즈니스 단계와 현재 가장 큰 누수 지점에 따라 결정된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">초기 단계 서비스라면 온보딩 워크플로우가 최우선이다. 신규 유입보다 초기 이탈이 더 큰 문제이기 때문이다. 리드 파이프라인이 쌓이고 있지만 전환이 느린 상황이라면 리드 육성 워크플로우를 먼저 구축한다. 기존 고객 기반이 있고 재구매율이 낮다면 재참여 워크플로우가 우선순위가 된다. 이벤트 기반 워크플로우는 행동 데이터가 충분히 축적된 이후 정밀도 높은 개인화를 위해 도입하는 것이 현실적이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">네 가지 유형을 동시에 구축하려는 시도는 대부분 어느 것도 제대로 작동하지 않는 결과로 이어진다. 순서와 집중이 설계만큼 중요하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 마케팅 자동화 워크플로우를 처음 도입할 때 가장 흔한 실수는 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거 조건을 너무 단순하게 설정하는 것이 가장 흔한 실수다. "가입 후 1일"처럼 시간만을 기준으로 삼으면 고객의 실제 맥락과 무관한 메시지가 발송된다. 트리거는 시간과 행동을 조합해 설정하는 것이 기본 원칙이다. 예를 들어 "가입 후 1일이 경과했고, 첫 로그인을 아직 하지 않은 경우"처럼 조건을 구체화해야 워크플로우가 의도대로 작동한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 소규모 팀에서도 마케팅 자동화 워크플로우를 운영할 수 있는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가능하다. 오히려 소규모 팀일수록 자동화의 효율이 두드러진다. 단, 처음부터 복잡한 분기 구조를 만들 필요는 없다. 트리거 1개, 이메일 3~5개로 구성된 단순한 온보딩 워크플로우 하나를 먼저 완성하고 데이터를 쌓는 것이 현실적인 시작점이다. 복잡성은 운영 경험이 쌓인 후에 단계적으로 높이면 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 마케팅 자동화 워크플로우의 성과를 어떻게 측정해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">워크플로우 유형별로 핵심 지표가 다르다. 온보딩은 활성화율과 Day 7 잔존율, 리드 육성은 단계별 전환율과 평균 전환 소요 기간, 재참여는 재활성화율과 리스트 정리 후 오픈율 변화, 이벤트 기반은 트리거 발생 후 목표 행동 완료율을 기준으로 측정한다. 전체 워크플로우를 단일 지표로 평가하면 개선 포인트를 찾기 어렵다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 각 워크플로우 유형별 실제 이메일 시퀀스 설계 방법과 분기 조건 설정 기준을 구체적인 템플릿과 함께 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-121&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-121',cta_type:'flywheel_consult',category:'자동화 & 워크플로우'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
