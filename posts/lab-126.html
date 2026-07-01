@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 콘텐츠 생성이 작동하는 원리: 텍스트 뒤에 숨은 구조를 읽는 법 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 콘텐츠 생성 원리를 구조적으로 설명합니다. 프롬프트가 출력을 결정하는 방식, 업종별 적용 사례, 팀 도입 전략까지 실무 기준으로 정리했습니다.">
+<meta property="og:title" content="AI 콘텐츠 생성이 작동하는 원리: 텍스트 뒤에 숨은 구조를 읽는 법"><meta property="og:description" content="AI 콘텐츠 생성 원리를 구조적으로 설명합니다. 프롬프트가 출력을 결정하는 방식, 업종별 적용 사례, 팀 도입 전략까지 실무 기준으로 정리했습니다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-126.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-126.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 콘텐츠 생성이 작동하는 원리: 텍스트 뒤에 숨은 구조를 읽는 법","description":"AI 콘텐츠 생성 원리를 구조적으로 설명합니다. 프롬프트가 출력을 결정하는 방식, 업종별 적용 사례, 팀 도입 전략까지 실무 기준으로 정리했습니다.","image":"https://images.unsplash.com/photo-1759752394755-1241472b589d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMXx8QUklMjB0ZXh0JTIwZ2VuZXJhdGlvbiUyMGxhcHRvcCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODI4NjY0NTF8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-126.html"},"datePublished":"2026-07-01","dateModified":"2026-07-01"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"AI가 생성한 콘텐츠는 검색 엔진에서 불이익을 받는가","acceptedAnswer":{"@type":"Answer","text":"검색 엔진이 평가하는 기준은 생성 주체가 아니라 콘텐츠의 품질과 유용성이다. 사실에 기반하고, 독자의 질문에 실질적으로 답하며, 출처가 명확한 콘텐츠라면 생성 방식과 무관하게 평가받는다. 반대로 AI가 생성했더라도 얕고 반복적인 내용은 낮은 평가를 받는다."}},{"@type":"Question","name":"프롬프트를 잘 쓰는 것과 AI 콘텐츠 생성 원리를 이해하는 것은 어떻게 다른가","acceptedAnswer":{"@type":"Answer","text":"프롬프트 작성은 기술이고, 원리 이해는 판단 기준이다. 원리를 모르면 프롬프트가 왜 작동하는지 알 수 없어 실패했을 때 수정 방향을 찾기 어렵다. 원리를 알면 새로운 상황에서도 프롬프트를 처음부터 설계할 수 있다."}},{"@type":"Question","name":"AI 콘텐츠 생성을 팀 단위로 도입할 때 가장 먼저 해야 할 일은 무엇인가","acceptedAnswer":{"@type":"Answer","text":"용도 정의가 먼저다. \"AI로 콘텐츠를 만든다\"는 방향보다 \"어떤 콘텐츠의 어느 단계에 AI를 투입하는가\"를 구체화해야 한다. 전체 파이프라인 중 반복성이 높고 형식이 일정한 작업부터 시작하면 초기 도입 실패율을 낮출 수 있다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 7. 1.</span></div>
+  <h1 class="post-title">AI 콘텐츠 생성이 작동하는 원리: 텍스트 뒤에 숨은 구조를 읽는 법</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1759752394755-1241472b589d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMXx8QUklMjB0ZXh0JTIwZ2VuZXJhdGlvbiUyMGxhcHRvcCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODI4NjY0NTF8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 콘텐츠 생성이 작동하는 원리: 텍스트 뒤에 숨은 구조를 읽는 법" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 콘텐츠 생성 원리를 이해하지 못한 채 도구만 사용하는 것은, 엔진 구조를 모르고 자동차를 운전하는 것과 같다. 출력물의 품질을 통제하려면 내부 작동 방식을 먼저 파악해야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">1. 왜 AI가 생성한 글은 그럴듯해 보이면서도 틀리는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 정답을 저장해 두었다가 꺼내는 시스템이 아니다. 대규모 텍스트 데이터를 학습한 뒤, 주어진 입력에 대해 <strong style="color:#f1f5f9;font-weight:700;">통계적으로 가장 자연스러운 다음 단어를 예측</strong>하는 방식으로 문장을 구성한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 구조 때문에 두 가지 현상이 동시에 발생한다. 문법과 문체는 유창하지만, 사실 관계는 틀릴 수 있다. 모델이 '맞는 말'을 생성하는 것이 아니라 '그럴듯한 말'을 생성하기 때문이다. 의료 정보를 다루는 콘텐츠에서 이 문제가 특히 두드러지는 이유가 여기에 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실무적으로 이 한계를 다루는 기준은 단순하다. AI 출력물은 초안으로 취급하고, 수치·고유명사·인과관계가 포함된 문장은 반드시 사람이 검증한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">2. 프롬프트가 출력 품질을 결정하는 구조</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">모델의 성능보다 프롬프트의 구조가 출력 품질에 더 직접적인 영향을 미친다. 같은 모델에 "블로그 글 써줘"와 "30대 직장인을 대상으로, 주 3회 운동 루틴을 소개하는 600자 분량의 블로그 서론을 작성해줘"를 입력하면 결과물의 밀도가 전혀 다르다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트가 출력을 제어하는 경로는 세 가지다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">역할 지정</h4>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">모델에게 특정 전문가 관점을 부여하면 어휘 선택과 논리 전개 방식이 달라진다. "부동산 중개사 입장에서"와 "건축 설계사 입장에서"는 같은 주제에 대해 서로 다른 프레임의 글을 생성한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">출력 형식 명시</h4>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">목록, 표, 단락, 대화체 등 형식을 지정하면 모델이 구조를 재구성하는 데 쓰는 연산을 줄이고 내용 생성에 집중한다. 형식이 불분명할수록 출력이 일반적인 방향으로 수렴한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">제약 조건 설정</h4>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"~하지 말 것"보다 "~만 포함할 것"이 더 정확한 제어를 만든다. 금지 조건은 모델이 우회 경로를 찾는 반면, 포함 조건은 출력 범위를 직접 좁힌다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">3. AI 콘텐츠 생성 원리를 업무에 적용하는 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI를 콘텐츠 파이프라인에 통합할 때 작동하는 3단계 구조가 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">단계 1. 목적 분리</h4>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI가 잘하는 작업과 사람이 해야 하는 작업을 구분한다. AI는 구조 생성, 초안 작성, 변형 생성에 강하다. 브랜드 판단, 사실 검증, 감정 조율은 사람의 영역이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">단계 2. 프롬프트 자산화</h4>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">한 번 잘 작동한 프롬프트는 팀 내 자산으로 관리한다. 업종별, 콘텐츠 유형별로 분류해 두면 매번 처음부터 설계하는 비용을 줄인다. 법률 서비스 업체라면 "법률 용어를 피하고 일반인이 이해할 수 있는 언어로"라는 조건이 고정 자산이 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">단계 3. 출력 검토 기준 수립</h4>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">출력물을 평가하는 기준이 없으면 품질 관리가 담당자의 감각에 의존하게 된다. 최소한 세 가지 기준을 사전에 정의한다. 사실 정확성, 브랜드 톤 일치 여부, 타깃 독자 적합성이다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyM3x8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzgyODY0MDk0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 콘텐츠 생성이 작동하는 원리: 텍스트 뒤에 숨은 구조를 읽는 법" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">4. 업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">법률 서비스 업체의 경우</h4>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">계약서 검토 요약본을 생성하는 데 AI를 활용한다고 가정하면, 초안 생성 시간이 기존 대비 약 60% 단축될 수 있다. 단, 법적 판단이 포함된 문장은 반드시 변호사 검토를 거치는 구조를 유지해야 한다. AI는 요약과 구조화를 담당하고, 판단은 전문가가 맡는 역할 분리가 핵심이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">제조업 기술 문서 팀의 경우</h4>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">제품 매뉴얼이나 품질 보고서처럼 반복 구조가 많은 문서에 AI를 적용하면 일관성 유지 비용이 줄어든다. 특정 부품명, 규격, 단위 표기 방식을 프롬프트에 고정 조건으로 넣으면 오류 발생률을 낮출 수 있다. 100개 제품 라인의 사양 설명을 동일한 형식으로 생성한다고 가정할 때, 수작업 대비 작업 시간이 절반 이하로 줄어드는 경우가 일반적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">교육 콘텐츠 기획사의 경우</h4>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">강의 커리큘럼 초안, 학습 목표 문장, 퀴즈 문항 생성에 AI를 활용한다. 이 경우 학습 대상의 연령대와 사전 지식 수준을 프롬프트에 명시하는 것이 출력 품질을 결정하는 핵심 변수다. "초등학교 4학년이 처음 접하는 개념"과 "대학원 수준의 선행 지식 보유자"는 같은 주제라도 완전히 다른 설명 구조를 요구한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI가 생성한 콘텐츠는 검색 엔진에서 불이익을 받는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">검색 엔진이 평가하는 기준은 생성 주체가 아니라 콘텐츠의 품질과 유용성이다. 사실에 기반하고, 독자의 질문에 실질적으로 답하며, 출처가 명확한 콘텐츠라면 생성 방식과 무관하게 평가받는다. 반대로 AI가 생성했더라도 얕고 반복적인 내용은 낮은 평가를 받는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트를 잘 쓰는 것과 AI 콘텐츠 생성 원리를 이해하는 것은 어떻게 다른가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트 작성은 기술이고, 원리 이해는 판단 기준이다. 원리를 모르면 프롬프트가 왜 작동하는지 알 수 없어 실패했을 때 수정 방향을 찾기 어렵다. 원리를 알면 새로운 상황에서도 프롬프트를 처음부터 설계할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI 콘텐츠 생성을 팀 단위로 도입할 때 가장 먼저 해야 할 일은 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">용도 정의가 먼저다. "AI로 콘텐츠를 만든다"는 방향보다 "어떤 콘텐츠의 어느 단계에 AI를 투입하는가"를 구체화해야 한다. 전체 파이프라인 중 반복성이 높고 형식이 일정한 작업부터 시작하면 초기 도입 실패율을 낮출 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계: 원리에서 실전으로</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 콘텐츠 생성 원리를 파악했다면, 다음 과제는 이를 실제 워크플로에 통합하는 구조 설계다. 다음 글에서는 업종별 프롬프트 설계 방식과 팀 단위 콘텐츠 파이프라인 구축 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-126&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-126',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
