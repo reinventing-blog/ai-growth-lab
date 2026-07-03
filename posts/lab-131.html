@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>재활성화 캠페인 설계에서 그로스 담당자가 반복하는 구조적 실수 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="재활성화 캠페인 설계에서 반복되는 구조적 실수를 분석한다. 이탈 원인 분류, 세그먼트 오류, 성과 지표 설정까지 업종별 사례와 3단계 프레임워크로 정리했다.">
+<meta property="og:title" content="재활성화 캠페인 설계에서 그로스 담당자가 반복하는 구조적 실수"><meta property="og:description" content="재활성화 캠페인 설계에서 반복되는 구조적 실수를 분석한다. 이탈 원인 분류, 세그먼트 오류, 성과 지표 설정까지 업종별 사례와 3단계 프레임워크로 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-131.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-131.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"재활성화 캠페인 설계에서 그로스 담당자가 반복하는 구조적 실수","description":"재활성화 캠페인 설계에서 반복되는 구조적 실수를 분석한다. 이탈 원인 분류, 세그먼트 오류, 성과 지표 설정까지 업종별 사례와 3단계 프레임워크로 정리했다.","image":"https://images.pexels.com/photos/37685036/pexels-photo-37685036.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-131.html"},"datePublished":"2026-07-03","dateModified":"2026-07-03"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"재활성화 캠페인에서 할인 혜택 제공은 언제 적절한가?","acceptedAnswer":{"@type":"Answer","text":"할인은 가치 소진형 이탈자보다 외부 요인형 이탈자에게 더 높은 효과를 보인다. 가치 자체에 의문을 가진 유저에게 할인을 제공하면 단기 복귀 후 재이탈 사이클을 반복하는 패턴이 생긴다. 할인을 사용하기 전에 이탈 원인 분류가 선행되어야 하고, 할인 없이 복귀한 유저의 LTV가 할인 복귀 유저보다 높게 나타나는 경우가 많다는 점을 고려해야 한다."}},{"@type":"Question","name":"재활성화 캠페인 대상에서 제외해야 할 유저 기준은 무엇인가?","acceptedAnswer":{"@type":"Answer","text":"수신 거부 이력이 있는 유저는 법적 요건과 무관하게 제외하는 것이 원칙이다. 그 외에 이탈 기간이 12개월을 초과하거나, 직전 재활성화 캠페인에서 3회 이상 무반응을 보인 유저는 별도 세그먼트로 분리해 다른 방식으로 접근하거나 대상에서 제외하는 것이 전체 캠페인 지표를 왜곡하지 않는 방법이다."}},{"@type":"Question","name":"재활성화 캠페인 성과를 어떻게 정의하고 보고해야 하는가?","acceptedAnswer":{"@type":"Answer","text":"단기 지표(오픈율, 클릭률)와 중기 지표(재활성화 기준 행동 완료율, 30일 리텐션)를 분리해 보고해야 한다. 단기 지표만 보고하면 캠페인이 성공한 것처럼 보이지만 실제 비즈니스 임팩트는 없는 상황이 반복된다. 재활성화된 유저의 90일 LTV를 신규 유저 LTV와 비교하는 지표를 추가하면 캠페인의 실질 가치를 판단할 수 있다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#065f46;color:#6ee7b7;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">CRM & 그로스</span><span class="post-date">2026. 7. 3.</span></div>
+  <h1 class="post-title">재활성화 캠페인 설계에서 그로스 담당자가 반복하는 구조적 실수</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/37685036/pexels-photo-37685036.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="재활성화 캠페인 설계에서 그로스 담당자가 반복하는 구조적 실수" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">재활성화 캠페인 설계 단계에서 대부분의 그로스 담당자는 동일한 지점에서 무너진다. 채널을 바꾸고, 카피를 다듬고, 할인율을 조정해도 결과가 달라지지 않는다면, 문제는 실행이 아니라 설계 자체에 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">재활성화를 '이벤트'로 취급하는 순간 실패가 시작된다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 팀은 휴면 유저가 일정 수준 이상 쌓이면 그때서야 캠페인을 기획한다. 이 접근 방식은 재활성화를 '정기 이벤트'로 만든다. 이벤트형 캠페인의 문제는 타이밍이 유저 행동 패턴이 아닌 내부 일정에 맞춰진다는 점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 B2B SaaS 서비스에서 마지막 로그인 후 30일이 지난 사용자에게 일괄 메일을 발송한다고 가정하면, 그 중 상당수는 이미 경쟁사로 전환 완료된 상태일 가능성이 높다. 반면 마지막 활동 후 7~14일 시점에 행동 기반 트리거를 설정한 팀은 동일 조건에서 전환율이 2~3배 높게 나타나는 경향이 있다고 알려져 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">재활성화는 이벤트가 아니라 <strong style="color:#f1f5f9;font-weight:700;">트리거 기반 시스템</strong>으로 설계되어야 한다. 유저가 이탈 신호를 보내는 시점, 즉 로그인 빈도 감소, 핵심 기능 미사용, 구독 갱신 전 무반응 구간을 포착하는 것이 출발점이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">세그먼트를 나눈다고 착각하는 세 가지 함정</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">함정 1: 이탈 기간만으로 세그먼트를 정의한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"30일 미접속", "90일 미접속"처럼 기간 기준만으로 나누는 방식은 유저의 이탈 맥락을 무시한다. 피트니스 앱을 예로 들면, 30일 미접속 유저 중에는 부상으로 운동을 쉰 사람과 앱 자체에 흥미를 잃은 사람이 섞여 있다. 이 둘에게 동일한 메시지를 보내는 것은 오히려 브랜드 피로를 가속한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트 기준은 이탈 기간과 함께 마지막 행동 유형, 이탈 직전 이벤트, 유입 채널을 교차해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">함정 2: 재활성화 성공을 '오픈율'로 측정한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">오픈율은 재활성화 캠페인의 성과 지표가 될 수 없다. 오픈 후 아무 행동도 하지 않은 유저는 재활성화된 것이 아니다. 교육 플랫폼 사례를 가정하면, 재활성화 메일 오픈율이 35%였지만 실제 강의 재수강으로 이어진 비율은 4%에 불과했을 수 있다. 측정 지표를 핵심 행동 완료율, 즉 첫 세션 재진입 후 특정 기능 사용 여부로 설정해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">함정 3: 단일 채널에 집중한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이메일 하나로 재활성화를 시도하는 팀이 여전히 많다. 그러나 채널 피로도가 높은 유저일수록 이메일 반응률은 낮다. 금융 서비스나 보험 업종에서는 앱 푸시, SMS, 인앱 메시지를 순차 조합한 멀티채널 시퀀스가 단일 채널 대비 유의미하게 높은 재방문율을 보인다는 사례가 보고된다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1616530834117-9167fb0d8ebc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOXx8bWFya2V0aW5nJTIwYXV0b21hdGlvbiUyMHdvcmtmbG93JTIwc2VnbWVudGF0aW9uJTIwZGFzaGJvYXJkfGVufDF8MHx8fDE3ODMwMzY4OTd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="재활성화 캠페인 설계에서 그로스 담당자가 반복하는 구조적 실수" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">재활성화 캠페인 설계를 위한 3단계 프레임워크</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 이탈 원인 분류 매트릭스 구성</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이탈 원인을 크게 세 유형으로 분류한다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">가치 미경험형: 핵심 기능을 한 번도 제대로 사용하지 못한 채 이탈</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">가치 소진형: 초기에는 활발히 사용했으나 효용이 줄었다고 인식</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">외부 요인형: 예산 삭감, 시즌 비수기, 개인 상황 변화 등 서비스와 무관한 이탈</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">각 유형에 따라 메시지 방향이 달라진다. 가치 미경험형에는 온보딩 재안내가, 가치 소진형에는 새로운 기능이나 사용 사례 제시가, 외부 요인형에는 복귀 장벽 제거(플랜 변경, 일시 정지 옵션 등)가 적합하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 시퀀스 설계와 탈출 조건 설정</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">재활성화 시퀀스는 최대 3~4회 접점으로 제한한다. 접점마다 반응 여부에 따라 다음 메시지를 분기하고, 무반응이 계속될 경우 캠페인을 종료하는 탈출 조건을 명시적으로 설정한다. 탈출 조건 없이 계속 메시지를 보내는 팀은 수신 거부율과 스팸 신고율을 높이는 결과를 자초한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 재활성화 기준 행동 정의</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">캠페인 시작 전에 "이 유저가 재활성화되었다"고 판단할 기준 행동을 명확히 정의한다. 헬스케어 앱이라면 건강 지표 재입력, 부동산 플랫폼이라면 매물 상세 페이지 3회 이상 조회처럼 업종과 서비스 특성에 맞는 구체적 행동 기준이 있어야 성과 측정과 다음 캠페인 개선이 가능하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 설계 차이: 같은 실수, 다른 맥락</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">HR 솔루션 업체를 가정하면, 인사 담당자가 주요 사용자이기 때문에 채용 시즌(상반기 공채 전후)과 비시즌의 접속 패턴이 극명하게 다르다. 이 업종에서 단순 기간 기준 세그먼트를 적용하면 비수기 이탈자를 대량으로 재활성화 대상에 포함시키는 오류가 발생한다. 실제로는 비수기가 끝나는 시점에 맞춰 복귀 유도 메시지를 발송하는 것이 훨씬 높은 전환 가능성을 갖는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">반면 구독형 뉴스레터 서비스에서는 콘텐츠 주제 선호도 변화가 이탈의 주원인인 경우가 많다. 이 경우 재활성화 메시지에 "당신이 관심 가질 만한 최근 주제"를 개인화해 제시하는 방식이 일반적인 "돌아오세요" 메시지보다 구독 재개율을 높이는 경향이 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 사례의 공통점은 하나다. 재활성화 캠페인 설계는 서비스 특성과 유저 행동 패턴을 먼저 분석한 뒤 시작해야 한다는 것이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 재활성화 캠페인에서 할인 혜택 제공은 언제 적절한가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">할인은 가치 소진형 이탈자보다 외부 요인형 이탈자에게 더 높은 효과를 보인다. 가치 자체에 의문을 가진 유저에게 할인을 제공하면 단기 복귀 후 재이탈 사이클을 반복하는 패턴이 생긴다. 할인을 사용하기 전에 이탈 원인 분류가 선행되어야 하고, 할인 없이 복귀한 유저의 LTV가 할인 복귀 유저보다 높게 나타나는 경우가 많다는 점을 고려해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 재활성화 캠페인 대상에서 제외해야 할 유저 기준은 무엇인가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수신 거부 이력이 있는 유저는 법적 요건과 무관하게 제외하는 것이 원칙이다. 그 외에 이탈 기간이 12개월을 초과하거나, 직전 재활성화 캠페인에서 3회 이상 무반응을 보인 유저는 별도 세그먼트로 분리해 다른 방식으로 접근하거나 대상에서 제외하는 것이 전체 캠페인 지표를 왜곡하지 않는 방법이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 재활성화 캠페인 성과를 어떻게 정의하고 보고해야 하는가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단기 지표(오픈율, 클릭률)와 중기 지표(재활성화 기준 행동 완료율, 30일 리텐션)를 분리해 보고해야 한다. 단기 지표만 보고하면 캠페인이 성공한 것처럼 보이지만 실제 비즈니스 임팩트는 없는 상황이 반복된다. 재활성화된 유저의 90일 LTV를 신규 유저 LTV와 비교하는 지표를 추가하면 캠페인의 실질 가치를 판단할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 이 프레임워크를 실제 CRM 도구 설정에 적용하는 방법, 트리거 조건 설계 템플릿, 그리고 시퀀스별 메시지 전략을 구체적으로 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-131&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-131',cta_type:'retous_main',category:'CRM & 그로스'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
