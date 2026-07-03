@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>마케팅 자동화 방식 비교: 규칙 기반과 AI 기반, 무엇을 선택해야 하나 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="규칙 기반 자동화와 AI 기반 자동화, 어떤 마케팅 자동화 방식이 우리 팀에 맞는지 판단하기 어렵다면 이 글의 3가지 선택 기준과 업종별 사례를 참고하라.">
+<meta property="og:title" content="마케팅 자동화 방식 비교: 규칙 기반과 AI 기반, 무엇을 선택해야 하나"><meta property="og:description" content="규칙 기반 자동화와 AI 기반 자동화, 어떤 마케팅 자동화 방식이 우리 팀에 맞는지 판단하기 어렵다면 이 글의 3가지 선택 기준과 업종별 사례를 참고하라.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-132.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-132.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"마케팅 자동화 방식 비교: 규칙 기반과 AI 기반, 무엇을 선택해야 하나","description":"규칙 기반 자동화와 AI 기반 자동화, 어떤 마케팅 자동화 방식이 우리 팀에 맞는지 판단하기 어렵다면 이 글의 3가지 선택 기준과 업종별 사례를 참고하라.","image":"https://images.unsplash.com/photo-1593438002985-ce805be04da9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOXx8bWFya2V0aW5nJTIwYXV0b21hdGlvbiUyMGRhc2hib2FyZCUyMGxhcHRvcCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODMwMzc3Njl8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-132.html"},"datePublished":"2026-07-03","dateModified":"2026-07-03"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"규칙 기반 자동화를 먼저 구축하고 나중에 AI로 전환할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"전환이 아닌 확장으로 접근하는 것이 현실적이다. 규칙 기반 자동화를 운영하면서 쌓인 고객 행동 데이터가 AI 모델 학습의 기반이 된다. 처음부터 AI 기반으로 시작하려 하면 학습 데이터 부족으로 모델 성능이 낮게 나오는 경우가 많다. 규칙 기반 운영 6개월 이상의 데이터를 확보한 뒤 AI 기능을 추가하는 순서가 안정적이다."}},{"@type":"Question","name":"소규모 팀에서도 AI 기반 자동화를 도입할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"팀 규모보다 데이터 규모가 더 중요한 변수다. 월간 활성 고객이 500명 미만인 환경에서는 AI 모델이 유의미한 패턴을 학습하기 어렵다. 이 경우 AI 기반 도입보다 규칙 기반 자동화를 정교하게 설계하는 것이 실질적인 성과로 이어진다. 고객 수가 늘어나는 시점을 기준으로 AI 기능 도입 여부를 재검토하는 것이 합리적이다."}},{"@type":"Question","name":"두 방식을 병행할 때 관리 복잡도가 너무 높아지지 않나요?","acceptedAnswer":{"@type":"Answer","text":"복잡도는 병행 자체가 아니라 역할 구분이 불명확할 때 발생한다. 규칙 기반이 처리하는 영역과 AI 기반이 판단하는 영역을 명확히 구분하고, 각 자동화 흐름에 담당자를 지정하면 관리 부담은 단일 방식과 크게 다르지 않다. 오히려 두 방식을 혼용하지 않고 역할을 분리하면 문제 발생 시 원인 파악이 더 빠르다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#1e3a5f;color:#93c5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 7. 3.</span></div>
+  <h1 class="post-title">마케팅 자동화 방식 비교: 규칙 기반과 AI 기반, 무엇을 선택해야 하나</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1593438002985-ce805be04da9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOXx8bWFya2V0aW5nJTIwYXV0b21hdGlvbiUyMGRhc2hib2FyZCUyMGxhcHRvcCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODMwMzc3Njl8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="마케팅 자동화 방식 비교: 규칙 기반과 AI 기반, 무엇을 선택해야 하나" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 자동화 방식 비교를 검토하는 담당자라면 대부분 같은 지점에서 막힌다. "우리 팀에 맞는 방식이 무엇인가"라는 질문에 명확한 기준 없이 도입을 결정하다 보면, 구축 비용과 운영 공수만 늘어나고 실제 성과는 기대에 못 미치는 상황이 반복된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">두 방식의 본질적 차이</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">규칙 기반 자동화는 조건과 행동을 명시적으로 정의한다. "A 조건이 충족되면 B를 실행한다"는 구조다. 이메일 발송 트리거, CRM 태그 분류, 리드 점수 산정 등이 대표적이다. 시스템이 예측 가능하게 작동하고, 담당자가 로직을 직접 통제할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 기반 자동화는 데이터 패턴을 학습해 판단을 위임한다. 고객 행동 데이터를 분석해 최적 발송 시간을 결정하거나, 콘텐츠 초안을 생성하거나, 이탈 가능성이 높은 고객을 예측하는 방식이다. 담당자가 모든 조건을 사전에 정의하지 않아도 시스템이 스스로 판단 기준을 형성한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 방식의 근본적 차이는 <strong style="color:#f1f5f9;font-weight:700;">'사람이 규칙을 설계하느냐, 시스템이 패턴을 학습하느냐'</strong>에 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">규칙 기반 자동화가 유리한 조건</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">규칙 기반 방식은 프로세스가 명확하고 반복적인 업무에서 강점을 발휘한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원 예약 확인 문자, 법무법인의 계약 만료 알림, 부동산 중개업체의 매물 등록 알림처럼 "특정 이벤트 발생 시 정해진 메시지를 보낸다"는 구조가 명확한 경우가 해당된다. 이런 환경에서는 AI 기반 시스템을 도입해도 추가적인 판단 가치가 거의 발생하지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">또한 규정 준수가 엄격한 업종에서는 자동화 로직의 감사 추적이 가능해야 한다. 금융사나 의료기관에서 "왜 이 고객에게 이 메시지를 보냈는가"라는 질문에 명확히 답할 수 있어야 한다면, 규칙 기반 방식이 더 적합한 선택이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">도입 비용 기준으로 보면, 규칙 기반 자동화 툴은 월 10만~50만 원 수준의 SaaS 도구로 충분히 구현 가능하다고 가정할 수 있다. 반면 AI 기반 시스템은 초기 데이터 정비와 모델 설정에 수개월의 준비 기간이 필요한 경우가 많다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">AI 기반 자동화가 유리한 조건</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 기반 방식은 변수가 많고 개인화 수준이 성과를 결정하는 환경에서 차별화된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">교육 플랫폼을 예로 들면, 수강생마다 학습 진도, 접속 패턴, 이탈 시점이 다르다. 규칙 기반으로 "3일 미접속 시 리마인드 메시지 발송"이라는 조건을 설정할 수 있지만, 어떤 수강생은 주말에만 학습하고 어떤 수강생은 매일 짧게 접속한다. AI 기반 시스템은 개인별 행동 패턴을 학습해 각자에게 최적화된 시점에 메시지를 전달한다. 동일한 리마인드 캠페인에서 규칙 기반 대비 재방문율이 20~35% 높아진다는 사례가 보고되는 이유다. (실제 수치는 환경에 따라 다를 수 있으며, 이는 일반적인 추정 범위다.)</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">SaaS 기업의 온보딩 자동화도 유사하다. 신규 가입자의 기능 사용 패턴을 분석해 막힐 가능성이 높은 단계를 예측하고, 그 시점에 맞춤 가이드를 자동 발송하는 방식은 규칙 기반으로 구현하기 어렵다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">콘텐츠 생성 영역에서도 생성형 AI를 활용한 자동화는 A/B 테스트 소재 생산, 다국어 변환, 채널별 포맷 최적화를 사람의 개입 없이 처리한다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw1fHxBSSUyMGRhdGElMjB2aXN1YWxpemF0aW9uJTIwYW5hbHl0aWNzJTIwYXV0b21hdGlvbiUyMHJlc3VsdHN8ZW58MXwwfHx8MTc4MzAzNzc3MXww&ixlib=rb-4.1.0&q=80&w=1080" alt="마케팅 자동화 방식 비교: 규칙 기반과 AI 기반, 무엇을 선택해야 하나" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">선택 기준을 정리하는 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 방식 중 하나를 선택하는 것이 아니라, 업무 유형에 따라 병행 구조를 설계하는 것이 현실적이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 세 가지 기준으로 자동화 대상 업무를 분류한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">첫째, 예외 없이 동일하게 처리해야 하는 업무</strong>는 규칙 기반으로 설계한다. 계약 갱신 알림, 결제 완료 확인, 법적 고지 발송이 해당된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 고객 반응에 따라 다음 행동이 달라지는 업무는 AI 기반 판단을 결합한다. 리드 육성 시퀀스, 이탈 방지 캠페인, 개인화 추천이 해당된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 데이터가 충분하지 않은 초기 단계에서는 AI 기반 도입을 유보하고 규칙 기반으로 데이터를 먼저 축적한다. AI 모델이 유의미한 패턴을 학습하려면 최소 3~6개월의 행동 데이터가 필요하다고 가정하는 것이 안전하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">헬스케어 클리닉</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예약 확인, 처방 리필 알림, 검진 주기 안내는 규칙 기반으로 처리한다. 반면 환자별 건강 관리 콘텐츠 발송이나 재방문 시점 예측은 AI 기반 분석을 활용한다. 두 방식이 역할을 나눠 운영되는 구조다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">B2B 소프트웨어 기업</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">계약 만료 60일 전 알림, 인보이스 발송은 규칙 기반으로 자동화한다. 고객사의 제품 사용 빈도가 낮아지는 패턴을 감지해 고객 성공팀에 알림을 보내는 이탈 예측 기능은 AI 기반으로 구현한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">오프라인 피트니스 센터</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">회원권 만료 안내, 출석 이벤트 알림은 규칙 기반으로 충분하다. 회원별 선호 수업 시간대와 참여 패턴을 분석해 맞춤 클래스를 추천하는 기능은 AI 기반이 더 적합하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 규칙 기반 자동화를 먼저 구축하고 나중에 AI로 전환할 수 있나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전환이 아닌 확장으로 접근하는 것이 현실적이다. 규칙 기반 자동화를 운영하면서 쌓인 고객 행동 데이터가 AI 모델 학습의 기반이 된다. 처음부터 AI 기반으로 시작하려 하면 학습 데이터 부족으로 모델 성능이 낮게 나오는 경우가 많다. 규칙 기반 운영 6개월 이상의 데이터를 확보한 뒤 AI 기능을 추가하는 순서가 안정적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 소규모 팀에서도 AI 기반 자동화를 도입할 수 있나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">팀 규모보다 데이터 규모가 더 중요한 변수다. 월간 활성 고객이 500명 미만인 환경에서는 AI 모델이 유의미한 패턴을 학습하기 어렵다. 이 경우 AI 기반 도입보다 규칙 기반 자동화를 정교하게 설계하는 것이 실질적인 성과로 이어진다. 고객 수가 늘어나는 시점을 기준으로 AI 기능 도입 여부를 재검토하는 것이 합리적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 두 방식을 병행할 때 관리 복잡도가 너무 높아지지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">복잡도는 병행 자체가 아니라 역할 구분이 불명확할 때 발생한다. 규칙 기반이 처리하는 영역과 AI 기반이 판단하는 영역을 명확히 구분하고, 각 자동화 흐름에 담당자를 지정하면 관리 부담은 단일 방식과 크게 다르지 않다. 오히려 두 방식을 혼용하지 않고 역할을 분리하면 문제 발생 시 원인 파악이 더 빠르다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 마케팅 자동화 도입 전 반드시 점검해야 할 데이터 준비 체크리스트를 다룬다. 어떤 방식을 선택하든 데이터 구조가 자동화 성과를 결정한다는 전제에서 출발한다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-132&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-132',cta_type:'flywheel_consult',category:'AI 실무 활용'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
