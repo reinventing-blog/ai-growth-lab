@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>마케팅 자동화를 도입할수록 캠페인 일관성이 무너지는 3가지 구조적 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="마케팅 자동화를 확장할수록 캠페인 일관성이 무너지는 이유는 운영 문제가 아닌 구조 문제다. 메시지 소유권 분산, 트리거 맥락 부재, 검수 속도 격차라는 3가지 원인과 해결 프레임워크를 정리했다.">
+<meta property="og:title" content="마케팅 자동화를 도입할수록 캠페인 일관성이 무너지는 3가지 구조적 원인"><meta property="og:description" content="마케팅 자동화를 확장할수록 캠페인 일관성이 무너지는 이유는 운영 문제가 아닌 구조 문제다. 메시지 소유권 분산, 트리거 맥락 부재, 검수 속도 격차라는 3가지 원인과 해결 프레임워크를 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-133.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-133.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"마케팅 자동화를 도입할수록 캠페인 일관성이 무너지는 3가지 구조적 원인","description":"마케팅 자동화를 확장할수록 캠페인 일관성이 무너지는 이유는 운영 문제가 아닌 구조 문제다. 메시지 소유권 분산, 트리거 맥락 부재, 검수 속도 격차라는 3가지 원인과 해결 프레임워크를 정리했다.","image":"https://images.unsplash.com/photo-1758876203474-4425ac96181b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyN3x8YnVzaW5lc3MlMjBhbmFseXRpY3MlMjBsYXB0b3B8ZW58MXwwfHx8MTc4MzAzNjg5NXww&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-133.html"},"datePublished":"2026-07-03","dateModified":"2026-07-03"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"마케팅 자동화를 이미 도입한 상태에서 일관성을 회복하려면 어디서부터 시작해야 하는가?","acceptedAnswer":{"@type":"Answer","text":"현재 운영 중인 자동화 시퀀스 전체를 한 곳에 나열하고, 동일 고객이 30일 내에 받는 메시지 흐름을 시각화하는 것이 첫 단계다. 대부분의 팀은 이 작업을 해본 적이 없어서, 중복 발송이나 상충되는 메시지를 처음으로 인식하게 된다."}},{"@type":"Question","name":"캠페인 일관성을 측정하는 지표가 있는가?","acceptedAnswer":{"@type":"Answer","text":"직접적인 단일 지표는 없지만, 복합 지표로 접근할 수 있다. 동일 고객의 채널 간 전환율 편차, 수신 거부율의 채널별 차이, 브랜드 인지도 조사에서 '일관된 이미지'를 선택한 비율을 조합하면 일관성 수준을 간접적으로 파악할 수 있다."}},{"@type":"Question","name":"소규모 팀에서 CCC 모델을 적용하기 어려운 경우 최소한으로 해야 할 것은 무엇인가?","acceptedAnswer":{"@type":"Answer","text":"세 요소 중 맥락 설계를 우선 적용하는 것을 권장한다. 트리거 발동 간격 규칙 하나만 정해도 고객이 경험하는 메시지 충돌을 즉시 줄일 수 있다. 소유권 재편과 검수 체계는 팀 규모가 커진 이후 단계적으로 도입해도 늦지 않다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#3b1d8a;color:#c4b5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">자동화 & 워크플로우</span><span class="post-date">2026. 7. 3.</span></div>
+  <h1 class="post-title">마케팅 자동화를 도입할수록 캠페인 일관성이 무너지는 3가지 구조적 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1758876203474-4425ac96181b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyN3x8YnVzaW5lc3MlMjBhbmFseXRpY3MlMjBsYXB0b3B8ZW58MXwwfHx8MTc4MzAzNjg5NXww&ixlib=rb-4.1.0&q=80&w=1080" alt="마케팅 자동화를 도입할수록 캠페인 일관성이 무너지는 3가지 구조적 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 자동화를 확장하는 과정에서 캠페인 일관성이 오히려 떨어지는 역설을 경험하는 팀이 늘고 있다. 툴을 추가할수록 메시지가 분산되고, 자동화 시퀀스가 많아질수록 브랜드 톤이 흔들린다. 이 문제는 운영 미숙이 아니라 구조에서 비롯된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">1. 자동화 레이어가 늘어날수록 메시지 소유권이 분산된다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 자동화 시스템은 대부분 채널별로 독립 운영된다. 이메일 시퀀스는 마케팅팀이, 푸시 알림은 그로스팀이, 챗봇 응답은 CS팀이 각각 관리하는 구조가 일반적이다. 문제는 각 팀이 자신의 채널에서만 최적화를 추구한다는 점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어, B2B SaaS 기업을 가정하면 영업 자동화 이메일은 "지금 바로 데모를 신청하세요"라는 직접적 CTA를 사용하는 반면, 동일 시점에 발송되는 콘텐츠 뉴스레터는 "천천히 살펴보세요"라는 탐색형 어조를 유지할 수 있다. 수신자 입장에서는 같은 브랜드가 하루에 두 가지 다른 태도를 보내는 셈이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 구조적 분산을 막으려면 <strong style="color:#f1f5f9;font-weight:700;">메시지 소유권을 채널 단위가 아닌 고객 여정 단위로 재편</strong>해야 한다. 구체적으로는 각 자동화 시퀀스에 '메시지 책임자'를 지정하고, 동일 고객에게 72시간 내 발송되는 모든 자동화 메시지를 한 화면에서 검토하는 프로세스를 도입하는 것이 출발점이 된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">2. 트리거 기반 설계는 맥락 없는 타이밍을 만든다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화의 핵심 원리는 특정 행동에 반응하는 트리거다. 그런데 트리거가 많아질수록 각각의 반응은 정교해지지만, 전체 캠페인의 서사는 오히려 파편화된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">헬스케어 앱을 운영하는 스타트업을 가정해 보자. 사용자가 특정 콘텐츠를 열람하면 관련 프로그램 안내가 발송되고, 결제 페이지를 이탈하면 할인 쿠폰이 나가며, 7일 미접속 시 재참여 메시지가 전송된다. 각각의 트리거는 논리적으로 맞다. 그러나 이 세 가지 메시지가 5일 안에 겹치면, 사용자는 브랜드가 자신의 상황을 전혀 파악하지 못한다고 느낀다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거 기반 설계의 맹점은 '지금 이 사람에게 무슨 일이 일어나고 있는가'를 고려하지 않는다는 점이다. 개별 행동에 반응하는 것과 고객의 현재 상태를 읽는 것은 다르다. 전자는 자동화가 잘하지만, 후자는 설계 단계에서 인간이 개입해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실무 기준으로는 동일 고객에 대한 트리거 발동 간격을 최소 48시간으로 설정하고, 복수의 트리거가 동시에 충족될 경우 우선순위 규칙을 명문화하는 것이 기본 조건이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">3. 콘텐츠 생산 속도가 검수 구조를 앞지른다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 도구가 확산되면서 콘텐츠 생산량도 함께 늘었다. 생성형 AI를 활용한 초안 작성, 템플릿 기반의 변형 메시지, A/B 테스트를 위한 복수 버전 제작이 일상화되었다. 문제는 생산 속도가 빨라진 만큼 검수 체계가 따라가지 못한다는 점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 플랫폼을 운영하는 팀을 가정하면, 지역별로 다른 매물 추천 이메일을 자동화로 발송할 경우 한 달에 수백 개의 메시지 변형이 생성될 수 있다. 이 중 일부는 브랜드 가이드라인과 어긋난 표현을 포함하거나, 경쟁사를 자극하는 문구가 삽입되어도 실시간으로 감지하기 어렵다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">콘텐츠 생산과 검수의 속도 격차는 캠페인 일관성을 가장 빠르게 무너뜨리는 요인이다. 이를 구조적으로 해결하려면 자동화 메시지에도 '발행 전 승인 게이트'를 적용해야 한다. 모든 메시지를 수동 검토하는 것이 아니라, 신규 템플릿과 기존 템플릿의 변형 범위를 기준으로 검수 단계를 차등 적용하는 방식이 현실적이다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1763568258586-da55ea292766?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwzMHx8YW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwZGF0YSUyMHZpc3VhbGl6YXRpb24lMjB3b3JrZmxvdyUyMGF1dG9tYXRpb258ZW58MXwwfHx8MTc4MzAzODk4Mnww&ixlib=rb-4.1.0&q=80&w=1080" alt="마케팅 자동화를 도입할수록 캠페인 일관성이 무너지는 3가지 구조적 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">구조적 원인을 다루는 프레임워크: CCC 모델</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세 가지 원인은 각각 독립적으로 보이지만, 실제로는 하나의 구조적 흐름으로 연결된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">소유권(Control) 재편</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널 단위 소유권을 고객 여정 단위로 전환한다. 자동화 시퀀스마다 책임자를 지정하고, 발송 전 크로스채널 메시지 검토를 의무화한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">맥락(Context) 설계</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거 조건에 고객의 현재 상태 변수를 추가한다. 단순 행동 기반이 아니라 '최근 N일간 수신한 메시지 수', '현재 여정 단계', '이전 메시지 반응 여부'를 트리거 발동 조건에 포함시킨다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">검수(Check) 체계화</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">콘텐츠 변형 범위에 따라 검수 단계를 3단계로 구분한다. 기존 승인된 템플릿의 단순 수치 변경은 자동 발행, 문구 변형은 담당자 검토, 신규 템플릿은 팀장 승인을 거치도록 설계한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">교육 플랫폼의 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">온라인 교육 플랫폼을 운영하는 팀이 CCC 모델을 적용했다고 가정하면, 수강 독려 이메일과 커뮤니티 알림이 동일 학습자에게 하루 3회 이상 발송되던 문제를 맥락 설계로 해소할 수 있다. 학습자의 최근 7일 접속 패턴을 트리거 조건에 추가하면 발송 빈도가 줄어도 응답률이 유지되는 결과를 기대할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">금융 서비스의 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">보험 상품을 판매하는 금융사를 가정하면, 설계사 채널과 디지털 채널이 동시에 자동화 메시지를 발송할 경우 고객은 혼란스러운 신호를 받는다. 소유권 재편을 통해 채널 간 메시지 발송 우선순위를 정의하면 이 충돌을 구조적으로 차단할 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 마케팅 자동화를 이미 도입한 상태에서 일관성을 회복하려면 어디서부터 시작해야 하는가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">현재 운영 중인 자동화 시퀀스 전체를 한 곳에 나열하고, 동일 고객이 30일 내에 받는 메시지 흐름을 시각화하는 것이 첫 단계다. 대부분의 팀은 이 작업을 해본 적이 없어서, 중복 발송이나 상충되는 메시지를 처음으로 인식하게 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 캠페인 일관성을 측정하는 지표가 있는가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">직접적인 단일 지표는 없지만, 복합 지표로 접근할 수 있다. 동일 고객의 채널 간 전환율 편차, 수신 거부율의 채널별 차이, 브랜드 인지도 조사에서 '일관된 이미지'를 선택한 비율을 조합하면 일관성 수준을 간접적으로 파악할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 소규모 팀에서 CCC 모델을 적용하기 어려운 경우 최소한으로 해야 할 것은 무엇인가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세 요소 중 맥락 설계를 우선 적용하는 것을 권장한다. 트리거 발동 간격 규칙 하나만 정해도 고객이 경험하는 메시지 충돌을 즉시 줄일 수 있다. 소유권 재편과 검수 체계는 팀 규모가 커진 이후 단계적으로 도입해도 늦지 않다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 CCC 모델을 실제 자동화 툴 설정에 적용하는 구체적인 워크플로우 구성 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-133&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-133',cta_type:'flywheel_consult',category:'자동화 & 워크플로우'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
