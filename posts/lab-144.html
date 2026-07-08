@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 퍼스널라이제이션 비교: AI 기반 방식과 룰 기반 세그먼테이션, 무엇을 선택해야 하나 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 퍼스널라이제이션 비교를 통해 AI 기반 방식과 룰 기반 세그먼테이션의 구조적 차이, 업종별 적합 조건, 선택 프레임워크를 정리했다. 도입 전 반드시 확인해야 할 판단 기준을 제시한다.">
+<meta property="og:title" content="AI 퍼스널라이제이션 비교: AI 기반 방식과 룰 기반 세그먼테이션, 무엇을 선택해야 하나"><meta property="og:description" content="AI 퍼스널라이제이션 비교를 통해 AI 기반 방식과 룰 기반 세그먼테이션의 구조적 차이, 업종별 적합 조건, 선택 프레임워크를 정리했다. 도입 전 반드시 확인해야 할 판단 기준을 제시한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-144.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-144.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 퍼스널라이제이션 비교: AI 기반 방식과 룰 기반 세그먼테이션, 무엇을 선택해야 하나","description":"AI 퍼스널라이제이션 비교를 통해 AI 기반 방식과 룰 기반 세그먼테이션의 구조적 차이, 업종별 적합 조건, 선택 프레임워크를 정리했다. 도입 전 반드시 확인해야 할 판단 기준을 제시한다.","image":"https://images.pexels.com/photos/7109243/pexels-photo-7109243.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-144.html"},"datePublished":"2026-07-08","dateModified":"2026-07-08"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"두 방식을 동시에 운영하는 것이 가능한가","acceptedAnswer":{"@type":"Answer","text":"가능하다. 실제로 많은 조직이 온보딩이나 트랜잭션 알림은 룰 기반으로, 콘텐츠 추천이나 이탈 방지 캠페인은 AI 기반으로 분리 운영한다. 중요한 것은 두 방식이 동일한 고객 데이터 파이프라인을 공유해야 한다는 점이다. 데이터 소스가 분리되면 고객 경험이 단절된다."}},{"@type":"Question","name":"AI 퍼스널라이제이션 도입 시 가장 먼저 점검해야 할 것은 무엇인가","acceptedAnswer":{"@type":"Answer","text":"고객 식별자 통합 여부다. 동일한 고객이 웹, 앱, 이메일 채널에서 서로 다른 ID로 기록되고 있다면 AI 모델은 한 사람의 행동을 여러 명으로 분산 인식한다. 이 상태에서 도입한 AI 개인화는 오히려 메시지 중복이나 상충을 유발한다."}},{"@type":"Question","name":"룰 기반에서 AI 기반으로 전환하는 적절한 시점은 언제인가","acceptedAnswer":{"@type":"Answer","text":"세 가지 조건이 동시에 충족될 때다. 첫째, 운영 중인 룰의 수가 관리 한계를 넘어섰을 때. 둘째, 동일한 세그먼트 내에서도 개인별 반응률 편차가 크게 나타날 때. 셋째, 최소 1년치 이상의 행동 데이터가 정제된 형태로 축적되어 있을 때. 이 세 조건 중 하나라도 빠지면 전환 시점을 미루는 것이 합리적이다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#1e3a5f;color:#93c5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 7. 8.</span></div>
+  <h1 class="post-title">AI 퍼스널라이제이션 비교: AI 기반 방식과 룰 기반 세그먼테이션, 무엇을 선택해야 하나</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/7109243/pexels-photo-7109243.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="AI 퍼스널라이제이션 비교: AI 기반 방식과 룰 기반 세그먼테이션, 무엇을 선택해야 하나" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 자동화 도구를 도입할 때 가장 먼저 부딪히는 질문은 단순하다. AI가 알아서 개인화할 것인가, 아니면 사람이 규칙을 설계하고 시스템이 그것을 실행할 것인가. <strong style="color:#f1f5f9;font-weight:700;">AI 퍼스널라이제이션 비교</strong>를 제대로 하지 않고 도구를 선택하면, 기술 비용만 올라가고 실제 전환율은 제자리걸음을 반복한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">두 방식의 구조적 차이를 먼저 이해하라</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">룰 기반 세그먼테이션은 마케터가 조건을 직접 정의한다. "최근 30일 내 방문 3회 이상이고 구매 이력이 없는 사용자에게 A 메시지를 발송한다"는 식이다. 조건이 명확하고 결과를 예측할 수 있다. 반면 AI 기반 퍼스널라이제이션은 사용자 행동 패턴, 맥락 데이터, 시간대, 디바이스 등 수십 개의 변수를 동시에 처리하며 개인별 최적 메시지와 타이밍을 추론한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 차이는 단순히 기술 수준의 문제가 아니다. 운영 방식, 팀 역량, 데이터 인프라 수준에 따라 어느 방식이 실질적인 성과를 만드는지가 달라진다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">룰 기반 방식이 유리한 조건</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">룰 기반 세그먼테이션은 다음 세 가지 조건에서 안정적으로 작동한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫째, 고객 행동 패턴이 예측 가능할 때다. 병원 예약 리마인더, 보험 갱신 안내, 정기 구독 결제 알림처럼 특정 이벤트에 따라 커뮤니케이션이 결정되는 업종에서는 룰 기반이 오히려 정교하다. 예측 가능한 흐름을 AI에 맡기면 불필요한 연산 비용만 발생한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 조직의 마케팅 데이터가 충분히 정제되지 않았을 때다. AI 모델은 데이터 품질에 민감하다. 고객 ID가 통합되지 않거나 행동 로그가 단절된 상태에서 AI를 도입하면 모델이 잘못된 패턴을 학습할 수 있다. 이 경우 룰 기반으로 먼저 데이터 구조를 검증하는 것이 선행 과제다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 규제 산업에서 의사결정의 설명 가능성이 요구될 때다. 금융, 의료, 법률 서비스 영역에서는 "왜 이 고객에게 이 메시지를 보냈는가"를 감사 기록으로 남겨야 하는 경우가 있다. 룰 기반은 이 추적이 명확하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">AI 기반 퍼스널라이제이션이 필요한 시점</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 방식의 진가는 변수가 많고 고객 여정이 비선형적일 때 드러난다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 온라인 교육 플랫폼을 운영한다고 가정하면, 동일한 수강생이라도 접속 시간대, 직전에 완료한 강의 유형, 학습 완료율, 이전 이탈 지점에 따라 다음 추천 콘텐츠와 독려 메시지가 달라져야 한다. 이 조합이 수백 가지를 넘어서면 룰로 관리하는 것은 현실적으로 불가능하다. AI는 이 복잡성을 처리하는 데 구조적으로 유리하다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">또한 콘텐츠 미디어, 여행, SaaS 같이 고객 생애주기가 길고 접점이 다양한 업종에서는 AI가 장기 행동 패턴을 학습해 이탈 예측이나 업셀 타이밍 감지에 활용될 수 있다. 가정 수치로 예시를 들면, 유사한 조건의 SaaS 기업에서 AI 기반 이탈 예측 모델을 도입했을 때 이탈률이 약 15~20% 감소했다는 사례가 보고되는 경우가 있다. 단, 이 수치는 데이터 환경과 모델 설계에 따라 크게 달라질 수 있다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzgzNDY5NzgyfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 퍼스널라이제이션 비교: AI 기반 방식과 룰 기반 세그먼테이션, 무엇을 선택해야 하나" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">선택 기준을 정리하는 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 방식을 선택할 때 아래 세 가지 축으로 판단하라.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">데이터 성숙도</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객 데이터가 단일 플랫폼에 통합되어 있고, 최소 6개월 이상의 행동 로그가 축적되어 있다면 AI 방식을 검토할 수 있다. 그렇지 않다면 룰 기반으로 데이터 수집 체계를 먼저 구축하라.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">세그먼트 복잡도</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">운영 중인 세그먼트가 10개 이하이고 조건 변경 주기가 월 단위라면 룰 기반으로 충분하다. 세그먼트가 50개를 넘거나 실시간 조건 변경이 필요하다면 AI 방식의 자동화가 운영 효율을 높인다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">팀 역량과 거버넌스</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 모델의 출력을 해석하고 오류를 감지할 수 있는 데이터 분석 역량이 팀 내에 없다면, AI 도입은 블랙박스 운영으로 이어진다. 이 경우 룰 기반을 유지하면서 단계적으로 AI 보조 기능을 추가하는 것이 현실적이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">병원 및 의료 서비스</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">환자 재방문 리마인더, 검진 주기 알림은 룰 기반으로 정확하게 설계할 수 있다. 반면 만성질환 환자의 생활습관 코칭 메시지처럼 개인별 변수가 많은 영역은 AI 추론이 적합하다. 두 방식을 혼합 운영하는 구조가 이 업종에서 실용적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">금융 서비스</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대출 상품 안내나 카드 한도 변경 알림은 규제 요건상 룰 기반이 기본이다. 다만 투자 성향 분석을 바탕으로 한 자산 관리 콘텐츠 추천에는 AI 기반 개인화가 활용되고 있다. 설명 가능성과 개인화 정밀도를 동시에 요구하는 영역이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">B2B SaaS</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">신규 가입 후 온보딩 단계는 룰 기반 시퀀스로 안정적으로 운영할 수 있다. 그러나 사용자별 기능 활용 패턴을 분석해 업셀 타이밍을 포착하거나, 이탈 징후를 조기에 감지하는 작업은 AI 모델이 더 정밀하게 수행한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">자주 묻는 질문</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 두 방식을 동시에 운영하는 것이 가능한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가능하다. 실제로 많은 조직이 온보딩이나 트랜잭션 알림은 룰 기반으로, 콘텐츠 추천이나 이탈 방지 캠페인은 AI 기반으로 분리 운영한다. 중요한 것은 두 방식이 동일한 고객 데이터 파이프라인을 공유해야 한다는 점이다. 데이터 소스가 분리되면 고객 경험이 단절된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI 퍼스널라이제이션 도입 시 가장 먼저 점검해야 할 것은 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객 식별자 통합 여부다. 동일한 고객이 웹, 앱, 이메일 채널에서 서로 다른 ID로 기록되고 있다면 AI 모델은 한 사람의 행동을 여러 명으로 분산 인식한다. 이 상태에서 도입한 AI 개인화는 오히려 메시지 중복이나 상충을 유발한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 룰 기반에서 AI 기반으로 전환하는 적절한 시점은 언제인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세 가지 조건이 동시에 충족될 때다. 첫째, 운영 중인 룰의 수가 관리 한계를 넘어섰을 때. 둘째, 동일한 세그먼트 내에서도 개인별 반응률 편차가 크게 나타날 때. 셋째, 최소 1년치 이상의 행동 데이터가 정제된 형태로 축적되어 있을 때. 이 세 조건 중 하나라도 빠지면 전환 시점을 미루는 것이 합리적이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">선택 기준은 정리됐다. 그러나 실제 도입 과정에서는 데이터 파이프라인 설계, 모델 평가 지표 설정, 팀 내 역할 분담이라는 실행 단계가 남는다. 다음 글에서는 AI 퍼스널라이제이션 도입 로드맵을 단계별로 구체화한다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-144&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-144',cta_type:'flywheel_consult',category:'AI 실무 활용'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
