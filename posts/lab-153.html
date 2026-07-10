@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CRM 자동화 플랫폼 비교: 기성 플랫폼 vs 자체 워크플로우, 무엇을 선택해야 하나 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="CRM 자동화 플랫폼 비교를 검토 중이라면 도구 선택 전에 운영 구조를 먼저 점검해야 한다. 기성 플랫폼과 자체 워크플로우의 실질적 차이, 업종별 선택 패턴, 판단 기준을 구체적으로 정리했다.">
+<meta property="og:title" content="CRM 자동화 플랫폼 비교: 기성 플랫폼 vs 자체 워크플로우, 무엇을 선택해야 하나"><meta property="og:description" content="CRM 자동화 플랫폼 비교를 검토 중이라면 도구 선택 전에 운영 구조를 먼저 점검해야 한다. 기성 플랫폼과 자체 워크플로우의 실질적 차이, 업종별 선택 패턴, 판단 기준을 구체적으로 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-153.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-153.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"CRM 자동화 플랫폼 비교: 기성 플랫폼 vs 자체 워크플로우, 무엇을 선택해야 하나","description":"CRM 자동화 플랫폼 비교를 검토 중이라면 도구 선택 전에 운영 구조를 먼저 점검해야 한다. 기성 플랫폼과 자체 워크플로우의 실질적 차이, 업종별 선택 패턴, 판단 기준을 구체적으로 정리했다.","image":"https://images.pexels.com/photos/7653571/pexels-photo-7653571.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-153.html"},"datePublished":"2026-07-10","dateModified":"2026-07-10"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"기성 CRM 플랫폼을 도입했는데 팀이 잘 쓰지 않는다. 자체 구축으로 전환해야 하나","acceptedAnswer":{"@type":"Answer","text":"도구를 바꾸기 전에 사용하지 않는 원인을 먼저 진단해야 한다. 대부분의 경우 도구 문제가 아니라 온보딩 부재, 프로세스 미정의, 또는 담당자 없는 도입이 원인이다. 자체 구축으로 전환해도 같은 문제가 반복된다."}},{"@type":"Question","name":"자체 워크플로우 구축에 AI를 활용할 수 있나","acceptedAnswer":{"@type":"Answer","text":"생성형 AI는 워크플로우 로직 설계, 자동화 스크립트 초안 작성, 데이터 매핑 문서화 등에 활용할 수 있다. 다만 AI가 생성한 로직은 반드시 실제 운영 데이터로 검증하는 단계가 필요하다. AI는 설계 속도를 높이는 도구이지, 운영 검증을 대체하지 않는다."}},{"@type":"Question","name":"중소기업도 자체 워크플로우 구축이 현실적인가","acceptedAnswer":{"@type":"Answer","text":"팀 규모보다 역량과 프로세스 복잡도가 기준이다. 직원 20인 미만이더라도 내부에 자동화 설계 가능한 인력이 있고, 기성 플랫폼으로 해결되지 않는 연동 요구가 있다면 자체 구축이 합리적이다. 반대로 100인 이상 기업도 프로세스가 표준적이라면 기성 플랫폼이 더 나은 선택일 수 있다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#3b1d8a;color:#c4b5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">자동화 & 워크플로우</span><span class="post-date">2026. 7. 10.</span></div>
+  <h1 class="post-title">CRM 자동화 플랫폼 비교: 기성 플랫폼 vs 자체 워크플로우, 무엇을 선택해야 하나</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/7653571/pexels-photo-7653571.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="CRM 자동화 플랫폼 비교: 기성 플랫폼 vs 자체 워크플로우, 무엇을 선택해야 하나" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">CRM 자동화 플랫폼 비교를 검토할 때 대부분의 팀은 같은 지점에서 막힌다. "우리 상황에 맞는 건 어느 쪽인가"라는 질문이다. 기성 자동화 플랫폼은 빠르게 도입할 수 있지만 커스터마이징에 한계가 있고, 자체 워크플로우는 유연하지만 구축 비용과 유지 부담이 따른다. 이 글은 두 방식의 실질적 차이를 구조적으로 짚고, 선택 기준을 제시한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">문제의 본질: 도구가 아니라 '운영 구조'의 문제다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 팀이 CRM 자동화를 도입하면서 도구 선택을 먼저 한다. 그러나 실패의 원인은 대부분 도구가 아니라 운영 구조에 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기성 플랫폼을 도입한 뒤 "우리 프로세스에 안 맞는다"며 6개월 만에 전환하는 사례는 드물지 않다. 반대로 자체 워크플로우를 구축했지만 담당자 이직 후 아무도 유지보수하지 못해 방치되는 경우도 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">핵심 질문은 두 가지다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">현재 팀의 CRM 프로세스가 표준화되어 있는가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">내부에 워크플로우를 설계하고 유지할 수 있는 역량이 있는가</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 두 질문에 모두 "아니오"라면, 기성 플랫폼이 현실적 선택지다. 반대로 두 조건이 충족된다면 자체 구축이 장기적으로 유리할 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">기성 CRM 자동화 플랫폼의 실제 강점과 한계</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">강점: 빠른 도입과 검증된 흐름</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기성 플랫폼은 리드 수집, 이메일 시퀀스, 파이프라인 관리, 알림 트리거 등 반복적인 영업·마케팅 흐름을 즉시 구현할 수 있다. 별도 개발 없이 수일 내 운영이 가능하다는 점은 초기 팀에 실질적인 이점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">B2B SaaS 기업을 가정하면, 영업팀 5인이 기성 플랫폼을 도입했을 때 리드 응답 자동화만으로도 초기 응답 시간이 기존 대비 절반 수준으로 단축되는 시나리오를 충분히 상정할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">한계: 프로세스가 플랫폼에 종속된다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">문제는 플랫폼의 구조가 팀의 프로세스를 규정하기 시작할 때다. 기성 플랫폼은 특정 영업 방식이나 데이터 구조를 전제로 설계되어 있다. 팀 고유의 프로세스가 플랫폼 로직에 맞지 않으면, 결국 팀이 플랫폼에 맞춰 일하는 역전이 발생한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">의료 기기 유통사처럼 승인 단계가 복잡하거나, 법률 서비스처럼 고객 접점마다 담당자 확인이 필요한 업종은 기성 플랫폼의 표준 파이프라인 구조가 현실 프로세스와 맞지 않는 경우가 많다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">자체 워크플로우 구축의 실제 조건</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">언제 자체 구축이 합리적인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자체 워크플로우 구축은 다음 세 조건이 동시에 충족될 때 고려할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">1. 내부 데이터 구조가 복잡하거나 외부 시스템과의 연동이 다수 필요한 경우</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">2. 팀 내 자동화 설계 역량(또는 전담 인력)이 존재하는 경우</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">3. 운영 규모가 플랫폼 라이선스 비용보다 자체 구축 비용을 정당화할 수 있는 경우</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어, 제조업 영업팀이 ERP, MES, 물류 시스템을 CRM과 연동해야 하는 상황이라면 기성 플랫폼의 API 한계가 병목이 된다. 이 경우 자체 워크플로우가 실질적인 선택지가 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자체 구축의 숨겨진 비용</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자체 워크플로우의 초기 구축 비용은 가시적이지만, 유지보수 비용은 보이지 않는다. 워크플로우 설계자가 조직을 떠나면 로직이 블랙박스가 된다. 문서화 체계 없이 구축된 자동화는 6개월 후 팀 내 누구도 수정하지 못하는 상태가 되기도 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">자체 구축을 선택한다면 문서화와 버전 관리 체계를 구축 시점부터 함께 설계해야 한다.</strong> 이것이 빠진 자체 워크플로우는 기성 플랫폼보다 더 큰 운영 리스크를 만든다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1758873272445-433c7a832584?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyN3x8YXV0b21hdGlvbiUyMHdvcmtmbG93JTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwc3VjY2Vzc3xlbnwxfDB8fHwxNzgzNjQzNzgxfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="CRM 자동화 플랫폼 비교: 기성 플랫폼 vs 자체 워크플로우, 무엇을 선택해야 하나" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">선택 프레임워크: 3가지 기준으로 판단한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 방식 중 하나를 선택할 때 다음 세 기준을 순서대로 적용한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">첫째, 프로세스 표준화 수준.</strong> 현재 영업·마케팅 프로세스가 문서화되어 있고 반복 가능한 형태인가. 그렇다면 기성 플랫폼으로 먼저 검증한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">둘째, 시스템 연동 복잡도.</strong> 연동이 필요한 외부 시스템이 3개 이상이거나, 커스텀 데이터 구조가 필요한 경우 자체 구축 또는 하이브리드 방식을 검토한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">셋째, 팀 역량과 유지 가능성.</strong> 자동화 설계 역량이 내부에 없다면, 자체 구축은 초기에는 가능하더라도 장기 운영에서 무너진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 기준을 적용하면 대부분의 팀은 두 가지 결론 중 하나에 도달한다. 초기에는 기성 플랫폼으로 시작해 프로세스를 검증하고, 이후 특정 영역만 자체 워크플로우로 전환하는 단계적 접근이 현실적으로 가장 안정적이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 선택 패턴</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 중개법인 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객 접점이 길고 담당자 변경이 잦은 부동산 중개 업종을 가정하면, 기성 플랫폼의 파이프라인 구조가 초기에는 유용하다. 그러나 매물 데이터, 계약 상태, 법적 서류 단계를 연동하려는 시점에서 플랫폼 한계가 드러난다. 이 경우 기성 플랫폼으로 리드 관리를 유지하면서, 계약 이후 단계는 자체 워크플로우로 분리 운영하는 하이브리드 구조가 현실적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">기업 교육 서비스 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수강 기업 대상 B2B 교육 서비스를 가정하면, 제안-계약-운영-재계약의 사이클이 명확하고 반복적이다. 이 경우 기성 플랫폼의 시퀀스 자동화와 파이프라인 관리만으로도 충분한 운영이 가능하다. 자체 구축이 오히려 과잉 투자가 되는 전형적인 사례다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 기성 CRM 플랫폼을 도입했는데 팀이 잘 쓰지 않는다. 자체 구축으로 전환해야 하나</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">도구를 바꾸기 전에 사용하지 않는 원인을 먼저 진단해야 한다. 대부분의 경우 도구 문제가 아니라 온보딩 부재, 프로세스 미정의, 또는 담당자 없는 도입이 원인이다. 자체 구축으로 전환해도 같은 문제가 반복된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 자체 워크플로우 구축에 AI를 활용할 수 있나</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 워크플로우 로직 설계, 자동화 스크립트 초안 작성, 데이터 매핑 문서화 등에 활용할 수 있다. 다만 AI가 생성한 로직은 반드시 실제 운영 데이터로 검증하는 단계가 필요하다. AI는 설계 속도를 높이는 도구이지, 운영 검증을 대체하지 않는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 중소기업도 자체 워크플로우 구축이 현실적인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">팀 규모보다 역량과 프로세스 복잡도가 기준이다. 직원 20인 미만이더라도 내부에 자동화 설계 가능한 인력이 있고, 기성 플랫폼으로 해결되지 않는 연동 요구가 있다면 자체 구축이 합리적이다. 반대로 100인 이상 기업도 프로세스가 표준적이라면 기성 플랫폼이 더 나은 선택일 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계: 선택보다 설계가 먼저다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 방식 중 무엇을 선택하느냐보다, 현재 팀의 CRM 프로세스가 어디까지 정의되어 있는지를 먼저 점검하는 것이 출발점이다. 다음 글에서는 CRM 자동화 도입 전 프로세스 설계 체크리스트와 실제 워크플로우 매핑 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-153&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-153',cta_type:'flywheel_consult',category:'자동화 & 워크플로우'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
