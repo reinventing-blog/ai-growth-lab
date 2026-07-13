@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 프롬프트 설계 원칙으로 출력을 3배 끌어올리는 5가지 역할 설계 전략 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 프롬프트 설계 원칙 중 가장 간과되는 역할 설계. 관점 정의, 역할 분리, 제약 내장, 단계 전환, 자산화까지 5가지 원칙으로 출력 품질을 구조적으로 높이는 방법을 정리했다.">
+<meta property="og:title" content="AI 프롬프트 설계 원칙으로 출력을 3배 끌어올리는 5가지 역할 설계 전략"><meta property="og:description" content="AI 프롬프트 설계 원칙 중 가장 간과되는 역할 설계. 관점 정의, 역할 분리, 제약 내장, 단계 전환, 자산화까지 5가지 원칙으로 출력 품질을 구조적으로 높이는 방법을 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-158.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-158.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 프롬프트 설계 원칙으로 출력을 3배 끌어올리는 5가지 역할 설계 전략","description":"AI 프롬프트 설계 원칙 중 가장 간과되는 역할 설계. 관점 정의, 역할 분리, 제약 내장, 단계 전환, 자산화까지 5가지 원칙으로 출력 품질을 구조적으로 높이는 방법을 정리했다.","image":"https://images.unsplash.com/photo-1763568258289-47ada8efe7ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyM3x8QUklMjBwcm9tcHQlMjB3b3JrZmxvdyUyMGxhcHRvcCUyMGRlc2t8ZW58MXwwfHx8MTc4MzkwMzI0OHww&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-158.html"},"datePublished":"2026-07-13","dateModified":"2026-07-13"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"역할 설계 없이 프롬프트를 길게 쓰면 같은 효과가 나지 않나요?","acceptedAnswer":{"@type":"Answer","text":"프롬프트의 길이와 출력 품질은 비례하지 않는다. 역할 없이 긴 프롬프트를 작성하면 AI는 입력된 정보를 나열하는 방식으로 처리하고, 판단 기준이 없기 때문에 출력의 방향이 매번 달라진다. 역할 설계는 길이의 문제가 아니라 구조의 문제다."}},{"@type":"Question","name":"역할 설계는 어떤 업종에서 가장 효과가 큰가요?","acceptedAnswer":{"@type":"Answer","text":"판단 기준이 명확해야 하는 업종일수록 효과가 크다. 법률, 의료, 금융, 교육, 컨설팅처럼 출력의 정확성과 톤이 결과에 직접 영향을 주는 분야에서 역할 설계의 차이가 두드러진다. 반대로 자유로운 창작 과업에서는 역할보다 과업 블록의 정밀도가 더 중요하게 작용한다."}},{"@type":"Question","name":"역할 블록은 얼마나 길게 써야 하나요?","acceptedAnswer":{"@type":"Answer","text":"역할 블록의 적정 길이는 3~5문장이다. 역할 주체, 판단 기준, 독자 정의, 제약 조건을 각각 한 문장으로 정리하면 충분하다. 지나치게 긴 역할 블록은 AI가 핵심을 추출하는 과정에서 오히려 방향이 분산될 수 있다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 7. 13.</span></div>
+  <h1 class="post-title">AI 프롬프트 설계 원칙으로 출력을 3배 끌어올리는 5가지 역할 설계 전략</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1763568258289-47ada8efe7ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyM3x8QUklMjBwcm9tcHQlMjB3b3JrZmxvdyUyMGxhcHRvcCUyMGRlc2t8ZW58MXwwfHx8MTc4MzkwMzI0OHww&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 설계 원칙으로 출력을 3배 끌어올리는 5가지 역할 설계 전략" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI가 생성한 결과물이 기대에 미치지 못할 때, 대부분의 사용자는 프롬프트를 반복해서 수정한다. 그러나 문제는 문장의 길이나 단어 선택이 아니다. <strong style="color:#f1f5f9;font-weight:700;">AI 프롬프트 설계 원칙</strong> 중 가장 핵심인 '역할 설계'가 빠져 있기 때문이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할이 없는 프롬프트는 방향 없는 지시다. AI는 맥락을 스스로 채우려 하고, 그 과정에서 출력의 정밀도는 급격히 낮아진다. 이 글은 역할 설계 원칙 5가지를 통해 출력 품질을 구조적으로 높이는 방법을 다룬다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">1. 역할은 직함이 아니라 관점이다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"전문가처럼 답해줘"는 역할이 아니다. 직함을 부여하는 것과 관점을 부여하는 것은 다르다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">관점 기반 역할 설계는 AI가 어떤 기준으로 판단하고, 어떤 독자를 향해 말하며, 어떤 제약 안에서 작동해야 하는지를 명시한다. 예를 들어 "B2B SaaS 기업의 콘텐츠 마케터로서, 전환율보다 신뢰 구축을 우선하는 관점에서 작성하라"는 지시는 단순한 직함보다 훨씬 좁고 구체적인 출력을 유도한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">관점 설계 시 포함할 3가지 요소는 다음과 같다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">누구의 시각인가 (역할 주체)</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">무엇을 우선순위로 두는가 (판단 기준)</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">누구를 향해 말하는가 (독자 정의)</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 요소가 갖춰지면 AI의 출력 방향이 고정된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">2. 역할과 과업을 분리해서 입력하라</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 사용자가 역할과 과업을 하나의 문장에 뭉쳐 입력한다. 이 방식은 AI가 두 가지를 동시에 처리하면서 우선순위를 스스로 결정하게 만든다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할과 과업을 분리하면 AI는 역할을 먼저 내면화한 뒤 과업을 수행한다. 구조는 단순하다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><code style="background:#1e293b;color:#a5b4fc;padding:2px 7px;border-radius:4px;font-size:14px;">`</code></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">[역할 블록]</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">당신은 중소 제조업 대상 B2B 영업 컨설턴트입니다.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객사의 구매 결정 지연 문제를 해결하는 데 집중합니다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">[과업 블록]</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">아래 상황에서 첫 번째 콜드 이메일 초안을 작성하세요.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><code style="background:#1e293b;color:#a5b4fc;padding:2px 7px;border-radius:4px;font-size:14px;">`</code></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할 블록과 과업 블록을 물리적으로 구분하는 것만으로도 출력의 일관성이 달라진다. 가정적으로, 이 구조를 적용했을 때 재작업 횟수가 기존 대비 절반 수준으로 줄어드는 경우가 보고된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">3. 역할에 제약 조건을 내장하라</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할을 설계할 때 '할 수 있는 것'만 정의하는 것은 절반짜리 설계다. '하지 말아야 할 것'을 역할 안에 포함시키면 출력의 노이즈가 사라진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">제약 조건 설계의 3가지 유형</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">금지형</strong>: "추측성 수치를 포함하지 마라", "경쟁사 직접 비교를 피하라"</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">범위형</strong>: "답변은 실무 담당자 수준에서 이해 가능한 언어로 한정한다"</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">형식형</strong>: "결론을 먼저 제시하고, 근거는 3개 이내로 나열한다"</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">의료 정보 서비스 분야를 예시로 들면, "의료 전문가가 아닌 일반 성인 환자를 대상으로 설명하되, 진단이나 처방에 해당하는 표현은 사용하지 않는다"는 제약이 역할 안에 내장될 때 법적 리스크를 줄이면서도 정보 가치를 유지하는 출력이 나온다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1648134859177-525771773915?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8c3RydWN0dXJlZCUyMGRhdGElMjB3b3JrZmxvdyUyMGF1dG9tYXRpb24lMjBkYXNoYm9hcmR8ZW58MXwwfHx8MTc4MzkwMzI0OXww&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 설계 원칙으로 출력을 3배 끌어올리는 5가지 역할 설계 전략" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">4. 역할을 단계별로 전환하라</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단일 역할로 복잡한 과업을 처리하려 할 때 출력 품질은 떨어진다. 하나의 세션에서 역할을 단계별로 전환하는 방식이 더 정밀한 결과를 만든다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이것이 역할 고정과 역할 전환의 핵심 차이다. 역할을 고정하면 AI는 하나의 프레임으로 모든 과업을 처리한다. 역할을 전환하면 각 단계에 최적화된 관점이 적용된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">단계별 역할 전환 예시 (교육 콘텐츠 제작)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">1단계: 교육과정 설계자 역할 - 학습 목표와 구조 설계</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">2단계: 강의 스크립트 작가 역할 - 실제 콘텐츠 작성</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">3단계: 학습자 역할 - 이해도와 모호한 표현 검토</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 방식은 콘텐츠 제작, 법률 문서 검토, 제품 기획서 작성 등 다단계 산출물이 필요한 업무 전반에 적용된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">5. 역할 설계를 반복 가능한 자산으로 만들어라</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할 설계는 일회성 입력이 아니다. 한 번 검증된 역할 블록은 팀 전체가 재사용할 수 있는 자산이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할 라이브러리를 구축하는 기준은 세 가지다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">동일한 역할로 3회 이상 재사용된 경우</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">출력 품질 기준을 통과한 역할 블록</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">업종 또는 과업 유형별로 태그 분류 가능한 구조</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가정적으로, 10인 규모의 스타트업 마케팅팀이 역할 라이브러리를 도입했을 때 프롬프트 작성 시간이 1인당 주 평균 2시간 이상 단축될 수 있다. 법무법인, 광고 대행사, 공공기관 등 반복적 문서 업무가 많은 조직일수록 이 효과는 더 크게 나타난다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 역할 설계 없이 프롬프트를 길게 쓰면 같은 효과가 나지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트의 길이와 출력 품질은 비례하지 않는다. 역할 없이 긴 프롬프트를 작성하면 AI는 입력된 정보를 나열하는 방식으로 처리하고, 판단 기준이 없기 때문에 출력의 방향이 매번 달라진다. 역할 설계는 길이의 문제가 아니라 구조의 문제다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 역할 설계는 어떤 업종에서 가장 효과가 큰가요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">판단 기준이 명확해야 하는 업종일수록 효과가 크다. 법률, 의료, 금융, 교육, 컨설팅처럼 출력의 정확성과 톤이 결과에 직접 영향을 주는 분야에서 역할 설계의 차이가 두드러진다. 반대로 자유로운 창작 과업에서는 역할보다 과업 블록의 정밀도가 더 중요하게 작용한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 역할 블록은 얼마나 길게 써야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할 블록의 적정 길이는 3~5문장이다. 역할 주체, 판단 기준, 독자 정의, 제약 조건을 각각 한 문장으로 정리하면 충분하다. 지나치게 긴 역할 블록은 AI가 핵심을 추출하는 과정에서 오히려 방향이 분산될 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 이 5가지 역할 설계 원칙을 실제 프롬프트 템플릿으로 변환하는 방법을 다룬다. 업종별 역할 블록 예시와 함께 바로 복사해서 사용할 수 있는 형태로 제공할 예정이다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-158&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-158',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
