@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CRM 리텐션 캠페인이 반복 실패하는 3가지 구조적 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="CRM 리텐션 캠페인이 반복 실패하는 이유는 메시지가 아닌 구조에 있다. 세그먼트 기준, 목표 정의, 측정 방식의 3가지 구조적 원인과 업종별 실질 개선 기준을 정리했다.">
+<meta property="og:title" content="CRM 리텐션 캠페인이 반복 실패하는 3가지 구조적 원인"><meta property="og:description" content="CRM 리텐션 캠페인이 반복 실패하는 이유는 메시지가 아닌 구조에 있다. 세그먼트 기준, 목표 정의, 측정 방식의 3가지 구조적 원인과 업종별 실질 개선 기준을 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-155.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-155.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"CRM 리텐션 캠페인이 반복 실패하는 3가지 구조적 원인","description":"CRM 리텐션 캠페인이 반복 실패하는 이유는 메시지가 아닌 구조에 있다. 세그먼트 기준, 목표 정의, 측정 방식의 3가지 구조적 원인과 업종별 실질 개선 기준을 정리했다.","image":"https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-155.html"},"datePublished":"2026-07-13","dateModified":"2026-07-13"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"행동 기반 세그먼트를 구성하려면 어떤 데이터가 필요한가?","acceptedAnswer":{"@type":"Answer","text":"최소한 이벤트 로그 수준의 행동 데이터가 필요하다. 페이지 조회, 기능 사용, 이탈 시점 등의 이벤트를 수집하고 있다면 행동 트리거 세그먼트 구성이 가능하다. 별도의 고도화 없이도 \"특정 기능 미사용 N일 경과\"와 같은 단순 트리거부터 시작할 수 있다. 데이터 인프라가 부족한 경우에는 이벤트 수집 체계를 먼저 정비하는 것이 선행 과제다."}},{"@type":"Question","name":"대조군 설계가 어려운 소규모 팀은 어떻게 리텐션 캠페인 성과를 측정해야 하는가?","acceptedAnswer":{"@type":"Answer","text":"전체 대조군 설계가 어렵다면, 발송 시점을 기준으로 전후 비교를 활용할 수 있다. 캠페인 발송 전 30일과 발송 후 30일의 동일 세그먼트 행동 지표를 비교하는 방식이다. 완전한 인과관계 검증은 아니지만, 발송 지표만 보는 것보다 훨씬 실질적인 판단 기준이 된다. 팀 규모가 커지면 점진적으로 A/B 홀드아웃 테스트 구조로 전환하는 것이 적절하다."}},{"@type":"Question","name":"CRM 리텐션 캠페인 실패가 반복될 때 가장 먼저 점검해야 할 것은 무엇인가?","acceptedAnswer":{"@type":"Answer","text":"세그먼트 정의를 먼저 확인한다. 현재 세그먼트가 고객의 현재 상태를 반영하는지, 아니면 과거 속성만을 기반으로 하는지를 점검하는 것이 가장 빠른 진단 방법이다. 세그먼트가 고객의 실시간 의도와 무관하게 구성되어 있다면, 메시지 품질이나 채널을 아무리 개선해도 근본적인 반응률 변화를 기대하기 어렵다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#065f46;color:#6ee7b7;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">CRM & 그로스</span><span class="post-date">2026. 7. 13.</span></div>
+  <h1 class="post-title">CRM 리텐션 캠페인이 반복 실패하는 3가지 구조적 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="CRM 리텐션 캠페인이 반복 실패하는 3가지 구조적 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 팀이 CRM 리텐션 캠페인 실패를 메시지 품질이나 발송 타이밍 문제로 귀결시킨다. 그러나 반복적으로 같은 결과가 나온다면, 원인은 실행 레이어가 아니라 설계 레이어에 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">1. 세그먼트가 행동 기반이 아닌 속성 기반으로 구성되어 있다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 리텐션 캠페인은 "가입 후 30일 이내 미구매 고객"이나 "VIP 등급 고객"처럼 정적 속성으로 세그먼트를 나눈다. 이 방식은 고객이 현재 어떤 맥락에 있는지를 반영하지 못한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">행동 기반 세그먼트는 다르다. "지난 14일 내 제품 페이지를 3회 이상 조회했으나 전환하지 않은 고객"이나 "구독 해지 페이지를 방문한 후 48시간 내 재방문한 고객"처럼, 고객의 실시간 의도 신호를 기준으로 구성한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">속성 기반 세그먼트의 실질적 문제</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">속성 기반 세그먼트는 발송 시점에 이미 고객 상태가 바뀌어 있을 가능성이 높다. 가령 SaaS 서비스에서 "최근 90일 미로그인 고객"에게 재활성화 메일을 보내는 시점에, 해당 고객의 절반은 이미 경쟁 서비스로 이탈이 완료된 상태일 수 있다. 이탈 신호가 발생하는 시점과 캠페인이 도달하는 시점 사이의 간격이 클수록, 메시지의 관련성은 떨어진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">행동 트리거 기반으로 전환하면 이 간격을 좁힐 수 있다. 피트니스 앱을 가정하면, 사용자가 운동 기록을 7일 연속 중단한 시점을 트리거로 설정하고, 그 시점에 개인화된 복귀 메시지를 발송하는 구조가 속성 기반 주간 발송보다 재참여율이 유의미하게 높게 나타나는 경향이 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">2. 리텐션 목표가 단일 지표로 정의되어 있다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"리텐션율을 높인다"는 목표는 실행 가능한 기준이 아니다. 리텐션은 단일 행동이 아니라 고객 여정의 여러 단계에서 발생하는 복합 현상이기 때문이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">리텐션을 단계별로 분해해야 하는 이유</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">리텐션 캠페인이 반복 실패하는 팀의 공통점은 리텐션을 하나의 숫자로 관리한다는 점이다. 실제로는 다음 세 가지 단계가 각각 다른 원인으로 이탈을 발생시킨다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">초기 이탈(가입 후 1~7일)</strong>: 온보딩 경험 부재, 핵심 기능 미경험</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">중기 이탈(30~90일)</strong>: 습관 형성 실패, 대안 서비스 탐색</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">후기 이탈(6개월 이후)</strong>: 가치 인식 저하, 가격 민감도 상승</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 단계에 동일한 캠페인 로직을 적용하면 어느 단계에서도 효과를 내기 어렵다. 교육 플랫폼을 예로 들면, 초기 이탈 방어에는 첫 번째 강의 완료를 유도하는 넛지가 작동하지만, 후기 이탈 방어에는 수료 후 다음 목표를 제시하는 성취 기반 메시지가 더 적합하다. 단계 구분 없이 동일한 "다시 돌아오세요" 메시지를 발송하면, 두 그룹 모두에서 반응률이 낮게 나올 수밖에 없다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">캠페인 목표를 설정할 때는 "전체 리텐션율" 대신 "초기 7일 내 핵심 기능 1회 이상 사용 비율"처럼 단계별 행동 지표로 쪼개는 것이 선행되어야 한다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNHx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzgzOTAwODk3fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="CRM 리텐션 캠페인이 반복 실패하는 3가지 구조적 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">3. 캠페인 성과 측정이 발송 지표에 머물러 있다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">오픈율, 클릭률, 전환율. 대부분의 팀이 리텐션 캠페인의 성과를 이 세 가지로 측정한다. 그러나 이 지표들은 캠페인이 고객 행동을 실제로 변화시켰는지를 보여주지 않는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">발송 지표와 비즈니스 지표 사이의 간극</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">클릭률이 높아도 실제 서비스 재사용률이 오르지 않는 경우는 흔하다. 금융 서비스 앱을 가정하면, 이벤트 쿠폰 메시지의 클릭률은 높지만 쿠폰 사용 후 자연 재방문이 발생하지 않는다면, 해당 캠페인은 리텐션을 만들어낸 것이 아니라 일시적 방문을 구매한 것에 가깝다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">리텐션 캠페인의 성과 측정에는 최소한 다음 두 가지 기준이 추가되어야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫째, 캠페인 노출 후 30일 이내 자연 재방문 발생 여부. 이 수치가 낮다면 캠페인이 습관을 만들지 못하고 있다는 신호다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 대조군 대비 이탈률 차이. 캠페인을 받은 그룹과 받지 않은 그룹의 이탈률을 비교하지 않으면, 캠페인의 실제 기여도를 알 수 없다. 대조군 설계 없이 "캠페인 이후 리텐션이 올랐다"는 결론은 인과관계가 아닌 상관관계일 가능성이 높다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">헬스케어 SaaS 팀이 대조군을 도입한 이후, 기존에 효과적이라고 판단했던 캠페인 중 상당수가 실제로는 이탈률에 유의미한 영향을 주지 못했음을 확인하는 사례가 보고되고 있다. 측정 방식이 바뀌면 우선순위가 바뀐다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">구조를 바꾸지 않으면 실행을 개선해도 결과는 같다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세 가지 원인은 서로 독립적이지 않다. 속성 기반 세그먼트는 단일 지표 관리와 결합되고, 단일 지표 관리는 발송 중심 측정과 맞물린다. 하나만 바꾸는 것으로는 구조적 실패의 루프를 끊기 어렵다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">리텐션 캠페인을 재설계할 때는 세그먼트 기준, 단계별 목표 정의, 측정 프레임워크를 동시에 검토하는 것이 출발점이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 행동 기반 세그먼트를 구성하려면 어떤 데이터가 필요한가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">최소한 이벤트 로그 수준의 행동 데이터가 필요하다. 페이지 조회, 기능 사용, 이탈 시점 등의 이벤트를 수집하고 있다면 행동 트리거 세그먼트 구성이 가능하다. 별도의 고도화 없이도 "특정 기능 미사용 N일 경과"와 같은 단순 트리거부터 시작할 수 있다. 데이터 인프라가 부족한 경우에는 이벤트 수집 체계를 먼저 정비하는 것이 선행 과제다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 대조군 설계가 어려운 소규모 팀은 어떻게 리텐션 캠페인 성과를 측정해야 하는가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전체 대조군 설계가 어렵다면, 발송 시점을 기준으로 전후 비교를 활용할 수 있다. 캠페인 발송 전 30일과 발송 후 30일의 동일 세그먼트 행동 지표를 비교하는 방식이다. 완전한 인과관계 검증은 아니지만, 발송 지표만 보는 것보다 훨씬 실질적인 판단 기준이 된다. 팀 규모가 커지면 점진적으로 A/B 홀드아웃 테스트 구조로 전환하는 것이 적절하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. CRM 리텐션 캠페인 실패가 반복될 때 가장 먼저 점검해야 할 것은 무엇인가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트 정의를 먼저 확인한다. 현재 세그먼트가 고객의 현재 상태를 반영하는지, 아니면 과거 속성만을 기반으로 하는지를 점검하는 것이 가장 빠른 진단 방법이다. 세그먼트가 고객의 실시간 의도와 무관하게 구성되어 있다면, 메시지 품질이나 채널을 아무리 개선해도 근본적인 반응률 변화를 기대하기 어렵다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 행동 기반 세그먼트를 실제로 설계하는 단계별 프레임워크와, 업종별 트리거 이벤트 설정 기준을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-155&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-155',cta_type:'retous_main',category:'CRM & 그로스'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
