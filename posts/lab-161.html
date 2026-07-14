@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>마케팅 자동화 시퀀스가 중간에 멈추는 진짜 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="마케팅 자동화 시퀀스가 중간에 멈추는 원인은 툴이 아니라 설계 논리에 있다. 트리거 조건, 전환 메시지 위치, 세그먼트 분기 오류를 진단하고 재설계하는 프레임워크를 정리했다.">
+<meta property="og:title" content="마케팅 자동화 시퀀스가 중간에 멈추는 진짜 원인"><meta property="og:description" content="마케팅 자동화 시퀀스가 중간에 멈추는 원인은 툴이 아니라 설계 논리에 있다. 트리거 조건, 전환 메시지 위치, 세그먼트 분기 오류를 진단하고 재설계하는 프레임워크를 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-161.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-161.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"마케팅 자동화 시퀀스가 중간에 멈추는 진짜 원인","description":"마케팅 자동화 시퀀스가 중간에 멈추는 원인은 툴이 아니라 설계 논리에 있다. 트리거 조건, 전환 메시지 위치, 세그먼트 분기 오류를 진단하고 재설계하는 프레임워크를 정리했다.","image":"https://images.pexels.com/photos/30879395/pexels-photo-30879395.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-161.html"},"datePublished":"2026-07-14","dateModified":"2026-07-14"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"시퀀스 단계 수는 몇 개가 적당한가","acceptedAnswer":{"@type":"Answer","text":"정해진 기준은 없다. 다만 5단계 이하로 시작해 실제 완료율 데이터를 확인한 뒤 단계를 추가하는 방식이 안전하다. 단계가 많을수록 트리거 조건 오류가 누적되어 관리가 복잡해진다."}},{"@type":"Question","name":"오픈율은 높은데 클릭률이 낮은 경우 원인은 무엇인가","acceptedAnswer":{"@type":"Answer","text":"제목과 본문 사이의 기대 불일치가 주된 원인이다. 제목이 흥미를 유발했지만 본문의 내용이나 CTA가 수신자의 관심사와 맞지 않는 경우다. 본문 내 링크의 위치와 문구를 점검하고, 세그먼트별로 CTA 문구를 다르게 설정하는 방식으로 접근한다."}},{"@type":"Question","name":"AI를 활용해 시퀀스를 개선할 수 있는가","acceptedAnswer":{"@type":"Answer","text":"생성형 AI는 메시지 초안 작성, 세그먼트별 문구 변형, 이탈 지점 분석을 위한 데이터 해석 보조에 활용할 수 있다. 단, AI가 트리거 조건 설계나 세그먼트 기준 설정을 대신하지는 않는다. 설계 논리는 담당자가 직접 수립해야 한다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#3b1d8a;color:#c4b5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">자동화 & 워크플로우</span><span class="post-date">2026. 7. 14.</span></div>
+  <h1 class="post-title">마케팅 자동화 시퀀스가 중간에 멈추는 진짜 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/30879395/pexels-photo-30879395.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="마케팅 자동화 시퀀스가 중간에 멈추는 진짜 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 자동화 시퀀스를 구축했는데 특정 단계에서 반응이 뚝 끊긴다면, 그 원인은 툴의 오류가 아니라 설계 논리에 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">시퀀스가 멈추는 것처럼 보이는 이유</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 마케터는 자동화 시퀀스가 작동을 멈췄다고 느낄 때 가장 먼저 발송 툴을 의심한다. 오픈율 데이터를 뒤지거나, 스팸 필터 문제를 점검하거나, 발송 시간을 바꾼다. 그러나 실제 문제는 다른 곳에 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">시퀀스가 중간에 멈추는 현상은 크게 두 가지로 나뉜다. 첫째, 수신자가 메시지를 받았지만 반응하지 않는 경우. 둘째, 자동화 조건이 충족되지 않아 다음 단계로 넘어가지 않는 경우. 두 현상은 원인도 다르고 해결 방식도 다르다. 이 둘을 구분하지 않고 같은 방식으로 접근하면 문제는 반복된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">설계 논리의 세 가지 구조적 결함</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">트리거 조건이 실제 행동과 어긋나 있다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 시퀀스는 트리거 조건에 따라 다음 단계가 실행된다. 문제는 이 트리거 조건이 수신자의 실제 행동 패턴과 맞지 않을 때 발생한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 B2B SaaS 기업이 무료 체험 신청자에게 5일 시퀀스를 설계했다고 가정하면, 3일차 이메일의 트리거를 '로그인 2회 이상'으로 설정한 경우가 있다. 그런데 실제 사용자의 약 60%가 체험 첫날만 접속하고 이후 며칠간 로그인하지 않는다면, 3일차 이후 시퀀스는 대다수 수신자에게 아예 발송되지 않는다. 시퀀스가 멈춘 것이 아니라, 처음부터 발송 대상이 없었던 것이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거 조건을 설정할 때는 실제 사용자 행동 데이터를 기준으로 삼아야 한다. 이상적인 행동이 아니라 평균적인 행동을 기준으로 설계해야 시퀀스가 끊기지 않는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">메시지 전환점이 수신자의 인지 단계와 맞지 않는다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">시퀀스 초반에 정보성 콘텐츠를 보내다가 갑자기 구매 유도 메시지로 전환하는 구조는 반응률을 급격히 낮춘다. 수신자 입장에서 보면 맥락 없는 압박으로 느껴지기 때문이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">헬스케어 B2C 브랜드가 건강 정보 뉴스레터 구독자에게 5단계 시퀀스를 운영한다고 가정하면, 1~3단계에서 수면, 식단, 운동 관련 콘텐츠를 발송하다가 4단계에서 바로 제품 구매 링크를 포함한 메시지를 보낸 경우, 4단계 클릭률이 1~3단계 대비 절반 이하로 떨어지는 경우가 흔하다. 이는 메시지 자체의 문제가 아니라 전환점의 위치 문제다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수신자는 정보를 충분히 소화한 뒤에야 다음 행동을 고려한다. 전환 메시지는 최소 두 단계의 신뢰 구축 이후에 배치하는 것이 원칙이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">세그먼트 없이 단일 시퀀스를 운영한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">단일 시퀀스를 모든 수신자에게 동일하게 발송하는 구조는 시퀀스 설계의 가장 흔한 오류다.</strong> 업종, 관심사, 유입 경로가 다른 수신자에게 동일한 메시지를 보내면 중반 이후 이탈이 집중된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개 플랫폼이 매수 관심자와 임대 관심자를 구분하지 않고 동일한 시퀀스를 운영한다고 가정하면, 3단계 이후 메시지의 내용이 한쪽 그룹에게는 전혀 관련 없는 정보가 된다. 이 시점부터 이탈이 급증한다. 최소한 유입 경로나 초기 행동을 기준으로 2~3개의 분기를 설계해야 시퀀스 전체가 살아있게 된다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1620287341401-e2945a4b9daa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxOXx8ZW1haWwlMjBhdXRvbWF0aW9uJTIwYW5hbHl0aWNzJTIwc2VnbWVudGF0aW9uJTIwZGFzaGJvYXJkfGVufDF8MHx8fDE3ODM5ODkzOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="마케팅 자동화 시퀀스가 중간에 멈추는 진짜 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">시퀀스 재설계를 위한 진단 프레임워크</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 이탈 지점 특정</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전체 시퀀스에서 각 단계별 완료율을 측정한다. 오픈율, 클릭률, 트리거 충족률을 단계별로 나란히 놓으면 어느 지점에서 흐름이 끊기는지 명확히 보인다. 완료율이 직전 단계 대비 40% 이상 하락하는 지점이 핵심 이탈 지점이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 트리거 조건 재검토</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이탈 지점의 트리거 조건이 실제 사용자 행동 데이터와 일치하는지 확인한다. 조건이 지나치게 이상적이라면 낮추거나 시간 기반 트리거로 대체한다. 행동 기반 트리거와 시간 기반 트리거를 병행 설정하면 누락을 줄일 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 전환 메시지 위치 조정</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">시퀀스 전체를 정보 제공 구간과 행동 유도 구간으로 구분한다. 정보 제공 구간이 전체의 최소 50% 이상을 차지해야 한다. 5단계 시퀀스라면 1~3단계는 정보, 4단계는 부드러운 전환, 5단계에서 직접 행동 유도로 배치한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">4단계: 세그먼트 분기 설계</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">유입 경로, 초기 행동, 관심사 태그 중 하나를 기준으로 최소 두 개의 분기를 만든다. 분기가 많아질수록 관리 부담이 커지므로, 초기에는 두 개 분기로 시작해 데이터를 쌓은 뒤 세분화한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">교육 플랫폼이 온라인 강의 무료 체험 신청자 대상으로 7단계 시퀀스를 운영한다고 가정하면, 4단계 이후 오픈율이 절반 이하로 떨어지는 문제를 겪는 경우가 많다. 진단 결과 트리거 조건이 '강의 3개 이상 수강'으로 설정되어 있었고, 실제 무료 체험자의 70% 이상이 강의 1~2개만 수강한 상태에서 이탈하는 패턴이 확인된다고 가정하면, 트리거를 시간 기반으로 전환하고 세그먼트를 수강 완료자와 미완료자로 분기한 뒤 각각 다른 메시지를 발송하는 방식으로 재설계할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">법률 서비스 기업이 법률 상담 신청자에게 4단계 시퀀스를 운영한다고 가정하면, 2단계에서 바로 유료 서비스 안내를 포함시킨 경우 이후 단계 오픈율이 현저히 낮아지는 패턴을 보인다고 가정할 수 있다. 2단계를 사례 중심 정보 콘텐츠로 교체하고 유료 안내를 3단계로 이동하면 전체 시퀀스 완료율이 개선되는 구조를 만들 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 사례 모두 툴을 바꾸거나 발송 빈도를 조정한 것이 아니라, 설계 논리를 수정한 것이 핵심이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 시퀀스 단계 수는 몇 개가 적당한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">정해진 기준은 없다. 다만 5단계 이하로 시작해 실제 완료율 데이터를 확인한 뒤 단계를 추가하는 방식이 안전하다. 단계가 많을수록 트리거 조건 오류가 누적되어 관리가 복잡해진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 오픈율은 높은데 클릭률이 낮은 경우 원인은 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">제목과 본문 사이의 기대 불일치가 주된 원인이다. 제목이 흥미를 유발했지만 본문의 내용이나 CTA가 수신자의 관심사와 맞지 않는 경우다. 본문 내 링크의 위치와 문구를 점검하고, 세그먼트별로 CTA 문구를 다르게 설정하는 방식으로 접근한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI를 활용해 시퀀스를 개선할 수 있는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 메시지 초안 작성, 세그먼트별 문구 변형, 이탈 지점 분석을 위한 데이터 해석 보조에 활용할 수 있다. 단, AI가 트리거 조건 설계나 세그먼트 기준 설정을 대신하지는 않는다. 설계 논리는 담당자가 직접 수립해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 세그먼트 분기 설계를 실제로 적용하는 방법과, 분기가 늘어날수록 발생하는 관리 복잡성을 줄이는 구체적인 접근 방식을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-161&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-161',cta_type:'flywheel_consult',category:'자동화 & 워크플로우'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
