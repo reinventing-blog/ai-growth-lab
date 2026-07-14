@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>왜 CRM 세그먼트는 정교해질수록 실행 가능한 액션이 사라지는가 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="CRM 세그먼트가 정교해질수록 실행이 사라지는 이유와 구조적 원인을 분석하고, 행동 기반 세그먼트 설계 프레임워크와 헬스케어·SaaS·교육 업종 사례를 통해 실행 가능한 CRM 전략을 제시합니다.">
+<meta property="og:title" content="왜 CRM 세그먼트는 정교해질수록 실행 가능한 액션이 사라지는가"><meta property="og:description" content="CRM 세그먼트가 정교해질수록 실행이 사라지는 이유와 구조적 원인을 분석하고, 행동 기반 세그먼트 설계 프레임워크와 헬스케어·SaaS·교육 업종 사례를 통해 실행 가능한 CRM 전략을 제시합니다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-159.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-159.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"왜 CRM 세그먼트는 정교해질수록 실행 가능한 액션이 사라지는가","description":"CRM 세그먼트가 정교해질수록 실행이 사라지는 이유와 구조적 원인을 분석하고, 행동 기반 세그먼트 설계 프레임워크와 헬스케어·SaaS·교육 업종 사례를 통해 실행 가능한 CRM 전략을 제시합니다.","image":"https://images.pexels.com/photos/7688102/pexels-photo-7688102.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-159.html"},"datePublished":"2026-07-14","dateModified":"2026-07-14"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"세그먼트 수는 몇 개가 적당한가","acceptedAnswer":{"@type":"Answer","text":"정해진 정답은 없지만, 팀이 독립적으로 메시지를 설계하고 성과를 추적할 수 있는 수가 기준이 된다. 마케터 1인이 운영하는 경우 3~5개, 전담 팀이 있는 경우 10~15개가 현실적인 상한선으로 작동하는 경우가 많다. 세그먼트 수보다 각 세그먼트에 연결된 액션의 명확성이 더 중요한 판단 기준이다."}},{"@type":"Question","name":"행동 기반 세그먼트와 속성 기반 세그먼트를 함께 써야 하는가","acceptedAnswer":{"@type":"Answer","text":"두 방식은 배타적이지 않다. 속성 기반 분류는 초기 타깃 풀을 좁히는 데 유용하고, 행동 기반 트리거는 실제 발송 시점과 메시지 내용을 결정하는 데 강점이 있다. 실무에서는 속성으로 큰 그룹을 나누고, 행동 신호로 실행 타이밍을 결정하는 방식이 두 접근법의 장점을 모두 활용하는 구조다."}},{"@type":"Question","name":"AI나 자동화 도구를 쓰면 세그먼트 실행 문제가 해결되는가","acceptedAnswer":{"@type":"Answer","text":"도구가 실행 역량을 확장하는 것은 사실이지만, 세그먼트 설계 원칙이 잘못된 상태에서 자동화를 적용하면 잘못된 메시지를 더 빠르게 발송하는 결과를 낳는다. 생성형 AI는 메시지 초안 생성이나 세그먼트 조건 정의를 보조할 수 있지만, 어떤 행동 신호를 기준으로 삼을지, 어떤 액션을 연결할지는 여전히 사람이 결정해야 하는 영역이다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#065f46;color:#6ee7b7;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">CRM & 그로스</span><span class="post-date">2026. 7. 14.</span></div>
+  <h1 class="post-title">왜 CRM 세그먼트는 정교해질수록 실행 가능한 액션이 사라지는가</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/7688102/pexels-photo-7688102.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="왜 CRM 세그먼트는 정교해질수록 실행 가능한 액션이 사라지는가" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">CRM 세그먼트 실행의 역설은 현장에서 반복적으로 목격된다. 세그먼트를 정밀하게 쪼갤수록 마케터는 더 많은 통제권을 가졌다고 느끼지만, 실제로 발송되는 캠페인 수는 줄어든다. 이 글은 그 구조적 원인을 짚고, 실행 가능성을 유지하면서 세분화 수준을 높이는 접근법을 제시한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">세분화의 함정: 정밀도가 실행을 잠식하는 구조</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트를 구성하는 변수가 늘어날수록 각 그룹의 모수는 기하급수적으로 줄어든다. 성별, 구매 빈도, 최근 방문일, 선호 카테고리, 지역을 동시에 적용하면 이론상 수백 개의 조합이 생긴다. 가령 5개 변수를 각 3단계로 나누면 최대 243개의 세그먼트가 발생한다고 가정할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">문제는 그 다음 단계다. 243개 세그먼트에 각각 다른 메시지를 설계하고, 발송 시점을 조율하고, 성과를 추적하는 작업은 대부분의 팀 규모에서 현실적으로 감당되지 않는다. 결국 팀은 "나중에 하자"는 판단 아래 세그먼트를 방치하거나, 정교하게 나눈 그룹을 다시 뭉쳐 단일 메시지를 발송한다. 세분화에 투입한 분석 비용이 실행 단계에서 회수되지 못하는 구조다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 현상을 <strong style="color:#f1f5f9;font-weight:700;">세분화 과잉(Over-segmentation)</strong>이라 부른다. 정밀함 자체가 문제가 아니라, 실행 역량과 분리된 정밀함이 문제다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">인사이트: 세그먼트는 '분류 체계'가 아니라 '의사결정 단위'여야 한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트를 설계할 때 팀 대부분은 "이 고객들은 누구인가"라는 질문에서 출발한다. 그러나 실행 가능한 세그먼트는 "이 고객들에게 지금 무엇을 다르게 할 것인가"라는 질문에서 시작된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 질문의 차이는 단순해 보이지만 산출물이 완전히 다르다. 전자는 속성 기반 분류를 낳고, 후자는 액션 기반 분류를 낳는다. 속성 기반 세그먼트는 분석 보고서에는 유용하지만, 캠페인 실행 단계에서 "그래서 이 그룹에게 뭘 보내야 하지?"라는 질문을 다시 유발한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">의사결정 단위로서의 세그먼트는 세 가지 조건을 충족해야 한다. 첫째, 해당 세그먼트에 적용할 액션이 다른 세그먼트와 실질적으로 달라야 한다. 둘째, 그 차이를 실행할 리소스가 현재 팀에 존재해야 한다. 셋째, 성과를 측정할 기준이 세그먼트 설계 단계에서 이미 정의되어 있어야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프레임워크: 실행 가능한 세그먼트를 설계하는 3단계</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 액션 인벤토리를 먼저 정의한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트를 나누기 전에, 팀이 실제로 실행할 수 있는 액션의 종류와 수를 먼저 목록화한다. 예를 들어 월 캠페인 운영 여력이 8회라면, 세그먼트 수는 8개를 초과할 수 없다. 이 제약을 명시하면 분석 단계에서 불필요한 세분화를 사전에 차단할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 행동 기반 트리거로 세그먼트를 재정의한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">인구통계 속성보다 행동 신호를 우선한다. 구독 서비스 업종을 예로 들면, "30대 여성 서울 거주자"보다 "3개월 연속 로그인 없이 결제가 유지되는 사용자"가 더 명확한 액션(이탈 방지 캠페인)을 유도한다. 금융 업종에서는 "최근 60일 내 대출 상담 페이지를 2회 이상 방문했으나 신청을 완료하지 않은 고객"이 속성 기반 분류보다 훨씬 직접적인 실행 기준이 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 세그먼트를 계층화한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">모든 세그먼트를 동일한 정밀도로 운영하지 않는다. 매출 기여도나 전환 가능성이 높은 상위 세그먼트에는 개인화 메시지를 적용하고, 중간 세그먼트에는 반자동화된 템플릿을, 하위 세그먼트에는 단일 브로드캐스트를 적용하는 계층 구조가 현실적이다. 정밀도를 포기하는 것이 아니라, 정밀도를 집중시키는 방식이다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1651130538613-87cae736ded5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMnx8bWFya2V0aW5nJTIwYXV0b21hdGlvbiUyMHdvcmtmbG93JTIwcGlwZWxpbmUlMjBsYXB0b3B8ZW58MXwwfHx8MTc4Mzk4NzI5NHww&ixlib=rb-4.1.0&q=80&w=1080" alt="왜 CRM 세그먼트는 정교해질수록 실행 가능한 액션이 사라지는가" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">사례: 업종별 세그먼트 재설계 시나리오</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">헬스케어 클리닉 사례 (가정)</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">한 피부과 네트워크가 고객을 시술 유형, 방문 주기, 거주 지역, 연령대, 피부 타입으로 세분화했다고 가정하면, 수십 개의 세그먼트가 생성되지만 실제 발송된 캠페인은 월평균 2건에 그쳤을 것이다. 세그먼트를 "재방문 예정일이 30일 이내인 고객"과 "90일 이상 미방문 고객"으로 단순화하고, 각각에 리마인더와 재활성화 오퍼를 연결했을 때 실행 빈도가 월 6건으로 늘어났다는 시나리오는 충분히 현실적이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">B2B SaaS 사례 (가정)</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">한 프로젝트 관리 툴 기업이 고객사를 업종, 규모, 사용 기능, 계약 기간, 담당자 직급으로 교차 분류했다고 가정하면, 세그먼트 수는 수백 개에 달하지만 CS팀이 실제로 개입할 수 있는 케이스는 제한적이었을 것이다. "최근 14일간 핵심 기능 사용률이 전월 대비 40% 이상 감소한 계정"이라는 단일 행동 기준으로 재정의했을 때, 팀이 즉시 액션을 취할 수 있는 대상이 명확해진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">교육 플랫폼 사례 (가정)</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">온라인 강의 플랫폼이 수강생을 학습 목적, 연령, 직군, 수강 이력, 결제 금액대로 분류했다고 가정하면, 콘텐츠 추천 메시지의 개인화 수준은 높아지지만 발송 주기가 불규칙해지고 A/B 테스트 모수가 부족해지는 문제가 발생했을 것이다. "강의 시작 후 7일 내 진도율 20% 미만" 트리거 하나로 세그먼트를 압축하면, 이탈 방지 시퀀스를 안정적으로 운영할 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">세그먼트 수를 줄이는 것이 목표가 아니다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실행 가능한 CRM 세그먼트 실행의 핵심은 세분화를 포기하는 것이 아니다. 세분화의 기준을 속성에서 행동으로, 분류에서 의사결정으로 전환하는 것이다. 정밀한 세그먼트가 실행을 방해하는 것이 아니라, 실행과 연결되지 않은 세그먼트가 조직의 실행력을 소진시킨다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 행동 기반 세그먼트를 자동화 워크플로우와 연결하는 구체적인 설계 방법을 다룬다. 트리거 조건 정의부터 메시지 분기 로직까지, 실무에서 바로 적용할 수 있는 구조를 제시할 예정이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 세그먼트 수는 몇 개가 적당한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">정해진 정답은 없지만, 팀이 독립적으로 메시지를 설계하고 성과를 추적할 수 있는 수가 기준이 된다. 마케터 1인이 운영하는 경우 3~5개, 전담 팀이 있는 경우 10~15개가 현실적인 상한선으로 작동하는 경우가 많다. 세그먼트 수보다 각 세그먼트에 연결된 액션의 명확성이 더 중요한 판단 기준이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 행동 기반 세그먼트와 속성 기반 세그먼트를 함께 써야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 방식은 배타적이지 않다. 속성 기반 분류는 초기 타깃 풀을 좁히는 데 유용하고, 행동 기반 트리거는 실제 발송 시점과 메시지 내용을 결정하는 데 강점이 있다. 실무에서는 속성으로 큰 그룹을 나누고, 행동 신호로 실행 타이밍을 결정하는 방식이 두 접근법의 장점을 모두 활용하는 구조다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI나 자동화 도구를 쓰면 세그먼트 실행 문제가 해결되는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">도구가 실행 역량을 확장하는 것은 사실이지만, 세그먼트 설계 원칙이 잘못된 상태에서 자동화를 적용하면 잘못된 메시지를 더 빠르게 발송하는 결과를 낳는다. 생성형 AI는 메시지 초안 생성이나 세그먼트 조건 정의를 보조할 수 있지만, 어떤 행동 신호를 기준으로 삼을지, 어떤 액션을 연결할지는 여전히 사람이 결정해야 하는 영역이다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-159&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-159',cta_type:'retous_main',category:'CRM & 그로스'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
