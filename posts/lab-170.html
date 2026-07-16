@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 프롬프트 설계 유형 4가지와 콘텐츠 상황별 적용 기준 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 프롬프트 설계 유형 4가지(역할 기반, 구조 지정, 제약 조건, 체인)를 콘텐츠 상황별 적용 기준과 함께 정리했다. 업종별 사례와 선택 기준 포함.">
+<meta property="og:title" content="AI 프롬프트 설계 유형 4가지와 콘텐츠 상황별 적용 기준"><meta property="og:description" content="AI 프롬프트 설계 유형 4가지(역할 기반, 구조 지정, 제약 조건, 체인)를 콘텐츠 상황별 적용 기준과 함께 정리했다. 업종별 사례와 선택 기준 포함.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-170.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-170.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 프롬프트 설계 유형 4가지와 콘텐츠 상황별 적용 기준","description":"AI 프롬프트 설계 유형 4가지(역할 기반, 구조 지정, 제약 조건, 체인)를 콘텐츠 상황별 적용 기준과 함께 정리했다. 업종별 사례와 선택 기준 포함.","image":"https://images.unsplash.com/photo-1770681381576-fe1ca0178da1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyN3x8QUklMjBwcm9tcHQlMjB3b3JrZmxvdyUyMGxhcHRvcCUyMGRlc2t8ZW58MXwwfHx8MTc4NDE2MjQ0OXww&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-170.html"},"datePublished":"2026-07-16","dateModified":"2026-07-16"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"처음 프롬프트를 설계할 때 어떤 유형부터 시작해야 하는가?","acceptedAnswer":{"@type":"Answer","text":"구조 지정 프롬프트를 먼저 익히는 것이 현실적이다. 형식 조건을 명시하는 것은 비교적 직관적이고, 결과물의 변화가 즉시 눈에 보인다. 역할 기반이나 체인 프롬프트는 구조 설계에 익숙해진 이후 단계적으로 적용하는 것이 학습 곡선을 줄이는 방법이다."}},{"@type":"Question","name":"하나의 프롬프트에 여러 유형을 동시에 적용할 수 있는가?","acceptedAnswer":{"@type":"Answer","text":"가능하지만 두 가지 유형을 초과하면 출력 품질이 오히려 저하되는 경우가 많다. AI는 조건이 많아질수록 우선순위를 임의로 판단한다. 역할 기반과 구조 지정, 또는 제약 조건과 체인처럼 목적이 보완적인 조합을 선택하고, 조건 간 충돌이 없는지 사전에 점검해야 한다."}},{"@type":"Question","name":"동일한 유형의 프롬프트라도 업종마다 설계 방식이 달라지는가?","acceptedAnswer":{"@type":"Answer","text":"달라진다. 같은 역할 기반 프롬프트라도 법률 서비스업에서는 \"리스크 중심의 객관적 서술\"을 강조하고, 인테리어 업종에서는 \"감각적 묘사와 공간 경험 중심의 언어\"를 설정하는 방식으로 역할 정의 자체가 달라진다. 유형은 틀이고, 그 안의 내용은 업종과 독자에 맞게 재설계해야 한다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 7. 16.</span></div>
+  <h1 class="post-title">AI 프롬프트 설계 유형 4가지와 콘텐츠 상황별 적용 기준</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1770681381576-fe1ca0178da1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyN3x8QUklMjBwcm9tcHQlMjB3b3JrZmxvdyUyMGxhcHRvcCUyMGRlc2t8ZW58MXwwfHx8MTc4NDE2MjQ0OXww&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 설계 유형 4가지와 콘텐츠 상황별 적용 기준" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI를 활용한 콘텐츠 제작에서 결과물의 질을 가르는 핵심 변수는 도구가 아니라 AI 프롬프트 설계 유형의 선택이다. 같은 주제라도 어떤 유형의 프롬프트를 쓰느냐에 따라 산출물의 깊이, 톤, 구조가 완전히 달라진다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프롬프트 설계를 유형화해야 하는 이유</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 실무자는 프롬프트를 단순한 명령문으로 취급한다. "블로그 글 써줘", "요약해줘" 같은 방식이다. 이 접근법의 문제는 AI가 맥락 없이 평균적인 출력을 생성한다는 점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">반면 프롬프트를 유형별로 구조화하면 AI는 특정 역할, 제약, 출력 형식을 명확히 인식한다. 결과적으로 수정 횟수가 줄고, 콘텐츠의 일관성이 높아진다. 유형 선택이 곧 편집 비용을 결정한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">4가지 AI 프롬프트 설계 유형</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">유형 1. 역할 기반 프롬프트 (Role-Based Prompt)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI에게 특정 전문가 페르소나를 부여하는 방식이다. "당신은 10년 경력의 B2B SaaS 마케터입니다"처럼 역할을 선제 설정한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">적합한 상황</strong>: 전문성이 요구되는 분야의 초안 작성, 특정 독자층을 겨냥한 설득형 콘텐츠.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">의료기기 제조사 사례를 가정하면, 역할 기반 프롬프트를 적용했을 때 병원 구매 담당자 대상 제안서 초안의 수정 횟수가 기존 대비 약 40% 감소했다고 추정할 수 있다. 전문 용어 선택과 논거 구성이 역할 설정만으로 달라지기 때문이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">유형 2. 구조 지정 프롬프트 (Structure-Defined Prompt)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">출력 형식과 섹션 구성을 프롬프트 안에 명시하는 방식이다. "H2 소제목 3개, 각 섹션 150자 이내, 결론에 액션 아이템 포함"처럼 형식 조건을 직접 기술한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">적합한 상황</strong>: 반복 생산이 필요한 콘텐츠, 다수의 작성자가 동일 포맷을 유지해야 하는 팀 환경.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">교육 플랫폼 운영사를 가정할 때, 강의 소개 페이지 100개를 구조 지정 프롬프트로 일괄 생성하면 편집 시간이 건당 평균 20분에서 5분 내외로 단축될 가능성이 있다. 구조가 고정되면 검토 기준도 명확해진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할 기반 프롬프트가 '누가 말하는가'를 설정한다면, 구조 지정 프롬프트는 '어떤 그릇에 담는가'를 설정한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">유형 3. 제약 조건 프롬프트 (Constraint-Based Prompt)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">금지 사항, 길이 제한, 어조 규칙 등 부정 조건을 중심으로 설계하는 방식이다. "전문 용어 사용 금지, 문장당 30자 이내, 수동태 사용 금지"처럼 하지 말아야 할 것을 명시한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">적합한 상황</strong>: 브랜드 보이스 준수가 엄격한 기업, 특정 독자층(어린이, 비전문가, 시니어)을 대상으로 한 콘텐츠.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">금융 서비스 기업 사례를 가정하면, 일반 고객 대상 안내문에 제약 조건 프롬프트를 적용했을 때 고객 문의 콜 건수가 약 15~20% 감소했다고 볼 수 있다. 복잡한 약관 내용을 쉬운 언어로 재구성했기 때문이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">유형 4. 체인 프롬프트 (Chain Prompt)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단일 프롬프트로 완성하지 않고, 여러 단계의 프롬프트를 순차적으로 연결하는 방식이다. 1단계에서 주제 리서치, 2단계에서 아웃라인 작성, 3단계에서 본문 생성, 4단계에서 SEO 검토를 각각 별도 프롬프트로 실행한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">적합한 상황</strong>: 심층 분석 리포트, 백서, 롱폼 콘텐츠처럼 단계별 품질 관리가 필요한 결과물.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 컨설팅 회사를 가정할 때, 시장 분석 보고서를 체인 프롬프트로 제작하면 단일 프롬프트 방식 대비 논리적 일관성이 높아지고, 내부 검토 단계에서 발견되는 오류 수가 절반 이하로 줄어들 가능성이 있다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNHx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzg0MTYyNDUxfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 설계 유형 4가지와 콘텐츠 상황별 적용 기준" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">유형 선택 기준: 콘텐츠 상황과 매핑</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">| 콘텐츠 상황 | 권장 유형 | 핵심 이유 |</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">|---|---|---|</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">| 전문가 관점 설득 콘텐츠 | 역할 기반 | 신뢰도와 어조 일관성 |</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">| 대량 반복 생산 | 구조 지정 | 포맷 표준화 |</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">| 브랜드 보이스 준수 | 제약 조건 | 오류 방지 |</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">| 심층 분석·롱폼 | 체인 | 단계별 품질 관리 |</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단일 콘텐츠에 두 가지 유형을 혼합하는 것도 가능하다. 예를 들어 역할 기반과 제약 조건을 결합하면 전문성과 가독성을 동시에 확보할 수 있다. 다만 유형을 무분별하게 조합하면 AI가 우선순위를 잘못 판단해 출력이 불안정해진다. 혼합 시에는 두 가지를 초과하지 않는 것이 기준이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 처음 프롬프트를 설계할 때 어떤 유형부터 시작해야 하는가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구조 지정 프롬프트를 먼저 익히는 것이 현실적이다. 형식 조건을 명시하는 것은 비교적 직관적이고, 결과물의 변화가 즉시 눈에 보인다. 역할 기반이나 체인 프롬프트는 구조 설계에 익숙해진 이후 단계적으로 적용하는 것이 학습 곡선을 줄이는 방법이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 하나의 프롬프트에 여러 유형을 동시에 적용할 수 있는가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가능하지만 두 가지 유형을 초과하면 출력 품질이 오히려 저하되는 경우가 많다. AI는 조건이 많아질수록 우선순위를 임의로 판단한다. 역할 기반과 구조 지정, 또는 제약 조건과 체인처럼 목적이 보완적인 조합을 선택하고, 조건 간 충돌이 없는지 사전에 점검해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 동일한 유형의 프롬프트라도 업종마다 설계 방식이 달라지는가?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">달라진다. 같은 역할 기반 프롬프트라도 법률 서비스업에서는 "리스크 중심의 객관적 서술"을 강조하고, 인테리어 업종에서는 "감각적 묘사와 공간 경험 중심의 언어"를 설정하는 방식으로 역할 정의 자체가 달라진다. 유형은 틀이고, 그 안의 내용은 업종과 독자에 맞게 재설계해야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계: 실전 프롬프트 템플릿으로 연결</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">4가지 유형을 이해했다면, 다음 과제는 각 유형별 실전 템플릿을 업종에 맞게 커스터마이징하는 것이다. 다음 글에서는 유형별 프롬프트 템플릿 예시와 수정 포인트를 구체적으로 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-170&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-170',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
