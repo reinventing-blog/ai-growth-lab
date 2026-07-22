@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 콘텐츠 생성 툴 비교할 때 반드시 봐야 할 기준 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 콘텐츠 생성 툴 비교 시 가격과 기능 목록만 보면 실패한다. 출력 일관성, 도메인 적합성, 워크플로 통합, 프롬프트 재사용 구조 4가지 기준으로 업종에 맞는 툴을 선택하는 방법을 정리했다.">
+<meta property="og:title" content="AI 콘텐츠 생성 툴 비교할 때 반드시 봐야 할 기준"><meta property="og:description" content="AI 콘텐츠 생성 툴 비교 시 가격과 기능 목록만 보면 실패한다. 출력 일관성, 도메인 적합성, 워크플로 통합, 프롬프트 재사용 구조 4가지 기준으로 업종에 맞는 툴을 선택하는 방법을 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-186.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-186.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 콘텐츠 생성 툴 비교할 때 반드시 봐야 할 기준","description":"AI 콘텐츠 생성 툴 비교 시 가격과 기능 목록만 보면 실패한다. 출력 일관성, 도메인 적합성, 워크플로 통합, 프롬프트 재사용 구조 4가지 기준으로 업종에 맞는 툴을 선택하는 방법을 정리했다.","image":"https://images.unsplash.com/photo-1617871490726-b699fe555f3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNHx8QUklMjBjb250ZW50JTIwd3JpdGluZyUyMGxhcHRvcCUyMHdvcmtzcGFjZXxlbnwxfDB8fHwxNzg0NjgwODU5fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-186.html"},"datePublished":"2026-07-22","dateModified":"2026-07-22"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"AI 콘텐츠 생성 툴 비교할 때 무료 플랜으로만 테스트해도 되는가","acceptedAnswer":{"@type":"Answer","text":"무료 플랜은 기능 제한이 있는 경우가 많아 실제 업무 환경을 재현하기 어렵다. 출력 횟수 제한, 고급 설정 비활성화, API 미지원 등의 조건이 붙는다. 최소 2주간 유료 트라이얼을 사용해 실제 업무 프롬프트로 테스트하는 것이 판단 오류를 줄인다."}},{"@type":"Question","name":"여러 툴을 병행해서 사용하는 방식은 현실적인가","acceptedAnswer":{"@type":"Answer","text":"가능하지만 관리 비용이 올라간다. 툴마다 프롬프트 방식이 다르고, 팀원이 각기 다른 툴을 쓰면 출력 품질의 편차가 커진다. 병행 사용이 유효한 경우는 용도가 명확히 분리될 때다. 예를 들어 장문 콘텐츠 초안용과 소셜 카피용을 구분해 운영하는 방식은 실용적이다."}},{"@type":"Question","name":"도메인 특화 출력이 부족한 툴을 보완하는 방법이 있는가","acceptedAnswer":{"@type":"Answer","text":"시스템 프롬프트 또는 사전 지시문에 산업 용어 사전, 금지 표현 목록, 톤 가이드를 포함시키는 방식으로 일정 부분 보완할 수 있다. 단, 이 방식은 매 세션마다 설정을 반복해야 하는 구조적 한계가 있다. 장기 운영을 전제로 한다면 커스텀 지식베이스 연결 기능을 갖춘 툴로 전환하는 것이 더 나은 선택이다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 7. 22.</span></div>
+  <h1 class="post-title">AI 콘텐츠 생성 툴 비교할 때 반드시 봐야 할 기준</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1617871490726-b699fe555f3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNHx8QUklMjBjb250ZW50JTIwd3JpdGluZyUyMGxhcHRvcCUyMHdvcmtzcGFjZXxlbnwxfDB8fHwxNzg0NjgwODU5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 콘텐츠 생성 툴 비교할 때 반드시 봐야 할 기준" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 콘텐츠 생성 툴 비교는 단순히 기능 목록을 나열하는 작업이 아니다. 어떤 툴이 내 비즈니스 맥락에서 실질적인 산출물을 만들어낼 수 있는지를 판단하는 일이다. 시장에 선택지가 넘쳐날수록 기준 없는 비교는 오히려 의사결정을 늦춘다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">1. 문제 정의: 왜 툴 선택에서 실패하는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 팀이 AI 툴을 도입한 뒤 3개월 안에 사용을 중단한다. 이유는 대부분 동일하다. 도입 전에 "무엇을 만들 것인가"보다 "어떤 툴이 유명한가"를 먼저 봤기 때문이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">콘텐츠 생성 목적은 업종마다 다르다. 법률 서비스 회사는 신뢰도 높은 긴 형식의 글이 필요하고, 패션 브랜드는 짧고 감각적인 제품 설명이 우선이다. B2B SaaS 기업은 기술 문서와 케이스 스터디가 핵심이고, 로컬 음식점 체인은 지역 맞춤형 프로모션 문구가 더 긴요하다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 차이를 무시하고 툴을 고르면, 기능은 풍부하지만 실제 업무에는 맞지 않는 결과를 반복해서 받게 된다. 결국 사람이 전부 재작성하는 구조가 고착된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">2. 인사이트: 비교 기준이 잘못 설정된 이유</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 비교 콘텐츠는 출력 속도, 언어 지원 수, 플랜 가격을 중심으로 구성된다. 이 세 가지는 구매 결정의 기준이 아니라 필터링의 기준이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실제로 팀의 생산성에 영향을 주는 변수는 따로 있다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">프롬프트 재작성 없이 원하는 톤을 유지하는가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">산업 특화 어휘를 기본 출력에서 사용하는가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">팀 전체가 동일한 출력 품질을 유지할 수 있는가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">기존 CMS, 마케팅 자동화 도구와 연결되는가</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 네 가지 중 두 가지 이상 충족하지 못하면, 가격이 낮아도 총비용은 올라간다. 수정과 재생성에 쓰이는 시간이 비용이기 때문이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">3. 프레임워크: 툴 비교를 위한 4축 평가 구조</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3-1. 출력 품질의 일관성</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단발성 테스트에서 좋은 결과를 내는 툴과, 반복 사용에서도 동일한 품질을 유지하는 툴은 다르다. 평가 시에는 같은 프롬프트를 최소 5회 실행해 결과의 편차를 직접 측정한다. 편차가 크다면 팀 전체가 사용하는 환경에서 품질 통제가 어렵다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3-2. 도메인 적합성</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI가 특정 산업 언어를 얼마나 자연스럽게 반영하는지를 확인한다. 의료 정보 플랫폼이라면 전문 용어의 정확성과 면책 문구 처리 방식을 본다. 부동산 서비스라면 지역명, 법적 표현, 시세 관련 표현의 처리 방식을 테스트한다. 범용 출력이 아닌 도메인 출력을 기준으로 삼아야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3-3. 워크플로 통합 가능성</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">툴이 독립적으로만 작동한다면 팀의 실제 업무 흐름에 삽입되기 어렵다. API 제공 여부, 웹훅 지원, 기존 협업 툴과의 연동 수준을 확인한다. 예를 들어 콘텐츠 캘린더와 연동되지 않는 툴은 결국 별도 복사-붙여넣기 단계를 만들고, 이 단계가 병목이 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3-4. 프롬프트 재사용 구조</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">팀 단위로 프롬프트를 저장하고 공유할 수 있는 구조</strong>가 있는지를 확인한다. 개인이 각자 프롬프트를 보유하면 출력 품질이 사람마다 달라진다. 프롬프트 라이브러리 기능이 있는 툴은 온보딩 시간을 줄이고 출력 표준화를 가능하게 한다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzg0NjgwODYxfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 콘텐츠 생성 툴 비교할 때 반드시 봐야 할 기준" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">4. 사례: 업종별 적용 시나리오</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">법률 플랫폼의 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">법률 콘텐츠를 다루는 플랫폼이 AI 툴을 도입한다고 가정할 때, 가장 먼저 검토해야 할 것은 출력 문장의 단정성 수준이다. 생성형 AI가 법적 판단처럼 읽히는 문장을 자동 생성하면 리스크가 생긴다. 이 경우 출력 후 편집 단계를 줄이는 것보다, 초안의 톤을 정보 제공형으로 고정할 수 있는 설정 기능이 더 중요한 선택 기준이 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">교육 콘텐츠 스타트업의 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">온라인 강의 플랫폼이 강의 설명, 학습 목표, 이메일 시퀀스를 AI로 생성한다고 가정하면, 분량 조절과 난이도 표현의 일관성이 핵심 기준이 된다. 같은 주제를 입문자용과 실무자용으로 나눠 출력할 수 있는지를 테스트하는 것이 실질적인 비교 방법이다. 가령 동일 툴에서 두 버전의 어휘 수준 차이가 명확하게 나타난다면, 그 툴은 교육 콘텐츠 파이프라인에 적합하다고 볼 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">제조업 B2B 기업의 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">산업용 장비 제조사가 기술 사양서와 영업 제안서를 AI로 초안 작성한다고 가정하면, 수치와 단위 표현의 정확성, 업계 표준 용어 반영 여부가 우선 기준이 된다. 이 경우 툴의 언어 모델 자체보다 커스텀 지식베이스 연결 기능이 있는지가 선택을 가른다. 사내 제품 데이터베이스를 참조해 출력할 수 있다면, 수정 사이클이 가정 기준으로 50% 이상 줄어들 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">5. CTA 예고: 다음 단계에서 다룰 내용</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">툴 선택 기준을 정했다면, 그다음 과제는 선택한 툴을 팀 전체의 콘텐츠 파이프라인에 실제로 연결하는 방법이다. 다음 글에서는 AI 콘텐츠 생성 툴을 도입한 뒤 초기 30일 안에 워크플로를 안정화하는 구체적인 절차를 다룬다. 도입 후 실패율을 낮추는 온보딩 설계와 프롬프트 표준화 방법이 포함된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI 콘텐츠 생성 툴 비교할 때 무료 플랜으로만 테스트해도 되는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">무료 플랜은 기능 제한이 있는 경우가 많아 실제 업무 환경을 재현하기 어렵다. 출력 횟수 제한, 고급 설정 비활성화, API 미지원 등의 조건이 붙는다. 최소 2주간 유료 트라이얼을 사용해 실제 업무 프롬프트로 테스트하는 것이 판단 오류를 줄인다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 여러 툴을 병행해서 사용하는 방식은 현실적인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가능하지만 관리 비용이 올라간다. 툴마다 프롬프트 방식이 다르고, 팀원이 각기 다른 툴을 쓰면 출력 품질의 편차가 커진다. 병행 사용이 유효한 경우는 용도가 명확히 분리될 때다. 예를 들어 장문 콘텐츠 초안용과 소셜 카피용을 구분해 운영하는 방식은 실용적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 도메인 특화 출력이 부족한 툴을 보완하는 방법이 있는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">시스템 프롬프트 또는 사전 지시문에 산업 용어 사전, 금지 표현 목록, 톤 가이드를 포함시키는 방식으로 일정 부분 보완할 수 있다. 단, 이 방식은 매 세션마다 설정을 반복해야 하는 구조적 한계가 있다. 장기 운영을 전제로 한다면 커스텀 지식베이스 연결 기능을 갖춘 툴로 전환하는 것이 더 나은 선택이다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-186&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-186',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
