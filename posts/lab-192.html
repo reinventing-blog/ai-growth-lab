@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>마케팅 자동화 성과가 매출로 연결되지 않는 진짜 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="마케팅 자동화 성과가 매출로 연결되지 않는 원인은 툴이 아니라 설계에 있다. 세그먼트 부재, 잘못된 지표, 핸드오프 로직 누락 등 실무 관점에서 핵심 원인과 3단계 점검 프레임워크를 제시한다.">
+<meta property="og:title" content="마케팅 자동화 성과가 매출로 연결되지 않는 진짜 원인"><meta property="og:description" content="마케팅 자동화 성과가 매출로 연결되지 않는 원인은 툴이 아니라 설계에 있다. 세그먼트 부재, 잘못된 지표, 핸드오프 로직 누락 등 실무 관점에서 핵심 원인과 3단계 점검 프레임워크를 제시한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-192.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-192.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"마케팅 자동화 성과가 매출로 연결되지 않는 진짜 원인","description":"마케팅 자동화 성과가 매출로 연결되지 않는 원인은 툴이 아니라 설계에 있다. 세그먼트 부재, 잘못된 지표, 핸드오프 로직 누락 등 실무 관점에서 핵심 원인과 3단계 점검 프레임워크를 제시한다.","image":"https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzg0ODUyMTY5fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-192.html"},"datePublished":"2026-07-24","dateModified":"2026-07-24"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"자동화 툴을 이미 도입했는데 성과가 없다면 툴을 바꿔야 하나요?","acceptedAnswer":{"@type":"Answer","text":"툴 교체는 마지막 선택지다. 대부분의 경우 문제는 툴의 기능 한계가 아니라 세그먼트 설계와 측정 지표 구조에 있다. 현재 툴에서 행동 기반 트리거와 전환 추적이 가능한지 먼저 점검하고, 설정을 재구성하는 것이 선행되어야 한다."}},{"@type":"Question","name":"생성형 AI를 자동화에 활용하면 성과가 달라지나요?","acceptedAnswer":{"@type":"Answer","text":"생성형 AI는 메시지 개인화와 콘텐츠 변형 속도를 높이는 데 실질적인 역할을 한다. 그러나 세그먼트 설계와 핸드오프 로직이 없는 상태에서 AI로 생성한 메시지를 자동 발송하면 개인화된 스팸이 될 뿐이다. AI 도입 전에 자동화 구조 자체를 점검해야 한다."}},{"@type":"Question","name":"마케팅 자동화 성과를 측정할 때 어떤 지표를 기준으로 삼아야 하나요?","acceptedAnswer":{"@type":"Answer","text":"업종마다 다르지만 공통 원칙은 하나다. 자동화 시퀀스별로 최종 전환 이벤트(결제, 계약 체결, 상담 신청 완료)에 기여한 건수와 금액을 추적해야 한다. 오픈율과 클릭률은 메시지 품질을 진단하는 보조 지표로만 활용하고, 성과 판단 기준으로 삼지 않는다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#1e3a5f;color:#93c5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 7. 24.</span></div>
+  <h1 class="post-title">마케팅 자동화 성과가 매출로 연결되지 않는 진짜 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzg0ODUyMTY5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="마케팅 자동화 성과가 매출로 연결되지 않는 진짜 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 자동화를 도입한 기업 중 상당수가 비슷한 벽에 부딪힌다. 자동화 툴을 구축하고, 이메일 시퀀스를 설정하고, 광고 입찰을 자동화했는데도 마케팅 자동화 성과가 실제 매출 숫자로 나타나지 않는다. 문제는 도구가 아니라 자동화를 설계한 방식에 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">자동화는 실행을 빠르게 할 뿐, 전략을 대신하지 않는다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 팀이 자동화를 도입하면서 "이제 마케팅이 돌아간다"고 착각한다. 그러나 자동화는 기존에 하던 일을 더 빠르게 반복하는 도구다. 전략이 잘못된 상태에서 자동화를 붙이면 잘못된 방향으로 더 빠르게 달려갈 뿐이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실제로 자동화 도입 초기 3개월 내에 전환율 개선을 경험하지 못한 팀들을 살펴보면 공통점이 있다. 자동화 전에 수동으로도 성과를 낸 적 없는 프로세스를 그대로 자동화했다는 점이다. 이메일 오픈율이 낮았던 카피를 자동 발송으로 전환해도 결과는 같다. 클릭을 유도하지 못했던 랜딩 페이지에 트래픽을 자동으로 쏟아부어도 전환은 일어나지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 설계 전에 먼저 확인해야 할 기준은 하나다. 수동으로 10번 실행했을 때 최소 2~3번은 원하는 결과가 나오는가. 이 기준을 통과하지 못한 프로세스는 자동화 대상이 아니다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">세그먼트 없는 자동화는 스팸과 구조적으로 같다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화의 가장 흔한 실패 지점은 세분화 없는 일괄 발송이다. 고객 데이터를 갖고 있으면서도 동일한 메시지를 전체 리스트에 보내는 방식은 자동화가 아니라 자동화된 무관심이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">B2B SaaS 업종을 예로 들면, 무료 체험 신청자와 유료 플랜 이탈 고객은 전혀 다른 맥락에 있다. 전자에게는 제품 가치를 증명하는 온보딩 시퀀스가 필요하고, 후자에게는 이탈 원인을 파악하는 단기 접촉이 먼저다. 같은 뉴스레터를 두 그룹에 동시에 보내면 두 그룹 모두에서 반응을 잃는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개업 사례도 마찬가지다. 매물 탐색 초기 단계의 잠재 고객과 계약 직전 단계의 고객에게 동일한 매물 안내 메시지를 자동 발송하면, 초기 고객은 압박감을 느끼고 후기 고객은 정보가 부족하다고 판단한다. 세그먼트 기준을 행동 데이터 기반으로 최소 3단계 이상으로 나누는 것이 현실적인 출발점이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">자동화 성과를 측정하는 지표가 매출과 연결되지 않는다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 리포트를 열면 오픈율, 클릭률, 도달 수가 가득하다. 이 숫자들이 올라가면 팀은 성과가 나고 있다고 판단한다. 그러나 이 지표들은 매출과 직접 연결되지 않는 선행 지표다. <strong style="color:#f1f5f9;font-weight:700;">문제는 선행 지표를 최종 지표처럼 관리할 때 발생한다.</strong></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">측정 구조를 바꿔야 한다. 자동화 시퀀스마다 "이 시퀀스가 기여한 계약 건수" 또는 "이 캠페인을 경유한 고객의 평균 객단가"를 추적해야 한다. 오픈율 40%짜리 이메일 시퀀스가 매출 기여가 0에 가깝고, 오픈율 18%짜리 시퀀스가 전체 신규 계약의 30%를 만들어내는 상황은 실제로 발생한다고 가정할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">교육 서비스 업종에서는 이 격차가 특히 두드러진다. 콘텐츠 소비율이 높은 잠재 고객이 반드시 수강 신청으로 이어지지 않는다. 자동화 성과 측정 체계를 구축할 때는 최종 전환 이벤트(결제, 계약, 신청)로부터 역산해 각 자동화 터치포인트의 기여도를 설계해야 한다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1592495989226-03f88104f8cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwzfHxzYWxlcyUyMHJldmVudWUlMjBncm93dGglMjBkYXRhJTIwdmlzdWFsaXphdGlvbnxlbnwxfDB8fHwxNzg0ODUyMTcxfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="마케팅 자동화 성과가 매출로 연결되지 않는 진짜 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">자동화와 인간 개입의 경계를 설계하지 않으면 매출 기회를 잃는다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화가 모든 고객 여정을 처리할 수 있다는 전제는 틀렸다. 특히 고관여 구매 결정이 일어나는 구간에서는 자동화된 메시지가 오히려 전환을 막는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">법률 서비스, 의료 기기 영업, 기업 대상 컨설팅 업종은 공통적으로 구매 결정 직전에 신뢰 확인 단계가 존재한다. 이 구간에서 자동화된 팔로업 이메일이 계속 발송되면 고객은 관계가 아닌 시스템과 대화하고 있다고 느낀다. 전환율이 떨어지는 것은 당연한 결과다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 설계에서 반드시 포함해야 하는 요소가 있다. 특정 행동 신호(가격 페이지 3회 이상 방문, 제안서 다운로드 후 48시간 내 미응답 등)가 감지되면 자동화를 일시 중단하고 담당자에게 알림을 보내는 핸드오프 로직이다. 자동화의 역할은 고객을 전환시키는 것이 아니라 전환 준비가 된 고객을 사람에게 연결하는 것이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프레임워크: 자동화 성과를 매출로 전환하는 3단계 점검</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화가 매출로 연결되지 않는 팀은 대부분 아래 세 단계 중 하나 이상을 건너뛰었다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 자동화 전 수동 검증</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화할 프로세스를 먼저 수동으로 10회 실행한다. 전환이 2회 이상 발생하지 않으면 자동화 대상에서 제외한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 행동 기반 세그먼트 설계</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">인구통계 기반 세그먼트를 버리고 행동 데이터(방문 빈도, 콘텐츠 소비 패턴, 이탈 지점)를 기준으로 최소 3개 이상의 그룹을 구성한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 매출 역산 지표 설정</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">각 자동화 시퀀스에 최종 전환 기여 추적을 연결한다. 오픈율과 클릭률은 참고 지표로만 사용하고, 주요 성과 지표는 시퀀스별 매출 기여액으로 설정한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 자동화 툴을 이미 도입했는데 성과가 없다면 툴을 바꿔야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">툴 교체는 마지막 선택지다. 대부분의 경우 문제는 툴의 기능 한계가 아니라 세그먼트 설계와 측정 지표 구조에 있다. 현재 툴에서 행동 기반 트리거와 전환 추적이 가능한지 먼저 점검하고, 설정을 재구성하는 것이 선행되어야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 생성형 AI를 자동화에 활용하면 성과가 달라지나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 메시지 개인화와 콘텐츠 변형 속도를 높이는 데 실질적인 역할을 한다. 그러나 세그먼트 설계와 핸드오프 로직이 없는 상태에서 AI로 생성한 메시지를 자동 발송하면 개인화된 스팸이 될 뿐이다. AI 도입 전에 자동화 구조 자체를 점검해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 마케팅 자동화 성과를 측정할 때 어떤 지표를 기준으로 삼아야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">업종마다 다르지만 공통 원칙은 하나다. 자동화 시퀀스별로 최종 전환 이벤트(결제, 계약 체결, 상담 신청 완료)에 기여한 건수와 금액을 추적해야 한다. 오픈율과 클릭률은 메시지 품질을 진단하는 보조 지표로만 활용하고, 성과 판단 기준으로 삼지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 자동화 시퀀스를 업종별로 설계하는 구체적인 방법과, 핸드오프 로직을 실제로 구현하는 단계별 가이드를 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-192&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-192',cta_type:'flywheel_consult',category:'AI 실무 활용'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
