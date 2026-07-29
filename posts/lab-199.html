@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>그로스 실험 설계, 가설이 틀리면 데이터도 의미 없다 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="그로스 실험 설계에서 가설 품질이 성과를 결정한다. 인과 구조 가설 작성, 단일 지표 선언, 실험·분석 단위 일치, MDE 사전 정의 등 4가지 원칙과 업종별 적용 사례를 정리했다.">
+<meta property="og:title" content="그로스 실험 설계, 가설이 틀리면 데이터도 의미 없다"><meta property="og:description" content="그로스 실험 설계에서 가설 품질이 성과를 결정한다. 인과 구조 가설 작성, 단일 지표 선언, 실험·분석 단위 일치, MDE 사전 정의 등 4가지 원칙과 업종별 적용 사례를 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-199.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-199.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"그로스 실험 설계, 가설이 틀리면 데이터도 의미 없다","description":"그로스 실험 설계에서 가설 품질이 성과를 결정한다. 인과 구조 가설 작성, 단일 지표 선언, 실험·분석 단위 일치, MDE 사전 정의 등 4가지 원칙과 업종별 적용 사례를 정리했다.","image":"https://images.pexels.com/photos/38246349/pexels-photo-38246349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-199.html"},"datePublished":"2026-07-29","dateModified":"2026-07-29"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"가설 설계에 시간을 많이 쓰면 실험 속도가 느려지지 않나요?","acceptedAnswer":{"@type":"Answer","text":"가설 설계에 투자하는 시간은 실험 속도를 늦추는 것이 아니라 무의미한 반복 실험을 줄이는 역할을 한다. 잘못 설계된 실험은 결과가 나와도 다음 실험을 설계하는 데 기여하지 못한다. 실험 하나당 설계에 1~2시간을 추가로 쓰는 것이 결과 해석에서 며칠을 낭비하는 것보다 전체 사이클을 단축시킨다."}},{"@type":"Question","name":"소규모 팀에서 통계적 유의성을 확보할 트래픽이 부족하면 어떻게 해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"트래픽이 부족한 경우 두 가지 방향을 선택할 수 있다. 첫째, MDE 기준을 높여 더 큰 효과만 감지하는 실험으로 범위를 좁힌다. 둘째, 전체 퍼널이 아닌 특정 단계에 집중해 해당 단계의 트래픽을 실험에 집중시킨다. 모든 실험에 통계적 유의성이 필요한 것은 아니지만, 그 한계를 명시적으로 기록해두는 것이 학습 자산으로 남는다."}},{"@type":"Question","name":"그로스 실험 설계를 AI 도구로 자동화할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"생성형 AI는 가설 초안 작성, 지표 정의 검토, 실험 설계 문서 구조화에 활용할 수 있다. 그러나 메커니즘 정의와 MDE 설정은 비즈니스 맥락과 데이터 현황을 이해하는 사람이 판단해야 한다. AI는 설계 속도를 높이는 도구이지 설계 판단을 대체하는 수단이 아니다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#1e3a5f;color:#93c5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 7. 29.</span></div>
+  <h1 class="post-title">그로스 실험 설계, 가설이 틀리면 데이터도 의미 없다</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/38246349/pexels-photo-38246349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="그로스 실험 설계, 가설이 틀리면 데이터도 의미 없다" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">그로스 실험 설계에서 가장 많은 팀이 놓치는 지점은 실행 속도가 아니라 가설의 품질이다. 실험을 빠르게 돌렸는데 결과가 나와도 다음 행동을 결정하지 못한다면, 그 실험은 처음부터 잘못 설계된 것이다. 이 글은 가설 설계 단계에서 실험 성과를 구조적으로 높이는 4가지 원칙을 다룬다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 대부분의 그로스 실험은 학습을 남기지 못하는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실험 결과가 "유의미하지 않음"으로 끝나는 경우, 팀은 보통 샘플 수나 기간 탓을 한다. 그러나 실제 원인은 더 앞 단계에 있다. 가설이 검증 가능한 형태로 작성되지 않았거나, 측정 지표가 실험의 목적과 어긋나 있거나, 변수가 너무 많아 어떤 요소가 결과를 만들었는지 알 수 없는 구조로 설계된 경우가 대부분이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실험을 "무언가를 바꿔보는 행위"로 이해하는 팀과 "특정 메커니즘을 검증하는 행위"로 이해하는 팀은 같은 리소스를 써도 전혀 다른 학습 속도를 만들어낸다. 전자는 결과를 쌓고, 후자는 지식을 쌓는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">원칙 1. 가설은 인과 구조로 작성한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"버튼 색상을 바꾸면 클릭률이 오를 것이다"는 가설이 아니라 관찰이다. 진짜 가설은 왜 그 변화가 특정 결과를 만드는지 메커니즘을 포함해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">형식은 다음과 같다. "우리는 [대상]이 [조건]에서 [행동]을 할 때 [마찰/동기]가 존재한다고 믿는다. 따라서 [변화]를 적용하면 [지표]가 [방향]으로 움직일 것이다."</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 SaaS 온보딩 팀이라면 이렇게 쓸 수 있다. "신규 가입자는 첫 로그인 후 핵심 기능을 발견하기 전에 이탈한다. 따라서 온보딩 3단계에 기능 체험 트리거를 추가하면 7일 리텐션이 개선될 것이다." 이 구조는 실험이 실패했을 때도 어떤 가정이 틀렸는지 역추적할 수 있게 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">원칙 2. 지표는 실험 전에 단 하나만 지정한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실험을 설계할 때 "클릭률도 보고, 전환율도 보고, 체류 시간도 보자"는 접근은 분석의 유연성을 높이는 것처럼 보이지만, 실제로는 결과 해석을 사후에 유리한 방향으로 선택하는 구조를 만든다. 이를 p-hacking이라 부른다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">1차 지표(Primary Metric)는 실험 시작 전에 하나만 선언</strong>하고, 나머지는 보조 지표로 분리해 기록한다. 1차 지표가 개선되지 않았을 때 보조 지표의 긍정적 변화를 성공으로 재정의하는 것은 학습이 아니라 자기 합리화다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">핀테크 서비스에서 계좌 개설 전환 실험을 한다고 가정하면, 1차 지표는 "계좌 개설 완료율"이어야 한다. 중간 단계 클릭률은 보조 지표다. 만약 클릭률은 올랐는데 완료율은 그대로라면, 그것은 실험 실패이자 동시에 중요한 학습이다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzg1MjE3MTI2fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="그로스 실험 설계, 가설이 틀리면 데이터도 의미 없다" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">원칙 3. 실험 단위와 분석 단위를 일치시킨다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 원칙은 기술적으로 보이지만 실무에서 가장 자주 어긋난다. 실험 단위는 무작위 배정의 기준이고, 분석 단위는 결과를 측정하는 기준이다. 이 둘이 다르면 통계적 추론 자체가 무너진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">헬스케어 앱에서 식단 추천 기능의 개선 효과를 측정한다고 가정하자. 사용자 단위로 배정했지만 세션 단위로 분석하면, 한 명의 사용자가 여러 세션을 생성해 데이터가 독립적이지 않게 된다. 결과가 유의미하게 나와도 그 수치는 신뢰할 수 없다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">B2B SaaS처럼 팀 단위로 제품을 사용하는 환경이라면 개인 단위 배정 자체가 오염을 만든다. 이 경우 클러스터 단위 배정을 고려해야 한다. 실험 설계 전에 "누구를 기준으로 배정하고, 무엇을 기준으로 측정할 것인가"를 명시적으로 정의하는 과정이 선행되어야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">원칙 4. 최소 감지 효과(MDE)를 먼저 정의한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">샘플 수를 얼마나 모아야 하는가는 실험이 끝난 후 결정하는 것이 아니다. 실험 전에 "이 실험이 의미 있으려면 최소 얼마의 변화를 감지해야 하는가"를 먼저 정의해야 한다. 이것이 최소 감지 효과(Minimum Detectable Effect, MDE)다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">MDE를 정의하지 않으면 두 가지 실수가 반복된다. 하나는 너무 작은 샘플로 실험을 조기 종료하는 것이고, 다른 하나는 비즈니스적으로 의미 없는 미세한 차이를 통계적 유의성으로 포장하는 것이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">모빌리티 서비스에서 드라이버 앱의 알림 문구를 변경하는 실험을 한다고 가정하자. 현재 응답률이 40%라면, 팀이 실제로 의사결정에 활용할 수 있는 변화는 최소 3~5%포인트 수준일 것이다. 이 MDE를 기준으로 필요한 샘플 수를 역산하고, 그 샘플을 모으는 데 걸리는 기간을 실험 일정에 반영해야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">교육 플랫폼</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">온라인 강의 플랫폼이 수강 완료율을 높이기 위해 알림 전략을 실험한다고 가정하자. 가설은 "강의 중단 후 48시간 이내에 개인화된 재참여 메시지를 발송하면 7일 내 재수강률이 개선될 것이다"로 설정하고, 1차 지표는 재수강률 단일 지표로 고정한다. 발송 횟수나 클릭률은 보조 지표로만 관찰한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">구독 커머스</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">식품 구독 서비스에서 해지 의도 사용자를 대상으로 오퍼 실험을 진행한다고 가정하자. 이때 실험 단위와 분석 단위를 모두 "구독 계정"으로 일치시키고, MDE는 해지율 기준 2%포인트로 사전 설정한다. 가정 수치이지만, 이 기준이 없으면 0.3%포인트 개선도 성공으로 해석될 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">금융 서비스</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대출 신청 프로세스를 개선하는 핀테크 팀이 신청 완료율 실험을 설계한다고 가정하자. 법적 고지 문구가 포함된 단계에서 사용자 이탈이 집중된다는 데이터가 있다면, 가설에는 "정보 과부하로 인한 인지적 마찰"이라는 메커니즘이 명시되어야 한다. 그래야 실험 실패 시에도 마찰의 원인이 문구인지 구조인지 학습할 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 가설 설계에 시간을 많이 쓰면 실험 속도가 느려지지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가설 설계에 투자하는 시간은 실험 속도를 늦추는 것이 아니라 무의미한 반복 실험을 줄이는 역할을 한다. 잘못 설계된 실험은 결과가 나와도 다음 실험을 설계하는 데 기여하지 못한다. 실험 하나당 설계에 1~2시간을 추가로 쓰는 것이 결과 해석에서 며칠을 낭비하는 것보다 전체 사이클을 단축시킨다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 소규모 팀에서 통계적 유의성을 확보할 트래픽이 부족하면 어떻게 해야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트래픽이 부족한 경우 두 가지 방향을 선택할 수 있다. 첫째, MDE 기준을 높여 더 큰 효과만 감지하는 실험으로 범위를 좁힌다. 둘째, 전체 퍼널이 아닌 특정 단계에 집중해 해당 단계의 트래픽을 실험에 집중시킨다. 모든 실험에 통계적 유의성이 필요한 것은 아니지만, 그 한계를 명시적으로 기록해두는 것이 학습 자산으로 남는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 그로스 실험 설계를 AI 도구로 자동화할 수 있나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 가설 초안 작성, 지표 정의 검토, 실험 설계 문서 구조화에 활용할 수 있다. 그러나 메커니즘 정의와 MDE 설정은 비즈니스 맥락과 데이터 현황을 이해하는 사람이 판단해야 한다. AI는 설계 속도를 높이는 도구이지 설계 판단을 대체하는 수단이 아니다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 이 4가지 원칙을 기반으로 그로스 실험 로드맵을 분기 단위로 구성하는 방법을 다룬다. 실험 하나의 설계가 아닌, 조직 전체의 실험 역량을 구조화하는 프레임워크를 소개할 예정이다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-199&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-199',cta_type:'flywheel_consult',category:'AI 실무 활용'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
