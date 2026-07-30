@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 프롬프트 엔지니어링이 작동하는 원리 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 프롬프트 엔지니어링의 작동 원리를 역할, 맥락, 형식, 제약 조건의 4가지 구성 요소로 분해해 설명한다. 의료, 법률, 교육 업종의 실전 사례와 RCTF 프레임워크를 통해 즉시 적용 가능한 방법을 제시한다.">
+<meta property="og:title" content="AI 프롬프트 엔지니어링이 작동하는 원리"><meta property="og:description" content="AI 프롬프트 엔지니어링의 작동 원리를 역할, 맥락, 형식, 제약 조건의 4가지 구성 요소로 분해해 설명한다. 의료, 법률, 교육 업종의 실전 사례와 RCTF 프레임워크를 통해 즉시 적용 가능한 방법을 제시한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-205.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-205.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 프롬프트 엔지니어링이 작동하는 원리","description":"AI 프롬프트 엔지니어링의 작동 원리를 역할, 맥락, 형식, 제약 조건의 4가지 구성 요소로 분해해 설명한다. 의료, 법률, 교육 업종의 실전 사례와 RCTF 프레임워크를 통해 즉시 적용 가능한 방법을 제시한다.","image":"https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxMXx8bGFwdG9wJTIwQUklMjB0ZXh0JTIwcHJvbXB0JTIwY29kaW5nfGVufDF8MHx8fDE3ODUzNzIwNTd8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-205.html"},"datePublished":"2026-07-30","dateModified":"2026-07-30"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"프롬프트를 길게 쓸수록 결과가 좋아지는가","acceptedAnswer":{"@type":"Answer","text":"길이 자체는 품질을 보장하지 않는다. 관련 없는 정보가 많으면 모델이 핵심 조건을 희석시킨 응답을 생성한다. 중요한 것은 길이가 아니라 정보의 밀도와 구조다. 역할, 맥락, 과제, 형식이 명확하면 짧은 프롬프트도 높은 품질의 결과를 만든다."}},{"@type":"Question","name":"프롬프트 엔지니어링은 기술 직군만 활용할 수 있는가","acceptedAnswer":{"@type":"Answer","text":"그렇지 않다. 마케터, 회계사, 의사, 교사 등 텍스트 기반 업무를 수행하는 모든 직군에서 적용 가능하다. 코딩 능력은 필요 없다. 자신의 업무 맥락을 구조화하는 능력이 핵심이며, 이는 도메인 전문가일수록 유리한 영역이다."}},{"@type":"Question","name":"한 번 만든 프롬프트를 계속 재사용해도 되는가","acceptedAnswer":{"@type":"Answer","text":"동일한 유형의 반복 업무에는 템플릿화된 프롬프트가 시간 절약에 유리하다. 다만 AI 모델이 업데이트되거나 업무 조건이 바뀌면 기존 프롬프트의 성능이 저하될 수 있다. 3개월 주기로 결과물 품질을 점검하고 제약 조건과 맥락 정보를 갱신하는 것이 실무 기준으로 적절하다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 7. 30.</span></div>
+  <h1 class="post-title">AI 프롬프트 엔지니어링이 작동하는 원리</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxMXx8bGFwdG9wJTIwQUklMjB0ZXh0JTIwcHJvbXB0JTIwY29kaW5nfGVufDF8MHx8fDE3ODUzNzIwNTd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 엔지니어링이 작동하는 원리" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 프롬프트 엔지니어링은 생성형 AI에게 원하는 결과를 끌어내기 위해 입력 텍스트를 설계하는 기술이다. 단순히 질문을 잘 쓰는 것과는 다르다. 모델이 어떤 방식으로 언어를 처리하는지 이해하고, 그 구조에 맞게 요청을 설계하는 행위다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 같은 질문이 다른 결과를 만드는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 언어 모델은 입력된 텍스트의 패턴을 기반으로 다음 토큰을 예측한다. 이 과정에서 모델이 참조하는 것은 질문의 '의미'만이 아니다. 문장의 구조, 맥락의 밀도, 역할 설정, 제약 조건의 유무가 모두 출력 방향에 영향을 준다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 "마케팅 전략을 알려줘"와 "B2B SaaS 스타트업의 콘텐츠 마케팅 전략을 초기 예산 300만 원 이내로 제안해줘"는 같은 주제를 다루지만 전혀 다른 결과를 생성한다. 전자는 범용적이고 추상적인 답변을 유도하고, 후자는 조건이 명확하기 때문에 모델이 좁은 탐색 공간 안에서 구체적인 응답을 구성한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 차이가 프롬프트 엔지니어링의 출발점이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프롬프트를 구성하는 핵심 요소</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트는 크게 네 가지 레이어로 분해할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">역할 지정(Role)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">모델에게 특정 전문가나 관점을 부여하면 응답의 어조, 깊이, 용어 선택이 달라진다. "당신은 10년 경력의 의료 법무 컨설턴트입니다"라는 설정은 일반 응답과 다른 전문성 밀도를 만들어낸다. 병원 행정 업무, 법률 문서 초안 작성, 금융 리포트 생성 등에서 이 방식이 실질적인 품질 차이를 만든다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">맥락 제공(Context)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">모델은 맥락이 풍부할수록 오류율이 낮아진다. 건축 설계 사무소가 클라이언트 제안서를 작성할 때, 프로젝트 규모, 예산, 발주처 성격, 원하는 톤을 함께 제공하면 모델이 생성하는 문장의 방향이 명확해진다. 맥락 없이 "제안서 써줘"라고 입력하면 모델은 평균적인 패턴으로 수렴한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">출력 형식 지정(Format)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">결과물의 형태를 명시하면 후처리 비용이 줄어든다. "3개 항목, 각 항목 2문장, 표 형식으로"처럼 구조를 지정하면 모델이 형식을 추론하는 데 사용하는 연산 자원이 내용 생성 쪽으로 이동한다. 실무에서는 이 단계를 생략하는 경우가 많아 불필요한 편집 시간이 발생한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">제약 조건(Constraint)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">무엇을 하지 말아야 하는지를 명시하는 것도 프롬프트의 일부다. "전문 용어 사용 금지", "경쟁사 언급 제외", "500자 이내"와 같은 제약은 모델의 탐색 범위를 좁혀 원하는 결과에 가까운 출력을 유도한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프롬프트 엔지니어링의 실전 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">업무에 바로 적용할 수 있는 구조는 다음과 같다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">RCTF 프레임워크</strong>: Role(역할) - Context(맥락) - Task(과제) - Format(형식)의 순서로 프롬프트를 작성한다. 이 순서는 모델이 정보를 처리하는 방식과 일치하기 때문에 응답 품질이 안정적으로 유지된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예시 구조:</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><code style="background:#1e293b;color:#a5b4fc;padding:2px 7px;border-radius:4px;font-size:14px;">`</code></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할: 당신은 중소 제조업체 전문 세무사입니다.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">맥락: 직원 15명 규모의 금속 가공 업체가 설비 투자 세액공제를 처음 신청합니다.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">과제: 신청 절차를 단계별로 설명하세요.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">형식: 번호 목록, 각 단계마다 주의사항 1줄 포함</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><code style="background:#1e293b;color:#a5b4fc;padding:2px 7px;border-radius:4px;font-size:14px;">`</code></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 구조를 따르면 모델이 생성하는 응답은 일반 검색 결과와 다른 밀도를 갖는다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.pexels.com/photos/669621/pexels-photo-669621.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="AI 프롬프트 엔지니어링이 작동하는 원리" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">의료 행정</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원 원무팀이 환자 안내문을 작성할 때, 역할을 "의료 커뮤니케이션 전문가"로 설정하고 대상 환자군(고령, 만성질환)과 읽기 수준(중학교 2학년 수준)을 명시한다고 가정하면, 동일한 의학 정보를 다르게 풀어쓴 두 버전이 생성된다. 이 경우 편집 시간이 기존 대비 약 40% 단축된다고 가정할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">법률 서비스</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">법무법인에서 계약서 검토 요약본을 생성할 때, 단순히 "요약해줘"라고 입력하는 것과 "리스크 조항 중심으로, 의뢰인이 비법률가임을 감안해 평문으로, 우선순위 3개만"이라고 지정하는 것은 결과물의 실용성에서 큰 차이를 만든다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">교육 콘텐츠</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">온라인 교육 플랫폼이 강의 스크립트를 제작할 때, 학습자 수준, 선수 지식, 강의 시간, 학습 목표를 함께 제공한다고 가정하면 모델이 생성하는 스크립트는 별도 교수 설계 없이도 학습 흐름을 갖춘 구조로 출력된다고 볼 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세 업종 모두 공통점이 있다. 프롬프트에 투입한 정보의 밀도가 높을수록 후편집 비용이 낮아진다는 점이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트를 길게 쓸수록 결과가 좋아지는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">길이 자체는 품질을 보장하지 않는다. 관련 없는 정보가 많으면 모델이 핵심 조건을 희석시킨 응답을 생성한다. 중요한 것은 길이가 아니라 정보의 밀도와 구조다. 역할, 맥락, 과제, 형식이 명확하면 짧은 프롬프트도 높은 품질의 결과를 만든다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트 엔지니어링은 기술 직군만 활용할 수 있는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">그렇지 않다. 마케터, 회계사, 의사, 교사 등 텍스트 기반 업무를 수행하는 모든 직군에서 적용 가능하다. 코딩 능력은 필요 없다. 자신의 업무 맥락을 구조화하는 능력이 핵심이며, 이는 도메인 전문가일수록 유리한 영역이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 한 번 만든 프롬프트를 계속 재사용해도 되는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">동일한 유형의 반복 업무에는 템플릿화된 프롬프트가 시간 절약에 유리하다. 다만 AI 모델이 업데이트되거나 업무 조건이 바뀌면 기존 프롬프트의 성능이 저하될 수 있다. 3개월 주기로 결과물 품질을 점검하고 제약 조건과 맥락 정보를 갱신하는 것이 실무 기준으로 적절하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계: 프롬프트를 자산으로 만드는 방법</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트 엔지니어링은 일회성 기술이 아니다. 잘 설계된 프롬프트는 조직 내에서 반복 사용 가능한 지식 자산이 된다. 다음 글에서는 업무 유형별 프롬프트 라이브러리를 구축하는 방법과 팀 단위로 프롬프트를 표준화하는 구체적인 절차를 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-205&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-205',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
