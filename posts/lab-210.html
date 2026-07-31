@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>구글 애널리틱스 기초: 웹사이트 데이터를 실무에 연결하는 법 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="구글 애널리틱스 기초 개념부터 GA4 핵심 지표, 업종별 실무 적용 방법까지 단계적으로 정리했다. 학원, 병원, 부동산 사례를 통해 데이터를 실제 판단에 연결하는 방법을 확인한다.">
+<meta property="og:title" content="구글 애널리틱스 기초: 웹사이트 데이터를 실무에 연결하는 법"><meta property="og:description" content="구글 애널리틱스 기초 개념부터 GA4 핵심 지표, 업종별 실무 적용 방법까지 단계적으로 정리했다. 학원, 병원, 부동산 사례를 통해 데이터를 실제 판단에 연결하는 방법을 확인한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-210.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-210.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"구글 애널리틱스 기초: 웹사이트 데이터를 실무에 연결하는 법","description":"구글 애널리틱스 기초 개념부터 GA4 핵심 지표, 업종별 실무 적용 방법까지 단계적으로 정리했다. 학원, 병원, 부동산 사례를 통해 데이터를 실제 판단에 연결하는 방법을 확인한다.","image":"https://images.pexels.com/photos/4604639/pexels-photo-4604639.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-210.html"},"datePublished":"2026-07-31","dateModified":"2026-07-31"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"uisition): 사용자가 어디서 왔는가","acceptedAnswer":{"@type":"Answer","text":"유입 채널을 Organic Search, Direct, Referral, Paid Search, Social 등으로 구분한다. 블로그 콘텐츠를 운영하는 학원이라면 Organic Search 비중이 높을수록 광고비 의존도가 낮아진다. 반대로 Direct 비중이 지나치게 높으면 브랜드 인지도에만 의존하고 있다는 신호다. 행동(Engagement): 사이트 안에서 무엇을 했는가 GA4의 참여 세션(Engaged Session)은 10초 이상 머물거나, 전환 이벤트가 발생하거나, 페이지를 2개 이상 조회한 세션을 의미한다. 단순 방문과 실질적 관심을 구분하는 기준선이다. 부동산 플랫폼이라면 매물 상세 페이지에서의 참여 세션 비율이 광고 소재의 질을 판단하는 근거가 된다. 전환(Conversion): 목표 행동이 발생했는가 전환은 자동으로 측정되지 않는다. 예약 완료, 상담 신청, 자료 다운로드 같은 행동을 이벤트로 정의하고 '전환으로 표시'해야 집계된다. 이 설정을 건너뛰면 GA4는 트래픽"}},{"@type":"Question","name":"구글 애널리틱스는 무료인가, 유료인가","acceptedAnswer":{"@type":"Answer","text":"기본 버전인 GA4는 무료다. 대규모 데이터 처리와 고급 분석 기능이 필요한 조직을 위한 유료 버전(Google Analytics 360)이 별도로 존재하지만, 중소 규모 사이트와 일반 마케팅 실무에는 무료 버전으로 충분히 대응된다."}},{"@type":"Question","name":"UA(유니버설 애널리틱스)와 GA4의 차이는 무엇인가","acceptedAnswer":{"@type":"Answer","text":"UA는 세션 중심으로 데이터를 수집했고, GA4는 이벤트 중심으로 수집한다. UA는 2023년 7월에 데이터 수집을 종료했기 때문에 현재 새로 설정하거나 분석 역량을 쌓으려면 GA4를 기준으로 삼아야 한다. 보고서 구조와 지표 명칭도 UA와 GA4 사이에 상당한 차이가 있다."}},{"@type":"Question","name":"구글 애널리틱스 데이터를 AI 분석에 활용할 수 있는가","acceptedAnswer":{"@type":"Answer","text":"GA4에서 내보낸 보고서 데이터나 BigQuery 연동 데이터를 생성형 AI에 입력하면 패턴 해석과 가설 수립 속도를 높일 수 있다. 다만 AI가 제시하는 해석은 데이터 맥락을 이해하는 담당자가 검토하는 과정이 반드시 따라야 한다. 데이터 해석의 책임은 도구가 아니라 분석자에게 있다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#1e3a5f;color:#93c5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 7. 31.</span></div>
+  <h1 class="post-title">구글 애널리틱스 기초: 웹사이트 데이터를 실무에 연결하는 법</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/4604639/pexels-photo-4604639.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="구글 애널리틱스 기초: 웹사이트 데이터를 실무에 연결하는 법" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구글 애널리틱스 기초를 처음 접하는 담당자들이 공통으로 겪는 문제가 있다. 대시보드를 열면 숫자는 넘쳐나는데, 그 숫자가 실제 업무 판단에 연결되지 않는다는 것이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">문제 정의: 데이터는 있지만 해석이 없다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 조직이 구글 애널리틱스를 설치한 뒤 방문자 수와 페이지뷰만 확인하는 수준에 머문다. 학원 운영자는 상담 신청 버튼을 누른 사람이 몇 명인지 모르고, 병원 마케터는 진료 예약 페이지에서 이탈이 어느 단계에서 발생하는지 파악하지 못한다. 부동산 중개 사무소도 매물 상세 페이지 체류 시간이 문의 전환과 어떤 관계인지 측정하지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">데이터를 수집하는 것과 데이터를 읽는 것은 다른 역량이다. 구글 애널리틱스는 전자를 자동으로 처리해 주지만, 후자는 구조적 이해가 선행되어야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">인사이트: 구글 애널리틱스가 실제로 측정하는 것</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구글 애널리틱스(GA4 기준)는 사용자 행동을 <strong style="color:#f1f5f9;font-weight:700;">이벤트</strong> 단위로 기록한다. 페이지 조회, 스크롤, 클릭, 파일 다운로드, 동영상 재생 모두 이벤트다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">핵심 지표는 세 가지 축으로 나뉜다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">획득(Acquisition): 사용자가 어디서 왔는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">유입 채널을 Organic Search, Direct, Referral, Paid Search, Social 등으로 구분한다. 블로그 콘텐츠를 운영하는 학원이라면 Organic Search 비중이 높을수록 광고비 의존도가 낮아진다. 반대로 Direct 비중이 지나치게 높으면 브랜드 인지도에만 의존하고 있다는 신호다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">행동(Engagement): 사이트 안에서 무엇을 했는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">GA4의 참여 세션(Engaged Session)은 10초 이상 머물거나, 전환 이벤트가 발생하거나, 페이지를 2개 이상 조회한 세션을 의미한다. 단순 방문과 실질적 관심을 구분하는 기준선이다. 부동산 플랫폼이라면 매물 상세 페이지에서의 참여 세션 비율이 광고 소재의 질을 판단하는 근거가 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">전환(Conversion): 목표 행동이 발생했는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전환은 자동으로 측정되지 않는다. 예약 완료, 상담 신청, 자료 다운로드 같은 행동을 이벤트로 정의하고 '전환으로 표시'해야 집계된다. 이 설정을 건너뛰면 GA4는 트래픽 보고서 도구에 그친다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프레임워크: 실무에서 쓸 수 있는 3단계 분석 구조</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 목표 이벤트를 먼저 정의한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">분석을 시작하기 전에 "이 사이트에서 사용자가 해야 하는 행동이 무엇인가"를 한 문장으로 써야 한다. 병원이라면 '진료 예약 버튼 클릭', 학원이라면 '무료 체험 신청 폼 제출', 부동산이라면 '전화 연결 버튼 탭'이 각각 1순위 전환 이벤트가 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 유입 채널별로 전환율을 비교한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">같은 전환 이벤트라도 채널에 따라 전환 패턴이 다르다. 탐색 광고에서 유입된 사용자와 블로그 포스트에서 유입된 사용자는 구매 또는 문의까지의 경로 길이가 다르다. GA4의 '획득 > 트래픽 획득' 보고서에서 채널별 전환 이벤트 수를 세션 수로 나누면 채널 효율을 직접 비교할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 이탈 지점을 역추적한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전환이 낮은 채널이 확인되면, 그 채널에서 유입된 사용자가 어느 페이지에서 이탈하는지 '탐색 분석 > 유입경로 탐색 분석'으로 추적한다. 이탈 지점이 가격 안내 페이지라면 가격 정보의 구성을, 예약 폼 페이지라면 입력 항목 수를 검토하는 순서로 이어진다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1785140629208-a069992af83b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8bWFya2V0aW5nJTIwYW5hbHl0aWNzJTIwd29ya2Zsb3clMjBjb252ZXJzaW9uJTIwcmVwb3J0fGVufDF8MHx8fDE3ODU0NTY5Njd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="구글 애널리틱스 기초: 웹사이트 데이터를 실무에 연결하는 법" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">사례: 업종별 적용 방식의 차이</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">학원 운영 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">온라인 광고를 집행하는 영어 학원이 있다고 가정한다. 광고를 통해 랜딩 페이지에 방문자가 유입되지만, 상담 신청 수는 기대에 미치지 못한다. GA4 유입경로 분석을 설정하면 랜딩 페이지 조회 이후 상담 신청 폼 진입 단계에서 이탈이 집중된다는 패턴을 확인할 수 있다. 폼 진입 전 단계에 신뢰 요소(수강 후기, 강사 소개)가 부족하다는 가설을 세우고 페이지 구조를 수정하는 방향으로 이어진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">병원 마케팅 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">지역 피부과가 블로그와 검색 광고를 병행 운영한다고 가정한다. GA4 채널 보고서를 확인하면 Organic Search 유입 사용자의 참여 세션 비율이 Paid Search보다 높게 나타나는 경우가 있다. 이는 블로그 콘텐츠가 진료 정보에 관심 있는 사용자를 끌어들이고 있다는 신호로 읽힌다. 광고 예산 배분 결정에 이 데이터를 근거로 활용할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 중개 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">매물 상세 페이지를 여러 개 운영하는 중개 플랫폼이 있다고 가정한다. 스크롤 깊이 이벤트를 설정하면 어느 매물 페이지에서 사용자가 하단까지 읽고 문의 버튼에 도달하는지 파악된다. 스크롤 깊이가 낮은 페이지는 상단 콘텐츠 구성을 재검토하는 근거가 된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 구글 애널리틱스는 무료인가, 유료인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기본 버전인 GA4는 무료다. 대규모 데이터 처리와 고급 분석 기능이 필요한 조직을 위한 유료 버전(Google Analytics 360)이 별도로 존재하지만, 중소 규모 사이트와 일반 마케팅 실무에는 무료 버전으로 충분히 대응된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. UA(유니버설 애널리틱스)와 GA4의 차이는 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">UA는 세션 중심으로 데이터를 수집했고, GA4는 이벤트 중심으로 수집한다. UA는 2023년 7월에 데이터 수집을 종료했기 때문에 현재 새로 설정하거나 분석 역량을 쌓으려면 GA4를 기준으로 삼아야 한다. 보고서 구조와 지표 명칭도 UA와 GA4 사이에 상당한 차이가 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 구글 애널리틱스 데이터를 AI 분석에 활용할 수 있는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">GA4에서 내보낸 보고서 데이터나 BigQuery 연동 데이터를 생성형 AI에 입력하면 패턴 해석과 가설 수립 속도를 높일 수 있다. 다만 AI가 제시하는 해석은 데이터 맥락을 이해하는 담당자가 검토하는 과정이 반드시 따라야 한다. 데이터 해석의 책임은 도구가 아니라 분석자에게 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계 예고</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구글 애널리틱스 기초 개념을 이해했다면, 다음 단계는 GA4 이벤트 설정과 전환 추적을 실제 사이트에 적용하는 실습이다. 다음 글에서는 구글 태그 매니저를 활용한 이벤트 설정 방법과, 보고서를 업무 보고에 바로 연결하는 구조를 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-210&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-210',cta_type:'flywheel_consult',category:'AI 실무 활용'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
