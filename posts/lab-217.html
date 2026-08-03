@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>유선전화 콜백 자동화를 도입했는데 연결률이 개선되지 않는 진짜 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="유선전화 콜백 자동화를 도입했는데도 연결률이 오르지 않는다면 시스템이 아닌 운영 설계가 문제다. 발신 타이밍, 재시도 로직, 채널 단일화 문제를 업종별 사례와 함께 진단한다.">
+<meta property="og:title" content="유선전화 콜백 자동화를 도입했는데 연결률이 개선되지 않는 진짜 원인"><meta property="og:description" content="유선전화 콜백 자동화를 도입했는데도 연결률이 오르지 않는다면 시스템이 아닌 운영 설계가 문제다. 발신 타이밍, 재시도 로직, 채널 단일화 문제를 업종별 사례와 함께 진단한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-217.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-217.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"유선전화 콜백 자동화를 도입했는데 연결률이 개선되지 않는 진짜 원인","description":"유선전화 콜백 자동화를 도입했는데도 연결률이 오르지 않는다면 시스템이 아닌 운영 설계가 문제다. 발신 타이밍, 재시도 로직, 채널 단일화 문제를 업종별 사례와 함께 진단한다.","image":"https://images.unsplash.com/photo-1580795479225-c50ab8c3348d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxOHx8Y2FsbCUyMGNlbnRlciUyMGF1dG9tYXRpb24lMjB3b3JrZmxvdyUyMGRhc2hib2FyZHxlbnwxfDB8fHwxNzg1NzE3Mzc5fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-217.html"},"datePublished":"2026-08-03","dateModified":"2026-08-03"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"콜백 자동화 시스템을 교체해야 연결률이 개선되나요?","acceptedAnswer":{"@type":"Answer","text":"시스템 교체보다 설정 재구성이 먼저다. 대부분의 콜백 자동화 플랫폼은 발신 시간대, 재시도 간격, 폴백 채널 설정을 지원한다. 현재 시스템의 설정값을 점검하지 않은 상태에서 교체를 결정하면 같은 문제가 반복된다."}},{"@type":"Question","name":"발신 번호를 여러 개 운용하면 연결률이 올라가지 않나요?","acceptedAnswer":{"@type":"Answer","text":"번호를 여러 개 운용하면 단기적으로 수신율이 올라갈 수 있지만, 고객이 모르는 번호로 인식하는 문제는 해결되지 않는다. 오히려 스팸 신고 누적으로 번호 신뢰도가 낮아지는 역효과가 생긴다. 대표 번호 단일화와 사전 문자 안내 병행이 장기적으로 안정적인 구조다."}},{"@type":"Question","name":"콜백 자동화에서 AI를 활용하면 어떤 부분이 달라지나요?","acceptedAnswer":{"@type":"Answer","text":"AI는 고객별 수신 가능 시간대를 과거 통화 이력 데이터 기반으로 예측하고, 개인 단위로 발신 스케줄을 최적화하는 데 활용된다. 일괄 발신 구조를 개인화 발신 구조로 전환하는 것이 핵심이다. 다만 AI 적용 이전에 기본 재시도 로직과 폴백 채널 설계가 갖춰져 있지 않으면 AI 최적화의 효과도 제한적이다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#3b1d8a;color:#c4b5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">자동화 & 워크플로우</span><span class="post-date">2026. 8. 3.</span></div>
+  <h1 class="post-title">유선전화 콜백 자동화를 도입했는데 연결률이 개선되지 않는 진짜 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1580795479225-c50ab8c3348d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxOHx8Y2FsbCUyMGNlbnRlciUyMGF1dG9tYXRpb24lMjB3b3JrZmxvdyUyMGRhc2hib2FyZHxlbnwxfDB8fHwxNzg1NzE3Mzc5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="유선전화 콜백 자동화를 도입했는데 연결률이 개선되지 않는 진짜 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">유선전화 콜백 자동화를 도입한 뒤에도 연결률이 제자리걸음이라면, 시스템 문제가 아니라 운영 설계 문제일 가능성이 높다. 도구는 바뀌었지만 콜백이 실제로 닿는 구조는 바뀌지 않은 것이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">자동화가 연결률을 보장하지 않는 이유</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">콜백 자동화의 핵심 전제는 "고객이 전화를 받을 수 있는 시간에 발신이 이루어진다"는 것이다. 그런데 대부분의 도입 사례를 보면, 자동화 시스템은 고객이 부재 요청을 남긴 시점을 기준으로 발신 스케줄을 구성한다. 문제는 그 시점이 고객이 전화를 받을 수 있는 시점과 다르다는 데 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 치과 예약 시스템에서 오전 9시에 콜백 요청이 들어오면, 자동화 시스템은 업무 시간 내 최초 가용 슬롯인 9시 10분에 발신을 시도한다. 그러나 고객은 출근 중이거나 회의 중일 수 있다. 요청 시점과 수신 가능 시점 사이의 간극을 시스템이 메우지 못하면 자동화는 단순히 발신 횟수만 늘리는 장치로 전락한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">연결률을 낮추는 세 가지 구조적 원인</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">발신 타이밍이 고객 행동 패턴과 무관하게 설정되어 있다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">콜백 자동화 시스템의 기본값은 대개 요청 접수 후 즉시 또는 일정 간격으로 발신하도록 되어 있다. 그러나 업종별로 고객의 수신 가능 시간대는 다르다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원의 경우 학부모 연락은 오후 2시~4시 사이에 집중되는 경향이 있고, 부동산 중개업은 저녁 7시~9시 사이 통화 성공률이 높다. 자사몰(카페24, 아임웹 기반) 운영자라면 고객 문의가 퇴근 후 시간대에 몰리는 패턴을 CRM 데이터에서 직접 확인할 수 있다. 이 데이터를 콜백 스케줄에 반영하지 않으면, 자동화는 발신 기록만 쌓을 뿐이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">재시도 로직이 단순 반복 구조로 되어 있다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">연결 실패 후 재시도를 15분 간격으로 3회 반복하는 구조는 가장 흔한 설정이다. 그러나 첫 번째 시도에서 수신 불가였다면, 같은 시간대에 반복 발신해도 상황은 달라지지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">재시도 로직은 시간대를 분산시켜야 한다. 1차 시도 실패 후 2차 시도는 2시간 이상 간격을 두고, 3차 시도는 다른 요일 또는 다른 시간대로 이동하는 방식이 실질적인 연결 기회를 만든다. 이 설계가 없으면 자동화는 고객에게 반복 수신 거부 경험만 제공한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">채널 단일화가 오히려 연결 기회를 줄인다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">유선전화 콜백만 운영하는 경우, 고객이 유선전화를 받지 않거나 번호를 모르는 발신으로 인식해 수신을 회피하면 연결 자체가 불가능해진다. <strong style="color:#f1f5f9;font-weight:700;">채널 단일화는 자동화의 효율을 높이는 것이 아니라 연결 경로를 제한하는 것이다.</strong></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">콜백 시도 이후 일정 시간 내 연결이 되지 않으면 문자 또는 카카오 알림톡으로 전환하는 폴백 구조를 갖추는 것이 연결률 회복의 현실적인 출발점이다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOXx8bXVsdGljaGFubmVsJTIwY29tbXVuaWNhdGlvbiUyMGFuYWx5dGljcyUyMGxhcHRvcCUyMGRhdGElMjB2aXN1YWxpemF0aW9ufGVufDF8MHx8fDE3ODU3MTczODB8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="유선전화 콜백 자동화를 도입했는데 연결률이 개선되지 않는 진짜 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">연결률 개선을 위한 운영 재설계 프레임워크</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 업종별 수신 가능 시간대 데이터 수집</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">CRM 또는 통화 이력 시스템에서 과거 연결 성공 건의 시간대를 추출한다. 최소 3개월치 데이터를 기준으로 시간대별 연결 성공 분포를 확인한다. 이 분포가 콜백 스케줄의 기준이 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 재시도 로직 재설계</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">1차 시도 실패 후 재시도 간격을 최소 90분 이상으로 설정하고, 2차 이후 시도는 다른 시간대 블록(오전/오후/저녁)으로 분산한다. 총 시도 횟수는 3회를 기준으로 하되, 3회 모두 실패 시 문자 폴백으로 자동 전환되도록 설정한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 발신 번호 신뢰도 관리</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객이 모르는 번호로 인식하면 수신을 회피한다. 발신 번호를 고객이 이미 알고 있는 대표 번호로 통일하거나, 문자 사전 안내("곧 연락드립니다")를 콜백 발신 직전에 발송하는 방식이 수신 거부를 줄인다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 운영 재설계 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">의료·병원 예약 시스템</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">재진 예약 콜백을 오전 9시~10시 사이에 집중 발신하던 구조를 점심 시간대(12시~13시)와 저녁 시간대(18시~19시)로 분산한 뒤, 연결 실패 시 카카오 알림톡으로 예약 링크를 전송하는 폴백을 추가한 경우, 전화 연결이 되지 않더라도 자가 예약으로 전환되는 흐름이 만들어진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰(카페24) 미결제 고객 콜백</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반 자사몰에서 장바구니 이탈 또는 미결제 고객에게 콜백을 시도할 때, 발신 시간대를 고객 최초 접속 시간대 기준으로 설정하면 수신 가능성이 높아진다. 오후 10시 이후 접속 고객에게 다음날 오전 9시에 발신하는 기존 방식 대신, 당일 저녁 8시~9시 사이 발신 슬롯을 추가하는 것이 현실적인 대안이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 중개 콜백</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">매물 문의 후 콜백 자동화를 운영하는 중개사무소의 경우, 문의 접수 즉시 발신하는 구조가 오히려 고객의 업무 중 수신 거부를 유발한다. 문의 시점이 오전이라면 점심 이후, 오후라면 저녁 이후로 발신 시점을 미루고 사전 문자 안내를 병행하는 방식이 연결 가능성을 실질적으로 높인다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 콜백 자동화 시스템을 교체해야 연결률이 개선되나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">시스템 교체보다 설정 재구성이 먼저다. 대부분의 콜백 자동화 플랫폼은 발신 시간대, 재시도 간격, 폴백 채널 설정을 지원한다. 현재 시스템의 설정값을 점검하지 않은 상태에서 교체를 결정하면 같은 문제가 반복된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 발신 번호를 여러 개 운용하면 연결률이 올라가지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">번호를 여러 개 운용하면 단기적으로 수신율이 올라갈 수 있지만, 고객이 모르는 번호로 인식하는 문제는 해결되지 않는다. 오히려 스팸 신고 누적으로 번호 신뢰도가 낮아지는 역효과가 생긴다. 대표 번호 단일화와 사전 문자 안내 병행이 장기적으로 안정적인 구조다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 콜백 자동화에서 AI를 활용하면 어떤 부분이 달라지나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI는 고객별 수신 가능 시간대를 과거 통화 이력 데이터 기반으로 예측하고, 개인 단위로 발신 스케줄을 최적화하는 데 활용된다. 일괄 발신 구조를 개인화 발신 구조로 전환하는 것이 핵심이다. 다만 AI 적용 이전에 기본 재시도 로직과 폴백 채널 설계가 갖춰져 있지 않으면 AI 최적화의 효과도 제한적이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 콜백 자동화와 문자·알림톡 폴백을 연결하는 멀티채널 워크플로우 설계 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-217&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-217',cta_type:'flywheel_consult',category:'자동화 & 워크플로우'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
