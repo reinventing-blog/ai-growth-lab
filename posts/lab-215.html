@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>고객 세그먼트 실행이 무너지는 진짜 원인과 구조적 해결법 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="고객 세그먼트가 캠페인 실행 단계에서 어긋나는 원인은 메시지가 아니라 조건 정의와 데이터 동기화 구조에 있다. 업종별 사례와 함께 실행 오류를 줄이는 프레임워크를 정리했다.">
+<meta property="og:title" content="고객 세그먼트 실행이 무너지는 진짜 원인과 구조적 해결법"><meta property="og:description" content="고객 세그먼트가 캠페인 실행 단계에서 어긋나는 원인은 메시지가 아니라 조건 정의와 데이터 동기화 구조에 있다. 업종별 사례와 함께 실행 오류를 줄이는 프레임워크를 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-215.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-215.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"고객 세그먼트 실행이 무너지는 진짜 원인과 구조적 해결법","description":"고객 세그먼트가 캠페인 실행 단계에서 어긋나는 원인은 메시지가 아니라 조건 정의와 데이터 동기화 구조에 있다. 업종별 사례와 함께 실행 오류를 줄이는 프레임워크를 정리했다.","image":"https://images.pexels.com/photos/7857555/pexels-photo-7857555.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-215.html"},"datePublished":"2026-08-03","dateModified":"2026-08-03"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"세그먼트 조건을 자동화 도구에 위임하면 이 문제가 해결되는가","acceptedAnswer":{"@type":"Answer","text":"자동화 도구는 조건 실행의 일관성을 높여주지만, 조건 자체가 잘못 정의되어 있으면 오류를 일관되게 반복할 뿐이다. 도구 도입 전에 조건 정의 문서를 먼저 정비하는 것이 순서다."}},{"@type":"Question","name":"소규모 팀에서 이 프레임워크를 적용하기 어렵지 않은가","acceptedAnswer":{"@type":"Answer","text":"전체 프레임워크를 한 번에 도입할 필요는 없다. 추출 시점과 발송 시점의 간격을 줄이는 것, 제외 조건을 명시하는 것, 이 두 가지만 먼저 적용해도 실행 오류의 상당 부분을 줄일 수 있다."}},{"@type":"Question","name":"생성형 AI를 세그먼트 설계에 활용할 수 있는가","acceptedAnswer":{"@type":"Answer","text":"생성형 AI는 세그먼트 조건을 시스템 언어로 번역하거나, 제외 조건 누락 여부를 검토하는 보조 역할로 쓸 수 있다. 단, 실제 데이터 추출과 발송 시스템 연동은 사람이 직접 확인해야 한다. AI가 논리를 검토하고, 사람이 실행을 검증하는 역할 분담이 현실적이다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#065f46;color:#6ee7b7;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">CRM & 그로스</span><span class="post-date">2026. 8. 3.</span></div>
+  <h1 class="post-title">고객 세그먼트 실행이 무너지는 진짜 원인과 구조적 해결법</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/7857555/pexels-photo-7857555.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="고객 세그먼트 실행이 무너지는 진짜 원인과 구조적 해결법" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객 세그먼트를 정교하게 설계했는데도 캠페인 결과가 기대와 다를 때, 대부분의 팀은 메시지 카피나 발송 시간을 먼저 의심한다. 그러나 고객 세그먼트 실행 단계에서 발생하는 문제의 본질은 대개 다른 곳에 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">세그먼트 설계와 실행 사이의 간극</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트는 기획 단계에서는 논리적으로 완성된 것처럼 보인다. "최근 30일 내 구매자 중 2회 이상 방문한 고객"이라는 조건은 명확하다. 문제는 이 조건이 실제 캠페인 발송 시점에 어떻게 해석되고 적용되는지에 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대표적인 실패 패턴은 세 가지다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫째, <strong style="color:#f1f5f9;font-weight:700;">데이터 기준 시점의 불일치</strong>다. 세그먼트를 추출한 날짜와 캠페인을 실제 발송하는 날짜 사이에 며칠에서 수 주의 간격이 생긴다. 이 사이에 고객의 상태는 이미 바뀌어 있다. 구매를 완료한 고객에게 구매 유도 메시지가 가고, 이미 수신 거부를 한 고객이 목록에 남아 있는 경우가 이에 해당한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 조건 정의의 모호함이다. "활성 고객"이라는 기준을 마케터는 "최근 구매자"로 이해하고, 데이터 담당자는 "로그인 기록이 있는 고객"으로 처리하는 식이다. 같은 용어를 쓰지만 추출 결과가 달라진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 채널 간 동기화 실패다. CRM 시스템에서 세그먼트를 추출해 이메일 툴에 업로드하고, 별도로 문자 발송 플랫폼에도 올리는 과정에서 목록이 서로 달라진다. 한 채널에서 응답한 고객이 다른 채널에서 중복 수신자로 남는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 기획 단계에서는 보이지 않는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트 설계 회의에서는 "어떤 고객을 타겟으로 할 것인가"에 집중한다. 그런데 실행 단계의 질문은 다르다. "이 조건을 누가, 어떤 시스템에서, 어떤 시점의 데이터로 추출하는가"다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기획자는 논리를 다루고, 실행자는 시스템을 다룬다. 이 두 관점이 하나의 문서 안에서 정렬되지 않으면, 세그먼트는 실행 단계에서 조용히 변형된다. 누구도 의도적으로 잘못하지 않았지만 결과는 틀어진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 구조적 문제를 방치하면 캠페인을 반복할수록 데이터에 대한 신뢰가 낮아지고, 팀은 분석보다 직관에 의존하게 된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">실행 가능한 세그먼트 정의 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트를 정의할 때 기획서에 다음 네 가지 항목을 명시하는 것을 기준으로 삼는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">조건의 언어를 시스템 언어로 번역하라</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"최근 구매자"가 아니라 "캠페인 발송일 기준 D-30 이내에 주문 완료 상태로 전환된 고객"처럼 쓴다. 날짜 기준, 상태값, 기준 시점을 모두 포함해야 추출자가 해석할 여지가 없어진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">추출 시점을 발송 시점에 최대한 근접시켜라</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트 추출과 발송 사이의 간격이 길수록 데이터 정합성이 떨어진다. 자동화 도구를 사용하는 경우 발송 직전 트리거 시점에 조건을 재평가하도록 설정한다. 카페24나 아임웹 기반 자사몰에서 외부 CRM 연동을 쓰는 경우, API 동기화 주기를 확인하고 발송 스케줄을 그에 맞춰 조정한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">제외 조건을 포함 조건만큼 명시하라</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">포함 조건만 적고 제외 조건을 생략하는 경우가 많다. "최근 구매자 대상 재구매 유도 캠페인"이라면, 이미 재구매를 완료한 고객, 환불 처리 중인 고객, 수신 거부 고객을 명시적으로 제외 목록에 넣어야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">채널별 목록을 단일 소스에서 파생시켜라</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이메일 목록과 문자 목록을 각각 별도로 추출하면 동기화 오류가 생긴다. 하나의 기준 목록을 추출한 뒤, 채널 수신 동의 여부에 따라 분기하는 방식을 쓴다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1632910073143-6d2c52a448e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwzMHx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzg1NzE1Mjk5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="고객 세그먼트 실행이 무너지는 진짜 원인과 구조적 해결법" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 실행 오류 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">피부과 클리닉의 재방문 캠페인</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">특정 시술을 받은 고객을 대상으로 3개월 후 재방문을 유도하는 문자 캠페인을 기획했다고 가정한다. 세그먼트 조건은 "시술일 기준 90일 경과 고객"이었다. 그런데 실제 발송 목록에는 이미 재방문을 완료한 고객도 포함되어 있었다. 예약 시스템과 CRM이 연동되지 않아 재방문 여부가 세그먼트 조건에 반영되지 않은 것이다. 제외 조건에 "캠페인 발송일 기준 최근 30일 내 내원 기록이 있는 고객"을 추가하는 것만으로 이 문제는 해결된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">학원의 수강 만료 전 갱신 캠페인</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수강 만료 2주 전 고객에게 갱신 안내를 보내는 캠페인을 운영했다고 가정한다. 담당자가 매주 수동으로 목록을 추출하다 보니, 이미 갱신을 완료한 고객에게 동일한 메시지가 재발송되는 상황이 반복되었다. 갱신 완료 상태를 실시간으로 반영하는 자동화 조건을 설정하거나, 발송 직전 갱신 완료 고객을 필터링하는 단계를 추가하면 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰의 장바구니 이탈 캠페인</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반 자사몰에서 장바구니 이탈 고객에게 쿠폰을 발송하는 캠페인을 운영했다고 가정한다. 세그먼트 조건은 "24시간 내 장바구니 이탈"이었지만, CRM 동기화 주기가 6시간이어서 실제로는 최대 30시간 이탈 고객까지 포함되는 경우가 생겼다. 동기화 주기를 확인하지 않은 채 조건을 설정한 것이 원인이다. 동기화 주기에 따라 조건 기준 시간을 조정하거나, 실시간 웹훅 방식으로 전환하는 것이 해결 방향이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">세그먼트 실행 품질을 점검하는 루틴</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">캠페인을 발송하기 전, 다음 세 가지를 체크리스트로 운영한다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">추출 시점과 발송 예정 시점 사이의 간격이 24시간을 초과하는가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">제외 조건이 포함 조건과 동일한 수준으로 문서화되어 있는가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">채널별 목록이 단일 소스에서 파생되었는가</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 가지 중 하나라도 "아니오"라면, 세그먼트는 실행 단계에서 의도와 다르게 작동할 가능성이 높다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 세그먼트 조건을 자동화 도구에 위임하면 이 문제가 해결되는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 도구는 조건 실행의 일관성을 높여주지만, 조건 자체가 잘못 정의되어 있으면 오류를 일관되게 반복할 뿐이다. 도구 도입 전에 조건 정의 문서를 먼저 정비하는 것이 순서다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 소규모 팀에서 이 프레임워크를 적용하기 어렵지 않은가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전체 프레임워크를 한 번에 도입할 필요는 없다. 추출 시점과 발송 시점의 간격을 줄이는 것, 제외 조건을 명시하는 것, 이 두 가지만 먼저 적용해도 실행 오류의 상당 부분을 줄일 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 생성형 AI를 세그먼트 설계에 활용할 수 있는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 세그먼트 조건을 시스템 언어로 번역하거나, 제외 조건 누락 여부를 검토하는 보조 역할로 쓸 수 있다. 단, 실제 데이터 추출과 발송 시스템 연동은 사람이 직접 확인해야 한다. AI가 논리를 검토하고, 사람이 실행을 검증하는 역할 분담이 현실적이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 세그먼트 실행 이후 결과 데이터를 어떻게 읽고 다음 캠페인 조건에 반영하는지, CRM 피드백 루프 설계 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-215&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-215',cta_type:'retous_main',category:'CRM & 그로스'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
