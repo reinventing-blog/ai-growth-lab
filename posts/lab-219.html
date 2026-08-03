@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PUSH 알림을 보낼수록 앱 이탈률이 높아지는 이유와 설계 원칙 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="PUSH 알림을 보낼수록 앱 이탈률이 높아지는 이유를 구조적으로 분석하고, 맥락 기반 알림 설계 프레임워크와 업종별 적용 사례를 제시합니다.">
+<meta property="og:title" content="PUSH 알림을 보낼수록 앱 이탈률이 높아지는 이유와 설계 원칙"><meta property="og:description" content="PUSH 알림을 보낼수록 앱 이탈률이 높아지는 이유를 구조적으로 분석하고, 맥락 기반 알림 설계 프레임워크와 업종별 적용 사례를 제시합니다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-219.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-219.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"PUSH 알림을 보낼수록 앱 이탈률이 높아지는 이유와 설계 원칙","description":"PUSH 알림을 보낼수록 앱 이탈률이 높아지는 이유를 구조적으로 분석하고, 맥락 기반 알림 설계 프레임워크와 업종별 적용 사례를 제시합니다.","image":"https://images.unsplash.com/photo-1607270788732-55d2cdb8f52a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxMnx8c21hcnRwaG9uZSUyMHB1c2glMjBub3RpZmljYXRpb24lMjBtb2JpbGUlMjBhcHB8ZW58MXwwfHx8MTc4NTcyNDQ3NXww&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-219.html"},"datePublished":"2026-08-03","dateModified":"2026-08-03"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"PUSH 알림 수신 거부율이 높아지면 어떻게 대응해야 하는가","acceptedAnswer":{"@type":"Answer","text":"수신 거부율 상승은 알림 전략 전체를 재검토하는 신호로 읽어야 한다. 발송 빈도를 즉시 줄이고, 최근 30일 내 발송한 알림의 내용과 타이밍을 유형별로 분류한다. 전환 유도 알림이 전체의 대다수를 차지하고 있다면, 사용자 행동 기반 알림과 서비스 안내 알림의 비중을 높이는 방향으로 구성을 바꾼다. 수신 거부한 사용자를 되돌리려는 시도보다 현재 수신 중인 사용자의 경험을 지키는 것이 우선이다."}},{"@type":"Question","name":"알림 개인화를 위한 데이터가 충분하지 않을 때는 어떻게 하는가","acceptedAnswer":{"@type":"Answer","text":"완전한 개인화가 불가능한 상황에서는 행동 기반 세그먼트 두세 개를 먼저 만드는 것으로 시작한다. 최근 활성 사용자와 비활성 사용자를 구분하는 것만으로도 전체 동일 발송보다 맥락에 가까워진다. 생성형 AI를 활용해 세그먼트별 메시지 초안을 빠르게 작성하고, 반응 데이터를 축적하면서 세그먼트를 정교하게 나누는 방식이 현실적이다."}},{"@type":"Question","name":"알림 발송 빈도의 적정선은 어떻게 정하는가","acceptedAnswer":{"@type":"Answer","text":"업종과 앱의 사용 주기에 따라 다르다. 매일 사용하는 앱과 월 1~2회 사용하는 앱의 적정 빈도는 같을 수 없다. 기준을 정하는 방법은 사용자의 자연스러운 앱 사용 주기를 먼저 파악하는 것이다. 평균 사용 주기보다 알림 빈도가 높으면 사용자는 알림을 앱 사용의 이유가 아니라 방해 요소로 인식한다. 알림 발송 후 앱 방문이 이어지지 않는 패턴이 반복된다면 빈도를 줄이는 것이 맞다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#0c4a6e;color:#7dd3fc;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">메시징 & 채널 운영</span><span class="post-date">2026. 8. 3.</span></div>
+  <h1 class="post-title">PUSH 알림을 보낼수록 앱 이탈률이 높아지는 이유와 설계 원칙</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1607270788732-55d2cdb8f52a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxMnx8c21hcnRwaG9uZSUyMHB1c2glMjBub3RpZmljYXRpb24lMjBtb2JpbGUlMjBhcHB8ZW58MXwwfHx8MTc4NTcyNDQ3NXww&ixlib=rb-4.1.0&q=80&w=1080" alt="PUSH 알림을 보낼수록 앱 이탈률이 높아지는 이유와 설계 원칙" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">PUSH 알림 이탈 설계의 핵심 문제는 발송 빈도가 아니라 맥락의 부재다. 알림을 많이 보낼수록 사용자가 앱을 더 자주 열 것이라는 가정은 실제 사용자 행동과 정반대로 작동한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 알림이 많아질수록 사용자는 떠나는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">앱 운영자가 PUSH 알림을 늘리는 논리는 단순하다. 접점이 많으면 전환도 늘어난다는 것이다. 그러나 사용자의 논리는 다르다. 자신과 관계없는 알림이 반복되면, 사용자는 알림을 차단하거나 앱 자체를 삭제하는 방식으로 반응한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">알림 수신 거부는 단순한 불편 표현이 아니다. 브랜드에 대한 신뢰 철회다. 한 번 수신 거부를 설정한 사용자를 다시 알림 수신 상태로 되돌리는 것은 구조적으로 매우 어렵다. 운영자가 발송 버튼을 누를 때마다 일부 사용자는 조용히 이탈 결정을 내리고 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">문제의 핵심은 <strong style="color:#f1f5f9;font-weight:700;">맥락 없는 알림</strong>이다. 사용자가 앱을 마지막으로 사용한 지 2주가 지났는데 "오늘만 특가"라는 알림을 보내는 것, 병원 예약 앱에서 진료와 무관한 이벤트 안내를 매주 보내는 것, 학원 앱에서 수강 신청 기간이 아닌데 강좌 홍보를 반복하는 것이 모두 같은 구조다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">이탈을 유발하는 알림의 세 가지 패턴</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">타이밍이 사용자 상태와 어긋나는 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">알림의 내용이 적절해도 시점이 맞지 않으면 거부감을 만든다. 카페24 기반 자사몰을 운영하는 브랜드가 새벽 1시에 재입고 알림을 발송한다면, 상품에 관심이 있던 사용자도 브랜드에 대한 인상을 부정적으로 재조정한다. 발송 편의에 맞춘 타이밍은 사용자 경험을 훼손한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">개인화 없이 동일한 메시지를 전체 발송하는 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전체 발송은 운영 비용이 낮다. 그러나 사용자 입장에서는 자신이 수신자 목록의 한 명일 뿐이라는 신호로 읽힌다. 부동산 플랫폼에서 아파트 매물 알림을 빌라 관심 사용자에게 동일하게 보내거나, 영어 학원 앱에서 수학 특강 홍보를 전체 수강생에게 발송하는 방식이 여기에 해당한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">전환 목적 알림이 관계 형성 알림을 압도하는 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">알림의 구성이 구매, 예약, 결제 유도로만 채워지면 사용자는 앱을 광고 채널로 인식한다. 광고 채널로 인식된 앱의 알림은 수신 거부 대상 1순위가 된다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1746014601552-4ed3d01da7e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMHx8bW9iaWxlJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwdXNlciUyMHNlZ21lbnRhdGlvbnxlbnwxfDB8fHwxNzg1NzI0NDc2fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="PUSH 알림을 보낼수록 앱 이탈률이 높아지는 이유와 설계 원칙" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">이탈을 줄이는 알림 설계 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">알림 설계를 재구성할 때 적용할 수 있는 세 가지 기준이 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">첫째, 알림의 발송 이유를 사용자 행동 기반으로 정의한다.</strong> 사용자가 특정 콘텐츠를 조회했는가, 장바구니에 상품을 담았는가, 예약 후 일정 기간이 지났는가 등 사용자의 실제 행동이 알림 발송의 트리거가 되어야 한다. 운영자의 캠페인 일정이 트리거가 되어서는 안 된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">둘째, 알림 빈도의 상한선을 사용자 세그먼트별로 다르게 설정한다.</strong> 최근 7일 내 활성 사용자와 30일 이상 비활성 사용자에게 동일한 빈도로 알림을 보내는 것은 두 집단 모두에게 최적화되지 않은 선택이다. 활성 사용자에게는 관련성 높은 알림을 적절한 빈도로, 비활성 사용자에게는 재참여를 유도하는 단일 메시지를 신중하게 보내는 방식이 맞다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">셋째, 알림의 가치를 전환 지표가 아닌 사용자 반응 지표로 측정한다.</strong> 오픈율, 클릭률만 보면 발송 최적화에 집중하게 된다. 알림 수신 거부율, 알림 이후 앱 삭제율, 알림 발송 이후 30일 리텐션 변화를 함께 추적해야 알림이 관계를 쌓는지 소모하는지를 판단할 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰(아임웹 기반 뷰티 브랜드)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">아임웹으로 운영되는 중소 뷰티 브랜드가 전체 고객에게 주 3회 프로모션 알림을 발송하던 구조를 바꾼다고 가정한다. 최근 30일 내 구매 이력이 있는 고객, 장바구니 이탈 고객, 90일 이상 미구매 고객으로 세그먼트를 나누고, 각 집단에 다른 메시지와 빈도를 적용한다. 장바구니 이탈 고객에게는 해당 상품의 재고 현황을 알리고, 90일 이상 미구매 고객에게는 신제품 출시 단일 알림만 발송한다. 이 구조에서 알림의 총 발송 건수는 줄어들지만, 각 알림이 수신자에게 맞닿는 정도는 높아진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">병원 예약 앱</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">치과 예약 앱을 사용하는 환자가 진료 예약을 완료한 시점 이후, 예약 리마인드 알림 외에 치료와 무관한 이벤트 알림을 반복적으로 받는다면 앱 삭제로 이어지기 쉽다. 반면 진료 후 일정 기간이 지난 시점에 정기 검진 안내 알림을 단 한 번 보내는 방식은 사용자가 필요로 하는 시점에 맞닿는다. 알림의 수가 적어도 사용자의 생활 흐름과 연결된 알림은 차단되지 않는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">온라인 교육 플랫폼</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수강 신청 기간이 아닌 시점에 강좌 홍보 알림을 보내는 대신, 수강 중인 학습자에게 진도율 기반 알림을 설계한다. 학습을 시작한 지 7일이 지났고 진도가 일정 수준 이하인 사용자에게 "이번 주 학습 이어가기" 메시지를 보내는 것은 판매 알림이 아니라 서비스 알림이다. 사용자는 이 알림을 광고로 인식하지 않는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. PUSH 알림 수신 거부율이 높아지면 어떻게 대응해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수신 거부율 상승은 알림 전략 전체를 재검토하는 신호로 읽어야 한다. 발송 빈도를 즉시 줄이고, 최근 30일 내 발송한 알림의 내용과 타이밍을 유형별로 분류한다. 전환 유도 알림이 전체의 대다수를 차지하고 있다면, 사용자 행동 기반 알림과 서비스 안내 알림의 비중을 높이는 방향으로 구성을 바꾼다. 수신 거부한 사용자를 되돌리려는 시도보다 현재 수신 중인 사용자의 경험을 지키는 것이 우선이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 알림 개인화를 위한 데이터가 충분하지 않을 때는 어떻게 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">완전한 개인화가 불가능한 상황에서는 행동 기반 세그먼트 두세 개를 먼저 만드는 것으로 시작한다. 최근 활성 사용자와 비활성 사용자를 구분하는 것만으로도 전체 동일 발송보다 맥락에 가까워진다. 생성형 AI를 활용해 세그먼트별 메시지 초안을 빠르게 작성하고, 반응 데이터를 축적하면서 세그먼트를 정교하게 나누는 방식이 현실적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 알림 발송 빈도의 적정선은 어떻게 정하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">업종과 앱의 사용 주기에 따라 다르다. 매일 사용하는 앱과 월 1~2회 사용하는 앱의 적정 빈도는 같을 수 없다. 기준을 정하는 방법은 사용자의 자연스러운 앱 사용 주기를 먼저 파악하는 것이다. 평균 사용 주기보다 알림 빈도가 높으면 사용자는 알림을 앱 사용의 이유가 아니라 방해 요소로 인식한다. 알림 발송 후 앱 방문이 이어지지 않는 패턴이 반복된다면 빈도를 줄이는 것이 맞다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 수신 거부율을 낮추기 위한 알림 문구 설계 원칙과 A/B 테스트 적용 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-219&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-219',cta_type:'retous_main',category:'메시징 & 채널 운영'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
