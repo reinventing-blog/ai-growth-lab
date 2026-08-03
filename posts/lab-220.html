@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>마케팅 CRM이란 무엇인가: 고객 데이터를 매출로 연결하는 구조 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="마케팅 CRM은 고객 데이터를 수집·분류·자동화해 매출로 연결하는 구조다. 자사몰, 병원, 학원 등 업종별 적용 방식과 4단계 프레임워크를 설명한다.">
+<meta property="og:title" content="마케팅 CRM이란 무엇인가: 고객 데이터를 매출로 연결하는 구조"><meta property="og:description" content="마케팅 CRM은 고객 데이터를 수집·분류·자동화해 매출로 연결하는 구조다. 자사몰, 병원, 학원 등 업종별 적용 방식과 4단계 프레임워크를 설명한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-220.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-220.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"마케팅 CRM이란 무엇인가: 고객 데이터를 매출로 연결하는 구조","description":"마케팅 CRM은 고객 데이터를 수집·분류·자동화해 매출로 연결하는 구조다. 자사몰, 병원, 학원 등 업종별 적용 방식과 4단계 프레임워크를 설명한다.","image":"https://images.pexels.com/photos/36950598/pexels-photo-36950598.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-220.html"},"datePublished":"2026-08-03","dateModified":"2026-08-03"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"마케팅 CRM과 일반 CRM은 어떻게 다른가","acceptedAnswer":{"@type":"Answer","text":"일반 CRM은 고객 정보를 저장하고 영업팀이 관계를 관리하는 데 초점을 둔다. 마케팅 CRM은 그 데이터를 기반으로 자동화된 커뮤니케이션과 캠페인을 실행하는 데 목적이 있다. 영업 CRM이 사람 중심이라면, 마케팅 CRM은 시나리오 중심이다."}},{"@type":"Question","name":"소규모 사업자도 마케팅 CRM을 도입할 수 있는가","acceptedAnswer":{"@type":"Answer","text":"고객 수가 적더라도 도입은 가능하다. 오히려 고객 수가 적을 때 데이터 구조를 정리해두면, 규모가 커졌을 때 시스템 전환 비용을 줄일 수 있다. 월 발송량이 적은 초기에는 무료 플랜이나 저비용 툴로 시작해 단계적으로 확장하는 방식이 현실적이다. 예를 들어 월 1,000건 문자 발송 기준으로 건당 15원이면 월 비용은 15,000원 수준이다."}},{"@type":"Question","name":"고객 데이터를 수집할 때 개인정보 문제는 어떻게 처리하는가","acceptedAnswer":{"@type":"Answer","text":"마케팅 목적의 데이터 수집과 활용은 정보주체의 명시적 동의가 필요하다. 회원가입 또는 구매 시 마케팅 수신 동의 항목을 별도로 구성하고, 수신 거부 처리 절차를 자동화해야 한다. 동의 없이 발송된 마케팅 메시지는 법적 리스크와 함께 브랜드 신뢰도 저하로 이어진다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#065f46;color:#6ee7b7;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">CRM & 그로스</span><span class="post-date">2026. 8. 3.</span></div>
+  <h1 class="post-title">마케팅 CRM이란 무엇인가: 고객 데이터를 매출로 연결하는 구조</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/36950598/pexels-photo-36950598.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="마케팅 CRM이란 무엇인가: 고객 데이터를 매출로 연결하는 구조" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 CRM은 고객 데이터를 수집·분류·활용해 구매 행동에 영향을 주는 일련의 시스템과 전략을 가리킨다. 단순한 연락처 관리 도구가 아니라, 고객이 처음 접촉한 순간부터 재구매에 이르기까지의 전 과정을 데이터로 추적하고 개입 시점을 설계하는 구조다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">1. 문제 정의: 데이터는 쌓이는데 매출로 이어지지 않는 이유</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 사업자가 고객 데이터를 보유하고 있다. 회원가입 정보, 구매 이력, 문의 기록, 이벤트 참여 여부가 각기 다른 시스템에 흩어져 있다. 문제는 데이터가 없는 것이 아니라, 데이터가 행동으로 연결되지 않는다는 점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반 자사몰을 운영하는 사업자를 예로 들면, 장바구니 이탈 고객 목록은 있지만 그 고객에게 언제, 어떤 메시지를, 어떤 채널로 보낼지 결정하는 로직이 없는 경우가 많다. 데이터와 행동 사이의 빈 공간을 채우는 것이 마케팅 CRM의 역할이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">반면 데이터 없이 감으로만 운영하는 방식은 예산 낭비와 고객 이탈을 동시에 만든다. 마케팅 CRM은 이 두 극단 사이에서 근거 있는 개입을 가능하게 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">2. 인사이트: 고객 데이터가 매출로 전환되는 조건</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">데이터가 매출로 연결되려면 세 가지 조건이 갖춰져야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">데이터의 통합</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구매 이력, 방문 빈도, 채널별 반응률이 하나의 고객 프로필로 합쳐져야 한다. 분산된 데이터는 행동 근거가 되지 못한다. 병원 예약 시스템과 문자 발송 툴이 연동되지 않으면, 재방문 가능성이 높은 환자에게 적시에 안내를 보낼 수 없다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">세그먼트의 정의</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전체 고객을 하나의 메시지로 공략하는 방식은 효율이 낮다. 마케팅 CRM에서는 <strong style="color:#f1f5f9;font-weight:700;">구매 주기, 객단가, 유입 채널, 이탈 시점</strong> 등의 기준으로 고객을 나눈다. 학원 운영 사례에서는 수강 기간 종료 후 30일 이내 미재등록 학생을 별도 세그먼트로 분류해 다른 커뮤니케이션을 설계할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">개입 타이밍의 자동화</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트가 정의되면, 특정 조건이 충족될 때 자동으로 메시지가 발송되는 구조가 필요하다. 이 자동화가 없으면 담당자가 매번 수동으로 작업해야 하고, 타이밍을 놓치는 경우가 반복된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">3. 프레임워크: 마케팅 CRM의 4단계 구조</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 CRM은 다음 네 단계로 작동한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 데이터 수집</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객이 남기는 모든 행동 신호를 수집한다. 웹사이트 방문, 상품 조회, 폼 제출, 결제 완료, 고객센터 문의가 모두 해당된다. 수집 시점에 어떤 데이터를 어느 형식으로 저장할지 기준을 정해두지 않으면 나중에 활용이 어렵다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 고객 분류</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수집된 데이터를 바탕으로 고객을 나눈다. 일반적으로 사용되는 기준은 RFM(최근 구매일, 구매 빈도, 구매 금액)이다. 부동산 중개업에서는 매물 조회 횟수, 문의 유형, 거래 완료 여부를 기준으로 잠재 고객과 활성 고객을 구분할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 시나리오 설계</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">각 세그먼트에 맞는 메시지와 채널을 설계한다. 이메일, SMS, 앱 푸시, 카카오 알림톡 중 어떤 채널이 해당 고객군에 반응률이 높은지 과거 데이터를 기반으로 결정한다. 아임웹 기반 자사몰이라면 신규 가입 후 3일 이내 미구매 고객에게 첫 구매 안내 이메일을 보내는 시나리오가 전형적인 예다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">4단계: 측정과 개선</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">발송 후 오픈율, 클릭률, 전환율, 수신 거부율을 측정한다. 수치를 보고 메시지 문안, 발송 시간, 세그먼트 기준을 조정한다. 이 사이클이 반복될수록 시나리오의 정밀도가 높아진다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNHx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzg1NzMzMjg5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="마케팅 CRM이란 무엇인가: 고객 데이터를 매출로 연결하는 구조" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">4. 사례: 업종별 마케팅 CRM 적용 방식</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰(카페24): 장바구니 이탈 자동화</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24로 운영되는 뷰티 자사몰의 경우, 장바구니에 상품을 담고 24시간 내 결제하지 않은 고객을 자동으로 감지해 카카오 알림톡을 발송하는 시나리오를 구성할 수 있다. 메시지에는 해당 상품명과 재고 현황을 포함시켜 구체성을 높인다. 이 시나리오는 설정 이후 별도 인력 없이 작동한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">피부과·성형외과: 재방문 유도</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">시술 완료 후 일정 기간이 지나면 재방문을 권유하는 메시지를 자동 발송하는 구조가 병원 CRM의 핵심이다. 단순 홍보성 문자가 아니라 "지난 시술 이후 관리 안내"라는 맥락을 담으면 수신자 입장에서 거부감이 낮아진다. 시술 종류별로 권장 재방문 주기가 다르기 때문에, 이를 세그먼트 조건으로 반영하는 것이 핵심이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">학원: 이탈 방지 시나리오</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수강 종료 예정일 2주 전에 재등록 안내를 보내는 시나리오를 설계할 수 있다. 단, 모든 학생에게 동일한 메시지를 보내는 것이 아니라, 출석률이 낮거나 중도 이탈 이력이 있는 학생에게는 별도의 상담 연결 메시지를 발송하는 방식으로 세분화한다. 이 분기 처리가 마케팅 CRM의 실질적 가치를 만든다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 마케팅 CRM과 일반 CRM은 어떻게 다른가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">일반 CRM은 고객 정보를 저장하고 영업팀이 관계를 관리하는 데 초점을 둔다. 마케팅 CRM은 그 데이터를 기반으로 자동화된 커뮤니케이션과 캠페인을 실행하는 데 목적이 있다. 영업 CRM이 사람 중심이라면, 마케팅 CRM은 시나리오 중심이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 소규모 사업자도 마케팅 CRM을 도입할 수 있는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객 수가 적더라도 도입은 가능하다. 오히려 고객 수가 적을 때 데이터 구조를 정리해두면, 규모가 커졌을 때 시스템 전환 비용을 줄일 수 있다. 월 발송량이 적은 초기에는 무료 플랜이나 저비용 툴로 시작해 단계적으로 확장하는 방식이 현실적이다. 예를 들어 월 1,000건 문자 발송 기준으로 건당 15원이면 월 비용은 15,000원 수준이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 고객 데이터를 수집할 때 개인정보 문제는 어떻게 처리하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 목적의 데이터 수집과 활용은 정보주체의 명시적 동의가 필요하다. 회원가입 또는 구매 시 마케팅 수신 동의 항목을 별도로 구성하고, 수신 거부 처리 절차를 자동화해야 한다. 동의 없이 발송된 마케팅 메시지는 법적 리스크와 함께 브랜드 신뢰도 저하로 이어진다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">5. 다음 단계: 어떤 툴과 구조로 시작할 것인가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케팅 CRM의 개념과 구조를 이해했다면, 다음 과제는 자신의 업종과 고객 규모에 맞는 툴 선택과 초기 세그먼트 설계다. 다음 글에서는 국내외 마케팅 CRM 툴의 기능 비교와 업종별 초기 세팅 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-220&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-220',cta_type:'retous_main',category:'CRM & 그로스'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
