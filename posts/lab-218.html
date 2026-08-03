@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 프롬프트를 잘 짤수록 캠페인 기획이 막히는 역설, 마케터는 무엇을 놓치는가 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 프롬프트를 잘 쓸수록 캠페인 기획이 막히는 이유와 구조를 분석하고, 프롬프트 역량을 실제 기획력으로 전환하는 3단계 프레임워크를 제시한다.">
+<meta property="og:title" content="AI 프롬프트를 잘 짤수록 캠페인 기획이 막히는 역설, 마케터는 무엇을 놓치는가"><meta property="og:description" content="AI 프롬프트를 잘 쓸수록 캠페인 기획이 막히는 이유와 구조를 분석하고, 프롬프트 역량을 실제 기획력으로 전환하는 3단계 프레임워크를 제시한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-218.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-218.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 프롬프트를 잘 짤수록 캠페인 기획이 막히는 역설, 마케터는 무엇을 놓치는가","description":"AI 프롬프트를 잘 쓸수록 캠페인 기획이 막히는 이유와 구조를 분석하고, 프롬프트 역량을 실제 기획력으로 전환하는 3단계 프레임워크를 제시한다.","image":"https://images.unsplash.com/photo-1559523275-98fb3c56faf6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyfHxtYXJrZXRlciUyMGxhcHRvcCUyMEFJJTIwd29ya2Zsb3clMjBwbGFubmluZ3xlbnwxfDB8fHwxNzg1NzE3NjY5fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-218.html"},"datePublished":"2026-08-03","dateModified":"2026-08-03"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"프롬프트를 잘 쓰는 것이 캠페인 기획에 전혀 도움이 안 된다는 뜻인가","acceptedAnswer":{"@type":"Answer","text":"그렇지 않다. 프롬프트 역량은 발산 단계의 속도를 높이고, 초안 작성의 반복 부담을 줄인다. 문제는 프롬프트 역량이 기획력을 대체할 수 있다는 착각이다. 두 역량은 쓰이는 단계가 다르다."}},{"@type":"Question","name":"기획 전제를 먼저 설정하는 훈련은 어떻게 시작하는가","acceptedAnswer":{"@type":"Answer","text":"가장 단순한 방법은 AI를 열기 전에 A4 반 페이지 분량의 기획 메모를 먼저 작성하는 것이다. 캠페인 목적, 타깃 행동 문제, 판단 기준 세 항목만 채워도 이후 AI 활용의 방향이 달라진다. 이 메모 없이 AI를 여는 것을 스스로에게 금지하는 규칙을 만드는 것이 실질적인 출발점이다."}},{"@type":"Question","name":"생성형 AI가 발전할수록 기획 판단도 AI가 대신하게 되지 않는가","acceptedAnswer":{"@type":"Answer","text":"생성형 AI의 출력 품질이 높아질수록, 마케터에게 남는 역할은 맥락 판단과 우선순위 설정으로 집중된다. AI는 브랜드의 현재 신뢰 자산, 내부 운영 제약, 고객과의 관계 히스토리를 실시간으로 반영하지 못한다. 그 간극을 채우는 판단이 기획자의 역할로 남는다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 8. 3.</span></div>
+  <h1 class="post-title">AI 프롬프트를 잘 짤수록 캠페인 기획이 막히는 역설, 마케터는 무엇을 놓치는가</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1559523275-98fb3c56faf6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyfHxtYXJrZXRlciUyMGxhcHRvcCUyMEFJJTIwd29ya2Zsb3clMjBwbGFubmluZ3xlbnwxfDB8fHwxNzg1NzE3NjY5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트를 잘 짤수록 캠페인 기획이 막히는 역설, 마케터는 무엇을 놓치는가" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케터들 사이에서 AI 프롬프트 작성 능력은 이제 핵심 역량으로 불린다. 그런데 프롬프트를 정교하게 다듬을수록 실제 캠페인 기획 단계에서 손이 멈추는 현상이 반복된다. 이 글은 그 역설의 구조를 분해하고, 프롬프트 역량을 캠페인 기획력으로 전환하는 방법을 다룬다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프롬프트 숙련이 기획력을 잠식하는 구조</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트를 잘 쓴다는 것은 AI에게 명확한 지시를 내릴 수 있다는 뜻이다. 문제는 그 지시를 구성하는 과정에서 마케터의 사고가 AI의 출력 형식에 맞춰 재편된다는 점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구체적으로는 세 가지 패턴이 반복된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫째, <strong style="color:#f1f5f9;font-weight:700;">질문을 먼저 설계하는 습관</strong>이 생긴다. 프롬프트 작성에 익숙해질수록 마케터는 "AI에게 어떻게 물어볼까"를 먼저 생각한다. 기획의 출발점이 브랜드 문제나 고객 행동이 아니라 AI와의 대화 구조가 되는 것이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 결과물의 형식이 기획서를 대체한다. AI가 생성한 캠페인 아이디어 목록, 타깃 페르소나 초안, 메시지 프레임은 완성된 문서처럼 보인다. 그래서 마케터는 그것을 검토하고 수정하는 역할로 스스로를 재정의한다. 기획자가 편집자로 밀려나는 순간이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 맥락 판단이 약해진다. 프롬프트는 맥락을 텍스트로 입력해야 하기 때문에, 마케터는 자신이 아는 맥락을 언어화하는 데 집중한다. 그 과정에서 언어로 표현되지 않는 암묵적 판단, 즉 "이 시점에 이 메시지는 브랜드 톤과 맞지 않는다"는 감각이 훈련되지 않는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">기획력과 프롬프트 역량은 다른 근육이다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">캠페인 기획은 불확실한 상황에서 선택을 내리는 일이다. 어떤 채널을 먼저 쓸 것인지, 어떤 메시지를 포기할 것인지, 예산을 어느 시점에 집중할 것인지. 이 판단들은 정보의 양이 아니라 우선순위 설정 능력에서 나온다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트 역량은 정보를 빠르게 생성하고 구조화하는 데 유리하다. 기획력은 그 정보 중 무엇을 버릴지 결정하는 데 필요하다. 두 역량은 방향이 다르다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자사몰(카페24, 아임웹 기반)을 운영하는 의류 브랜드를 예로 들면, AI를 활용해 시즌 캠페인 아이디어를 30개 뽑는 것은 30분이면 된다. 그런데 그 30개 중 자사몰 재방문 구조, 현재 재고 상황, 기존 고객의 구매 주기를 동시에 고려해 3개로 압축하는 작업은 AI가 대신할 수 없다. 그 압축 판단이 기획이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원 업종도 같은 구조다. 입시 시즌 직전 학부모 대상 캠페인을 기획할 때, AI는 메시지 초안을 빠르게 만든다. 그러나 해당 학원의 전년도 상담 전환 패턴, 지역 경쟁 학원의 최근 광고 방향, 학부모 커뮤니티의 현재 관심사를 교차해서 판단하는 것은 마케터의 몫이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프롬프트를 기획 도구로 재배치하는 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트를 기획의 전 단계가 아니라 특정 단계의 보조 도구로 위치시키면 역설이 해소된다. 다음 세 단계 구조를 제안한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 기획 전제를 먼저 손으로 쓴다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI를 열기 전에 마케터가 먼저 답해야 할 세 가지가 있다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">이 캠페인이 해결해야 할 고객 행동 문제는 무엇인가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">우리 브랜드가 이 시점에 말할 수 있는 것과 말해서는 안 되는 것은 무엇인가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">성공을 판단할 기준은 무엇인가 (채널별 도달, 문의 수, 재방문 등)</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 가지를 언어화하지 않은 상태에서 AI에게 캠페인 아이디어를 요청하면, 출력물은 일반적이고 마케터는 그것을 검토할 기준이 없다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: AI는 발산 단계에만 투입한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전제가 설정된 후, AI를 활용해 메시지 변형, 채널별 포맷 초안, 타깃 세분화 가설을 빠르게 확장한다. 이 단계에서 AI의 속도 이점이 실제로 작동한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개 업종의 경우, 가을 이사 시즌 캠페인에서 "전세 만기 앞둔 30대 세입자"라는 전제를 먼저 설정하면, AI가 생성하는 메시지 초안의 방향이 처음부터 좁혀진다. 전제 없이 시작한 경우와 결과물의 구체성이 다르다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 수렴은 마케터가 직접 한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">발산된 아이디어를 줄이는 작업은 AI에게 맡기지 않는다. "이 중 가장 좋은 것을 골라줘"라는 프롬프트는 기획 판단을 AI에게 이전하는 행위다. 마케터가 직접 1단계에서 설정한 전제와 대조하며 선택한다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.pexels.com/photos/7947671/pexels-photo-7947671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="AI 프롬프트를 잘 짤수록 캠페인 기획이 막히는 역설, 마케터는 무엇을 놓치는가" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원 마케팅 담당자가 건강검진 패키지 캠페인을 기획한다고 가정한다. AI를 먼저 열어 "건강검진 캠페인 아이디어 주세요"라고 입력하면 일반적인 메시지 목록이 나온다. 반면 "40대 직장인 남성, 검진 경험 있음, 재방문 유도, 예약 채널은 카카오 알림톡"이라는 전제를 먼저 정리하고 AI를 투입하면 출력물의 활용 가능성이 달라진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자사몰 운영 브랜드라면, 신규 고객 전환 캠페인과 기존 고객 재구매 캠페인은 기획 전제 자체가 다르다. 두 캠페인을 같은 프롬프트 구조로 시작하면 결과물도 뭉개진다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트를 잘 쓰는 것이 캠페인 기획에 전혀 도움이 안 된다는 뜻인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">그렇지 않다. 프롬프트 역량은 발산 단계의 속도를 높이고, 초안 작성의 반복 부담을 줄인다. 문제는 프롬프트 역량이 기획력을 대체할 수 있다는 착각이다. 두 역량은 쓰이는 단계가 다르다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 기획 전제를 먼저 설정하는 훈련은 어떻게 시작하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가장 단순한 방법은 AI를 열기 전에 A4 반 페이지 분량의 기획 메모를 먼저 작성하는 것이다. 캠페인 목적, 타깃 행동 문제, 판단 기준 세 항목만 채워도 이후 AI 활용의 방향이 달라진다. 이 메모 없이 AI를 여는 것을 스스로에게 금지하는 규칙을 만드는 것이 실질적인 출발점이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 생성형 AI가 발전할수록 기획 판단도 AI가 대신하게 되지 않는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI의 출력 품질이 높아질수록, 마케터에게 남는 역할은 맥락 판단과 우선순위 설정으로 집중된다. AI는 브랜드의 현재 신뢰 자산, 내부 운영 제약, 고객과의 관계 히스토리를 실시간으로 반영하지 못한다. 그 간극을 채우는 판단이 기획자의 역할로 남는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기획 전제 설정 방법을 업종별로 구체화한 워크시트와, 발산-수렴 단계별 프롬프트 구조 가이드를 다음 글에서 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-218&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-218',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
