@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 프롬프트 표준화가 기획 속도를 갉아먹는 이유 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 프롬프트 표준화가 기획 속도를 높인다는 믿음은 틀렸다. 맥락 레이어를 분리하지 않으면 기획자는 AI 출력을 수정하는 사람으로 전락한다. 실전 프레임워크와 업종별 사례로 확인한다.">
+<meta property="og:title" content="AI 프롬프트 표준화가 기획 속도를 갉아먹는 이유"><meta property="og:description" content="AI 프롬프트 표준화가 기획 속도를 높인다는 믿음은 틀렸다. 맥락 레이어를 분리하지 않으면 기획자는 AI 출력을 수정하는 사람으로 전락한다. 실전 프레임워크와 업종별 사례로 확인한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-233.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-233.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 프롬프트 표준화가 기획 속도를 갉아먹는 이유","description":"AI 프롬프트 표준화가 기획 속도를 높인다는 믿음은 틀렸다. 맥락 레이어를 분리하지 않으면 기획자는 AI 출력을 수정하는 사람으로 전락한다. 실전 프레임워크와 업종별 사례로 확인한다.","image":"https://images.unsplash.com/photo-1555421689-3f034debb7a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw0fHxtYXJrZXRlciUyMGxhcHRvcCUyMEFJJTIwd29ya2Zsb3clMjBwbGFubmluZ3xlbnwxfDB8fHwxNzg1OTc2ODk3fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-233.html"},"datePublished":"2026-08-06","dateModified":"2026-08-06"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"프롬프트 표준화를 이미 팀 전체에 적용했는데, 지금 되돌릴 수 있나?","acceptedAnswer":{"@type":"Answer","text":"전면 폐기보다는 기존 표준 프롬프트를 레이어 1(고정 컨텍스트)로 재정의하는 방식이 현실적이다. 기존 템플릿에 가변 컨텍스트 입력 칸을 추가하고, 해당 칸을 비워두면 AI에 제출할 수 없도록 프로세스를 설계하면 된다. 팀원들이 가변 컨텍스트 작성을 건너뛰지 못하게 만드는 것이 핵심이다."}},{"@type":"Question","name":"가변 컨텍스트를 매번 작성하면 오히려 시간이 더 걸리지 않나?","acceptedAnswer":{"@type":"Answer","text":"처음에는 그렇다. 기획자가 자신의 판단을 언어로 정리하는 데 익숙하지 않으면 가변 컨텍스트 작성 자체가 병목이 된다. 그러나 이 과정은 기획자가 어차피 해야 할 사고를 앞당기는 것이다. 나중에 AI 출력을 수정하는 데 쓰던 시간이 앞으로 이동하는 것이지, 총 시간이 늘어나는 것이 아니다."}},{"@type":"Question","name":"생성형 AI 툴마다 프롬프트 반응이 다른데, 레이어 구조도 툴별로 따로 관리해야 하나?","acceptedAnswer":{"@type":"Answer","text":"레이어 구조 자체는 툴에 종속되지 않는다. 고정 컨텍스트와 가변 컨텍스트의 분리 원칙은 어떤 생성형 AI를 쓰더라도 동일하게 적용된다. 툴별로 달라지는 것은 출력 지시(레이어 3)의 세부 문법이다. 레이어 3만 툴별로 소폭 조정하면 되고, 레이어 1과 2는 공통으로 유지할 수 있다. 다음 편에서는 이 레이어 구조를 실제 캠페인 브리프 작성 프로세스에 연결하는 방법을 다룬다. 기획 회의에서 나온 발언을 가변 컨텍스트로 변환하는 구체적인 절차를 살펴볼 예정이다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 8. 6.</span></div>
+  <h1 class="post-title">AI 프롬프트 표준화가 기획 속도를 갉아먹는 이유</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw0fHxtYXJrZXRlciUyMGxhcHRvcCUyMEFJJTIwd29ya2Zsb3clMjBwbGFubmluZ3xlbnwxfDB8fHwxNzg1OTc2ODk3fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 프롬프트 표준화가 기획 속도를 갉아먹는 이유" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케터들이 AI 프롬프트 표준화를 추진하는 순간, 역설적으로 기획 속도가 느려지는 현상이 반복된다. 표준화된 프롬프트는 일관성을 보장하지만, 기획자가 실제로 필요한 것은 일관성이 아니라 맥락에 맞는 판단이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">표준화 프롬프트가 만들어내는 구조적 문제</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트를 표준화하면 팀 전체가 같은 형식으로 AI를 사용하게 된다. 이것이 효율처럼 보이지만, 실제로는 세 가지 병목을 만든다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫째, 프롬프트가 고정되면 기획자는 AI 출력을 검토하는 사람이 아니라 출력을 수정하는 사람이 된다. 표준 프롬프트가 뱉어낸 결과물을 업종·시즌·타깃에 맞게 다듬는 데 오히려 더 많은 시간이 소요된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 표준화는 암묵적으로 "이 프롬프트면 충분하다"는 신호를 팀에 보낸다. 기획자가 맥락을 입력하는 과정을 생략하기 시작하고, AI는 맥락 없는 요청에 맥락 없는 답을 돌려준다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 표준 프롬프트는 가장 평균적인 상황을 전제로 설계된다. 그러나 기획 현장에서 평균적인 상황은 드물다. 신제품 런칭, 클레임 대응, 비수기 전환 캠페인은 모두 다른 맥락을 요구한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">기획 속도를 결정하는 것은 프롬프트 형식이 아니다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 팀이 프롬프트 품질을 형식의 문제로 접근한다. 역할 지정, 출력 형식, 제약 조건을 정교하게 설계하면 좋은 결과가 나온다고 믿는다. 틀린 말은 아니다. 그러나 <strong style="color:#f1f5f9;font-weight:700;">기획 속도를 결정하는 핵심은 기획자가 맥락을 얼마나 빠르게 언어화할 수 있는가</strong>다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">표준 프롬프트는 이 언어화 능력을 퇴화시킨다. 기획자가 "우리 고객은 누구이고, 이번 캠페인에서 무엇을 원하며, 어떤 반응을 유도해야 하는가"를 스스로 정리하지 않아도 AI가 어느 정도 채워주기 때문이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">결과적으로 기획자는 AI 없이는 기획 초안조차 잡기 어려운 상태가 된다. 속도가 빨라진 것이 아니라 의존도가 높아진 것이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">표준화 대신 써야 할 프레임워크: 맥락 레이어 분리</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트를 단일 템플릿으로 만드는 대신, 세 개의 레이어로 분리해서 관리하는 방식이 실전에서 더 잘 작동한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">레이어 1: 고정 컨텍스트</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">브랜드 톤, 타깃 페르소나, 금지 표현처럼 캠페인과 무관하게 항상 유효한 정보다. 이것만 표준화한다. 분량은 200자 내외로 제한한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">레이어 2: 가변 컨텍스트</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이번 캠페인의 목적, 시즌, 경쟁 상황, 고객 반응 데이터처럼 기획자가 매번 직접 입력해야 하는 정보다. 이 레이어를 생략하면 AI는 일반론을 출력한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">레이어 3: 출력 지시</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">원하는 결과물의 형식과 분량이다. 이것도 캠페인마다 달라진다. "3개 안을 불릿으로"와 "한 개 안을 설득 구조로"는 같은 목적이라도 다른 지시다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 구조에서 기획자가 실제로 집중해야 하는 것은 레이어 2다. 레이어 2를 빠르게 언어화하는 능력이 곧 기획 속도다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.pexels.com/photos/1181311/pexels-photo-1181311.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="AI 프롬프트 표준화가 기획 속도를 갉아먹는 이유" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰(아임웹 기반 라이프스타일 브랜드)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">월별 신상품 기획 메일을 AI로 초안 작성하던 팀이 있다고 가정해보자. 표준 프롬프트를 쓰던 시기에는 출력된 초안을 MD가 다시 전면 수정했다. 제품의 소재 특성, 이번 달 재고 상황, 직전 메일의 클릭 패턴이 프롬프트에 반영되지 않았기 때문이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">레이어 구조로 전환한 뒤 MD는 가변 컨텍스트에 "이번 신상품은 여름용 린넨 소재이며, 직전 메일에서 소재 설명 섹션의 체류 시간이 가장 길었다"를 직접 입력하기 시작했다. AI 출력의 수정 범위가 줄었고, MD가 초안 검토에 쓰는 시간이 실질적으로 단축됐다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 중개 법인</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">매물 소개 문구를 AI로 생성하는 팀의 경우, 표준 프롬프트는 "아파트 매물 소개 문구를 작성해줘"에서 크게 벗어나지 못했다. 결과물은 모든 매물이 비슷한 어조와 구조를 가졌다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가변 컨텍스트에 "이 매물의 주요 방문자는 초등학생 자녀를 둔 30대 부부이며, 인근 학군과 단지 내 놀이 공간이 결정 요인"이라는 정보를 추가하자 문구의 방향이 달라졌다. 에이전트가 매물마다 이 레이어를 채우는 데 걸리는 시간은 2분 내외다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">입시학원</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">시즌별 수강 안내 문자를 AI로 작성하는 학원에서 표준 프롬프트를 쓰면 "수능이 얼마 남지 않았습니다"류의 범용 문구가 반복된다. 가변 컨텍스트에 "이번 발송 대상은 모의고사 2등급 학생이며, 현재 국어 비문학 정답률이 낮은 시기"라는 정보를 넣으면 AI는 전혀 다른 결을 가진 문구를 생성한다. 수신자 입장에서 자신의 상황을 반영한 메시지로 읽힌다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">기획자가 지금 당장 바꿔야 할 한 가지 습관</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">표준 프롬프트를 버리라는 말이 아니다. 고정 컨텍스트는 표준화해도 된다. 단, 가변 컨텍스트를 AI에 위임하는 습관을 끊어야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기획 회의에서 나온 판단, 고객 데이터에서 읽은 신호, 이번 캠페인이 지난 캠페인과 다른 이유. 이것들을 기획자가 직접 언어로 정리해서 AI에 넘기는 과정이 곧 기획이다. AI는 그 언어를 받아서 형식을 완성하는 역할이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 순서가 뒤집히면, AI가 기획하고 기획자가 수정하는 구조가 된다. 그 구조에서 속도는 나오지 않는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트 표준화를 이미 팀 전체에 적용했는데, 지금 되돌릴 수 있나?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전면 폐기보다는 기존 표준 프롬프트를 레이어 1(고정 컨텍스트)로 재정의하는 방식이 현실적이다. 기존 템플릿에 가변 컨텍스트 입력 칸을 추가하고, 해당 칸을 비워두면 AI에 제출할 수 없도록 프로세스를 설계하면 된다. 팀원들이 가변 컨텍스트 작성을 건너뛰지 못하게 만드는 것이 핵심이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 가변 컨텍스트를 매번 작성하면 오히려 시간이 더 걸리지 않나?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">처음에는 그렇다. 기획자가 자신의 판단을 언어로 정리하는 데 익숙하지 않으면 가변 컨텍스트 작성 자체가 병목이 된다. 그러나 이 과정은 기획자가 어차피 해야 할 사고를 앞당기는 것이다. 나중에 AI 출력을 수정하는 데 쓰던 시간이 앞으로 이동하는 것이지, 총 시간이 늘어나는 것이 아니다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 생성형 AI 툴마다 프롬프트 반응이 다른데, 레이어 구조도 툴별로 따로 관리해야 하나?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">레이어 구조 자체는 툴에 종속되지 않는다. 고정 컨텍스트와 가변 컨텍스트의 분리 원칙은 어떤 생성형 AI를 쓰더라도 동일하게 적용된다. 툴별로 달라지는 것은 출력 지시(레이어 3)의 세부 문법이다. 레이어 3만 툴별로 소폭 조정하면 되고, 레이어 1과 2는 공통으로 유지할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 편에서는 이 레이어 구조를 실제 캠페인 브리프 작성 프로세스에 연결하는 방법을 다룬다. 기획 회의에서 나온 발언을 가변 컨텍스트로 변환하는 구체적인 절차를 살펴볼 예정이다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-233&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-233',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
