@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>이벤트 기반 자동화 vs 스케줄 기반 자동화, 무엇을 선택해야 하나 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="이벤트 기반 자동화와 스케줄 기반 자동화의 작동 원리와 선택 기준을 비교한다. 업종별 사례와 3단계 판단 프레임워크로 자신의 업무에 맞는 방식을 결정하는 방법을 정리했다.">
+<meta property="og:title" content="이벤트 기반 자동화 vs 스케줄 기반 자동화, 무엇을 선택해야 하나"><meta property="og:description" content="이벤트 기반 자동화와 스케줄 기반 자동화의 작동 원리와 선택 기준을 비교한다. 업종별 사례와 3단계 판단 프레임워크로 자신의 업무에 맞는 방식을 결정하는 방법을 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-232.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-232.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"이벤트 기반 자동화 vs 스케줄 기반 자동화, 무엇을 선택해야 하나","description":"이벤트 기반 자동화와 스케줄 기반 자동화의 작동 원리와 선택 기준을 비교한다. 업종별 사례와 3단계 판단 프레임워크로 자신의 업무에 맞는 방식을 결정하는 방법을 정리했다.","image":"https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNHx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzg1OTc2NTc5fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-232.html"},"datePublished":"2026-08-06","dateModified":"2026-08-06"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"이벤트 기반 자동화는 스케줄 기반보다 항상 더 복잡한가","acceptedAnswer":{"@type":"Answer","text":"그렇지 않다. 복잡도는 트리거 조건의 수와 분기 로직에 달려 있다. 단순한 이벤트 기반 자동화는 간단한 스케줄 기반 자동화보다 오히려 구성이 쉬울 수 있다. 폼 제출 시 담당자에게 이메일을 보내는 흐름은 매일 여러 조건을 검사해서 처리 대상을 걸러내는 스케줄 작업보다 단순하다."}},{"@type":"Question","name":"스케줄 기반 자동화를 쓰면 실시간 대응이 불가능한가","acceptedAnswer":{"@type":"Answer","text":"스케줄 기반은 실시간 대응에 적합하지 않다. 그러나 실시간 대응이 필요한 흐름과 주기적 처리가 필요한 흐름을 분리해서 각각 맞는 방식으로 구성하면 된다. 하나의 시스템 안에서 두 방식이 병렬로 작동할 수 있다."}},{"@type":"Question","name":"자동화 도구를 처음 도입할 때 어느 방식부터 시작해야 하는가","acceptedAnswer":{"@type":"Answer","text":"반복적으로 수작업으로 처리하는 업무 중 가장 빈도가 높은 것부터 시작한다. 그 업무의 시작 조건이 특정 행동이나 상태 변화라면 이벤트 기반으로, 정해진 시간에 실행된다면 스케줄 기반으로 구성한다. 방식을 먼저 정하는 것보다 업무를 먼저 정의하는 순서가 맞다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#3b1d8a;color:#c4b5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">자동화 & 워크플로우</span><span class="post-date">2026. 8. 6.</span></div>
+  <h1 class="post-title">이벤트 기반 자동화 vs 스케줄 기반 자동화, 무엇을 선택해야 하나</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNHx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzg1OTc2NTc5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="이벤트 기반 자동화 vs 스케줄 기반 자동화, 무엇을 선택해야 하나" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 도입을 검토하는 팀이 가장 먼저 마주치는 갈림길이 있다. 이벤트 기반 자동화와 스케줄 기반 자동화 중 어느 방식이 자신의 업무 흐름에 맞는지 판단하는 일이다. 두 방식은 작동 원리가 다르고, 적합한 상황도 다르다. 선택을 잘못하면 자동화를 구축하고도 운영 부담이 줄지 않는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">두 방식의 작동 원리</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">이벤트 기반 자동화</strong>는 특정 조건이 충족되는 순간 실행된다. 고객이 폼을 제출하거나, 결제가 완료되거나, 파일이 특정 폴더에 업로드되는 것처럼 '무언가 일어난 사실' 자체가 트리거다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">스케줄 기반 자동화는 시간을 기준으로 실행된다. 매일 오전 9시, 매주 월요일, 매월 1일처럼 미리 정해진 일정에 따라 작업이 시작된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 방식의 핵심 차이는 반응 시점이다. 이벤트 기반은 행동이 발생한 직후 처리가 이루어지고, 스케줄 기반은 행동과 처리 사이에 시간 간격이 존재한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">언제 이벤트 기반 자동화를 선택하는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">행동과 응답 사이의 간격이 경험에 직접 영향을 미칠 때 이벤트 기반 방식이 맞다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">적합한 상황</h4>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">고객 문의 접수 후 즉시 확인 메시지를 보내야 하는 경우</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">결제 완료 시점에 영수증과 안내 메일을 발송해야 하는 경우</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">회원 가입 직후 온보딩 시퀀스를 시작해야 하는 경우</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">재고가 특정 수량 이하로 내려가면 담당자에게 알림을 보내야 하는 경우</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24나 아임웹 기반의 자사몰을 운영하는 경우, 장바구니 이탈 후 일정 시간이 경과하면 자동으로 메시지를 발송하는 흐름이 대표적인 이벤트 기반 자동화다. '장바구니 이탈'이라는 이벤트가 발생한 시점을 기점으로 타이머가 시작되고, 설정한 시간이 지나면 메시지가 나간다. 이 흐름은 스케줄 기반으로는 구현하기 어렵다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원 업종에서도 마찬가지다. 수강 신청이 완료되는 순간 수업 안내와 준비물 목록을 자동으로 보내는 구조는 이벤트 기반이어야 한다. 매일 오전 9시에 전날 신청자를 모아서 보내는 방식은 신청 직후 안내를 기대하는 수강생 경험과 맞지 않는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">언제 스케줄 기반 자동화를 선택하는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">처리 시점보다 처리 주기가 중요할 때 스케줄 기반 방식이 맞다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">적합한 상황</h4>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">매주 월요일 오전에 팀 주간 보고서를 자동 생성해서 공유하는 경우</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">매월 말일에 정산 데이터를 취합해서 회계 담당자에게 전달하는 경우</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">매일 자정에 전날 거래 데이터를 백업하는 경우</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">특정 요일에 뉴스레터를 발송하는 경우</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개 업무에서 매주 수요일 오후에 신규 매물 목록을 정리해서 관심 고객에게 발송하는 흐름은 스케줄 기반이 자연스럽다. 매물이 등록될 때마다 개별 알림을 보내는 것보다 주 1회 큐레이션된 목록을 보내는 방식이 고객 경험에 더 맞는 경우가 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원 예약 리마인더도 스케줄 기반으로 처리하는 경우가 많다. 예약 시점에 이벤트를 발생시키되, 실제 리마인더 발송은 '예약일 하루 전 오전 10시'라는 스케줄로 실행한다. 이처럼 두 방식을 조합하는 구조도 흔하다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1633119747461-79f45df1913c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8YXV0b21hdGlvbiUyMHdvcmtmbG93JTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwc2NyZWVufGVufDF8MHx8fDE3ODU5NzY1ODB8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="이벤트 기반 자동화 vs 스케줄 기반 자동화, 무엇을 선택해야 하나" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">선택 기준을 정리하는 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">방식을 고를 때 세 가지 질문을 순서대로 확인한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">질문 1: 처리 시점이 사용자 경험에 영향을 주는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">결제 완료 후 30분 뒤에 영수증이 오는 것이 문제가 되는가. 문의 후 다음 날 아침에 확인 메시지가 오는 것이 문제가 되는가. 시점 지연이 경험을 훼손한다면 이벤트 기반이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">질문 2: 처리 대상이 개별 건인가, 묶음인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">한 건 한 건 발생할 때마다 즉시 처리해야 한다면 이벤트 기반이다. 하루치, 한 주치를 모아서 한 번에 처리해도 된다면 스케줄 기반이 관리가 단순하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">질문 3: 트리거가 외부 행동인가, 시간인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객의 행동, 시스템의 상태 변화, 데이터의 조건 충족이 트리거라면 이벤트 기반이다. 시간 자체가 트리거라면 스케줄 기반이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">두 방식을 조합하는 구조</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실제 운영에서는 단일 방식보다 조합 구조가 더 많다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">온라인 강의 플랫폼을 예로 들면, 수강 신청이 완료되는 순간(이벤트) 환영 메일을 발송하고, 이후 매주 월요일(스케줄)에 해당 주차 학습 콘텐츠 안내를 보내는 구조가 된다. 진입은 이벤트가 처리하고, 반복 커뮤니케이션은 스케줄이 담당한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">IT 서비스 운영팀에서는 서버 오류가 발생하는 순간(이벤트) 담당자에게 즉시 알림을 보내고, 매일 오전(스케줄) 전날 오류 로그를 요약해서 팀장에게 공유하는 흐름을 함께 운영한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 방식을 구분하는 것보다, 각 업무 단계에서 어느 방식이 맞는지를 판단하는 능력이 실제 자동화 설계에서 더 필요하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 이벤트 기반 자동화는 스케줄 기반보다 항상 더 복잡한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">그렇지 않다. 복잡도는 트리거 조건의 수와 분기 로직에 달려 있다. 단순한 이벤트 기반 자동화는 간단한 스케줄 기반 자동화보다 오히려 구성이 쉬울 수 있다. 폼 제출 시 담당자에게 이메일을 보내는 흐름은 매일 여러 조건을 검사해서 처리 대상을 걸러내는 스케줄 작업보다 단순하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 스케줄 기반 자동화를 쓰면 실시간 대응이 불가능한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">스케줄 기반은 실시간 대응에 적합하지 않다. 그러나 실시간 대응이 필요한 흐름과 주기적 처리가 필요한 흐름을 분리해서 각각 맞는 방식으로 구성하면 된다. 하나의 시스템 안에서 두 방식이 병렬로 작동할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 자동화 도구를 처음 도입할 때 어느 방식부터 시작해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">반복적으로 수작업으로 처리하는 업무 중 가장 빈도가 높은 것부터 시작한다. 그 업무의 시작 조건이 특정 행동이나 상태 변화라면 이벤트 기반으로, 정해진 시간에 실행된다면 스케줄 기반으로 구성한다. 방식을 먼저 정하는 것보다 업무를 먼저 정의하는 순서가 맞다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 이벤트 기반 자동화와 스케줄 기반 자동화를 실제로 구성할 때 사용하는 도구 선택 기준과 연결 구조 설계 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-232&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-232',cta_type:'flywheel_consult',category:'자동화 & 워크플로우'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
