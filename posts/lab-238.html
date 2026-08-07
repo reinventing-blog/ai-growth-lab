@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>메시지 채널 통합이란 무엇인가: 고객 접점이 하나의 흐름으로 연결되는 구조 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="메시지 채널 통합은 SMS, 카카오, 이메일, 앱 푸시를 하나의 운영 체계로 연결하는 구조다. 데이터·로직·실행 레이어 기반의 통합 방식과 병원·자사몰·부동산 업종별 적용 사례를 정리한다.">
+<meta property="og:title" content="메시지 채널 통합이란 무엇인가: 고객 접점이 하나의 흐름으로 연결되는 구조"><meta property="og:description" content="메시지 채널 통합은 SMS, 카카오, 이메일, 앱 푸시를 하나의 운영 체계로 연결하는 구조다. 데이터·로직·실행 레이어 기반의 통합 방식과 병원·자사몰·부동산 업종별 적용 사례를 정리한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-238.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-238.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"메시지 채널 통합이란 무엇인가: 고객 접점이 하나의 흐름으로 연결되는 구조","description":"메시지 채널 통합은 SMS, 카카오, 이메일, 앱 푸시를 하나의 운영 체계로 연결하는 구조다. 데이터·로직·실행 레이어 기반의 통합 방식과 병원·자사몰·부동산 업종별 적용 사례를 정리한다.","image":"https://images.unsplash.com/photo-1746014600929-8e4bf8d370f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMHx8b21uaWNoYW5uZWwlMjBtZXNzYWdpbmclMjBkYXNoYm9hcmQlMjBsYXB0b3B8ZW58MXwwfHx8MTc4NjA3MDE4OHww&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-238.html"},"datePublished":"2026-08-07","dateModified":"2026-08-07"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"메시지 채널 통합을 구축하려면 반드시 대형 솔루션이 필요한가","acceptedAnswer":{"@type":"Answer","text":"규모에 따라 다르다. 월 발송량이 적고 채널이 두 개 이하라면, 스프레드시트 기반 발송 관리와 단일 발송 플랫폼만으로도 기본적인 통합 효과를 낼 수 있다. 채널이 세 개 이상이거나 트리거 자동화가 필요한 시점부터 전용 마케팅 자동화 도구 도입을 검토하는 것이 현실적이다."}},{"@type":"Question","name":"수신 동의 채널이 고객마다 달라도 통합 운영이 가능한가","acceptedAnswer":{"@type":"Answer","text":"가능하다. 오히려 수신 동의 상태를 채널별로 정확히 기록하는 것이 통합의 출발점이다. 카카오 알림톡 동의는 있지만 이메일 동의가 없는 고객에게는 카카오 채널만 활성화하고, 반대의 경우에는 이메일만 발송하도록 로직을 설계한다. 동의 상태가 CRM에 실시간으로 반영되어야 이 분기가 정확하게 작동한다."}},{"@type":"Question","name":"채널 통합 후 메시지 빈도는 어떻게 설정해야 하는가","acceptedAnswer":{"@type":"Answer","text":"채널이 통합되면 발송 가능한 접점이 늘어나기 때문에, 오히려 빈도 기준을 명확히 설정하지 않으면 과잉 발송으로 이어진다. 고객 한 명에게 7일 이내 동일 목적의 메시지는 최대 두 번을 넘기지 않는다는 식의 캡(cap) 규칙을 로직 레이어에 포함시키는 것이 기본 원칙이다. 메시지 채널 통합은 도구의 문제가 아니라 운영 구조의 문제다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#0c4a6e;color:#7dd3fc;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">메시징 & 채널 운영</span><span class="post-date">2026. 8. 7.</span></div>
+  <h1 class="post-title">메시지 채널 통합이란 무엇인가: 고객 접점이 하나의 흐름으로 연결되는 구조</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1746014600929-8e4bf8d370f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMHx8b21uaWNoYW5uZWwlMjBtZXNzYWdpbmclMjBkYXNoYm9hcmQlMjBsYXB0b3B8ZW58MXwwfHx8MTc4NjA3MDE4OHww&ixlib=rb-4.1.0&q=80&w=1080" alt="메시지 채널 통합이란 무엇인가: 고객 접점이 하나의 흐름으로 연결되는 구조" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">메시지 채널 통합은 카카오톡 알림톡, SMS, 이메일, 앱 푸시 등 분산된 커뮤니케이션 수단을 단일 운영 체계 아래 묶는 방식이다. 채널이 많아질수록 고객 경험은 오히려 파편화된다. 이 글에서는 통합이 필요한 이유와 구조적 접근법을 정리한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 채널이 많을수록 고객 경험은 흐트러지는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케터는 도달률을 높이기 위해 채널을 늘린다. 그러나 채널이 늘어나는 것과 채널이 연결되는 것은 전혀 다른 문제다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원을 예로 들면, 예약 확인은 SMS로 보내고, 당일 리마인더는 카카오 알림톡으로 발송하며, 사후 만족도 조사는 이메일로 나간다. 각 채널은 따로 설정되고 따로 관리된다. 담당자가 바뀌거나 시스템이 분리되어 있으면, 같은 환자에게 동일한 메시지가 세 번 발송되거나, 취소된 예약 건에 리마인더가 나가는 일이 발생한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객 입장에서 이 경험은 단순한 불편이 아니다. 브랜드 신뢰도 문제로 이어진다. 채널 수가 많다는 것이 곧 운영 수준을 보장하지 않는다는 점을 먼저 인식해야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">메시지 채널 통합의 핵심 구조</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">통합은 단순히 발송 도구를 하나로 합치는 것이 아니다. 세 가지 레이어가 맞물려야 실질적인 통합이 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">데이터 레이어: 고객 상태를 단일 소스로 관리</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널마다 고객 데이터가 따로 쌓이면 통합은 불가능하다. CRM 또는 CDP(고객 데이터 플랫폼)를 기준점으로 삼아 구매 이력, 수신 동의 상태, 최근 반응 여부를 한 곳에서 읽을 수 있어야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">아임웹 기반 자사몰을 운영하는 패션 브랜드라면, 장바구니 이탈 고객에게 카카오 알림톡을 먼저 보내고, 24시간 내 미반응 시 이메일로 전환하는 흐름을 설계할 수 있다. 이 흐름이 작동하려면 '카카오 발송 여부'와 '이메일 발송 여부'가 같은 데이터베이스 안에서 추적되어야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">로직 레이어: 채널 선택 기준을 사전에 정의</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">어떤 상황에서 어떤 채널을 쓸지 규칙을 명문화한다. 예를 들어, 긴급성이 높은 메시지(결제 오류, 배송 지연)는 SMS를 우선하고, 정보성 콘텐츠는 이메일, 프로모션 알림은 앱 푸시를 기본값으로 설정하는 방식이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원 업종에서는 수강 신청 마감 안내처럼 시간 민감도가 높은 메시지는 카카오 알림톡으로, 월별 커리큘럼 안내처럼 읽는 데 시간이 걸리는 콘텐츠는 이메일로 분리하는 기준을 세울 수 있다. 기준 없이 운영하면 발송 건수는 늘어나지만 수신 거부율도 함께 올라간다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">실행 레이어: 발송 타이밍과 순서의 자동화</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">통합의 실질적 가치는 자동화 흐름에서 드러난다.</strong> 트리거 기반 시나리오를 구성하면, 담당자가 매번 수동으로 발송 대상을 추출하고 채널을 선택하는 작업을 줄일 수 있다. 부동산 중개업의 경우, 매물 관심 등록 후 3일 이내 연락이 없으면 SMS 한 건을 자동 발송하고, 7일 후에도 반응이 없으면 이메일로 유사 매물을 안내하는 시나리오를 설정할 수 있다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1686061593269-420785fb8fa0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNnx8bWFya2V0aW5nJTIwYXV0b21hdGlvbiUyMHdvcmtmbG93JTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkfGVufDF8MHx8fDE3ODYwNzAxODl8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="메시지 채널 통합이란 무엇인가: 고객 접점이 하나의 흐름으로 연결되는 구조" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">통합 없이 운영할 때 발생하는 실제 문제</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널을 따로 운영하면 세 가지 문제가 반복된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫째, 중복 발송이다. 같은 고객에게 동일한 내용이 두 채널에서 동시에 나간다. 이는 수신 거부를 유발하는 가장 직접적인 원인이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 맥락 단절이다. 고객이 이메일로 문의를 남겼는데, 다음 날 SMS로 전혀 다른 프로모션 메시지가 발송된다. 고객은 자신의 문의가 처리되지 않았다고 느낀다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 운영 비용 분산이다. 채널별로 담당자가 나뉘고, 시스템도 따로 계약되어 있으면, 월 발송 비용을 정확히 파악하기 어렵다. 예를 들어 SMS 건당 단가가 10원이고 월 5,000건을 중복 발송하고 있다면, 그 중 실제 필요 없는 발송이 절반이라고 판단될 때 월 25,000원이 낭비되는 구조다. 규모가 커질수록 이 비용은 선형으로 증가한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 통합 적용 방식</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰(카페24·아임웹)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구매 완료 후 리뷰 요청을 카카오 알림톡으로 발송하고, 작성 완료 시 포인트 적립 알림을 앱 푸시로 연결하는 흐름이 일반적이다. 채널이 연결되어 있으면 리뷰 작성 여부에 따라 다음 메시지를 자동으로 분기할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">병원·클리닉</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예약 확인, 전날 리마인더, 사후 케어 안내를 각각 다른 채널로 설계하되, 환자가 예약을 취소하는 순간 이후 발송 예정인 모든 메시지가 자동으로 중단되어야 한다. 이 연결이 없으면 취소 환자에게 리마인더가 발송되는 오류가 반복된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산·임대</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">관심 매물 등록 이후 고객의 반응 여부에 따라 채널을 전환하는 구조가 유효하다. 카카오 알림톡 수신 동의가 없는 고객에게는 SMS를 기본 채널로 자동 전환하는 폴백 로직이 필요하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 메시지 채널 통합을 구축하려면 반드시 대형 솔루션이 필요한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">규모에 따라 다르다. 월 발송량이 적고 채널이 두 개 이하라면, 스프레드시트 기반 발송 관리와 단일 발송 플랫폼만으로도 기본적인 통합 효과를 낼 수 있다. 채널이 세 개 이상이거나 트리거 자동화가 필요한 시점부터 전용 마케팅 자동화 도구 도입을 검토하는 것이 현실적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 수신 동의 채널이 고객마다 달라도 통합 운영이 가능한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가능하다. 오히려 수신 동의 상태를 채널별로 정확히 기록하는 것이 통합의 출발점이다. 카카오 알림톡 동의는 있지만 이메일 동의가 없는 고객에게는 카카오 채널만 활성화하고, 반대의 경우에는 이메일만 발송하도록 로직을 설계한다. 동의 상태가 CRM에 실시간으로 반영되어야 이 분기가 정확하게 작동한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 채널 통합 후 메시지 빈도는 어떻게 설정해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널이 통합되면 발송 가능한 접점이 늘어나기 때문에, 오히려 빈도 기준을 명확히 설정하지 않으면 과잉 발송으로 이어진다. 고객 한 명에게 7일 이내 동일 목적의 메시지는 최대 두 번을 넘기지 않는다는 식의 캡(cap) 규칙을 로직 레이어에 포함시키는 것이 기본 원칙이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">메시지 채널 통합은 도구의 문제가 아니라 운영 구조의 문제다. 다음 글에서는 통합 환경에서 자동화 시나리오를 실제로 설계하는 방법과, 업종별 트리거 조건을 구체적으로 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-238&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-238',cta_type:'retous_main',category:'메시징 & 채널 운영'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
