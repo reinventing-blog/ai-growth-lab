@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>당신의 AI 캠페인 기획이 실행 단계에서 멈추는 진짜 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 캠페인 기획이 실행 단계에서 멈추는 원인은 기획 품질이 아니라 실행 조건과 승인 구조의 부재다. 업종별 사례와 함께 실행 가능한 기획 프레임워크를 정리했다.">
+<meta property="og:title" content="당신의 AI 캠페인 기획이 실행 단계에서 멈추는 진짜 원인"><meta property="og:description" content="AI 캠페인 기획이 실행 단계에서 멈추는 원인은 기획 품질이 아니라 실행 조건과 승인 구조의 부재다. 업종별 사례와 함께 실행 가능한 기획 프레임워크를 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-235.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-235.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"당신의 AI 캠페인 기획이 실행 단계에서 멈추는 진짜 원인","description":"AI 캠페인 기획이 실행 단계에서 멈추는 원인은 기획 품질이 아니라 실행 조건과 승인 구조의 부재다. 업종별 사례와 함께 실행 가능한 기획 프레임워크를 정리했다.","image":"https://images.unsplash.com/photo-1745674684408-59f9def201d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwzMHx8QUklMjBtYXJrZXRpbmclMjBjYW1wYWlnbiUyMGxhcHRvcCUyMGRhc2hib2FyZHxlbnwxfDB8fHwxNzg2MDYxNzcxfDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-235.html"},"datePublished":"2026-08-07","dateModified":"2026-08-07"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"AI로 기획서를 만들 때 실행 조건 체크리스트는 어떻게 구성하나요?","acceptedAnswer":{"@type":"Answer","text":"최소 세 항목을 포함한다. 첫째, 데이터 조건(타깃 세그먼트를 뽑을 수 있는 데이터가 수집되고 있는가). 둘째, 툴 연동 상태(발송 도구와 데이터 소스가 연결되어 있는가). 셋째, 예산과 담당자 확정 여부. 이 세 항목이 모두 충족된 상태에서만 기획서가 실행 단계로 넘어가도록 게이트를 설계한다."}},{"@type":"Question","name":"승인 구조를 기획서에 포함시키면 기획 속도가 느려지지 않나요?","acceptedAnswer":{"@type":"Answer","text":"기획 단계에서 승인 흐름을 정리하는 데 걸리는 시간은 30분을 넘지 않는다. 반면 승인 구조 없이 기획서를 넘겼을 때 표류하는 시간은 수 주에 달하는 경우가 많다. 앞에서 쓰는 30분이 뒤에서 발생하는 지연을 막는다."}},{"@type":"Question","name":"생성형 AI가 만든 기획 초안을 실행 가능한 수준으로 보완하려면 어떤 순서로 작업하나요?","acceptedAnswer":{"@type":"Answer","text":"초안이 나온 직후, 기획서를 읽지 않은 실무자에게 \"이 기획서만 보고 내일 당장 실행할 수 있는가\"를 물어보는 것이 가장 빠른 진단 방법이다. 실행할 수 없다는 답이 나오면, 그 이유를 기록하고 실행 조건 체크리스트와 채널 실행 명세를 추가한다. 이 과정을 한 번 거친 기획서가 실행 가능한 수준의 문서가 된다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#1e3a5f;color:#93c5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 8. 7.</span></div>
+  <h1 class="post-title">당신의 AI 캠페인 기획이 실행 단계에서 멈추는 진짜 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1745674684408-59f9def201d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwzMHx8QUklMjBtYXJrZXRpbmclMjBjYW1wYWlnbiUyMGxhcHRvcCUyMGRhc2hib2FyZHxlbnwxfDB8fHwxNzg2MDYxNzcxfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="당신의 AI 캠페인 기획이 실행 단계에서 멈추는 진짜 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 캠페인 기획을 완성했는데 실행이 안 된다면, 문제는 기획서 밖에 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기획 단계에서는 생성형 AI가 빠르게 아이디어를 뽑아주고, 메시지 초안도 정리된다. 그런데 막상 실행 단계에 들어서면 팀이 멈춘다. 승인이 지연되고, 채널 담당자가 다른 우선순위를 내세우고, 데이터가 없다는 이유로 캠페인이 보류된다. 이 패턴은 기획의 품질 문제가 아니다. 기획과 실행 사이의 구조적 단절이 원인이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">기획서는 완성됐는데 왜 실행이 막히는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI를 활용한 기획은 속도가 빠르다. 타깃 정의, 메시지 방향, 채널 시퀀스까지 수 시간 안에 초안이 나온다. 문제는 이 속도가 오히려 단절을 만든다는 점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기획이 빠르게 완성될수록, 실행에 필요한 조건들이 확인되지 않은 채 문서 안에 묻힌다. 예를 들어 자사몰(카페24, 아임웹 기반)을 운영하는 의류 브랜드가 AI로 '재방문 유도 캠페인' 기획서를 만들었다고 가정하자. 기획서에는 "구매 후 14일 시점에 개인화 메시지를 발송한다"고 적혀 있다. 그런데 실제로는 CRM 툴과 자사몰 데이터가 연동되어 있지 않다. 14일 기준으로 고객을 자동 세분화하는 로직이 없다. 기획서는 완성됐지만 실행 첫 단계부터 막힌다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기획 속도와 실행 준비 속도 사이의 간격이 넓을수록, 캠페인은 보류 상태로 쌓인다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">실행을 막는 세 가지 구조적 원인</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원인 1. 실행 조건이 기획서 안에 없다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI가 생성한 기획 초안은 이상적인 조건을 전제로 작성된다. "고객 행동 데이터를 기반으로", "세그먼트별 메시지를 자동화하여"라는 표현이 들어가지만, 그 데이터가 실제로 수집되고 있는지, 자동화 도구가 세팅되어 있는지는 기획서가 검토하지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실행 가능한 기획서는 조건 목록을 포함해야 한다. 캠페인 실행 전에 충족되어야 할 데이터 조건, 툴 연동 상태, 담당자 확정 여부를 한 페이지에 정리하는 것이 선행되어야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원인 2. 승인 구조가 기획 속도를 따라가지 못한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 기반 기획은 빠르게 나오는 만큼, 검토 주체가 준비되기 전에 문서가 완성된다. 마케팅 팀이 기획서를 올리면, 브랜드 가이드라인 검토는 디자인 팀이, 예산 승인은 경영진이, 채널 운영은 외부 대행사가 담당하는 구조에서는 각 주체가 순서대로 검토해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 순서가 기획서에 명시되어 있지 않으면, 기획서는 팀 사이를 표류한다. 승인 흐름을 기획 단계에서 함께 설계해야 한다. 누가 무엇을 언제까지 검토하는지를 기획서 마지막 페이지에 붙이는 것이 실질적인 해법이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원인 3. 채널별 실행 기준이 없다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기획서에 "SNS, 이메일, 문자"를 활용한다고 적혀 있어도, 채널마다 실행 기준이 다르다. 학원의 경우, 수강 문의 후 미등록 고객에게 문자를 보내는 캠페인을 기획했다면 발송 타이밍, 수신 동의 여부 확인, 메시지 길이 제한(SMS 기준 90바이트)을 채널 기준으로 명시해야 한다. 이 기준이 없으면 실무 담당자가 스스로 판단해야 하고, 판단이 지연되면 실행이 멈춘다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널별로 "발송 조건 - 메시지 형식 - 담당자 - 승인 여부"를 표로 정리하는 것이 실행 속도를 높이는 가장 직접적인 방법이다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNHx8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzg1OTc2ODk5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="당신의 AI 캠페인 기획이 실행 단계에서 멈추는 진짜 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">실행 가능한 AI 캠페인을 만드는 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기획 단계에서 다음 세 가지 레이어를 함께 작성한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">첫 번째 레이어: 실행 조건 체크리스트</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">데이터 준비 상태, 툴 연동 여부, 예산 확정 여부를 기획서 앞에 배치한다. 조건이 충족되지 않으면 기획이 진행되지 않도록 게이트를 만든다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">두 번째 레이어: 승인 흐름 정의</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">검토 주체, 검토 기간, 수정 권한 범위를 명시한다. 기획 완료일과 실행 시작일 사이의 간격을 현실적으로 설정한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세 번째 레이어는 채널 실행 명세다. 각 채널의 발송 조건, 메시지 규격, 담당자를 한 줄씩 정리한다. 이 명세가 있으면 실무자가 별도 판단 없이 실행에 들어갈 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 실행 단절 사례</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개 사무소가 AI로 '매물 관심 고객 재접촉 캠페인'을 기획했다고 가정하자. 기획서에는 "매물 조회 후 7일 이내 미연락 고객에게 개인화 메시지를 발송한다"고 적혀 있다. 그런데 고객 조회 이력이 별도 CRM에 쌓이지 않고 있었다. 데이터 조건이 충족되지 않은 상태에서 기획이 완성된 것이다. 결국 캠페인은 CRM 도입 논의로 넘어가면서 3개월 보류됐다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반 자사몰을 운영하는 리빙 브랜드의 경우를 보자. 이 브랜드는 AI로 '장바구니 이탈 고객 복귀 캠페인'을 기획했다. 기획서에는 이탈 후 24시간 이내 이메일 발송이 명시됐다. 실행 조건 체크리스트를 먼저 작성했기 때문에, 카페24 마케팅 플러스와 이메일 툴 연동 상태를 사전에 확인했고 기획 완료 후 이틀 안에 캠페인이 실행됐다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원 마케팅 팀이 AI로 '진료 후 미재방문 환자 안내 캠페인'을 기획한 경우도 있다. 이 팀은 승인 흐름을 기획서에 포함했다. 원장 최종 승인, 개인정보 처리 방침 검토, 문자 발송 대행사 확인을 3단계로 정리했고, 각 단계에 이틀씩 기간을 배정했다. 기획 완료 후 6일 만에 캠페인이 실행됐다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세 사례의 차이는 기획 품질이 아니라, 실행 조건과 승인 구조를 기획 단계에서 함께 다뤘는지 여부다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI로 기획서를 만들 때 실행 조건 체크리스트는 어떻게 구성하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">최소 세 항목을 포함한다. 첫째, 데이터 조건(타깃 세그먼트를 뽑을 수 있는 데이터가 수집되고 있는가). 둘째, 툴 연동 상태(발송 도구와 데이터 소스가 연결되어 있는가). 셋째, 예산과 담당자 확정 여부. 이 세 항목이 모두 충족된 상태에서만 기획서가 실행 단계로 넘어가도록 게이트를 설계한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 승인 구조를 기획서에 포함시키면 기획 속도가 느려지지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기획 단계에서 승인 흐름을 정리하는 데 걸리는 시간은 30분을 넘지 않는다. 반면 승인 구조 없이 기획서를 넘겼을 때 표류하는 시간은 수 주에 달하는 경우가 많다. 앞에서 쓰는 30분이 뒤에서 발생하는 지연을 막는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 생성형 AI가 만든 기획 초안을 실행 가능한 수준으로 보완하려면 어떤 순서로 작업하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">초안이 나온 직후, 기획서를 읽지 않은 실무자에게 "이 기획서만 보고 내일 당장 실행할 수 있는가"를 물어보는 것이 가장 빠른 진단 방법이다. 실행할 수 없다는 답이 나오면, 그 이유를 기록하고 실행 조건 체크리스트와 채널 실행 명세를 추가한다. 이 과정을 한 번 거친 기획서가 실행 가능한 수준의 문서가 된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 실행 조건 체크리스트 템플릿과 채널별 실행 명세 작성법을 구체적으로 다룬다. AI 캠페인 기획을 실행으로 연결하는 실무 도구가 필요하다면 다음 편을 확인한다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-235&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-235',cta_type:'flywheel_consult',category:'AI 실무 활용'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
