@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>고객 행동 데이터가 CRM 의사결정으로 전환되는 구조 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="고객 행동 데이터가 CRM 의사결정으로 연결되지 못하는 원인과 해결 구조를 설명한다. 행동 신호 번역, 세그먼트 재정의, 의사결정 트리 설계 3단계 프레임워크와 자사몰·학원·부동산 업종 사례를 포함한다.">
+<meta property="og:title" content="고객 행동 데이터가 CRM 의사결정으로 전환되는 구조"><meta property="og:description" content="고객 행동 데이터가 CRM 의사결정으로 연결되지 못하는 원인과 해결 구조를 설명한다. 행동 신호 번역, 세그먼트 재정의, 의사결정 트리 설계 3단계 프레임워크와 자사몰·학원·부동산 업종 사례를 포함한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-234.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-234.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"고객 행동 데이터가 CRM 의사결정으로 전환되는 구조","description":"고객 행동 데이터가 CRM 의사결정으로 연결되지 못하는 원인과 해결 구조를 설명한다. 행동 신호 번역, 세그먼트 재정의, 의사결정 트리 설계 3단계 프레임워크와 자사몰·학원·부동산 업종 사례를 포함한다.","image":"https://images.pexels.com/photos/936135/pexels-photo-936135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-234.html"},"datePublished":"2026-08-07","dateModified":"2026-08-07"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"uency)다. 여기에 업종별 핵심 행동 지표를 추가한다. 학원의 경우 수업 출석률과 학습 콘텐츠 열람 빈도, 부동산 플랫폼의 경우 매물 저장 횟수와 상담 신청 이력이 해당된다.","acceptedAnswer":{"@type":"Answer","text":"세그먼트가 행동 기반으로 정의되면, 동일한 \"비활성 고객\"이라도 \"6개월 이상 미접속자\"와 \"최근 접속했으나 핵심 행동 없음\"으로 분리된다. 이 두 그룹에 동일한 메시지를 보내는 것은 자원 낭비다. 3단계: 의사결정 트리를 사전에 설계한다 행동 신호가 포착될 때마다 담당자가 판단하는 구조는 확장되지 않는다. CRM 의사결정은 사전에 설계된 트리 구조로 자동화되어야 한다. 트리 설계의 핵심은 분기 조건을 행동 데이터로 명시하는 것이다. \"관심 고객이면 A 메시지\"가 아니라, \"시술 페이지 3회 이상 방문 + 상담 신청 없음 + 최근 7일 이내\"라는 조건이 분기점이 되어야 한다. 조건이 구체적일수록 자동화 정확도가 올라간다."}},{"@type":"Question","name":"고객 행동 데이터를 CRM에 연동하려면 어떤 데이터부터 수집해야 하는가","acceptedAnswer":{"@type":"Answer","text":"모든 행동 데이터를 동시에 수집하려 하면 구조가 복잡해진다. 업종별 핵심 전환 행동 하나를 먼저 정의하고, 그 행동의 발생 여부와 빈도를 추적하는 것에서 시작한다. 자사몰이라면 장바구니 담기, 학원이라면 체험 수업 신청, 부동산 플랫폼이라면 매물 저장이 기준점이 된다. 핵심 행동 하나가 명확해지면, 그 전후 행동을 추가하는 방식으로 데이터 수집 범위를 확장한다."}},{"@type":"Question","name":"소규모 팀에서도 행동 기반 CRM 의사결정 구조를 운영할 수 있는가","acceptedAnswer":{"@type":"Answer","text":"운영 가능하다. 핵심은 자동화 조건의 단순화다. 복잡한 다분기 트리 대신, 조건 하나에 액션 하나를 연결하는 단일 트리거 구조로 시작한다. 예를 들어 \"최근 30일 미구매 + 장바구니 보유\"라는 조건 하나에 리마인드 메시지 발송을 연결하는 것이 첫 단계다. 이 구조 하나가 안정적으로 운영되면 조건을 추가한다. 처음부터 정교한 시스템을 구축하려 하면 실행이 지연된다."}},{"@type":"Question","name":"행동 데이터 기반 세그먼트와 기존 인구통계 세그먼트를 어떻게 병행하는가","acceptedAnswer":{"@type":"Answer","text":"두 세그먼트는 목적이 다르다. 인구통계 세그먼트는 브랜드 캠페인이나 신규 고객 유입 메시지에 적합하다. 행동 기반 세그먼트는 구매 전환, 이탈 방지, 재구매 유도처럼 특정 행동을 목표로 하는 CRM 메시지에 적합하다. 두 기준을 교차 적용하면 정밀도가 높아진다. 예를 들어 \"30대 여성(인구통계) + 최근 14일 내 특정 카테고리 3회 이상 탐색(행동)\"을 결합하면 메시지 타겟이 구체화된다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#065f46;color:#6ee7b7;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">CRM & 그로스</span><span class="post-date">2026. 8. 7.</span></div>
+  <h1 class="post-title">고객 행동 데이터가 CRM 의사결정으로 전환되는 구조</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/936135/pexels-photo-936135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="고객 행동 데이터가 CRM 의사결정으로 전환되는 구조" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객 행동 데이터는 수집 자체가 목적이 아니다. 데이터가 의사결정으로 연결되지 않으면, 쌓인 로그는 보고서 숫자로만 소비된다. CRM이 실질적인 성과 도구가 되려면, 행동 데이터가 어떤 경로로 판단 근거가 되는지 구조를 먼저 이해해야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 데이터가 있어도 CRM 의사결정이 멈추는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 팀은 데이터 부족이 아니라 데이터 해석 기준 부재로 인해 행동하지 못한다. 페이지 조회수, 클릭률, 구매 이력은 존재하지만, 이것이 "지금 이 고객에게 무엇을 해야 하는가"로 연결되는 판단 로직이 없다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">문제는 두 가지 층위에서 발생한다. 첫째, 행동 데이터가 세그먼트 기준 없이 전체 평균으로만 집계된다. 둘째, 집계된 수치가 담당자의 직관에 의존해 해석된다. 이 두 조건이 겹치면, 동일한 데이터를 보고도 팀마다 다른 결론을 내린다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반 자사몰의 경우, 장바구니 이탈 데이터는 대부분 수집되고 있다. 그러나 이탈 시점, 이탈 전 체류 시간, 이탈 후 재방문 여부를 결합해 "재구매 가능성이 높은 이탈자"와 "완전 이탈자"를 구분하는 기준을 운영하는 곳은 드물다. 데이터는 있지만 분류 기준이 없는 상태다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">행동 데이터를 의사결정으로 전환하는 프레임워크</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 행동 신호를 의도로 번역한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">행동 데이터는 그 자체로 의미를 갖지 않는다. 신호를 의도로 번역하는 과정이 필요하다. 번역 기준은 세 가지 질문으로 구성된다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">이 행동은 관심인가, 구매 준비인가, 이탈 신호인가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">이 행동은 처음 발생했는가, 반복되고 있는가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">이 행동은 다른 채널 행동과 연결되는가</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 피부과 클리닉의 경우, 특정 시술 페이지를 3회 이상 방문한 고객은 단순 정보 탐색이 아닌 구매 준비 단계로 해석할 수 있다. 이 해석이 확정되면, 해당 고객에게 발송할 메시지의 내용과 타이밍이 달라진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 세그먼트를 행동 기반으로 재정의한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">인구통계 기반 세그먼트(나이, 성별, 지역)는 CRM 메시지의 정밀도를 높이는 데 한계가 있다. <strong style="color:#f1f5f9;font-weight:700;">행동 기반 세그먼트</strong>는 실제 구매 가능성과 이탈 위험을 더 정확하게 반영한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">행동 기반 세그먼트의 기본 축은 두 가지다. 최근성(Recency)과 빈도(Frequency)다. 여기에 업종별 핵심 행동 지표를 추가한다. 학원의 경우 수업 출석률과 학습 콘텐츠 열람 빈도, 부동산 플랫폼의 경우 매물 저장 횟수와 상담 신청 이력이 해당된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트가 행동 기반으로 정의되면, 동일한 "비활성 고객"이라도 "6개월 이상 미접속자"와 "최근 접속했으나 핵심 행동 없음"으로 분리된다. 이 두 그룹에 동일한 메시지를 보내는 것은 자원 낭비다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 의사결정 트리를 사전에 설계한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">행동 신호가 포착될 때마다 담당자가 판단하는 구조는 확장되지 않는다. CRM 의사결정은 사전에 설계된 트리 구조로 자동화되어야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리 설계의 핵심은 분기 조건을 행동 데이터로 명시하는 것이다. "관심 고객이면 A 메시지"가 아니라, "시술 페이지 3회 이상 방문 + 상담 신청 없음 + 최근 7일 이내"라는 조건이 분기점이 되어야 한다. 조건이 구체적일수록 자동화 정확도가 올라간다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.pexels.com/photos/17485348/pexels-photo-17485348.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="고객 행동 데이터가 CRM 의사결정으로 전환되는 구조" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰(아임웹 기반 뷰티 브랜드)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">특정 성분 카테고리를 반복 탐색하는 고객을 별도 세그먼트로 분류한다. 이 고객군에는 해당 성분이 포함된 신제품 출시 알림을 우선 발송한다. 전체 고객 대상 일괄 발송과 달리, 행동 기반으로 필터링된 발송은 수신 거부 없이 관여도를 유지하는 데 유리하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">어학원</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수강 등록 후 첫 3주간의 출석 패턴이 장기 수강 여부를 결정하는 핵심 변수다. 출석률이 일정 기준 이하로 떨어지는 시점을 트리거로 설정하고, 담임 강사 명의의 개인화 메시지를 발송한다. 이 구조는 이탈 예방을 위한 CRM 개입 시점을 표준화한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 플랫폼</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">매물 저장 횟수가 5건을 초과하고 상담 신청이 없는 사용자는 정보 수집 단계에 머물러 있는 것으로 해석한다. 이 세그먼트에는 비교 분석 콘텐츠나 지역별 시세 리포트를 제공해 신뢰 기반을 형성하는 방향으로 CRM을 운영한다. 직접적인 상담 유도 메시지보다 정보 제공형 접근이 이 단계에 적합하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">데이터 수집보다 해석 체계가 먼저다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">데이터를 더 많이 수집하는 것이 해결책이 아니다. 이미 수집된 데이터를 의사결정으로 연결하는 해석 체계를 갖추는 것이 선행 과제다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">행동 신호를 의도로 번역하고, 세그먼트를 행동 기반으로 재정의하고, 의사결정 트리를 사전에 설계하는 세 단계가 구조화되면, CRM은 반응형 도구에서 예측형 도구로 전환된다. 최근에는 LLM 기반 분석 도구가 이 해석 체계 설계를 지원하는 방향으로 발전하고 있다. 다음 글에서는 이 구조를 실제 자동화 워크플로우로 구현하는 방법을 다룬다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 고객 행동 데이터를 CRM에 연동하려면 어떤 데이터부터 수집해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">모든 행동 데이터를 동시에 수집하려 하면 구조가 복잡해진다. 업종별 핵심 전환 행동 하나를 먼저 정의하고, 그 행동의 발생 여부와 빈도를 추적하는 것에서 시작한다. 자사몰이라면 장바구니 담기, 학원이라면 체험 수업 신청, 부동산 플랫폼이라면 매물 저장이 기준점이 된다. 핵심 행동 하나가 명확해지면, 그 전후 행동을 추가하는 방식으로 데이터 수집 범위를 확장한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 소규모 팀에서도 행동 기반 CRM 의사결정 구조를 운영할 수 있는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">운영 가능하다. 핵심은 자동화 조건의 단순화다. 복잡한 다분기 트리 대신, 조건 하나에 액션 하나를 연결하는 단일 트리거 구조로 시작한다. 예를 들어 "최근 30일 미구매 + 장바구니 보유"라는 조건 하나에 리마인드 메시지 발송을 연결하는 것이 첫 단계다. 이 구조 하나가 안정적으로 운영되면 조건을 추가한다. 처음부터 정교한 시스템을 구축하려 하면 실행이 지연된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 행동 데이터 기반 세그먼트와 기존 인구통계 세그먼트를 어떻게 병행하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 세그먼트는 목적이 다르다. 인구통계 세그먼트는 브랜드 캠페인이나 신규 고객 유입 메시지에 적합하다. 행동 기반 세그먼트는 구매 전환, 이탈 방지, 재구매 유도처럼 특정 행동을 목표로 하는 CRM 메시지에 적합하다. 두 기준을 교차 적용하면 정밀도가 높아진다. 예를 들어 "30대 여성(인구통계) + 최근 14일 내 특정 카테고리 3회 이상 탐색(행동)"을 결합하면 메시지 타겟이 구체화된다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-234&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-234',cta_type:'retous_main',category:'CRM & 그로스'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
