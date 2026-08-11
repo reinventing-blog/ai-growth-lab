@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>챗GPT 프롬프트를 다듬을수록 원하는 답을 얻지 못하는 이유와 설계 원칙 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="챗GPT 프롬프트를 다듬을수록 결과가 평범해지는 이유는 조건 과잉과 맥락 부재에 있다. 역할·상황·제약 3단 구조로 설계 방식을 바꾸면 출력 품질이 달라진다.">
+<meta property="og:title" content="챗GPT 프롬프트를 다듬을수록 원하는 답을 얻지 못하는 이유와 설계 원칙"><meta property="og:description" content="챗GPT 프롬프트를 다듬을수록 결과가 평범해지는 이유는 조건 과잉과 맥락 부재에 있다. 역할·상황·제약 3단 구조로 설계 방식을 바꾸면 출력 품질이 달라진다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-248.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-248.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"챗GPT 프롬프트를 다듬을수록 원하는 답을 얻지 못하는 이유와 설계 원칙","description":"챗GPT 프롬프트를 다듬을수록 결과가 평범해지는 이유는 조건 과잉과 맥락 부재에 있다. 역할·상황·제약 3단 구조로 설계 방식을 바꾸면 출력 품질이 달라진다.","image":"https://images.unsplash.com/photo-1766853297154-3dcb4d3b38f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw4fHxtYXJrZXRlciUyMGxhcHRvcCUyMEFJJTIwY2hhdGJvdCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODY0MTEwNzV8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-248.html"},"datePublished":"2026-08-11","dateModified":"2026-08-11"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"프롬프트에 예시 문장을 넣으면 더 좋은 결과가 나오지 않나요?","acceptedAnswer":{"@type":"Answer","text":"예시 문장은 AI의 출력 방향을 고정하는 데 유용하다. 단, 예시가 너무 완성도 높으면 AI는 그 문장을 변형하는 수준에 그친다. 예시를 넣을 때는 완성된 문장보다 구조나 리듬만 보여주는 초안 수준이 낫다. \"이런 느낌의 구조\"를 보여주되, 내용은 AI가 채우도록 여백을 남겨야 한다."}},{"@type":"Question","name":"역할 설정이 효과적이라면 어떤 역할을 설정해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"독자와 가장 가까운 위치에 있는 전문가를 역할로 설정한다. 독자가 구매 고민 중인 소비자라면 구매 경험이 풍부한 MD나 바이어가 적합하다. 독자가 치료 결정을 앞둔 환자라면 해당 분야 임상 경험자가 낫다. 역할이 독자의 맥락과 멀수록 AI의 어조는 다시 일반적인 방향으로 회귀한다."}},{"@type":"Question","name":"생성형 AI 도구마다 프롬프트 설계 방식이 달라야 하나요?","acceptedAnswer":{"@type":"Answer","text":"핵심 원칙은 도구와 무관하게 동일하다. 역할, 상황, 제약의 3단 구조는 어떤 생성형 AI에도 적용된다. 다만 각 도구의 컨텍스트 창 크기와 지시 이해 방식에 차이가 있으므로, 동일한 프롬프트를 여러 도구에 넣어보고 결과물의 밀도를 비교한 뒤 도구별로 역할 설명의 상세도를 조정하는 것이 현실적인 접근이다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#1e3a5f;color:#93c5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 8. 11.</span></div>
+  <h1 class="post-title">챗GPT 프롬프트를 다듬을수록 원하는 답을 얻지 못하는 이유와 설계 원칙</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1766853297154-3dcb4d3b38f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw4fHxtYXJrZXRlciUyMGxhcHRvcCUyMEFJJTIwY2hhdGJvdCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODY0MTEwNzV8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="챗GPT 프롬프트를 다듬을수록 원하는 답을 얻지 못하는 이유와 설계 원칙" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케터가 챗GPT 프롬프트 설계에 공을 들일수록 오히려 결과물이 평범해지는 경험을 한다. 조건을 추가하고, 예시를 붙이고, 톤을 지정해도 돌아오는 문장은 어딘가 어색하다. 문제는 프롬프트의 길이나 정성이 아니라, 설계 방식 자체에 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 정교한 프롬프트가 오히려 결과를 망치는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI는 입력된 조건을 '충족'하려 한다. 조건이 많아질수록 모델은 각 조건 사이에서 균형을 맞추는 방향으로 출력을 조정한다. 마케터가 "친근하게, 전문적으로, 간결하게, 설득력 있게"를 동시에 요구하면 AI는 네 가지를 모두 어느 정도 반영한 무난한 문장을 생성한다. 결과물이 특색 없는 이유다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">또 다른 문제는 맥락 부재다. 마케터는 자신의 브랜드, 고객, 경쟁 구도를 알고 있지만 AI는 모른다. 프롬프트에 조건만 쌓고 맥락을 생략하면, AI는 일반적인 마케팅 문법에 기댄 답변을 내놓는다. 조건이 많아도 맥락이 없으면 결과는 교과서 수준에 머문다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프롬프트 설계의 핵심: 조건 추가가 아니라 역할과 상황 부여</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">조건을 줄이고 역할과 상황을 구체화하는 방향으로 전환해야 한다. AI에게 "무엇을 써라"가 아니라 "누구로서, 어떤 상황에서, 누구에게 말하는가"를 먼저 설정하는 것이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">역할 설정 예시:</strong></p>
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">조건 중심: "친근하고 전문적인 톤으로 뷰티 제품 상세페이지 문구를 써줘"</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">역할·상황 중심: "너는 30대 여성 피부 고민을 10년간 상담해온 피부과 전문의야. 처음 방문한 환자에게 세럼을 추천하듯 이 제품의 특징을 설명해줘"</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 번째 방식은 AI가 특정 관점과 어휘 체계를 채택하도록 유도한다. 결과물의 밀도와 일관성이 달라진다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">실전 프레임워크: 3단 구조 프롬프트</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트를 역할, 상황, 제약 세 층위로 나눠 작성한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 역할 정의</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI가 어떤 전문가 혹은 페르소나로 답변해야 하는지 명시한다. 직함, 경험 연수, 주요 관심사를 포함하면 출력 어휘와 논리 구조가 달라진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 상황 설정</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">독자가 누구인지, 어떤 채널에서 소비되는 콘텐츠인지, 독자가 현재 어떤 상태인지를 서술한다. "카페24 자사몰을 운영하는 소규모 의류 브랜드의 뉴스레터 구독자, 최근 장바구니에 제품을 담고 구매를 완료하지 않은 상태"처럼 구체적일수록 AI의 추론 범위가 좁아진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 제약 설정</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">여기서 제약은 최소화한다. 글자 수, 금지 단어, 형식 정도만 넣는다. 톤·스타일 지시는 역할 정의 단계에서 이미 처리됐기 때문에 이 단계에서 반복하면 충돌이 생긴다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.pexels.com/photos/38888656/pexels-photo-38888656.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="챗GPT 프롬프트를 다듬을수록 원하는 답을 얻지 못하는 이유와 설계 원칙" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰(카페24) 운영 의류 브랜드</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">뉴스레터 문구를 요청할 때 "감성적으로 써줘"를 반복하는 대신, "너는 이 브랜드의 수석 MD야. 시즌 오프 직전, 재고 소진이 목표인 상황에서 장바구니 이탈 고객에게 다음 주 발송할 메일 본문을 써줘. 단, 할인 언급 없이 제품의 사용 경험 중심으로 작성해"로 전환한다. 역할과 목적이 명확하면 AI는 판매 압박 없이 구매 욕구를 자극하는 문장 구조를 스스로 선택한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">치과 병원 마케팅 담당자</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">임플란트 상담 유도 SNS 게시물을 작성할 때 "신뢰감 있게, 전문적으로"를 조건으로 넣으면 일반적인 의료 문구가 나온다. 대신 "너는 40대 이상 환자를 주로 보는 치과 원장이야. 비용 걱정보다 수술 두려움이 더 큰 신환에게 첫 상담을 권유하는 짧은 글을 써줘"로 바꾸면 환자의 심리적 장벽을 직접 건드리는 문장이 생성된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">입시 학원 콘텐츠 팀</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학부모 대상 카카오톡 메시지를 작성할 때 "설득력 있게"를 조건으로 추가하는 대신, "너는 수능을 세 번 지도한 베테랑 담임 선생님이야. 모의고사 성적이 하락한 학생의 부모에게 면담을 제안하는 메시지를 써줘. 위기감보다 신뢰를 전달하는 방향으로"라고 설정한다. 역할이 구체적일수록 AI는 학부모의 감정 상태에 맞는 어조를 스스로 조율한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프롬프트를 다시 쓰기 전에 점검할 세 가지 질문</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">조건을 더 추가하기 전에 아래 세 가지를 먼저 확인한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">1. AI에게 역할을 부여했는가, 아니면 조건만 나열했는가</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">2. 독자의 현재 상태(인식 수준, 감정, 구매 단계)를 명시했는가</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">3. 톤 지시가 역할 정의와 충돌하지 않는가</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 가지 중 하나라도 빠져 있으면 프롬프트를 길게 써도 결과는 달라지지 않는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 글 예고</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 역할 설정 프롬프트를 업종별로 실제 작성한 샘플 10개를 공개한다. 자사몰, 병원, 학원, 부동산 중개소 등 업종마다 어떤 역할 설정이 가장 밀도 높은 결과를 만드는지 비교한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트에 예시 문장을 넣으면 더 좋은 결과가 나오지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예시 문장은 AI의 출력 방향을 고정하는 데 유용하다. 단, 예시가 너무 완성도 높으면 AI는 그 문장을 변형하는 수준에 그친다. 예시를 넣을 때는 완성된 문장보다 구조나 리듬만 보여주는 초안 수준이 낫다. "이런 느낌의 구조"를 보여주되, 내용은 AI가 채우도록 여백을 남겨야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 역할 설정이 효과적이라면 어떤 역할을 설정해야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">독자와 가장 가까운 위치에 있는 전문가를 역할로 설정한다. 독자가 구매 고민 중인 소비자라면 구매 경험이 풍부한 MD나 바이어가 적합하다. 독자가 치료 결정을 앞둔 환자라면 해당 분야 임상 경험자가 낫다. 역할이 독자의 맥락과 멀수록 AI의 어조는 다시 일반적인 방향으로 회귀한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 생성형 AI 도구마다 프롬프트 설계 방식이 달라야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">핵심 원칙은 도구와 무관하게 동일하다. 역할, 상황, 제약의 3단 구조는 어떤 생성형 AI에도 적용된다. 다만 각 도구의 컨텍스트 창 크기와 지시 이해 방식에 차이가 있으므로, 동일한 프롬프트를 여러 도구에 넣어보고 결과물의 밀도를 비교한 뒤 도구별로 역할 설명의 상세도를 조정하는 것이 현실적인 접근이다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-248&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-248',cta_type:'flywheel_consult',category:'AI 실무 활용'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
