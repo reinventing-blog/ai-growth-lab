@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>고객 재구매 CRM 설계를 다시 설계하는 4가지 원칙 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="고객 재구매 CRM 설계를 바꾸는 4가지 원칙을 정리했다. 할인 의존 구조에서 벗어나 행동 기반 트리거와 구매 주기 세그먼트로 재구매를 설계하는 방법을 업종별 사례와 함께 설명한다.">
+<meta property="og:title" content="고객 재구매 CRM 설계를 다시 설계하는 4가지 원칙"><meta property="og:description" content="고객 재구매 CRM 설계를 바꾸는 4가지 원칙을 정리했다. 할인 의존 구조에서 벗어나 행동 기반 트리거와 구매 주기 세그먼트로 재구매를 설계하는 방법을 업종별 사례와 함께 설명한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-244.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-244.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"고객 재구매 CRM 설계를 다시 설계하는 4가지 원칙","description":"고객 재구매 CRM 설계를 바꾸는 4가지 원칙을 정리했다. 할인 의존 구조에서 벗어나 행동 기반 트리거와 구매 주기 세그먼트로 재구매를 설계하는 방법을 업종별 사례와 함께 설명한다.","image":"https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw0fHxjdXN0b21lciUyMGFuYWx5dGljcyUyMGRhc2hib2FyZHxlbnwxfDB8fHwxNzg2MzIwMDk0fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-244.html"},"datePublished":"2026-08-11","dateModified":"2026-08-11"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"재구매 CRM 설계를 처음 시작할 때 어디서부터 시작해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"기존 구매 데이터에서 재구매 발생 시점을 먼저 분석하는 것이 출발점이다. 전체 고객 중 재구매가 발생한 고객과 발생하지 않은 고객의 행동 차이를 비교하면, 어떤 시점과 접점이 재구매에 영향을 주는지 확인할 수 있다. 데이터가 충분하지 않다면, 구매 주기가 명확한 제품 카테고리 하나를 선택해 파일럿 플로우를 먼저 운영하는 것이 현실적이다."}},{"@type":"Question","name":"할인 쿠폰 없이 재구매를 유도하는 것이 실제로 가능한가요?","acceptedAnswer":{"@type":"Answer","text":"가능하다. 핵심은 고객이 필요를 인식하는 시점에 정보나 경험을 제공하는 것이다. 사용 가이드, 이용 실적 요약, 다음 단계 안내처럼 고객에게 실질적인 가치를 주는 메시지는 할인 없이도 재구매 행동을 이끌어낸다. 할인은 재구매를 앞당기는 도구이지, 재구매를 만들어내는 원인이 아니다. 할인에 의존하는 구조는 마진을 낮추면서 고객의 가격 민감도를 높이는 방향으로 작동한다."}},{"@type":"Question","name":"소규모 브랜드도 CRM 설계를 체계적으로 운영할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"운영 규모보다 설계의 명확성이 더 중요하다. 월 발송량이 적더라도, 어떤 고객에게 어떤 시점에 어떤 메시지를 보낼지 기준이 있으면 CRM은 작동한다. 카페24나 아임웹 기반의 소규모 자사몰도 기본 자동화 기능과 고객 태그 기능을 활용하면 세그먼트별 메시지 발송이 가능하다. 시작은 단순하게, 세그먼트 두 개와 트리거 세 개로도 충분하다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#065f46;color:#6ee7b7;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">CRM & 그로스</span><span class="post-date">2026. 8. 11.</span></div>
+  <h1 class="post-title">고객 재구매 CRM 설계를 다시 설계하는 4가지 원칙</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw0fHxjdXN0b21lciUyMGFuYWx5dGljcyUyMGRhc2hib2FyZHxlbnwxfDB8fHwxNzg2MzIwMDk0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="고객 재구매 CRM 설계를 다시 설계하는 4가지 원칙" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객 재구매를 늘리고 싶다면, 먼저 지금의 CRM 설계가 고객의 행동 흐름을 따라가고 있는지 점검해야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">1. 문제 정의: 왜 재구매 설계는 반복적으로 실패하는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 브랜드는 재구매를 '할인 쿠폰 발송'으로 해결하려 한다. 구매 후 일정 기간이 지나면 자동으로 쿠폰을 보내고, 반응이 없으면 한 번 더 보낸다. 이 방식은 단기적으로 전환을 만들어낼 수 있지만, 고객이 쿠폰 없이는 재구매하지 않는 구조를 학습시킨다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">문제는 메시지의 타이밍이나 채널이 아니다. 설계의 전제가 잘못되어 있다. 재구매를 '고객이 돌아오도록 유도하는 것'으로 정의하면, 모든 액션은 브랜드 중심으로 구성된다. 반면 재구매를 '고객이 다시 필요로 하는 순간에 브랜드가 자연스럽게 존재하는 것'으로 정의하면, 설계의 방향이 완전히 달라진다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">2. 인사이트: 재구매는 설득이 아니라 타이밍의 문제다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객은 필요가 생겼을 때 구매한다. 브랜드가 아무리 좋은 메시지를 보내도, 고객에게 필요가 없는 시점이라면 그 메시지는 소음이 된다. 반대로, 고객이 필요를 인식하는 순간에 브랜드가 존재하면 별도의 설득 없이도 재구매가 일어난다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 차이를 만드는 것이 <strong style="color:#f1f5f9;font-weight:700;">행동 기반 트리거 설계</strong>다. 구매 이력, 콘텐츠 소비 패턴, 문의 이력 등을 조합하면 고객이 다음 필요를 인식할 시점을 예측할 수 있다. CRM은 이 예측을 실행 가능한 접점으로 바꾸는 도구다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">3. 프레임워크: 재구매 CRM 설계를 바꾸는 4가지 원칙</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원칙 1. 구매 주기를 세그먼트의 기준으로 삼아라</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">모든 고객에게 동일한 주기로 메시지를 보내는 것은 설계가 아니라 방송이다. 고객마다 소비 주기가 다르다. 피부과 클리닉이라면 시술 종류에 따라 재방문 권장 주기가 다르고, 자사몰(카페24, 아임웹 기반)에서 건강기능식품을 판매한다면 제품별 복용 기간이 재구매 주기의 기준이 된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트는 최소한 세 가지 구매 주기 구간으로 나누는 것이 현실적이다. 단기 소비자, 중기 소비자, 장기 소비자로 구분하고, 각 구간에 맞는 메시지 타이밍과 내용을 별도로 설계한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원칙 2. 첫 구매 직후 30일을 별도 플로우로 운영하라</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">재구매 여부는 첫 구매 직후의 경험에서 결정된다. 이 구간을 일반 CRM 플로우와 동일하게 운영하면, 가장 중요한 관계 형성 시점을 낭비하는 것이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫 구매 후 30일 플로우는 세 단계로 구성한다. 첫째, 구매 직후 사용 가이드나 기대 효과 안내. 둘째, 사용 시작 시점에 맞춘 경험 확인 메시지. 셋째, 재구매 검토가 자연스러운 시점에 맞춘 콘텐츠 제공. 이 구간에서는 할인보다 정보와 관심이 더 강한 신뢰를 만든다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원을 예로 들면, 수강 시작 후 2주 차에 학습 진도 확인 메시지를 보내고, 4주 차에 다음 레벨 안내를 제공하는 방식이 이에 해당한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원칙 3. 수신 거부를 신호로 읽어라</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수신 거부는 실패가 아니라 데이터다. 어떤 메시지를 받은 직후에 수신 거부가 발생했는지를 추적하면, 고객이 어떤 접점에서 피로를 느끼는지 파악할 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개 플랫폼의 경우, 매물 알림을 하루 세 번 이상 발송했을 때 수신 거부가 집중되는 패턴을 발견하고 알림 빈도를 조정한 사례가 있다. 수신 거부 데이터를 CRM 최적화의 피드백 루프로 연결하면, 메시지 설계의 정밀도가 높아진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원칙 4. 채널 조합을 고객 행동 단계에 맞춰라</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카카오 알림톡, 문자, 이메일, 앱 푸시는 각각 다른 상황에서 다른 효과를 낸다. 채널을 선택할 때 "어디서 보내면 열릴까"가 아니라 "이 메시지는 고객이 어떤 상태일 때 받아야 하는가"를 기준으로 삼아야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">긴급성이 낮은 재구매 유도 메시지는 이메일이 적합하다. 예약 리마인더나 기간 한정 안내는 알림톡이나 문자가 낫다. 앱 푸시는 앱을 자주 쓰는 고객에게만 유효하다. 채널을 혼용할 때는 동일한 메시지를 중복 발송하지 않도록 채널 간 연동 규칙을 명확히 설정해야 한다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.pexels.com/photos/669609/pexels-photo-669609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="고객 재구매 CRM 설계를 다시 설계하는 4가지 원칙" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">4. 사례: 다른 업종, 같은 원칙</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자사몰에서 반려동물 사료를 판매하는 브랜드가 있다고 가정한다. 이 브랜드는 제품별 소진 기간을 기준으로 재구매 주기를 설정하고, 첫 구매 고객에게는 급여 가이드를 담은 이메일 시퀀스를 운영한다. 수신 거부 데이터를 분석해 주 2회 이상 발송이 이탈을 높인다는 것을 확인하고, 발송 빈도를 조정했다. 채널은 정기 구독 고객과 일반 구매 고객을 구분해 다르게 운영한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">헬스장의 경우를 가정하면, 등록 만료 30일 전부터 재등록 유도 플로우를 시작하되, 첫 메시지는 할인이 아닌 이용 실적 요약으로 구성한다. 고객이 자신의 방문 횟수와 운동 기록을 확인하게 만드는 것이 재등록 결정에 더 강한 영향을 준다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 사례의 공통점은 메시지의 출발점이 브랜드의 필요가 아니라 고객의 상황이라는 것이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">5. 다음 단계: 실행 가능한 CRM 설계로</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">원칙을 아는 것과 실제 CRM 플로우를 설계하는 것은 다르다. 다음 글에서는 업종별 재구매 트리거 설정 방법과 메시지 시퀀스 구성 예시를 구체적으로 다룬다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 재구매 CRM 설계를 처음 시작할 때 어디서부터 시작해야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기존 구매 데이터에서 재구매 발생 시점을 먼저 분석하는 것이 출발점이다. 전체 고객 중 재구매가 발생한 고객과 발생하지 않은 고객의 행동 차이를 비교하면, 어떤 시점과 접점이 재구매에 영향을 주는지 확인할 수 있다. 데이터가 충분하지 않다면, 구매 주기가 명확한 제품 카테고리 하나를 선택해 파일럿 플로우를 먼저 운영하는 것이 현실적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 할인 쿠폰 없이 재구매를 유도하는 것이 실제로 가능한가요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가능하다. 핵심은 고객이 필요를 인식하는 시점에 정보나 경험을 제공하는 것이다. 사용 가이드, 이용 실적 요약, 다음 단계 안내처럼 고객에게 실질적인 가치를 주는 메시지는 할인 없이도 재구매 행동을 이끌어낸다. 할인은 재구매를 앞당기는 도구이지, 재구매를 만들어내는 원인이 아니다. 할인에 의존하는 구조는 마진을 낮추면서 고객의 가격 민감도를 높이는 방향으로 작동한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 소규모 브랜드도 CRM 설계를 체계적으로 운영할 수 있나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">운영 규모보다 설계의 명확성이 더 중요하다. 월 발송량이 적더라도, 어떤 고객에게 어떤 시점에 어떤 메시지를 보낼지 기준이 있으면 CRM은 작동한다. 카페24나 아임웹 기반의 소규모 자사몰도 기본 자동화 기능과 고객 태그 기능을 활용하면 세그먼트별 메시지 발송이 가능하다. 시작은 단순하게, 세그먼트 두 개와 트리거 세 개로도 충분하다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-244&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-244',cta_type:'retous_main',category:'CRM & 그로스'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
