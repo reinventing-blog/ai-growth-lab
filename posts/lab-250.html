@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CRM 이탈 감지 자동화가 작동하지 않는 진짜 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="CRM 이탈 감지 자동화를 설정했는데도 캠페인이 발동되지 않는다면 툴이 아니라 설계가 문제다. 신호 정의, 파이프라인 누락, 트리거 조건의 구조적 원인과 3단계 점검 방법을 정리했다.">
+<meta property="og:title" content="CRM 이탈 감지 자동화가 작동하지 않는 진짜 원인"><meta property="og:description" content="CRM 이탈 감지 자동화를 설정했는데도 캠페인이 발동되지 않는다면 툴이 아니라 설계가 문제다. 신호 정의, 파이프라인 누락, 트리거 조건의 구조적 원인과 3단계 점검 방법을 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-250.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-250.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"CRM 이탈 감지 자동화가 작동하지 않는 진짜 원인","description":"CRM 이탈 감지 자동화를 설정했는데도 캠페인이 발동되지 않는다면 툴이 아니라 설계가 문제다. 신호 정의, 파이프라인 누락, 트리거 조건의 구조적 원인과 3단계 점검 방법을 정리했다.","image":"https://images.pexels.com/photos/7013068/pexels-photo-7013068.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-250.html"},"datePublished":"2026-08-12","dateModified":"2026-08-12"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"이탈 트리거를 설정했는데도 발송 대상이 0명으로 나옵니다. 어디서 확인해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"트리거 조건 자체보다 필터 레이어를 먼저 확인한다. 수신 거부, 회원 등급, 태그 조건이 중복 적용되어 발송 대상을 모두 걸러내는 경우가 많다. CRM 툴의 세그먼트 미리보기 기능을 이용해 각 필터를 하나씩 제거하면서 모수 변화를 추적하면 어느 조건이 문제인지 특정할 수 있다."}},{"@type":"Question","name":"이탈 신호를 복합 조건으로 만들면 관리가 너무 복잡해지지 않나요?","acceptedAnswer":{"@type":"Answer","text":"복잡성은 조건의 수가 아니라 조건의 중첩 구조에서 온다. 조건이 3개라도 AND로 단순하게 연결되어 있으면 관리가 어렵지 않다. 반면 OR과 AND가 섞이고 예외 처리가 중첩되면 조건이 2개여도 추적이 어려워진다. 복합 조건을 설계할 때는 분기 없이 AND 연결만 사용하는 것을 기본 원칙으로 삼는다."}},{"@type":"Question","name":"이탈 감지 자동화에 AI를 활용하면 어떤 부분이 달라지나요?","acceptedAnswer":{"@type":"Answer","text":"AI는 이탈 예측 모델에서 가장 실질적인 역할을 한다. 규칙 기반 트리거는 사람이 정의한 조건만 감지하지만, AI 기반 예측 모델은 행동 패턴의 조합을 학습해 이탈 가능성이 높은 고객을 규칙 없이 식별한다. 단, 모델 출력을 그대로 트리거로 쓰면 블랙박스 오류가 발생할 수 있다. 예측 점수를 트리거의 입력값으로 사용하되, 최소한의 규칙 조건과 함께 적용하는 방식이 운영 안정성을 높인다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#065f46;color:#6ee7b7;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">CRM & 그로스</span><span class="post-date">2026. 8. 12.</span></div>
+  <h1 class="post-title">CRM 이탈 감지 자동화가 작동하지 않는 진짜 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/7013068/pexels-photo-7013068.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="CRM 이탈 감지 자동화가 작동하지 않는 진짜 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객 이탈 신호는 분명히 존재했다. 그런데 캠페인은 발동되지 않았다. CRM 이탈 감지 자동화를 도입한 팀이 가장 먼저 마주치는 현실이 이것이다. 툴의 문제가 아니라, 설계의 문제다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">이탈 신호는 있었지만 캠페인은 침묵했다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 시스템이 갖춰져 있어도 캠페인이 발동되지 않는 상황은 반복된다. 이유는 단순하다. 이탈 신호를 정의한 사람과 캠페인을 설계한 사람이 다르거나, 신호 정의 자체가 너무 느슨하거나 너무 엄격하게 설정되어 있기 때문이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">흔한 패턴은 두 가지다. 첫째, 트리거 조건이 실제 이탈 행동보다 훨씬 뒤늦게 반응하도록 설정되어 있다. 예를 들어 "90일 이상 미접속"을 이탈 기준으로 잡으면, 고객은 이미 경쟁사로 넘어간 뒤다. 둘째, 신호는 감지됐지만 데이터 파이프라인 어딘가에서 조건이 누락되거나 중복 필터링에 걸려 캠페인 발송 대상에서 제외된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 두 가지는 성격이 전혀 다른 문제다. 전자는 전략 설계의 실패고, 후자는 기술 구현의 실패다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">이탈 신호를 정의하는 방식이 문제의 핵심이다</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">이탈은 사건이 아니라 패턴이다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단일 행동 하나를 이탈 신호로 보는 관점은 정확도가 낮다. 장바구니 이탈 한 번, 로그인 공백 2주, 이메일 미열람 3회 — 이것들은 각각 독립적으로는 약한 신호다. 그러나 이 세 가지가 동시에 나타나거나 짧은 기간 안에 겹치면 이탈 가능성이 구체화된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">이탈 신호는 복합 조건으로 정의해야 한다.</strong> 단일 이벤트 트리거는 오탐(false positive)을 만들고, 오탐이 쌓이면 발송 팀은 자동화를 신뢰하지 않게 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">업종마다 이탈의 시간 단위가 다르다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이탈 감지의 기준 시간은 업종의 구매 주기에 맞춰야 한다. 카페24 기반 자사몰에서 소모품을 판매하는 경우, 평균 재구매 주기가 30일이라면 45일 미구매를 이탈 신호로 볼 수 있다. 반면 치과 병원에서는 정기 검진 주기가 6개월이기 때문에 7개월 미방문을 기준으로 잡는 것이 더 정확하다. 학원의 경우 수강 종료 후 2주 이내에 재등록 문의가 없으면 이탈 가능성을 높게 본다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기준 시간을 업종 맥락 없이 설정하면, 캠페인은 너무 이르거나 너무 늦게 발동된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">이탈 감지 자동화의 3단계 점검 프레임워크</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 신호 정의 감사</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">현재 트리거 조건을 문서화하고, 각 조건이 실제 이탈한 고객의 행동 데이터와 일치하는지 역추적한다. 이미 이탈한 고객 샘플 50~100명의 행동 로그를 보면, 어떤 신호가 이탈 전 공통으로 나타났는지 파악할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 파이프라인 추적</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">신호가 감지된 이후 캠페인 발동까지의 경로를 단계별로 확인한다. CRM 툴, 데이터 웨어하우스, 발송 플랫폼이 분리되어 있다면 각 연결 지점에서 데이터가 누락되는지 로그를 직접 열어본다. 자동화 실패의 상당 부분은 이 구간에서 발생한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 트리거 조건 단순화</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">복잡한 조건은 유지보수가 어렵고 오류가 숨기 쉽다. 조건 분기를 줄이고, 하나의 트리거가 하나의 명확한 행동 패턴만 반영하도록 재설계한다. 조건이 단순할수록 오탐이 줄고 담당자가 직접 검증하기 쉬워진다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.pexels.com/photos/357440/pexels-photo-357440.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="CRM 이탈 감지 자동화가 작동하지 않는 진짜 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">실제 운영 맥락에서 어떻게 드러나는가</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">아임웹 기반으로 운영 중인 뷰티 브랜드를 가정한다. 이 브랜드는 "30일 미구매"를 이탈 트리거로 설정했지만 캠페인 발동률이 낮았다. 원인을 추적하자, 회원 등급 필터가 중복 적용되어 구매 이력이 있는 고객 대부분이 발송 대상에서 제외되고 있었다. 필터 조건을 정리하자 발송 대상 모수가 실제 이탈 가능 고객 수준으로 회복됐고, 캠페인이 의도한 시점에 발동되기 시작했다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 중개 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">매물 검색 플랫폼을 운영하는 부동산 중개 법인을 가정한다. 이 팀은 "7일 이상 플랫폼 미접속"을 이탈 신호로 정의했다. 그러나 실제 고객 행동 분석 결과, 계약 직전 단계의 고객은 오히려 접속 빈도가 줄어드는 패턴을 보였다. 미접속이 이탈이 아니라 오프라인 상담 전환을 의미하는 경우였다. 트리거를 "미접속 + 상담 이력 없음"의 복합 조건으로 바꾸자 오탐이 크게 줄었다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">학원 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">초등 대상 영어 학원을 가정한다. 이 학원은 수강 종료 후 재등록 캠페인을 자동화했지만 발동 시점이 일정하지 않았다. 원인은 수강 종료일 데이터가 수기 입력과 시스템 자동 기록 두 곳에 분산되어 있었고, 두 데이터가 충돌할 때 트리거가 작동하지 않도록 예외 처리가 걸려 있었기 때문이다. 데이터 입력 경로를 단일화하자 트리거 발동 누락이 사라졌다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">자동화를 신뢰할 수 있는 구조로 만드는 것이 먼저다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이탈 감지 자동화는 설정 한 번으로 끝나는 작업이 아니다. 신호 정의, 데이터 파이프라인, 트리거 조건은 주기적으로 검토해야 한다. 캠페인이 발동되지 않는다면 툴을 바꾸기 전에 설계를 먼저 점검해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 이탈 신호를 감지한 이후 어떤 메시지를 어떤 채널로 보내야 하는지, 채널 믹스와 메시지 설계 원칙을 다룬다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 이탈 트리거를 설정했는데도 발송 대상이 0명으로 나옵니다. 어디서 확인해야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거 조건 자체보다 필터 레이어를 먼저 확인한다. 수신 거부, 회원 등급, 태그 조건이 중복 적용되어 발송 대상을 모두 걸러내는 경우가 많다. CRM 툴의 세그먼트 미리보기 기능을 이용해 각 필터를 하나씩 제거하면서 모수 변화를 추적하면 어느 조건이 문제인지 특정할 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 이탈 신호를 복합 조건으로 만들면 관리가 너무 복잡해지지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">복잡성은 조건의 수가 아니라 조건의 중첩 구조에서 온다. 조건이 3개라도 AND로 단순하게 연결되어 있으면 관리가 어렵지 않다. 반면 OR과 AND가 섞이고 예외 처리가 중첩되면 조건이 2개여도 추적이 어려워진다. 복합 조건을 설계할 때는 분기 없이 AND 연결만 사용하는 것을 기본 원칙으로 삼는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 이탈 감지 자동화에 AI를 활용하면 어떤 부분이 달라지나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI는 이탈 예측 모델에서 가장 실질적인 역할을 한다. 규칙 기반 트리거는 사람이 정의한 조건만 감지하지만, AI 기반 예측 모델은 행동 패턴의 조합을 학습해 이탈 가능성이 높은 고객을 규칙 없이 식별한다. 단, 모델 출력을 그대로 트리거로 쓰면 블랙박스 오류가 발생할 수 있다. 예측 점수를 트리거의 입력값으로 사용하되, 최소한의 규칙 조건과 함께 적용하는 방식이 운영 안정성을 높인다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-250&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-250',cta_type:'retous_main',category:'CRM & 그로스'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
