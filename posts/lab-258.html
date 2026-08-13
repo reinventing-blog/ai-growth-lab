@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 영상 만들기 실무에서 반복 실패하는 팀이 놓친 4가지 구조 설계 원칙 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 영상 만들기 실무에서 반복해도 결과물이 개선되지 않는 이유는 도구가 아니라 구조에 있다. 목적 정의, 스크립트 레이어 분리, 시각 연출 제약, 편집 기준 수치화 4가지 원칙을 업종별 사례와 함께 정리했다.">
+<meta property="og:title" content="AI 영상 만들기 실무에서 반복 실패하는 팀이 놓친 4가지 구조 설계 원칙"><meta property="og:description" content="AI 영상 만들기 실무에서 반복해도 결과물이 개선되지 않는 이유는 도구가 아니라 구조에 있다. 목적 정의, 스크립트 레이어 분리, 시각 연출 제약, 편집 기준 수치화 4가지 원칙을 업종별 사례와 함께 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-258.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-258.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 영상 만들기 실무에서 반복 실패하는 팀이 놓친 4가지 구조 설계 원칙","description":"AI 영상 만들기 실무에서 반복해도 결과물이 개선되지 않는 이유는 도구가 아니라 구조에 있다. 목적 정의, 스크립트 레이어 분리, 시각 연출 제약, 편집 기준 수치화 4가지 원칙을 업종별 사례와 함께 정리했다.","image":"https://images.unsplash.com/photo-1744948961024-66baaafbb5dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw4fHx2aWRlbyUyMHByb2R1Y3Rpb24lMjB3b3JrZmxvdyUyMGxhcHRvcCUyMHNjcmVlbnxlbnwxfDB8fHwxNzg2NTgxNjY2fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-258.html"},"datePublished":"2026-08-13","dateModified":"2026-08-13"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"AI 영상 만들기에서 스크립트 레이어를 분리하면 작업 시간이 더 걸리지 않나요?","acceptedAnswer":{"@type":"Answer","text":"초기에는 구조를 설계하는 시간이 추가된다. 그러나 레이어 없이 작업하면 AI 결과물을 수정하는 횟수가 늘어난다. 수정 과정에서 소요되는 시간이 구조 설계 시간보다 길어지는 경우가 많다. 레이어 분리는 수정 횟수를 줄이는 방식으로 전체 작업 시간에 영향을 준다."}},{"@type":"Question","name":"시각 연출 지시에 제약 조건을 너무 많이 넣으면 AI가 창의적인 결과를 내지 못하지 않나요?","acceptedAnswer":{"@type":"Answer","text":"제약 조건은 창의성을 막는 것이 아니라 방향을 고정하는 것이다. 방향이 없는 상태에서 AI가 내놓는 결과는 창의적이라기보다 임의적이다. 브랜드 맥락과 무관한 임의성은 실무에서 쓸 수 없다. 제약 조건 안에서 AI가 선택하는 세부 요소에 창의성이 발휘될 여지는 충분히 남는다."}},{"@type":"Question","name":"편집 기준을 수치로 고정하면 영상마다 다른 맥락을 반영하기 어렵지 않나요?","acceptedAnswer":{"@type":"Answer","text":"수치 기준은 기본값이지 절대값이 아니다. 목적별로 15초, 30초, 60초 버전을 미리 정의해두고, 각 버전 안에서 장면 수와 전환 간격을 조정하는 방식으로 운용한다. 기준이 있어야 예외를 만들 때도 어디서 얼마나 벗어났는지를 팀이 공유할 수 있다. 기준 없이 매번 판단하면 예외와 기본을 구분하는 것 자체가 불가능해진다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 8. 13.</span></div>
+  <h1 class="post-title">AI 영상 만들기 실무에서 반복 실패하는 팀이 놓친 4가지 구조 설계 원칙</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1744948961024-66baaafbb5dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw4fHx2aWRlbyUyMHByb2R1Y3Rpb24lMjB3b3JrZmxvdyUyMGxhcHRvcCUyMHNjcmVlbnxlbnwxfDB8fHwxNzg2NTgxNjY2fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 영상 만들기 실무에서 반복 실패하는 팀이 놓친 4가지 구조 설계 원칙" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 영상 만들기 실무를 반복해도 결과물이 쓸 만하지 않다면, 도구의 문제가 아니라 구조의 문제다. 생성형 AI는 지시한 대로 만든다. 지시 자체가 허술하면 산출물도 허술하게 나온다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 반복해도 나아지지 않는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 팀이 AI 영상 제작을 "도구를 쓰는 일"로 접근한다. 툴을 바꾸고, 프롬프트를 조금 수정하고, 다시 생성한다. 그러나 결과물은 크게 달라지지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이유는 단순하다. 도구가 아니라 <strong style="color:#f1f5f9;font-weight:700;">입력 구조</strong>가 바뀌지 않았기 때문이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">영상 한 편이 완성되기까지는 목적 정의, 스크립트 설계, 시각 연출 지시, 편집 기준이라는 네 단계가 순서대로 작동해야 한다. 이 중 하나라도 비어 있으면 AI는 빈 자리를 임의로 채운다. 그 임의성이 쌓여 "뭔가 어색한" 결과물이 반복된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">원칙 1. 목적을 행동 단위로 정의한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"브랜드 소개 영상"이라는 목적은 AI에게 아무 정보도 주지 않는다. 생성형 AI는 가장 평균적인 해석으로 결과를 만든다. 평균은 특정 맥락에서 최선이 되지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">목적은 시청자의 행동으로 끝나야 한다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">나쁜 예: "우리 서비스를 소개하는 영상"</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">좋은 예: "처음 방문한 30대 직장인이 60초 안에 무료 체험을 신청하도록 유도하는 영상"</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자사몰(카페24, 아임웹 기반)을 운영하는 팀이라면 "상품 상세 페이지 체류 시간을 늘리기 위한 15초 루프 영상"처럼 배치 위치와 시간 조건까지 목적에 포함시킨다. 이 수준의 정의가 있어야 AI가 톤, 속도, 정보 밀도를 맥락에 맞게 조정할 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">원칙 2. 스크립트를 레이어로 분리한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">스크립트를 한 덩어리로 작성하면 AI는 내레이션, 자막, 시각 요소를 혼합해서 처리한다. 결과적으로 세 가지가 모두 어중간해진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">스크립트는 최소 세 레이어로 분리한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">레이어 구조 예시</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">| 레이어 | 내용 |</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">|--------|------|</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">| 내레이션 | 음성으로 전달할 문장 |</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">| 자막 | 화면에 표시할 핵심 단어 또는 문구 |</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">| 시각 지시 | 해당 구간에 보여줄 장면, 색상, 오브젝트 |</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원 업종을 예로 들면, 내레이션에서 "수업 전후 변화를 직접 확인하세요"라고 말하는 동안 자막은 "전/후 비교"만 표시하고, 시각 지시에는 "노트 필기 전후 사진 전환, 배경 흰색"을 별도로 명시한다. 레이어가 분리되면 AI가 각 요소를 독립적으로 처리하므로 충돌이 줄어든다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">원칙 3. 시각 연출 지시는 제약 조건으로 작성한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"세련된 느낌"이나 "전문적인 분위기"는 지시가 아니다. 해석의 여지를 AI에게 넘기는 것이다. AI의 해석은 학습 데이터의 평균값을 따른다. 그 평균이 브랜드 맥락과 맞지 않으면 결과물이 낯설게 느껴진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">시각 지시는 허용 범위와 금지 범위를 함께 명시한다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">색상: "브랜드 컬러 #2C4E80과 흰색만 사용, 빨간색 계열 금지"</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">폰트 크기: "자막은 화면 하단 1/4 영역, 글자 크기는 전체 화면 기준 5% 이하"</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">전환 효과: "컷 전환만 허용, 디졸브·와이프 금지"</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 업종의 경우 매물 소개 영상에서 "실내 조명이 어두운 장면 금지, 자연광 또는 밝은 실내광 장면만 사용"처럼 제약 조건을 설정하면 AI가 임의로 분위기를 바꾸는 경우가 줄어든다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.pexels.com/photos/38984789/pexels-photo-38984789.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="AI 영상 만들기 실무에서 반복 실패하는 팀이 놓친 4가지 구조 설계 원칙" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">원칙 4. 편집 기준을 수치로 고정한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI가 생성한 영상을 편집할 때 기준이 없으면 매번 판단이 달라진다. 팀원마다 "좀 더 빠르게", "자막이 너무 오래 남는다"는 기준이 다르고, 결과물의 일관성이 무너진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">편집 기준은 수치로 문서화한다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">자막 한 장면 노출 시간: 최소 1.5초, 최대 3초</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">장면 전환 간격: 내레이션 문장 종료 후 0.3초 이내</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">영상 총 길이: 목적별로 15초 / 30초 / 60초 세 가지 버전으로 고정</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 기준을 AI 프롬프트에 직접 포함시키면 수정 횟수가 줄어든다. 기준이 문서로 존재하면 신규 팀원이 합류해도 동일한 품질 기준을 유지할 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰 운영 팀의 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반 의류 자사몰 팀이 상품 상세 페이지에 루프 영상을 삽입하는 상황을 가정한다. 목적을 "소재 질감을 15초 안에 전달해 스크롤 이탈을 줄이는 영상"으로 정의하고, 스크립트를 내레이션 없이 자막과 시각 지시만으로 구성한다. 시각 지시에는 "클로즈업 소재 텍스처 3컷, 자연광, 배경 무지"를 명시한다. 편집 기준에는 "각 컷 4초, 총 12초 루프"를 고정한다. 이 구조로 작업하면 생성물이 상세 페이지 맥락에서 벗어나는 경우가 줄어든다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">병원 업종의 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">피부과 클리닉이 시술 안내 영상을 제작하는 상황을 가정한다. 목적을 "예약 전 불안감을 줄이기 위해 시술 과정을 단계별로 설명하는 60초 영상"으로 정의한다. 내레이션 레이어에는 의학적 표현을 배제하고 일상 언어만 허용한다는 제약을 추가한다. 시각 지시에는 "의료진 얼굴 클로즈업 금지, 시술 기기 작동 장면 중심"을 명시한다. 이 구조는 환자가 영상을 보고 느끼는 심리적 거리를 줄이는 방향으로 작동한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">구조가 없으면 반복은 소모다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">도구를 바꾸는 것은 해결책이 아니다. 목적 정의, 스크립트 레이어 분리, 시각 연출 제약 조건, 편집 기준 수치화라는 네 가지 구조가 갖춰지지 않은 상태에서는 어떤 AI 도구를 써도 결과물의 품질은 입력 구조의 수준을 넘지 못한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 이 네 가지 원칙을 실제 프롬프트 템플릿으로 변환하는 방법을 다룬다. 각 원칙을 AI에게 전달하는 구체적인 문장 패턴과 순서를 단계별로 정리할 예정이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI 영상 만들기에서 스크립트 레이어를 분리하면 작업 시간이 더 걸리지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">초기에는 구조를 설계하는 시간이 추가된다. 그러나 레이어 없이 작업하면 AI 결과물을 수정하는 횟수가 늘어난다. 수정 과정에서 소요되는 시간이 구조 설계 시간보다 길어지는 경우가 많다. 레이어 분리는 수정 횟수를 줄이는 방식으로 전체 작업 시간에 영향을 준다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 시각 연출 지시에 제약 조건을 너무 많이 넣으면 AI가 창의적인 결과를 내지 못하지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">제약 조건은 창의성을 막는 것이 아니라 방향을 고정하는 것이다. 방향이 없는 상태에서 AI가 내놓는 결과는 창의적이라기보다 임의적이다. 브랜드 맥락과 무관한 임의성은 실무에서 쓸 수 없다. 제약 조건 안에서 AI가 선택하는 세부 요소에 창의성이 발휘될 여지는 충분히 남는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 편집 기준을 수치로 고정하면 영상마다 다른 맥락을 반영하기 어렵지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수치 기준은 기본값이지 절대값이 아니다. 목적별로 15초, 30초, 60초 버전을 미리 정의해두고, 각 버전 안에서 장면 수와 전환 간격을 조정하는 방식으로 운용한다. 기준이 있어야 예외를 만들 때도 어디서 얼마나 벗어났는지를 팀이 공유할 수 있다. 기준 없이 매번 판단하면 예외와 기본을 구분하는 것 자체가 불가능해진다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-258&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-258',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
