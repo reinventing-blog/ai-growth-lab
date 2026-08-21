@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>단체문자 발송 반응률이 0에 수렴하는 진짜 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="단체문자 발송 반응률이 낮은 원인은 문구가 아니라 수신자 타겟팅과 메시지 구조에 있다. 세그먼트 설계부터 발송 시점까지 반응을 만드는 3단계 프레임워크를 업종별 사례와 함께 설명한다.">
+<meta property="og:title" content="단체문자 발송 반응률이 0에 수렴하는 진짜 원인"><meta property="og:description" content="단체문자 발송 반응률이 낮은 원인은 문구가 아니라 수신자 타겟팅과 메시지 구조에 있다. 세그먼트 설계부터 발송 시점까지 반응을 만드는 3단계 프레임워크를 업종별 사례와 함께 설명한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-286.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-286.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"단체문자 발송 반응률이 0에 수렴하는 진짜 원인","description":"단체문자 발송 반응률이 낮은 원인은 문구가 아니라 수신자 타겟팅과 메시지 구조에 있다. 세그먼트 설계부터 발송 시점까지 반응을 만드는 3단계 프레임워크를 업종별 사례와 함께 설명한다.","image":"https://images.unsplash.com/photo-1612043273531-601d2cd4855e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNnx8YnVsayUyMFNNUyUyMG1hcmtldGluZyUyMGNhbXBhaWduJTIwZGFzaGJvYXJkfGVufDF8MHx8fDE3ODcyNzk3ODl8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-286.html"},"datePublished":"2026-08-21","dateModified":"2026-08-21"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"단체문자 발송 반응률을 높이려면 발송 횟수를 늘려야 하나요?","acceptedAnswer":{"@type":"Answer","text":"발송 횟수를 늘리는 것은 반응률을 높이지 않는다. 동일한 수신자에게 반복 발송이 이어지면 수신 거부율이 올라가고 브랜드 신뢰도가 낮아진다. 반응률은 발송 빈도가 아니라 수신자와 메시지의 맥락 일치도에 따라 결정된다. 발송 횟수보다 발송 대상의 정확도를 먼저 검토해야 한다."}},{"@type":"Question","name":"문자 메시지 길이가 반응률에 영향을 미치나요?","acceptedAnswer":{"@type":"Answer","text":"길이 자체보다 구조가 더 중요하다. 짧더라도 행동 유도 문구가 없으면 반응이 없고, 길더라도 수신자에게 명확한 이유와 단일 행동이 제시되면 클릭이 발생한다. 다만 단체문자 환경에서는 화면 스크롤 없이 읽히는 분량, 대략 70~90자 이내에서 핵심을 전달하는 것이 현실적인 기준이다."}},{"@type":"Question","name":"수신자 세그먼트를 나눌 데이터가 없을 때는 어떻게 해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"데이터가 없으면 수집부터 시작한다. 다음 발송 시 수신자를 두 그룹으로 나눠 서로 다른 메시지를 보내고, 어느 쪽에서 반응이 나왔는지 기록한다. 이 과정을 3회 이상 반복하면 어떤 수신자 특성이 반응과 연결되는지 패턴이 보이기 시작한다. 정교한 CRM이 없어도 발송 이력과 반응 여부만 스프레드시트에 기록해도 세그먼트의 출발점이 된다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#0c4a6e;color:#7dd3fc;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">메시징 & 채널 운영</span><span class="post-date">2026. 8. 21.</span></div>
+  <h1 class="post-title">단체문자 발송 반응률이 0에 수렴하는 진짜 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1612043273531-601d2cd4855e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNnx8YnVsayUyMFNNUyUyMG1hcmtldGluZyUyMGNhbXBhaWduJTIwZGFzaGJvYXJkfGVufDF8MHx8fDE3ODcyNzk3ODl8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="단체문자 발송 반응률이 0에 수렴하는 진짜 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단체문자 발송 반응률이 낮다고 느낄 때, 대부분의 운영자는 발송 시간이나 문구 길이를 먼저 의심한다. 그러나 문제의 뿌리는 대개 그보다 훨씬 앞 단계에 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">문제는 '무엇을 보냈는가'가 아니라 '누구에게 보냈는가'다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수신자 목록을 한 번도 정제하지 않은 채 전체 발송을 반복하는 구조가 낮은 반응률의 가장 흔한 원인이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구매 이력이 2년 이상 없는 고객, 수신 거부 직전 상태의 고객, 애초에 관심 카테고리가 다른 고객이 같은 메시지를 받는다. 이 상태에서 문구를 아무리 다듬어도 반응은 나오지 않는다. 발신자가 아닌 수신자의 맥락이 메시지의 운명을 결정한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자사몰(카페24, 아임웹 기반)을 운영하는 경우를 예로 들면, 회원 전체에게 신상품 안내를 발송하는 것과 최근 30일 이내 구매자 중 해당 카테고리 클릭 이력이 있는 회원에게만 발송하는 것은 도달의 질 자체가 다르다. 전자는 메시지를 뿌리는 행위고, 후자는 메시지를 겨냥하는 행위다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">반응률을 떨어뜨리는 3가지 구조적 원인</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원인 1. 세그먼트 없는 전체 발송</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수신자를 나누지 않으면 메시지는 필연적으로 누군가에게 맥락 없는 소음이 된다. 피부과 클리닉이 레이저 시술 프로모션을 전체 환자에게 발송할 때, 최근 내원 목적이 피부과 이외인 환자에게는 그 메시지가 관련 없는 광고로 인식된다. 수신 거부율이 올라가는 것은 문구의 문제가 아니라 타겟팅의 문제다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세그먼트 기준은 복잡할 필요가 없다. 최근 방문일, 이용 서비스 유형, 재방문 여부 세 가지만 교차해도 발송 대상을 의미 있는 단위로 나눌 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원인 2. 행동을 유도하지 않는 메시지 구조</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단체문자는 평균 90자 내외에서 읽힌다. 이 안에 정보를 욱여넣는 방식은 수신자에게 판단 부담을 준다. 판단 부담이 생기면 사람은 행동하지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원 원장이 수강 등록 마감 안내를 보낼 때 "이번 달 등록 마감은 25일입니다. 커리큘럼 안내 및 상담 예약은 홈페이지를 참고해 주세요"라고 쓰면 수신자는 무엇을 해야 하는지 명확하지 않다. 반면 "25일 마감. 지금 바로 상담 예약하기 [링크]"는 단 하나의 행동을 지정한다. 메시지 안에 선택지가 하나일 때 클릭이 발생한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원인 3. 발송 시점과 수신자의 상태 불일치</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개업소가 매물 안내 문자를 월요일 오전 9시에 발송하는 경우를 생각해보자. 수신자 대부분은 출근 직후 업무 전환 상태다. 같은 메시지를 토요일 오전 10시에 발송하면 수신자의 정보 수용 여력 자체가 다르다. 발송 시점은 메시지의 내용만큼이나 반응에 영향을 준다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">업종별로 수신자의 생활 패턴을 먼저 파악하고, 그 패턴에 발송 시점을 맞추는 것이 선행되어야 한다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1669633760258-186e9dee81e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8Y3VzdG9tZXIlMjBzZWdtZW50YXRpb24lMjBkYXRhJTIwd29ya2Zsb3clMjBhdXRvbWF0aW9ufGVufDF8MHx8fDE3ODcyNzk3OTF8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="단체문자 발송 반응률이 0에 수렴하는 진짜 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">반응률을 구조적으로 개선하는 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단체문자 발송 반응률을 끌어올리려면 발송 전 점검 항목을 세 단계로 고정하는 것이 현실적이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">1단계: 수신자 정의</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 메시지가 가장 관련 있는 사람은 누구인가. 전체 고객 중 어떤 행동 이력, 어떤 상태의 사람인가를 먼저 정의한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">2단계: 단일 행동 설계</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">메시지를 받은 사람이 해야 할 행동을 하나만 남긴다. 링크, 전화, 방문 중 하나를 선택하고 나머지는 제거한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">3단계: 발송 시점 검증</strong></p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수신자의 일주일 루틴을 기준으로 메시지를 읽을 가능성이 가장 높은 요일과 시간대를 설정한다. 업종마다 이 시점은 다르다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 단계는 생성형 AI를 활용한 문구 작성 이전에 완료되어야 한다. AI가 만든 문구도 잘못된 수신자에게 잘못된 시점에 전달되면 반응을 만들지 못한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰 운영자 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반 소형 가전 자사몰을 운영하는 경우, 전체 회원 대상 신상품 발송 대신 최근 60일 이내 구매자 중 주방 카테고리 구매 이력이 있는 회원만 추출해 발송한다. 메시지 안에는 상품 설명 없이 "신제품 단독 선공개, 오늘만 조기 구매 가능 [링크]" 한 줄만 남긴다. 수신자가 이미 해당 카테고리에 관심이 있는 사람이기 때문에 추가 설명이 불필요하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">피부과 클리닉 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">최근 6개월 이내 내원 환자 중 피부 관리 시술 이력이 있는 환자에게만 계절 프로모션을 발송한다. 발송 시점은 목요일 오후 7시로 고정한다. 직장인 환자가 주말 예약을 고민하는 시간대와 겹치기 때문이다. 메시지는 "이번 주말 예약 가능합니다. 지금 예약 [링크]"로 마무리한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">학원 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">수강 상담을 한 번 이상 완료했으나 등록하지 않은 잠재 수강생에게만 마감 안내를 발송한다. 이 그룹은 이미 관심을 표명한 사람들이기 때문에 정보 전달이 아닌 결정 촉구가 목적이 된다. "이번 주 금요일 등록 마감. 상담 내용 다시 보기 [링크]"처럼 이전 접점을 환기하는 문구가 행동을 당긴다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 단체문자 발송 반응률을 높이려면 발송 횟수를 늘려야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">발송 횟수를 늘리는 것은 반응률을 높이지 않는다. 동일한 수신자에게 반복 발송이 이어지면 수신 거부율이 올라가고 브랜드 신뢰도가 낮아진다. 반응률은 발송 빈도가 아니라 수신자와 메시지의 맥락 일치도에 따라 결정된다. 발송 횟수보다 발송 대상의 정확도를 먼저 검토해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 문자 메시지 길이가 반응률에 영향을 미치나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">길이 자체보다 구조가 더 중요하다. 짧더라도 행동 유도 문구가 없으면 반응이 없고, 길더라도 수신자에게 명확한 이유와 단일 행동이 제시되면 클릭이 발생한다. 다만 단체문자 환경에서는 화면 스크롤 없이 읽히는 분량, 대략 70~90자 이내에서 핵심을 전달하는 것이 현실적인 기준이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 수신자 세그먼트를 나눌 데이터가 없을 때는 어떻게 해야 하나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">데이터가 없으면 수집부터 시작한다. 다음 발송 시 수신자를 두 그룹으로 나눠 서로 다른 메시지를 보내고, 어느 쪽에서 반응이 나왔는지 기록한다. 이 과정을 3회 이상 반복하면 어떤 수신자 특성이 반응과 연결되는지 패턴이 보이기 시작한다. 정교한 CRM이 없어도 발송 이력과 반응 여부만 스프레드시트에 기록해도 세그먼트의 출발점이 된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 세그먼트별 메시지 문구를 실제로 어떻게 설계하는지, 업종별 템플릿 구조와 함께 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-286&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-286',cta_type:'retous_main',category:'메시징 & 채널 운영'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
