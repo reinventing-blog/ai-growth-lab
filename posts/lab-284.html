@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>구글시트 공유 자동화 연동, 팀 워크플로우에 무엇을 선택해야 하나 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="구글시트 공유 방식과 자동화 연동 방식의 차이를 데이터 흐름과 트리거 기준으로 비교한다. 자사몰, 부동산, 병원 등 업종별 사례와 전환 조건을 함께 정리했다.">
+<meta property="og:title" content="구글시트 공유 자동화 연동, 팀 워크플로우에 무엇을 선택해야 하나"><meta property="og:description" content="구글시트 공유 방식과 자동화 연동 방식의 차이를 데이터 흐름과 트리거 기준으로 비교한다. 자사몰, 부동산, 병원 등 업종별 사례와 전환 조건을 함께 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-284.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-284.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"구글시트 공유 자동화 연동, 팀 워크플로우에 무엇을 선택해야 하나","description":"구글시트 공유 방식과 자동화 연동 방식의 차이를 데이터 흐름과 트리거 기준으로 비교한다. 자사몰, 부동산, 병원 등 업종별 사례와 전환 조건을 함께 정리했다.","image":"https://images.pexels.com/photos/6779570/pexels-photo-6779570.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-284.html"},"datePublished":"2026-08-21","dateModified":"2026-08-21"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"구글시트 공유 방식과 자동화 연동을 동시에 쓸 수 있나","acceptedAnswer":{"@type":"Answer","text":"가능하다. 두 방식은 대체 관계가 아니라 보완 관계로 운영할 수 있다. 데이터 입력과 이동은 자동화로 처리하고, 데이터를 읽고 판단하는 단계는 팀원이 직접 시트를 열어 확인하는 방식으로 구성하는 것이 일반적이다. 자동화 연동이 시트를 없애는 것이 아니라, 시트로 데이터가 도달하는 경로를 바꾸는 것이라고 이해하면 된다."}},{"@type":"Question","name":"자동화 연동을 설정하려면 개발자가 필요한가","acceptedAnswer":{"@type":"Answer","text":"반드시 그렇지는 않다. 노코드 자동화 플랫폼을 활용하면 코드 없이도 구글시트와 외부 툴을 연결할 수 있다. 다만 복잡한 조건 분기나 대량 데이터 처리가 필요한 경우에는 개발자의 개입이 필요할 수 있다. 팀의 기술 역량과 워크플로우 복잡도를 먼저 파악한 뒤 도구를 선택하는 것이 순서다."}},{"@type":"Question","name":"소규모 팀에서는 공유 방식으로 충분한가","acceptedAnswer":{"@type":"Answer","text":"팀 규모 자체보다 반복 업무의 빈도와 데이터 이동 경로가 기준이 된다. 3인 팀이라도 하루에 수백 건의 주문이나 문의를 처리한다면 자동화 연동이 필요하다. 반대로 10인 팀이라도 데이터 처리 건수가 적고 흐름이 단순하다면 공유 방식으로 충분히 운영할 수 있다. 팀 규모보다 업무 흐름의 구조를 먼저 진단해야 한다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#3b1d8a;color:#c4b5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">자동화 & 워크플로우</span><span class="post-date">2026. 8. 21.</span></div>
+  <h1 class="post-title">구글시트 공유 자동화 연동, 팀 워크플로우에 무엇을 선택해야 하나</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/6779570/pexels-photo-6779570.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="구글시트 공유 자동화 연동, 팀 워크플로우에 무엇을 선택해야 하나" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구글시트 공유 방식과 자동화 연동 방식은 겉으로는 비슷해 보이지만, 팀의 운영 방식과 데이터 흐름에 따라 전혀 다른 결과를 만든다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">문제 정의: 공유만으로는 해결되지 않는 것들</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구글시트를 팀과 함께 쓰는 가장 흔한 방법은 링크 공유다. 시트 URL을 슬랙이나 이메일로 전달하고, 각자 열어서 데이터를 입력하거나 확인한다. 이 방식은 초기에는 빠르고 편리하다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">그러나 팀 규모가 커지거나 반복 업무가 쌓이면 균열이 생기기 시작한다. 누가 언제 수정했는지 파악하기 어렵고, 같은 셀을 동시에 편집하다 데이터가 덮어씌워지는 상황이 발생한다. 담당자가 시트를 열지 않으면 업무가 멈춘다. <strong style="color:#f1f5f9;font-weight:700;">공유는 데이터를 보여줄 뿐, 데이터를 움직이지는 않는다.</strong></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 연동은 이 지점에서 출발한다. 구글시트를 다른 툴이나 워크플로우 엔진과 연결해 데이터가 조건에 따라 자동으로 흐르게 만드는 구조다. 문제는 이 두 방식 중 어느 쪽이 팀에 맞는지 판단하는 기준이 명확하지 않다는 점이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">인사이트: 두 방식이 갈리는 실제 기준</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">공유 방식이 유효한 상황은 분명히 존재한다. 데이터 입력 주체가 한두 명이고, 업무 흐름이 선형적이며, 처리 건수가 하루 수십 건 이하일 때다. 소규모 학원에서 수강생 출석을 담당 강사 한 명이 매일 기록하는 경우가 여기에 해당한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 연동이 필요해지는 신호는 다음 세 가지다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">같은 데이터를 두 개 이상의 시트 또는 툴에 반복 입력하고 있다</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">특정 조건이 충족됐을 때 누군가에게 알림을 보내거나 다음 단계를 실행해야 한다</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">담당자가 자리를 비워도 프로세스가 멈추지 않아야 한다</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 조건 중 하나라도 해당된다면 공유 방식만으로는 한계가 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프레임워크: 선택 기준을 구조화하는 방법</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">두 방식을 선택할 때 확인해야 할 축은 두 가지다. 첫째는 데이터 흐름의 방향성이고, 둘째는 트리거의 존재 여부다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">데이터 흐름의 방향성</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">공유 방식은 단방향이다. 사람이 시트를 열고, 읽고, 입력한다. 데이터는 시트 안에 머문다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 연동은 양방향 또는 다방향이다. 외부 폼 제출, 결제 완료, 예약 확정 같은 이벤트가 시트에 데이터를 쓰고, 시트의 변화가 다시 외부 툴에 신호를 보낸다. 데이터가 시트를 통과해 다음 단계로 이동한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">트리거의 존재 여부</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">공유 방식에서 트리거는 사람이다. 누군가 시트를 열어야 업무가 시작된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 연동에서 트리거는 조건이다. 특정 셀 값이 변경되거나, 새 행이 추가되거나, 특정 시간이 되면 다음 액션이 실행된다. 사람의 개입 없이 프로세스가 진행된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 두 축을 기준으로 팀의 현재 워크플로우를 대입하면 어느 방식이 맞는지 판단할 수 있다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1748609160056-7b95f30041f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxOXx8d29ya2Zsb3clMjBhdXRvbWF0aW9uJTIwZGF0YSUyMHZpc3VhbGl6YXRpb24lMjBkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MXwwfHx8MTc4NzI3MjU4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="구글시트 공유 자동화 연동, 팀 워크플로우에 무엇을 선택해야 하나" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">사례: 업종별 선택 패턴</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰 운영팀의 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24나 아임웹 기반의 자사몰을 운영하는 팀을 가정해보자. 주문이 들어오면 담당자가 시트를 열어 주문 내역을 복사하고, CS 팀이 다시 그 시트를 열어 처리 상태를 업데이트하는 방식으로 운영하고 있다면, 주문량이 늘수록 오기입과 누락이 발생하기 쉽다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 경우 자동화 연동을 적용하면 주문 발생 시 시트에 자동으로 행이 추가되고, 특정 상태값으로 변경되면 CS 담당자에게 알림이 전송되는 구조를 만들 수 있다. 담당자가 시트를 열어야 하는 상황이 줄어들고, 처리 흐름이 조건 기반으로 작동한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 중개 사무소의 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">매물 문의가 네이버 폼이나 카카오채널을 통해 들어오는 사무소를 가정해보자. 현재 문의 내용을 직원이 수기로 시트에 옮기고 있다면, 이 단계 자체를 자동화 연동으로 제거할 수 있다. 폼 응답이 시트에 자동 기록되고, 담당 직원에게 배정 알림이 전송되는 구조다. 공유 방식을 유지하더라도 데이터 입력 단계를 자동화하는 것만으로 운영 부담이 줄어든다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">병원 예약 관리의 경우</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">진료 예약 시스템과 구글시트를 연동하지 않고 직원이 수동으로 예약 현황을 시트에 입력하는 병원을 가정해보자. 예약 취소나 변경이 발생할 때마다 시트를 수동으로 수정해야 한다면, 실시간 현황 파악이 어렵다. 자동화 연동을 통해 예약 시스템의 상태 변경이 시트에 즉시 반영되도록 구성하면 수기 입력 단계가 사라진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세 사례 모두 공유 방식을 완전히 버리는 것이 아니다. 시트를 읽고 협업하는 행위는 그대로 유지하면서, 데이터가 이동하는 단계만 자동화로 대체하는 구조다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">전환 시 고려해야 할 실제 조건</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자동화 연동이 이론적으로 맞더라도 바로 전환하기 어려운 조건이 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫째, 팀 내에 자동화 설정을 담당할 수 있는 사람이 있어야 한다. 노코드 자동화 툴을 활용하면 개발 없이도 구성할 수 있지만, 초기 설정과 오류 대응은 누군가가 책임져야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 연동 대상 툴이 API 또는 웹훅을 지원해야 한다. 내부 레거시 시스템이나 엑셀 기반 툴은 연동이 복잡하거나 불가능한 경우가 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 자동화가 실패했을 때의 백업 프로세스를 설계해야 한다. 자동화에만 의존하다 연동이 끊기면 업무 전체가 멈추는 상황이 생길 수 있다. 공유 방식을 완전히 제거하기보다 병행 운영 구간을 두는 것이 현실적이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">CTA 예고</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 구글시트와 자동화 툴을 실제로 연동하는 구체적인 설정 방법과, 업종별로 자주 쓰이는 연동 패턴을 단계별로 다룬다. 팀 규모와 툴 환경에 따라 선택할 수 있는 구성 방식을 비교해 제시할 예정이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 구글시트 공유 방식과 자동화 연동을 동시에 쓸 수 있나</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가능하다. 두 방식은 대체 관계가 아니라 보완 관계로 운영할 수 있다. 데이터 입력과 이동은 자동화로 처리하고, 데이터를 읽고 판단하는 단계는 팀원이 직접 시트를 열어 확인하는 방식으로 구성하는 것이 일반적이다. 자동화 연동이 시트를 없애는 것이 아니라, 시트로 데이터가 도달하는 경로를 바꾸는 것이라고 이해하면 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 자동화 연동을 설정하려면 개발자가 필요한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">반드시 그렇지는 않다. 노코드 자동화 플랫폼을 활용하면 코드 없이도 구글시트와 외부 툴을 연결할 수 있다. 다만 복잡한 조건 분기나 대량 데이터 처리가 필요한 경우에는 개발자의 개입이 필요할 수 있다. 팀의 기술 역량과 워크플로우 복잡도를 먼저 파악한 뒤 도구를 선택하는 것이 순서다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 소규모 팀에서는 공유 방식으로 충분한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">팀 규모 자체보다 반복 업무의 빈도와 데이터 이동 경로가 기준이 된다. 3인 팀이라도 하루에 수백 건의 주문이나 문의를 처리한다면 자동화 연동이 필요하다. 반대로 10인 팀이라도 데이터 처리 건수가 적고 흐름이 단순하다면 공유 방식으로 충분히 운영할 수 있다. 팀 규모보다 업무 흐름의 구조를 먼저 진단해야 한다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-284&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-284',cta_type:'flywheel_consult',category:'자동화 & 워크플로우'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
