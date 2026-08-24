@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>카카오채널 만들기가 작동하는 원리: 개설 이후 고객 접점이 연결되는 구조 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="카카오채널 만들기 이후 친구 추가·메시지 발송·채팅 상담이 연결되는 구조를 단계별로 설명합니다. 병원·학원·이커머스·부동산 등 업종별 운영 설계 기준을 함께 정리했습니다.">
+<meta property="og:title" content="카카오채널 만들기가 작동하는 원리: 개설 이후 고객 접점이 연결되는 구조"><meta property="og:description" content="카카오채널 만들기 이후 친구 추가·메시지 발송·채팅 상담이 연결되는 구조를 단계별로 설명합니다. 병원·학원·이커머스·부동산 등 업종별 운영 설계 기준을 함께 정리했습니다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-291.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-291.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"카카오채널 만들기가 작동하는 원리: 개설 이후 고객 접점이 연결되는 구조","description":"카카오채널 만들기 이후 친구 추가·메시지 발송·채팅 상담이 연결되는 구조를 단계별로 설명합니다. 병원·학원·이커머스·부동산 등 업종별 운영 설계 기준을 함께 정리했습니다.","image":"https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNnx8bW9iaWxlJTIwbWVzc2FnaW5nJTIwY2hhbm5lbCUyMGRhc2hib2FyZCUyMGxhcHRvcHxlbnwxfDB8fHwxNzg3NTM4ODY5fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-291.html"},"datePublished":"2026-08-24","dateModified":"2026-08-24"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"카카오채널 만들기는 무료인가, 비용이 발생하는가","acceptedAnswer":{"@type":"Answer","text":"채널 개설 자체는 무료다. 비용은 메시지를 발송할 때 발생한다. 알림톡은 건당 7.5원~15원 수준(템플릿 유형과 버튼 포함 여부에 따라 다름), 친구톡은 건당 15원~20원 수준이다. 예를 들어 월 2,000건의 친구톡을 발송한다면, 건당 18원 기준으로 월 36,000원의 발송 비용이 발생한다. 채널 홈 운영, 소식 게시, 채팅 상담은 별도 비용 없이 사용 가능하다."}},{"@type":"Question","name":"카카오채널 만들기 후 친구 수가 늘지 않는 이유는 무엇인가","acceptedAnswer":{"@type":"Answer","text":"채널이 개설되어 있어도 고객이 채널을 발견할 경로가 없으면 친구 수는 증가하지 않는다. 카카오톡 검색 노출만으로는 유입이 제한적이다. 자사몰 주문 완료 페이지, 오프라인 매장 QR코드, SNS 프로필 링크 등 고객이 실제로 접하는 접점에 채널 추가 경로를 연결하는 작업이 선행되어야 한다."}},{"@type":"Question","name":"사업자 등록이 없어도 카카오채널 만들기가 가능한가","acceptedAnswer":{"@type":"Answer","text":"개인(비사업자) 계정으로도 채널 개설은 가능하다. 단, 비즈메시지(알림톡·친구톡) 발송은 사업자 등록이 완료된 계정에서만 가능하다. 채팅 상담과 소식 게시 기능은 개인 채널에서도 활용할 수 있으므로, 소규모 1인 운영자라면 개설 후 단계적으로 사업자 전환을 진행하는 방식도 선택지가 된다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#0c4a6e;color:#7dd3fc;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">메시징 & 채널 운영</span><span class="post-date">2026. 8. 24.</span></div>
+  <h1 class="post-title">카카오채널 만들기가 작동하는 원리: 개설 이후 고객 접점이 연결되는 구조</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNnx8bW9iaWxlJTIwbWVzc2FnaW5nJTIwY2hhbm5lbCUyMGRhc2hib2FyZCUyMGxhcHRvcHxlbnwxfDB8fHwxNzg3NTM4ODY5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="카카오채널 만들기가 작동하는 원리: 개설 이후 고객 접점이 연결되는 구조" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카카오채널 만들기는 단순히 채널 하나를 등록하는 절차가 아니다. 개설 시점부터 고객과의 접점이 어떤 구조로 연결되는지를 이해해야, 이후 운영에서 메시지가 실제로 닿는 경로를 설계할 수 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">채널 개설 전후, 무엇이 달라지는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널을 개설하기 전에는 브랜드와 고객 사이에 단방향 노출만 존재한다. 광고를 보거나 검색을 하더라도, 고객이 브랜드와 지속적으로 연결될 수 있는 구조가 없다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널을 개설한 이후에는 세 가지 접점이 동시에 작동하기 시작한다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">친구 추가 경로</strong>: 카카오톡 검색, QR코드, 링크 공유를 통해 고객이 채널을 팔로우한다.</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">메시지 발송 경로</strong>: 친구로 등록된 고객에게 카카오 비즈메시지(알림톡·친구톡)를 발송할 수 있다.</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">채팅 상담 경로</strong>: 고객이 채널 내 채팅 기능으로 직접 문의를 보낼 수 있다.</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 경로는 독립적으로 보이지만, 실제로는 '친구 추가'를 기점으로 하나의 흐름으로 연결된다. 친구 추가가 이루어지지 않으면 메시지 발송 경로 자체가 열리지 않는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">개설 이후 구조가 실제로 연결되는 순서</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 채널 개설과 검수</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카카오 비즈니스 계정을 생성하고 채널을 개설하면, 카카오 측의 검수 절차가 진행된다. 검수 기준은 사업자 유형(개인사업자·법인)과 업종에 따라 다르며, 통상 1~3 영업일이 소요된다. 검수 완료 전에는 채널이 검색 노출되지 않고, 비즈메시지 발송도 불가능하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 채널 홈 구성</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">검수 완료 후 채널 홈을 구성한다. 프로필 이미지, 소개 문구, 홈 버튼(URL 연결), 소식 게시물이 여기에 해당한다. 채널 홈은 고객이 친구 추가를 결정하기 전에 가장 먼저 보는 화면이다. 소개 문구가 불명확하거나 홈이 비어 있으면, 친구 추가 전환율이 낮아진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 친구 확보 경로 설정</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널이 열려 있어도 고객이 스스로 찾아오지 않으면 친구 수는 늘지 않는다. 친구 확보 경로는 크게 두 가지로 나뉜다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">오프라인 접점: QR코드를 매장 카운터, 영수증, 명함에 삽입한다. 피부과·치과 같은 의원급 병원에서는 예약 확인 안내 시 QR코드를 직접 제시하는 방식이 쓰인다.</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">온라인 접점: 자사몰(카페24, 아임웹 기반 이커머스)에서는 주문 완료 페이지 또는 회원가입 완료 화면에 채널 추가 버튼을 삽입한다. 이 시점은 고객의 구매 의사가 확인된 직후이므로, 채널 추가 동의율이 다른 시점보다 상대적으로 높다.</li>
+</ul>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">4단계: 메시지 발송 구조 연결</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">친구가 확보되면 카카오 비즈메시지 발송이 가능해진다. 발송 방식은 두 가지로 구분된다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">알림톡: 거래 정보(주문 확인, 예약 안내, 배송 상태 등)를 전달하는 메시지. 광고성 내용을 포함할 수 없으며, 친구 여부와 무관하게 발송된다. 단, 카카오 비즈메시지 API 연동이 필요하다.</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">친구톡: 친구로 등록된 고객에게만 발송 가능한 마케팅 메시지. 이미지, 버튼, 광고성 문구를 포함할 수 있다.</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원의 경우를 예로 들면, 수강 등록 완료 시 알림톡으로 일정을 안내하고, 이후 개강 전날 친구톡으로 준비물과 강의실 위치를 다시 전달하는 구조가 가능하다. 두 메시지가 동일한 채널에서 발송되므로 고객 입장에서는 하나의 브랜드 접점으로 인식된다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1686061593213-98dad7c599b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw3fHxidXNpbmVzcyUyMG1lc3NhZ2luZyUyMGF1dG9tYXRpb24lMjBhbmFseXRpY3MlMjBkYXNoYm9hcmR8ZW58MXwwfHx8MTc4NzUzODg3MHww&ixlib=rb-4.1.0&q=80&w=1080" alt="카카오채널 만들기가 작동하는 원리: 개설 이후 고객 접점이 연결되는 구조" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별로 접점 구조가 달라지는 지점</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널 개설 이후 운영 구조는 업종에 따라 다르게 설계된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개업의 경우, 매물 알림이 핵심 접점이다. 고객이 채널을 추가하는 이유 자체가 '원하는 조건의 매물이 나왔을 때 빠르게 받아보기 위함'이므로, 친구톡은 매물 업데이트 중심으로 구성된다. 채팅 상담 기능은 매물 문의를 처리하는 창구로 활용된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이커머스 자사몰의 경우, 구매 여정의 각 단계마다 알림톡과 친구톡이 교차 사용된다. 주문 접수·발송·도착은 알림톡, 재구매 유도·신상품 안내는 친구톡으로 역할이 분리된다. 카페24 기반 쇼핑몰이라면 카카오 채널과 쇼핑몰 회원 DB를 연동해 발송 대상을 세분화하는 구조를 갖출 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">피부 관리숍처럼 예약 기반으로 운영되는 소규모 서비스업에서는, 예약 확인·리마인더·시술 후 주의사항 안내까지 채널 하나로 처리하는 구조가 현실적이다. 별도의 CRM 없이도 카카오 채널 채팅 기능이 고객 응대 창구 역할을 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">채널 운영에서 구조보다 먼저 정해야 할 것</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널을 개설하고 나서 운영이 흔들리는 경우, 대부분 '어떤 메시지를 언제 보낼 것인가'가 사전에 정의되지 않은 상태에서 채널부터 열었기 때문이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널 개설 전에 세 가지를 먼저 결정해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">1. 친구 추가를 유도할 접점은 어디인가 (온라인·오프라인 각각)</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">2. 발송할 메시지의 유형은 알림톡인가, 친구톡인가, 또는 둘 다인가</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">3. 채팅 상담을 운영할 인력 또는 자동응답 설정이 준비되어 있는가</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 가지가 결정된 상태에서 채널을 개설하면, 개설 직후부터 구조가 작동하기 시작한다. 반대로 채널만 열어두고 운영 계획이 없으면, 채널은 존재하지만 접점은 연결되지 않는 상태가 된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 카카오채널 만들기는 무료인가, 비용이 발생하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널 개설 자체는 무료다. 비용은 메시지를 발송할 때 발생한다. 알림톡은 건당 7.5원~15원 수준(템플릿 유형과 버튼 포함 여부에 따라 다름), 친구톡은 건당 15원~20원 수준이다. 예를 들어 월 2,000건의 친구톡을 발송한다면, 건당 18원 기준으로 월 36,000원의 발송 비용이 발생한다. 채널 홈 운영, 소식 게시, 채팅 상담은 별도 비용 없이 사용 가능하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 카카오채널 만들기 후 친구 수가 늘지 않는 이유는 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널이 개설되어 있어도 고객이 채널을 발견할 경로가 없으면 친구 수는 증가하지 않는다. 카카오톡 검색 노출만으로는 유입이 제한적이다. 자사몰 주문 완료 페이지, 오프라인 매장 QR코드, SNS 프로필 링크 등 고객이 실제로 접하는 접점에 채널 추가 경로를 연결하는 작업이 선행되어야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 사업자 등록이 없어도 카카오채널 만들기가 가능한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">개인(비사업자) 계정으로도 채널 개설은 가능하다. 단, 비즈메시지(알림톡·친구톡) 발송은 사업자 등록이 완료된 계정에서만 가능하다. 채팅 상담과 소식 게시 기능은 개인 채널에서도 활용할 수 있으므로, 소규모 1인 운영자라면 개설 후 단계적으로 사업자 전환을 진행하는 방식도 선택지가 된다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-291&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-291',cta_type:'retous_main',category:'메시징 & 채널 운영'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
