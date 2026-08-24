@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI사진만들기를 반복할수록 결과물이 실무에서 쓰이지 않는 진짜 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI사진만들기를 반복해도 결과물이 실무에 쓰이지 않는 이유는 도구 문제가 아니다. 용도 명세 부재와 피드백 루프 없는 반복이 진짜 원인이며, 이를 해결하는 구체적 기준을 제시한다.">
+<meta property="og:title" content="AI사진만들기를 반복할수록 결과물이 실무에서 쓰이지 않는 진짜 원인"><meta property="og:description" content="AI사진만들기를 반복해도 결과물이 실무에 쓰이지 않는 이유는 도구 문제가 아니다. 용도 명세 부재와 피드백 루프 없는 반복이 진짜 원인이며, 이를 해결하는 구체적 기준을 제시한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-290.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-290.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI사진만들기를 반복할수록 결과물이 실무에서 쓰이지 않는 진짜 원인","description":"AI사진만들기를 반복해도 결과물이 실무에 쓰이지 않는 이유는 도구 문제가 아니다. 용도 명세 부재와 피드백 루프 없는 반복이 진짜 원인이며, 이를 해결하는 구체적 기준을 제시한다.","image":"https://images.unsplash.com/photo-1675285301978-fa577795ce61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxMHx8bGFwdG9wJTIwc2NyZWVuJTIwaW1hZ2UlMjBlZGl0aW5nJTIwd29ya2Zsb3d8ZW58MXwwfHx8MTc4NzUzMjA2M3ww&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-290.html"},"datePublished":"2026-08-24","dateModified":"2026-08-24"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"AI로 만든 이미지가 계속 어색한 이유는 무엇인가","acceptedAnswer":{"@type":"Answer","text":"생성형 AI는 요청된 장면을 통계적으로 그럴듯한 방식으로 재현한다. 실무 맥락, 브랜드 특성, 게재 위치 조건이 프롬프트에 없으면 AI는 그 조건을 알 수 없다. 어색함의 원인은 대부분 프롬프트에 담기지 않은 실무 조건에서 비롯된다. 장면 묘사보다 용도 명세를 먼저 작성하는 순서로 접근 방식을 바꾸면 이 문제는 상당 부분 해소된다."}},{"@type":"Question","name":"프롬프트를 길게 쓸수록 결과가 좋아지는가","acceptedAnswer":{"@type":"Answer","text":"길이가 아니라 정밀도가 결과를 결정한다. \"세련된 느낌의 사무실\"보다 \"창가 자연광, 화이트-그레이 톤 책상, 배경 흐림 처리, 가로 구도\"가 실무에 가까운 결과를 만든다. 추상적인 형용사를 조작 가능한 조건으로 바꾸는 것이 프롬프트 작성의 핵심이다. 문장이 짧더라도 조건이 구체적이면 결과물의 실무 투입 가능성은 올라간다."}},{"@type":"Question","name":"AI 생성 이미지를 실무에 바로 쓰기 어려운 업종이 따로 있는가","acceptedAnswer":{"@type":"Answer","text":"의료, 법률, 교육 등 신뢰 기반 업종은 AI 생성 이미지가 실제 공간, 실제 인물과 달라 보일 때 오히려 신뢰를 해칠 수 있다. 이 업종에서는 AI 이미지를 메인 콘텐츠보다 보조 그래픽, 배경 요소, 아이콘 수준으로 제한적으로 활용하는 편이 실무 적합성이 높다. 반면 자사몰, 식음료, 인테리어, 라이프스타일 콘텐츠는 용도 명세가 명확하면 실무 투입 가능성이 상대적으로 높다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 8. 24.</span></div>
+  <h1 class="post-title">AI사진만들기를 반복할수록 결과물이 실무에서 쓰이지 않는 진짜 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1675285301978-fa577795ce61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxMHx8bGFwdG9wJTIwc2NyZWVuJTIwaW1hZ2UlMjBlZGl0aW5nJTIwd29ya2Zsb3d8ZW58MXwwfHx8MTc4NzUzMjA2M3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="AI사진만들기를 반복할수록 결과물이 실무에서 쓰이지 않는 진짜 원인" style="width:100%;height:400px;object-fit:cover;border-radius:12px;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI사진만들기를 처음 접한 실무자 대부분은 같은 경로를 밟는다. 생성 횟수가 늘어날수록 결과물의 품질이 올라갈 것이라 기대하지만, 정작 실무에 투입되는 이미지는 처음과 크게 다르지 않다. 반복이 숙련으로 이어지지 않는 이유는 도구의 한계가 아니라 접근 방식의 구조적 문제에 있다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">결과물이 쓰이지 않는 것은 품질 문제가 아니다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실무자들이 AI 생성 이미지를 버리는 이유를 물으면 "퀄리티가 낮아서"라는 답이 돌아온다. 그러나 실제로 들여다보면 이미지 자체의 해상도나 완성도보다 <strong style="color:#f1f5f9;font-weight:700;">맥락 부재</strong>가 더 빈번한 폐기 원인이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원 블로그 운영 담당자가 AI로 진료실 분위기 이미지를 만든다고 가정해보자. 결과물은 깔끔하고 현대적인 공간 사진처럼 보이지만, 실제 병원의 인테리어 색상, 진료과 특성, 환자층의 연령대와 전혀 맞지 않는다. 이 이미지는 품질이 낮아서 버려지는 것이 아니다. 실무 맥락이 프롬프트 단계에서 한 번도 반영되지 않았기 때문에 버려진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">반복 생성이 쌓여도 실력이 늘지 않는 이유가 여기 있다. 매번 비슷한 방식으로 요청하고, 비슷한 방식으로 실패하고, 결과물을 폐기하는 사이클이 반복될 뿐이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프롬프트가 아니라 '용도 명세'가 빠져 있다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI에 이미지를 요청할 때 대부분의 실무자는 장면을 묘사하는 데 집중한다. "밝고 깔끔한 카페 내부, 따뜻한 조명, 커피잔 클로즈업" 같은 방식이다. 이 묘사는 틀리지 않지만, 실무 투입 가능성을 높이는 정보는 하나도 담겨 있지 않다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">용도 명세란 이미지가 어디에 쓰일지, 어떤 비율로 출력될지, 어떤 텍스트 오버레이가 올라갈지, 배경 처리가 필요한지를 프롬프트 이전에 정의하는 작업이다. 이 단계를 건너뛰면 생성 결과물은 언제나 '그럴듯하지만 쓸 수 없는' 상태로 도착한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자사몰을 운영하는 카페24 기반 의류 쇼핑몰을 예로 들면, 상품 상세페이지 상단 배너에 들어갈 이미지는 가로 1200px 기준에 좌측 여백이 확보되어야 하고, 텍스트가 올라갈 영역의 배경은 단색에 가까워야 한다. 이 조건을 프롬프트에 반영하지 않으면 생성 이미지는 구도, 색감, 여백 어느 것도 실무 조건을 충족하지 못한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">용도 명세를 구성하는 세 가지 기준</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫째, 게재 위치와 비율을 먼저 정한다. SNS 피드용 1:1, 배너용 16:9, 세로형 콘텐츠용 4:5 등 비율이 달라지면 구도 요청도 달라져야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 텍스트 오버레이 여부를 명시한다. 텍스트가 올라가는 이미지라면 피사체의 위치와 배경의 복잡도가 제한된다. 이 조건이 프롬프트에 없으면 생성 결과물은 항상 텍스트를 얹기 어려운 구도로 나온다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 브랜드 톤을 색온도와 배경 처리 방식으로 구체화한다. "따뜻한 느낌"이 아니라 "3000K 이하 조명, 베이지-오프화이트 배경"처럼 조작 가능한 언어로 바꿔야 한다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/1/work-station-straight-on-view.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyM3x8YnVzaW5lc3MlMjB3b3JrZmxvdyUyMGxhcHRvcHxlbnwxfDB8fHwxNzg3NTMyMDY1fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI사진만들기를 반복할수록 결과물이 실무에서 쓰이지 않는 진짜 원인" style="width:100%;height:300px;object-fit:cover;border-radius:10px;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">반복이 숙련이 되려면 피드백 루프가 있어야 한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI사진만들기를 반복해도 실력이 늘지 않는 두 번째 이유는 피드백 루프의 부재다. 결과물이 폐기될 때 왜 폐기되는지를 기록하지 않으면, 다음 생성에서 같은 실수가 반복된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원 마케팅 담당자가 강의 분위기 이미지를 만든다고 가정해보자. 결과물이 폐기될 때 그 이유가 "손 모양이 어색해서"인지, "배경이 실제 강의실과 달라서"인지, "학생 연령대가 맞지 않아서"인지를 구분해 기록해야 한다. 이 기록이 쌓이면 다음 프롬프트에서 수정해야 할 지점이 명확해진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개업소의 경우도 마찬가지다. 매물 소개용 이미지를 AI로 생성할 때 인테리어 스타일이 지역 수요층의 선호와 맞지 않아 폐기되는 패턴이 반복된다면, 그 원인을 기록하고 다음 생성 시 지역 특성과 수요층 정보를 프롬프트에 추가해야 한다. 단순히 "더 좋게 만들어달라"는 요청으로는 이 간극이 좁혀지지 않는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">피드백 루프를 만드는 실무 기준</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성 결과물을 폐기할 때 세 가지 항목을 간단히 메모한다. 폐기 이유의 유형(구도, 색감, 맥락 불일치, 디테일 오류), 실무 조건과의 차이, 다음 프롬프트에서 바꿀 표현. 이 세 항목이 10회 이상 쌓이면 자신이 어떤 유형의 실수를 반복하는지 패턴이 보인다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프레임워크: 실무 투입 가능성을 높이는 생성 전 체크리스트</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성 버튼을 누르기 전에 다음 순서를 확인한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">1. 이미지가 올라갈 위치와 비율이 결정되어 있는가</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">2. 텍스트 오버레이 여부와 텍스트 위치가 정해져 있는가</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">3. 브랜드 색상과 톤이 조작 가능한 언어로 변환되어 있는가</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">4. 피사체의 연령, 성별, 상황이 실제 타깃과 일치하는가</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">5. 이전 생성에서 폐기된 이유가 이번 프롬프트에 반영되어 있는가</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 다섯 항목 중 세 개 이상 미확인 상태라면 생성 결과물이 실무에 투입될 가능성은 낮다. 도구의 성능이 아니라 준비 단계의 밀도가 결과를 결정한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI로 만든 이미지가 계속 어색한 이유는 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI는 요청된 장면을 통계적으로 그럴듯한 방식으로 재현한다. 실무 맥락, 브랜드 특성, 게재 위치 조건이 프롬프트에 없으면 AI는 그 조건을 알 수 없다. 어색함의 원인은 대부분 프롬프트에 담기지 않은 실무 조건에서 비롯된다. 장면 묘사보다 용도 명세를 먼저 작성하는 순서로 접근 방식을 바꾸면 이 문제는 상당 부분 해소된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트를 길게 쓸수록 결과가 좋아지는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">길이가 아니라 정밀도가 결과를 결정한다. "세련된 느낌의 사무실"보다 "창가 자연광, 화이트-그레이 톤 책상, 배경 흐림 처리, 가로 구도"가 실무에 가까운 결과를 만든다. 추상적인 형용사를 조작 가능한 조건으로 바꾸는 것이 프롬프트 작성의 핵심이다. 문장이 짧더라도 조건이 구체적이면 결과물의 실무 투입 가능성은 올라간다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI 생성 이미지를 실무에 바로 쓰기 어려운 업종이 따로 있는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">의료, 법률, 교육 등 신뢰 기반 업종은 AI 생성 이미지가 실제 공간, 실제 인물과 달라 보일 때 오히려 신뢰를 해칠 수 있다. 이 업종에서는 AI 이미지를 메인 콘텐츠보다 보조 그래픽, 배경 요소, 아이콘 수준으로 제한적으로 활용하는 편이 실무 적합성이 높다. 반면 자사몰, 식음료, 인테리어, 라이프스타일 콘텐츠는 용도 명세가 명확하면 실무 투입 가능성이 상대적으로 높다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 업종별 용도 명세 템플릿과 프롬프트 변환 사례를 구체적으로 다룬다. 지금 반복하고 있는 생성 사이클이 어느 단계에서 막히는지 확인하고 싶다면 그 글이 출발점이 된다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-290&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-290',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
