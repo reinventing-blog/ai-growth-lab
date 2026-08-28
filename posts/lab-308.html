@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 게임 개발 방식 vs 전통 게임 제작 방식, 마케터는 무엇을 선택해야 하나 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI 게임 개발 방식과 전통 게임 제작 방식을 비용·기간·복잡도 기준으로 비교한다. 이커머스·학원·병원·부동산 사례를 통해 마케터가 실무에서 선택 기준을 잡는 방법을 정리했다.">
+<meta property="og:title" content="AI 게임 개발 방식 vs 전통 게임 제작 방식, 마케터는 무엇을 선택해야 하나"><meta property="og:description" content="AI 게임 개발 방식과 전통 게임 제작 방식을 비용·기간·복잡도 기준으로 비교한다. 이커머스·학원·병원·부동산 사례를 통해 마케터가 실무에서 선택 기준을 잡는 방법을 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-308.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-308.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 게임 개발 방식 vs 전통 게임 제작 방식, 마케터는 무엇을 선택해야 하나","description":"AI 게임 개발 방식과 전통 게임 제작 방식을 비용·기간·복잡도 기준으로 비교한다. 이커머스·학원·병원·부동산 사례를 통해 마케터가 실무에서 선택 기준을 잡는 방법을 정리했다.","image":"https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwzfHxBSSUyMGdhbWUlMjBkZXZlbG9wbWVudCUyMGxhcHRvcCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODc4Nzc2NjF8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-308.html"},"datePublished":"2026-08-28","dateModified":"2026-08-28"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"A 순서로 단계가 분리된다. 각 단계 사이에 커뮤니케이션 비용이 발생하고, 수정 요청이 생기면 일정이 뒤로 밀린다. 짧은 시즌 캠페인에 맞춰 4~6주 안에 결과물을 받기 어려운 경우가 많다.","acceptedAnswer":{"@type":"Answer","text":"AI 기반 방식은 프롬프트 수정과 파라미터 조정으로 시안을 빠르게 반복할 수 있다. 게임 로직의 단순한 변형, 비주얼 스타일 교체, 텍스트 현지화 작업이 내부에서 처리 가능해진다. 단, AI가 생성한 코드나 에셋의 품질 검수는 여전히 사람이 담당해야 한다. 비용 구조 전통 외주 방식은 초기 계약 비용이 크고, 추가 수정에 별도 견적이 붙는 구조다. 완성도 높은 결과물을 원할수록 비용이 선형적으로 증가한다. AI 기반 방식의 비용 구조는 다르다. 플랫폼 구독료나 API 사용량 기반 과금이 중심이 되고, 초기 투자보다 운영 비용이 지속적으로 발생한다. 소규모 캠페인에는 유리하지만, 복잡한 멀티플레이어 구조나 정밀한 물리 엔진이 필요한 프로젝트에는 한계가 명확하다."}},{"@type":"Question","name":"AI 방식으로 만든 게임 콘텐츠는 품질이 낮지 않나요?","acceptedAnswer":{"@type":"Answer","text":"품질의 기준을 어디에 두느냐에 따라 다르다. 그래픽 완성도나 물리 엔진 정밀도를 기준으로 삼으면 전통 방식이 앞선다. 그러나 마케팅 목적의 미니게임에서는 사용자 참여율, 공유 가능성, 브랜드 메시지 전달력이 더 중요한 지표다. AI 방식은 이 세 가지를 빠르게 테스트하고 수정하는 데 유리한 구조를 갖고 있다."}},{"@type":"Question","name":"내부에 개발자가 없어도 AI 방식을 쓸 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"노코드 기반 AI 게임 제작 플랫폼을 활용하면 개발자 없이도 기본적인 인터랙티브 콘텐츠를 만들 수 있다. 다만 자사몰이나 캠페인 페이지에 임베드하는 과정, 데이터 수집 설정, 외부 플랫폼 연동에서는 최소한의 기술 지원이 필요하다. 완전한 무의존은 현실적으로 어렵고, 기술 지원 범위를 미리 파악한 뒤 도입 여부를 결정하는 것이 현실적이다."}},{"@type":"Question","name":"두 방식을 혼합해서 쓰는 것이 가능한가요?","acceptedAnswer":{"@type":"Answer","text":"가능하고, 실제로 이 방식이 많이 활용된다. 예를 들어 게임의 핵심 로직과 백엔드는 전통 방식으로 구축하고, 비주얼 에셋 생성이나 텍스트 콘텐츠 현지화는 생성형 AI로 처리하는 구조다. 중요한 것은 두 방식의 경계를 명확히 정하고, 각 담당자가 어느 영역을 책임지는지를 사전에 합의하는 것이다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 8. 28.</span></div>
+  <h1 class="post-title">AI 게임 개발 방식 vs 전통 게임 제작 방식, 마케터는 무엇을 선택해야 하나</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwzfHxBSSUyMGdhbWUlMjBkZXZlbG9wbWVudCUyMGxhcHRvcCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODc4Nzc2NjF8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 게임 개발 방식 vs 전통 게임 제작 방식, 마케터는 무엇을 선택해야 하나" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:12px;display:block;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케터가 게임 콘텐츠를 기획할 때 AI 게임 개발 방식 비교는 단순한 기술 선택의 문제가 아니다. 예산 배분, 출시 타이밍, 브랜드 일관성까지 연결된 전략적 판단이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">문제 정의: 마케터가 게임 콘텐츠에 손을 대는 이유</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">브랜드 캠페인에 게임 요소를 접목하는 시도가 늘고 있다. 이벤트 페이지에 미니게임을 삽입하거나, 제품 체험을 게임화하거나, 리텐션을 높이기 위해 포인트·퀘스트 구조를 도입하는 방식이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">문제는 실행 경로가 두 갈래로 나뉜다는 점이다. 하나는 전통적인 게임 개발사 또는 외주 스튜디오에 의뢰하는 방식이고, 다른 하나는 생성형 AI와 AI 기반 게임 제작 플랫폼을 활용해 내부에서 직접 만드는 방식이다. 두 경로는 비용 구조, 제작 기간, 결과물의 완성도에서 뚜렷한 차이를 보인다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">인사이트: 두 방식이 실제로 갈리는 지점</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">제작 기간과 반복 속도</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전통 방식은 기획-디자인-개발-QA 순서로 단계가 분리된다. 각 단계 사이에 커뮤니케이션 비용이 발생하고, 수정 요청이 생기면 일정이 뒤로 밀린다. 짧은 시즌 캠페인에 맞춰 4~6주 안에 결과물을 받기 어려운 경우가 많다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 기반 방식은 프롬프트 수정과 파라미터 조정으로 시안을 빠르게 반복할 수 있다. 게임 로직의 단순한 변형, 비주얼 스타일 교체, 텍스트 현지화 작업이 내부에서 처리 가능해진다. 단, AI가 생성한 코드나 에셋의 품질 검수는 여전히 사람이 담당해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">비용 구조</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전통 외주 방식은 초기 계약 비용이 크고, 추가 수정에 별도 견적이 붙는 구조다. 완성도 높은 결과물을 원할수록 비용이 선형적으로 증가한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">AI 기반 방식의 비용 구조는 다르다.</strong> 플랫폼 구독료나 API 사용량 기반 과금이 중심이 되고, 초기 투자보다 운영 비용이 지속적으로 발생한다. 소규모 캠페인에는 유리하지만, 복잡한 멀티플레이어 구조나 정밀한 물리 엔진이 필요한 프로젝트에는 한계가 명확하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프레임워크: 선택 기준을 정하는 세 가지 축</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">축 1. 프로젝트 복잡도</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">미니게임, 퀴즈형 인터랙션, 단순 수집 메커니즘처럼 로직이 단순한 경우에는 AI 기반 방식이 속도와 비용 면에서 현실적인 선택지다. 반면 서사 구조가 복잡하거나, 캐릭터 IP를 정밀하게 구현해야 하거나, 대규모 동시 접속을 처리해야 하는 경우라면 전통 방식의 전문성이 필요하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">축 2. 캠페인 수명</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">단발성 프로모션이나 시즌 한정 이벤트라면 AI 방식의 빠른 제작 속도가 강점이 된다. 브랜드 자산으로 장기 운영할 게임 콘텐츠라면, 초기에 더 많은 리소스를 투입해 완성도를 확보하는 전통 방식이 유리하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">축 3. 내부 역량</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 도구를 다룰 수 있는 인력이 내부에 있는지가 핵심 변수다. 생성형 AI가 만든 코드를 검토하고 수정할 수 있는 개발자, 또는 AI 플랫폼의 노코드 인터페이스에 익숙한 기획자가 없다면 AI 방식도 결국 외부 의존도가 높아진다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1614029896656-a094f640558d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxMnx8bm8tY29kZSUyMGF1dG9tYXRpb24lMjBkYXNoYm9hcmQlMjBhbmFseXRpY3MlMjBzY3JlZW58ZW58MXwwfHx8MTc4Nzg3NzY2M3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="AI 게임 개발 방식 vs 전통 게임 제작 방식, 마케터는 무엇을 선택해야 하나" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:10px;display:block;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">사례: 업종별 선택 패턴</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰 이커머스 - 시즌 이벤트 미니게임</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24나 아임웹 기반으로 운영하는 의류 자사몰을 예로 들면, 여름 시즌 한정으로 '코디 조합 게임'을 이벤트 페이지에 삽입하는 기획이 가능하다. 이 경우 AI 기반 노코드 게임 제작 플랫폼으로 2주 안에 프로토타입을 만들고, 내부 검수 후 배포하는 흐름이 현실적이다. 전통 방식으로 외주를 맡기면 시즌이 끝난 뒤에 결과물이 나올 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">학원 - 학습 게임화</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">입시 학원이 수강생 리텐션을 높이기 위해 단어 암기나 문제풀이를 게임 형태로 제공하는 사례를 생각해볼 수 있다. 단순 퀴즈 구조라면 AI 방식으로 충분하지만, 학생별 학습 데이터를 반영한 개인화 난이도 조정이 필요하다면 전통 방식의 백엔드 개발이 병행되어야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 - 인터랙티브 시뮬레이션</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">분양 마케팅에서 '내 예산으로 살 수 있는 집 찾기' 형태의 시뮬레이션 콘텐츠를 게임화하는 시도가 있다. 이 경우 UI 레이어는 AI 도구로 빠르게 구성하되, 실거래가 데이터 연동과 법적 고지 문구 처리는 전통 방식의 개발 리소스가 필요하다. 두 방식을 혼합하는 접근이 현실에 가깝다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">병원 - 건강 습관 게임</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">치과나 피부과에서 내원 전 구강 관리 습관을 체크하는 게임형 진단 콘텐츠를 제작한다면, 로직이 단순하고 분기가 제한적이기 때문에 AI 방식으로 빠르게 구현할 수 있다. 단, 의료 정보가 포함된 콘텐츠는 결과 문구에 대한 의료법 검토가 별도로 이루어져야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">결론: 선택이 아닌 조합의 문제</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI 게임 개발 방식과 전통 방식은 우열의 문제가 아니다. 프로젝트의 복잡도, 캠페인 수명, 내부 역량이라는 세 축을 기준으로 어느 방식을 주축으로 삼고 어느 방식을 보조로 쓸지를 결정하는 것이 실질적인 판단 기준이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케터가 게임 콘텐츠를 다룰 때 가장 흔히 빠지는 함정은 기술에 매몰되는 것이다. AI든 전통 방식이든, 사용자가 해당 콘텐츠를 통해 무엇을 경험하고 어떤 행동을 하기를 원하는지가 먼저 정의되어야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI 방식으로 만든 게임 콘텐츠는 품질이 낮지 않나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">품질의 기준을 어디에 두느냐에 따라 다르다. 그래픽 완성도나 물리 엔진 정밀도를 기준으로 삼으면 전통 방식이 앞선다. 그러나 마케팅 목적의 미니게임에서는 사용자 참여율, 공유 가능성, 브랜드 메시지 전달력이 더 중요한 지표다. AI 방식은 이 세 가지를 빠르게 테스트하고 수정하는 데 유리한 구조를 갖고 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 내부에 개발자가 없어도 AI 방식을 쓸 수 있나요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">노코드 기반 AI 게임 제작 플랫폼을 활용하면 개발자 없이도 기본적인 인터랙티브 콘텐츠를 만들 수 있다. 다만 자사몰이나 캠페인 페이지에 임베드하는 과정, 데이터 수집 설정, 외부 플랫폼 연동에서는 최소한의 기술 지원이 필요하다. 완전한 무의존은 현실적으로 어렵고, 기술 지원 범위를 미리 파악한 뒤 도입 여부를 결정하는 것이 현실적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 두 방식을 혼합해서 쓰는 것이 가능한가요?</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가능하고, 실제로 이 방식이 많이 활용된다. 예를 들어 게임의 핵심 로직과 백엔드는 전통 방식으로 구축하고, 비주얼 에셋 생성이나 텍스트 콘텐츠 현지화는 생성형 AI로 처리하는 구조다. 중요한 것은 두 방식의 경계를 명확히 정하고, 각 담당자가 어느 영역을 책임지는지를 사전에 합의하는 것이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><em style="color:#a5b4fc;">다음 글에서는 마케터가 AI 게임 콘텐츠를 기획할 때 사용하는 프롬프트 설계 방법과 실제 기획서 구조를 다룬다.</em></p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-308&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-308',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
