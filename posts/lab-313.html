@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>프롬프트 엔지니어를 다시 설계하는 4가지 역할 정의 원칙 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="프롬프트 엔지니어 역할 설계가 불명확하면 AI 도입은 개인 기술에 머문다. 판단 기준 소유, 워크플로우 설계, 실패 수집, 인터페이스 정의 4가지 원칙으로 역할을 구조화하는 방법을 정리했다.">
+<meta property="og:title" content="프롬프트 엔지니어를 다시 설계하는 4가지 역할 정의 원칙"><meta property="og:description" content="프롬프트 엔지니어 역할 설계가 불명확하면 AI 도입은 개인 기술에 머문다. 판단 기준 소유, 워크플로우 설계, 실패 수집, 인터페이스 정의 4가지 원칙으로 역할을 구조화하는 방법을 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-313.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-313.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"프롬프트 엔지니어를 다시 설계하는 4가지 역할 정의 원칙","description":"프롬프트 엔지니어 역할 설계가 불명확하면 AI 도입은 개인 기술에 머문다. 판단 기준 소유, 워크플로우 설계, 실패 수집, 인터페이스 정의 4가지 원칙으로 역할을 구조화하는 방법을 정리했다.","image":"https://images.unsplash.com/photo-1776278806688-64ef6a7e2cc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxM3x8QUklMjB3b3JrZmxvdyUyMHJvbGUlMjBkZXNpZ24lMjBsYXB0b3B8ZW58MXwwfHx8MTc4ODEzNjg1Nnww&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-313.html"},"datePublished":"2026-08-31","dateModified":"2026-08-31"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"A가 아니다. \"어떤 조건에서 출력이 의도와 어긋났는가\"를 분류하고, 그 패턴을 프롬프트 개선에 반영하는 구조적 작업이다.","acceptedAnswer":{"@type":"Answer","text":"학원 운영 맥락에서 보면, 수강생 상담 응대 초안을 AI로 생성할 때 학부모 대상과 성인 학습자 대상의 톤이 혼용되는 오류가 반복될 수 있다. 이 실패 패턴을 기록하고 분류하는 역할이 명시되어 있어야 프롬프트가 시간이 지나도 개선된다. 실패를 기록하지 않으면 같은 오류가 반복되고, 조직은 AI를 신뢰하지 않게 된다. 원칙 4. 비AI 담당자와의 인터페이스를 정의한다 프롬프트 엔지니어가 혼자 모든 것을 처리하는 구조는 지속되지 않는다. 마케터, 운영 담당자, 고객 서비스 팀 등 AI를 직접 다루지 않는 구성원들이 어떻게 프롬프트 엔지니어와 협업하는지를 역할 정의에 포함해야 한다. 인터페이스를 정의한다는 것은 요청 방식, 산출물 형식, 피드백 경로를 명확히 하는 것이다. \"필요할 때 슬랙으로 물어보면 된다\"는 인터페이스가 아니다. 병원 원무 팀을 예로 들면, 환자 안내문 초안이 필요할 때 어떤 정보를 어떤 형식으로 프롬프트 엔지니어에게 전달해야 하는지, 초안을 받은 뒤 수정 요청은 어떤"}},{"@type":"Question","name":"프롬프트 엔지니어는 반드시 별도 인력으로 채용해야 하는가","acceptedAnswer":{"@type":"Answer","text":"그렇지 않다. 기존 구성원 중 판단 기준을 문서화하고 워크플로우를 설계할 수 있는 사람에게 역할을 부여하는 방식도 작동한다. 중요한 것은 직함이 아니라 4가지 원칙이 실제로 수행되는 구조가 있는가이다. 소규모 조직에서는 마케터나 운영 담당자가 이 역할을 겸직하는 경우도 많다."}},{"@type":"Question","name":"실패 사례 수집은 어떤 형식으로 하는 것이 현실적인가","acceptedAnswer":{"@type":"Answer","text":"별도의 도구가 필요하지 않다. 스프레드시트에 날짜, 프롬프트 버전, 입력 조건, 오류 유형, 수정 내용을 기록하는 것으로 시작할 수 있다. 핵심은 오류를 \"그냥 다시 해봤더니 됐다\"로 처리하지 않고, 어떤 조건에서 왜 어긋났는지를 분류하는 습관이다. 이 로그가 쌓이면 프롬프트 개선의 근거가 된다."}},{"@type":"Question","name":"인터페이스 정의가 없으면 실제로 어떤 문제가 생기는가","acceptedAnswer":{"@type":"Answer","text":"요청이 모호해진다. \"상품 설명 좀 써줘\"와 \"20대 여성 타깃, 린넨 소재, 여름 신상, 150자 이내로 써줘\"는 전혀 다른 요청이다. 인터페이스가 없으면 전자 형태의 요청이 반복되고, 프롬프트 엔지니어는 맥락을 추측하며 시간을 쓴다. 요청 양식 하나만 만들어도 이 문제는 구조적으로 줄어든다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 8. 31.</span></div>
+  <h1 class="post-title">프롬프트 엔지니어를 다시 설계하는 4가지 역할 정의 원칙</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1776278806688-64ef6a7e2cc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxM3x8QUklMjB3b3JrZmxvdyUyMHJvbGUlMjBkZXNpZ24lMjBsYXB0b3B8ZW58MXwwfHx8MTc4ODEzNjg1Nnww&ixlib=rb-4.1.0&q=80&w=1080" alt="프롬프트 엔지니어를 다시 설계하는 4가지 역할 정의 원칙" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:12px;display:block;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 조직이 AI 도입 이후 가장 먼저 마주치는 문제는 프롬프트 엔지니어의 역할 설계가 불명확하다는 점이다. 직함은 생겼지만 무엇을 책임지는 사람인지 아무도 정의하지 않은 채 업무가 시작된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">역할이 없으면 프롬프트도 없다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트를 잘 쓰는 것과 프롬프트 엔지니어로서 역할을 수행하는 것은 다르다. 전자는 개인 기술이고, 후자는 조직 내 기능이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">현장에서 반복되는 패턴이 있다. 생성형 AI 도입 초기에 "프롬프트를 잘 다루는 사람"을 찾아 역할을 맡기지만, 그 사람이 무엇을 산출해야 하는지, 누구와 협업해야 하는지, 어떤 기준으로 평가받는지가 정해지지 않는다. 결국 그 역할은 "AI 관련 질문을 받아주는 사람"으로 축소된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">역할 설계 없이 채용하거나 지정하면, 프롬프트 엔지니어는 조직 내에서 기술 지원 창구가 된다. 그것은 역할이 아니라 업무 부하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">4가지 역할 정의 원칙</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원칙 1. 출력물이 아닌 판단 기준을 소유한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트 엔지니어의 핵심 자산은 프롬프트 문서가 아니다. "어떤 출력이 좋은 출력인가"를 정의하는 판단 기준이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자사몰(카페24, 아임웹 기반)을 운영하는 패션 브랜드를 예로 들면, 상품 상세 페이지 문구를 생성형 AI로 작성할 때 프롬프트 엔지니어가 해야 할 일은 단순히 프롬프트를 짜는 것이 아니다. "브랜드 톤과 일치하는가", "소재 정보가 구매 결정에 충분한가", "검색 의도와 연결되는가"라는 판단 기준을 먼저 문서화하고, 그 기준을 프롬프트에 내재화하는 것이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">판단 기준을 소유하지 않으면 프롬프트 엔지니어는 요청을 받아 처리하는 역할로 고착된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원칙 2. 워크플로우 설계자로 정의한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트 하나를 잘 만드는 것과 업무 흐름 전체에 AI를 통합하는 것은 다른 역량이다. 역할 설계는 후자를 명시적으로 포함해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개 법인의 사례를 가정해 보면, 매물 설명문 작성, 임차인 안내 메시지, 계약 전 체크리스트 요약 등 반복적으로 발생하는 문서 작업이 있다. 프롬프트 엔지니어는 이 세 가지 작업이 어떤 순서로 연결되는지, 어느 단계에서 사람의 검토가 필요한지, 어떤 입력 데이터가 있어야 출력이 안정적인지를 설계한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">워크플로우 설계자로 정의된 역할은 단발성 요청에 응하는 것이 아니라, 반복 가능한 구조를 만드는 것을 책임진다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원칙 3. 실패 사례를 수집하고 분류하는 역할을 명시한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">생성형 AI의 출력은 항상 일정하지 않다. 같은 프롬프트도 입력 조건이 달라지면 다른 결과를 낸다. 이 불확실성을 관리하는 것이 프롬프트 엔지니어의 역할 중 하나여야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">실패 사례 수집</strong>은 단순 QA가 아니다. "어떤 조건에서 출력이 의도와 어긋났는가"를 분류하고, 그 패턴을 프롬프트 개선에 반영하는 구조적 작업이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원 운영 맥락에서 보면, 수강생 상담 응대 초안을 AI로 생성할 때 학부모 대상과 성인 학습자 대상의 톤이 혼용되는 오류가 반복될 수 있다. 이 실패 패턴을 기록하고 분류하는 역할이 명시되어 있어야 프롬프트가 시간이 지나도 개선된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">실패를 기록하지 않으면 같은 오류가 반복되고, 조직은 AI를 신뢰하지 않게 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">원칙 4. 비AI 담당자와의 인터페이스를 정의한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">프롬프트 엔지니어가 혼자 모든 것을 처리하는 구조는 지속되지 않는다. 마케터, 운영 담당자, 고객 서비스 팀 등 AI를 직접 다루지 않는 구성원들이 어떻게 프롬프트 엔지니어와 협업하는지를 역할 정의에 포함해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">인터페이스를 정의한다는 것은 요청 방식, 산출물 형식, 피드백 경로를 명확히 하는 것이다. "필요할 때 슬랙으로 물어보면 된다"는 인터페이스가 아니다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원 원무 팀을 예로 들면, 환자 안내문 초안이 필요할 때 어떤 정보를 어떤 형식으로 프롬프트 엔지니어에게 전달해야 하는지, 초안을 받은 뒤 수정 요청은 어떤 기준으로 해야 하는지가 정해져 있어야 한다. 인터페이스가 없으면 프롬프트 엔지니어는 맥락 없는 요청을 반복해서 처리하게 된다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.pexels.com/photos/8636589/pexels-photo-8636589.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="프롬프트 엔지니어를 다시 설계하는 4가지 역할 정의 원칙" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:10px;display:block;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">역할 설계가 실제로 달라지는 지점</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">원칙 없이 정의된 역할과 4가지 원칙을 적용한 역할의 차이는 산출물의 질보다 지속성에서 먼저 드러난다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">원칙 없이 운영되는 프롬프트 엔지니어는 개인 역량에 의존한다. 그 사람이 떠나면 조직의 AI 활용 수준도 함께 떠난다. 반면 역할이 설계된 구조에서는 판단 기준, 워크플로우, 실패 로그, 인터페이스 문서가 남는다. 사람이 바뀌어도 구조는 유지된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이것이 역할 설계가 단순한 직무 기술서 작성과 다른 이유다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 프롬프트 엔지니어는 반드시 별도 인력으로 채용해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">그렇지 않다. 기존 구성원 중 판단 기준을 문서화하고 워크플로우를 설계할 수 있는 사람에게 역할을 부여하는 방식도 작동한다. 중요한 것은 직함이 아니라 4가지 원칙이 실제로 수행되는 구조가 있는가이다. 소규모 조직에서는 마케터나 운영 담당자가 이 역할을 겸직하는 경우도 많다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 실패 사례 수집은 어떤 형식으로 하는 것이 현실적인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">별도의 도구가 필요하지 않다. 스프레드시트에 날짜, 프롬프트 버전, 입력 조건, 오류 유형, 수정 내용을 기록하는 것으로 시작할 수 있다. 핵심은 오류를 "그냥 다시 해봤더니 됐다"로 처리하지 않고, 어떤 조건에서 왜 어긋났는지를 분류하는 습관이다. 이 로그가 쌓이면 프롬프트 개선의 근거가 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 인터페이스 정의가 없으면 실제로 어떤 문제가 생기는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">요청이 모호해진다. "상품 설명 좀 써줘"와 "20대 여성 타깃, 린넨 소재, 여름 신상, 150자 이내로 써줘"는 전혀 다른 요청이다. 인터페이스가 없으면 전자 형태의 요청이 반복되고, 프롬프트 엔지니어는 맥락을 추측하며 시간을 쓴다. 요청 양식 하나만 만들어도 이 문제는 구조적으로 줄어든다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 이 4가지 원칙을 실제 역할 기술서 형식으로 변환하는 방법을 다룬다. 판단 기준을 어떻게 문서화하고, 워크플로우 설계를 어떤 단계로 시작하는지 구체적인 템플릿과 함께 제시한다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-313&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-313',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
