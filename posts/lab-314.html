@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>문자발송 채널의 5가지 유형과 각각이 맞는 운영 맥락 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="문자발송 채널 유형 5가지(SMS, LMS, MMS, 알림톡, 친구톡)의 차이와 업종별 운영 맥락을 정리했습니다. 채널 선택 기준과 비용 계산 방법까지 확인하세요.">
+<meta property="og:title" content="문자발송 채널의 5가지 유형과 각각이 맞는 운영 맥락"><meta property="og:description" content="문자발송 채널 유형 5가지(SMS, LMS, MMS, 알림톡, 친구톡)의 차이와 업종별 운영 맥락을 정리했습니다. 채널 선택 기준과 비용 계산 방법까지 확인하세요.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-314.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-314.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"문자발송 채널의 5가지 유형과 각각이 맞는 운영 맥락","description":"문자발송 채널 유형 5가지(SMS, LMS, MMS, 알림톡, 친구톡)의 차이와 업종별 운영 맥락을 정리했습니다. 채널 선택 기준과 비용 계산 방법까지 확인하세요.","image":"https://images.pexels.com/photos/8284724/pexels-photo-8284724.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-314.html"},"datePublished":"2026-08-31","dateModified":"2026-08-31"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"광고성 문자를 SMS로 보낼 때 반드시 지켜야 할 사항은 무엇인가","acceptedAnswer":{"@type":"Answer","text":"정보통신망법에 따라 광고성 문자에는 발신자 명칭, 080 무료 수신거부 번호, 수신 동의를 받은 경로가 포함되어야 한다. 수신 동의 없이 발송하면 과태료 대상이 된다. 수신 동의는 서면, 전자적 동의, 구두 동의 모두 인정되지만 입증 가능한 형태로 보관해야 한다."}},{"@type":"Question","name":"알림톡과 친구톡을 같은 카카오 채널에서 운영할 수 있는가","acceptedAnswer":{"@type":"Answer","text":"같은 카카오 비즈니스 채널에서 두 유형 모두 발송할 수 있다. 다만 알림톡 템플릿은 카카오의 사전 심사를 통과해야 하며, 심사 기준에 광고성 내용이 포함되면 반려된다. 친구톡은 채널 추가 사용자 대상으로만 발송되므로, 채널 추가 유도 전략이 선행되어야 한다."}},{"@type":"Question","name":"수신자가 카카오톡을 사용하지 않을 때 알림톡은 어떻게 처리되는가","acceptedAnswer":{"@type":"Answer","text":"알림톡 발송 시 대체 문자(SMS 또는 LMS) 설정을 함께 구성할 수 있다. 카카오톡 미설치 또는 채널 차단 상태인 경우 자동으로 대체 문자가 발송된다. 대체 문자 단가는 별도로 부과되므로 발송 설정 시 대체 발송 비율과 비용을 함께 고려해야 한다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#0c4a6e;color:#7dd3fc;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">메시징 & 채널 운영</span><span class="post-date">2026. 8. 31.</span></div>
+  <h1 class="post-title">문자발송 채널의 5가지 유형과 각각이 맞는 운영 맥락</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.pexels.com/photos/8284724/pexels-photo-8284724.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="문자발송 채널의 5가지 유형과 각각이 맞는 운영 맥락" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:12px;display:block;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">문자발송 채널 유형을 구분하지 않고 운영하면, 같은 메시지를 보내도 수신자 반응이 전혀 다르게 나타난다. 채널 선택 자체가 메시지의 신뢰도와 도달 방식을 결정하기 때문이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 채널 유형 구분이 먼저인가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">많은 담당자가 문자 발송을 단일 수단으로 취급한다. 예산이 남으면 SMS를 보내고, 이미지가 필요하면 MMS를 쓰는 식이다. 그러나 채널마다 법적 요건, 발송 비용, 수신자 경험이 다르다. 채널을 잘못 선택하면 비용이 올라가거나, 스팸으로 분류되거나, 전달 자체가 막힌다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널 선택은 콘텐츠 기획보다 앞서야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">문자발송 채널 5가지 유형과 운영 맥락</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1. SMS: 단문 알림에 최적화된 기본 채널</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">SMS는 최대 90바이트(한글 기준 약 45자) 텍스트만 전송한다. 글자 수 제한이 엄격하지만, 도달률이 높고 수신자가 즉시 확인하는 비율도 높다. 단가는 통상 건당 8~15원 수준으로, 대량 발송 시 비용 부담이 낮다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">운영 맥락: 예약 확인, 배송 출발 알림, 인증번호 발송처럼 핵심 정보 하나만 전달하면 충분한 상황에 적합하다. 치과나 피부과에서 "내일 오후 2시 예약이 확정되었습니다. 변경: 02-XXXX-XXXX" 형태로 쓰는 것이 전형적인 사례다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">주의: 광고성 문자를 SMS로 발송할 때는 수신 동의 여부와 080 수신거부 번호 표기 의무를 반드시 확인해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2. LMS: 긴 안내문이 필요한 채널</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">LMS는 최대 2,000바이트까지 텍스트를 담을 수 있다. SMS보다 단가가 높지만(통상 건당 25~30원), 이미지 없이 충분한 설명이 필요한 경우에 선택한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">운영 맥락: 학원의 월간 커리큘럼 안내, 부동산 중개사무소의 매물 상세 조건 공유, 보험사의 갱신 안내처럼 본문 내용이 길어야 할 때 쓴다. 이미지를 붙이지 않아도 되는 상황에서 MMS 대신 LMS를 선택하면 단가를 낮출 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3. MMS: 이미지·영상을 포함한 콘텐츠 채널</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">MMS는 이미지, 동영상, 긴 텍스트를 함께 전송한다. 단가는 건당 60~100원 이상으로 올라가며, 수신 환경에 따라 이미지가 제대로 표시되지 않을 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">운영 맥락: 카페24나 아임웹 기반 자사몰에서 신상품 출시 이미지를 포함한 프로모션을 발송할 때 MMS가 자주 쓰인다. 상품 이미지 한 장과 할인 코드를 함께 전달하면 카카오 채널이 없는 수신자에게도 시각적 메시지를 전달할 수 있다. 단, 발송 단가가 높기 때문에 타깃 세그먼트를 좁혀 발송하는 것이 합리적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">4. 카카오 알림톡: 거래성 메시지의 표준</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카카오 알림톡은 카카오톡 채널을 통해 발송되는 텍스트 기반 메시지다. 수신자가 카카오톡을 사용하지 않거나 채널을 차단한 경우 SMS로 대체 발송된다. 단가는 건당 8~15원 수준으로 SMS와 유사하지만, 발신자 프로필이 표시되어 신뢰도가 높다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">운영 맥락: 주문 완료, 배송 시작, 환불 처리처럼 수신자가 기다리는 거래성 메시지에 가장 적합하다. 광고성 내용을 알림톡 형태로 발송하면 카카오 정책 위반이 될 수 있으므로, 광고 메시지는 별도 채널인 카카오 친구톡으로 구분해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">5. 카카오 친구톡: 광고성 메시지 전용 채널</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">친구톡은 카카오 채널을 추가한 사용자에게만 발송할 수 있는 광고성 메시지 채널이다. 이미지 포함 여부에 따라 단가가 달라지며, 텍스트형은 건당 15~20원, 이미지형은 더 높다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">운영 맥락: 헬스장이나 필라테스 스튜디오에서 회원권 만료 전 재등록 프로모션을 발송하거나, 자사몰에서 장바구니 이탈 고객에게 쿠폰을 안내할 때 친구톡을 활용한다. 수신 동의 기반이기 때문에 수신자 반응이 상대적으로 높고, 버튼 링크를 삽입해 랜딩 페이지로 직접 연결할 수 있다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1758780691544-d11ce61aae47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyM3x8YXV0b21hdGVkJTIwbWVzc2FnaW5nJTIwd29ya2Zsb3clMjBhbmFseXRpY3MlMjBkYXNoYm9hcmR8ZW58MXwwfHx8MTc4ODE0MzY3Mnww&ixlib=rb-4.1.0&q=80&w=1080" alt="문자발송 채널의 5가지 유형과 각각이 맞는 운영 맥락" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:10px;display:block;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">채널 선택의 실제 판단 기준</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널을 고를 때 세 가지 기준을 순서대로 적용한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫째, <strong style="color:#f1f5f9;font-weight:700;">메시지 성격</strong>이 거래성인가 광고성인가를 먼저 구분한다. 거래성이면 알림톡, 광고성이면 친구톡이나 SMS/MMS 중에서 선택한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 수신자의 카카오톡 사용 여부와 채널 추가 여부를 확인한다. 카카오 채널 미추가 고객에게 친구톡을 발송하면 전달 자체가 되지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 발송 단가와 발송 규모를 곱해 월 예산을 계산한다. 예를 들어 월 5,000건 발송 시 MMS(건당 80원)는 400,000원이지만, 같은 내용을 LMS(건당 28원)로 커버할 수 있다면 140,000원으로 줄어든다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 채널 운영 사례</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원 예약 시스템을 운영하는 경우, 예약 확정과 당일 리마인더는 알림톡으로 처리하고, 건강검진 패키지 안내처럼 광고성 메시지는 친구톡이나 LMS로 분리한다. 두 채널을 혼용하면 수신자 혼란이 생기고 카카오 정책 위반 리스크도 높아진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원의 경우, 수강 신청 확인과 휴강 안내는 알림톡으로 처리하고, 신규 강좌 오픈 홍보는 친구톡이나 MMS로 구분한다. 수신자가 공지 메시지와 광고 메시지를 명확히 구별할 수 있어야 채널 신뢰도가 유지된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반 자사몰에서는 주문·배송 관련 알림은 알림톡으로 자동화하고, 재구매 유도나 시즌 세일 안내는 친구톡이나 MMS로 별도 운영하는 구조가 일반적이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 광고성 문자를 SMS로 보낼 때 반드시 지켜야 할 사항은 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">정보통신망법에 따라 광고성 문자에는 발신자 명칭, 080 무료 수신거부 번호, 수신 동의를 받은 경로가 포함되어야 한다. 수신 동의 없이 발송하면 과태료 대상이 된다. 수신 동의는 서면, 전자적 동의, 구두 동의 모두 인정되지만 입증 가능한 형태로 보관해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 알림톡과 친구톡을 같은 카카오 채널에서 운영할 수 있는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">같은 카카오 비즈니스 채널에서 두 유형 모두 발송할 수 있다. 다만 알림톡 템플릿은 카카오의 사전 심사를 통과해야 하며, 심사 기준에 광고성 내용이 포함되면 반려된다. 친구톡은 채널 추가 사용자 대상으로만 발송되므로, 채널 추가 유도 전략이 선행되어야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 수신자가 카카오톡을 사용하지 않을 때 알림톡은 어떻게 처리되는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">알림톡 발송 시 대체 문자(SMS 또는 LMS) 설정을 함께 구성할 수 있다. 카카오톡 미설치 또는 채널 차단 상태인 경우 자동으로 대체 문자가 발송된다. 대체 문자 단가는 별도로 부과되므로 발송 설정 시 대체 발송 비율과 비용을 함께 고려해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 채널별 발송 시간대 설정과 수신거부율 관리 방법을 구체적으로 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-314&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-314',cta_type:'retous_main',category:'메시징 & 채널 운영'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
