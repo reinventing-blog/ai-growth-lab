@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>상세페이지 사이즈 기준, 잘못 잡으면 전환이 무너진다 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="상세페이지 사이즈 기준을 잘못 잡으면 플랫폼 렌더링 오류와 이탈이 동시에 발생한다. 카페24·아임웹·스마트스토어·비커머스 업종별 사이즈 선택 기준과 전환 판단 프레임워크를 정리했다.">
+<meta property="og:title" content="상세페이지 사이즈 기준, 잘못 잡으면 전환이 무너진다"><meta property="og:description" content="상세페이지 사이즈 기준을 잘못 잡으면 플랫폼 렌더링 오류와 이탈이 동시에 발생한다. 카페24·아임웹·스마트스토어·비커머스 업종별 사이즈 선택 기준과 전환 판단 프레임워크를 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-318.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-318.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"상세페이지 사이즈 기준, 잘못 잡으면 전환이 무너진다","description":"상세페이지 사이즈 기준을 잘못 잡으면 플랫폼 렌더링 오류와 이탈이 동시에 발생한다. 카페24·아임웹·스마트스토어·비커머스 업종별 사이즈 선택 기준과 전환 판단 프레임워크를 정리했다.","image":"https://images.unsplash.com/photo-1677165472633-2a1586b151d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw3fHxlY29tbWVyY2UlMjBwcm9kdWN0JTIwcGFnZSUyMGxhcHRvcCUyMHNjcmVlbnxlbnwxfDB8fHwxNzg4MjIzMzA2fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-318.html"},"datePublished":"2026-09-01","dateModified":"2026-09-01"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"상세페이지 사이즈를 바꾸면 기존 이미지를 전부 다시 제작해야 하나","acceptedAnswer":{"@type":"Answer","text":"기존 이미지가 권장 너비보다 크게 제작되어 있다면 리사이징으로 대응 가능하다. 반대로 기존 이미지가 권장 너비보다 작으면 확대 시 화질이 저하되므로 재제작이 필요하다. 작업 전 기존 이미지의 원본 해상도를 먼저 확인한다."}},{"@type":"Question","name":"모바일과 데스크톱에 다른 사이즈를 적용할 수 있나","acceptedAnswer":{"@type":"Answer","text":"자사몰(카페24, 아임웹)에서는 반응형 CSS를 통해 디바이스별로 다른 너비 기준을 적용할 수 있다. 다만 상세페이지 이미지 자체는 하나의 파일로 올라가므로, 이미지 내부에 텍스트를 삽입한 경우 모바일 렌더링에서 텍스트가 작아지는 문제가 생긴다. 텍스트는 이미지 외부 HTML 영역에 배치하는 것이 구조적으로 안전하다."}},{"@type":"Question","name":"상세페이지 총 이미지 용량 기준은 어떻게 잡아야 하나","acceptedAnswer":{"@type":"Answer","text":"플랫폼별 업로드 제한과 별개로, 사용자 경험 기준에서 상세페이지 총 용량은 3MB 이하를 권장한다. 이미지가 많은 경우 WebP 형식으로 변환하면 동일 품질 대비 파일 크기를 줄일 수 있다. 이미지 최적화 없이 너비와 해상도만 높이면 로딩 지연이 발생한다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 9. 1.</span></div>
+  <h1 class="post-title">상세페이지 사이즈 기준, 잘못 잡으면 전환이 무너진다</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1677165472633-2a1586b151d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw3fHxlY29tbWVyY2UlMjBwcm9kdWN0JTIwcGFnZSUyMGxhcHRvcCUyMHNjcmVlbnxlbnwxfDB8fHwxNzg4MjIzMzA2fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="상세페이지 사이즈 기준, 잘못 잡으면 전환이 무너진다" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:12px;display:block;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">상세페이지 사이즈 기준을 정할 때 많은 운영자가 "보기 좋은 비율"을 먼저 고른다. 그러나 전환을 결정하는 것은 미감이 아니라 사용자가 정보를 소화하는 순서와 속도다. 사이즈는 그 흐름을 제어하는 구조적 변수다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">사이즈가 전환에 영향을 미치는 이유</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">상세페이지는 단순한 이미지 나열이 아니다. 방문자는 스크롤하면서 구매 여부를 판단한다. 이 판단 과정에서 이미지 너비, 텍스트 가독 영역, 섹션 간 여백이 인지 부하를 결정한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">너비가 지나치게 넓으면 모바일에서 텍스트가 잘리거나 이미지가 축소되어 핵심 정보가 사라진다. 반대로 너비가 지나치게 좁으면 데스크톱 환경에서 여백이 과도하게 생겨 페이지가 빈약해 보인다. 두 극단 모두 이탈을 유도한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">핵심은 <strong style="color:#f1f5f9;font-weight:700;">플랫폼 렌더링 환경과 타깃 디바이스 비율을 먼저 확인하는 것</strong>이다. 사이즈 결정은 디자인 취향이 아니라 데이터 기반 선택이어야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">플랫폼별 상세페이지 사이즈 기준 비교</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰(카페24·아임웹) 환경</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24와 아임웹 기준으로 상세페이지 권장 너비는 860px에서 1,200px 사이다. 다만 이 범위 안에서도 선택이 갈린다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">860px: 모바일 우선 설계, 텍스트 밀도가 높은 제품(보충제, 기능성 식품)에 적합</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">1,000px: 이미지 중심 제품(패션, 인테리어 소품)에서 가장 범용적으로 사용</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">1,200px: 와이드 레이아웃을 지원하는 테마 전용. 일반 테마에서 적용하면 좌우 잘림 발생</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이미지 파일 자체의 가로 해상도는 최소 800px 이상으로 제작하되, 실제 렌더링 너비의 2배 해상도(레티나 대응)로 준비하는 것이 표준이다. 예를 들어 렌더링 너비 1,000px이면 원본 이미지는 2,000px로 제작한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">스마트스토어·쿠팡 입점몰 환경</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">입점 플랫폼은 너비를 플랫폼이 강제한다. 스마트스토어는 상세페이지 이미지 권장 너비를 860px로 명시하고 있다. 쿠팡은 최대 너비 1,000px을 기준으로 하되, 모바일 앱 트래픽 비중이 높아 860px 기준으로 제작하는 것이 안전하다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">입점몰에서 1,200px 이상 이미지를 올리면 플랫폼이 자동 리사이징하면서 텍스트 선명도가 떨어진다. 이 경우 가격 표기나 성분 정보가 흐릿하게 렌더링되어 신뢰도를 낮춘다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">비커머스 업종의 상세페이지 기준</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">병원 랜딩페이지, 학원 수강 안내 페이지, 부동산 분양 상세 페이지는 이커머스와 다른 기준이 적용된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이들 페이지는 이미지보다 텍스트와 표, 인포그래픽 비중이 높다. 너비 기준보다 <strong style="color:#f1f5f9;font-weight:700;">섹션 높이와 스크롤 깊이</strong>가 전환에 더 직접적으로 연결된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 피부과 시술 안내 페이지라면, 시술 전후 이미지 섹션은 1,000px 너비로 충분하지만 가격표와 주의사항 섹션은 760px 이하 너비에 좌우 패딩을 충분히 확보해야 모바일에서 가독성이 유지된다. 학원 커리큘럼 페이지는 표 형태 콘텐츠가 많아 모바일에서 가로 스크롤이 생기지 않도록 860px 이하 기준을 지키는 것이 우선이다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1787724779319-3ebd1c848bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8YnVzaW5lc3MlMjBhbmFseXRpY3MlMjBsYXB0b3B8ZW58MXwwfHx8MTc4ODIyMTc4Mnww&ixlib=rb-4.1.0&q=80&w=1080" alt="상세페이지 사이즈 기준, 잘못 잡으면 전환이 무너진다" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:10px;display:block;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">전환 판단을 위한 사이즈 결정 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">사이즈를 고를 때 순서는 다음과 같다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">1. <strong style="color:#f1f5f9;font-weight:700;">디바이스 비율 확인</strong>: 구글 애널리틱스 또는 플랫폼 통계에서 모바일 트래픽 비율을 확인한다. 모바일이 60% 이상이면 860px 기준을 우선 적용한다.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">2. <strong style="color:#f1f5f9;font-weight:700;">플랫폼 제약 확인</strong>: 입점몰이라면 플랫폼 가이드라인이 최우선이다. 자사몰이라면 테마 최대 너비를 먼저 확인한다.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">3. <strong style="color:#f1f5f9;font-weight:700;">콘텐츠 유형 분류</strong>: 이미지 중심인지, 텍스트·표 중심인지에 따라 너비와 여백 비율이 달라진다.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">4. <strong style="color:#f1f5f9;font-weight:700;">파일 용량 점검</strong>: 이미지 너비를 키울수록 파일 용량이 증가한다. 상세페이지 총 용량이 3MB를 초과하면 로딩 속도 저하로 이탈이 발생한다. 이미지 최적화(WebP 변환, 압축)를 사이즈 결정과 함께 진행한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 네 단계를 거치지 않고 "다른 브랜드가 쓰는 사이즈"를 그대로 복사하면, 자신의 플랫폼과 트래픽 구조에 맞지 않는 설정이 된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 사례로 보는 사이즈 선택의 차이</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰 뷰티 브랜드 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">아임웹 기반으로 운영하는 스킨케어 자사몰을 가정한다. 이 몰의 모바일 트래픽 비율이 75%라면, 1,200px 와이드 이미지를 올렸을 때 모바일에서 이미지가 축소 렌더링되면서 성분 텍스트가 읽히지 않는다. 860px 기준으로 전환하면 모바일에서 텍스트 선명도가 유지되고, 성분 정보를 읽는 사용자의 스크롤 깊이가 늘어난다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 분양 상세 페이지 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">분양 안내 페이지는 평면도, 입지 지도, 가격표가 핵심 콘텐츠다. 평면도 이미지는 디테일이 중요하므로 1,000px 이상 너비를 유지해야 하지만, 가격표 섹션은 모바일에서 표가 깨지지 않도록 반응형 처리 또는 760px 이하 너비 설계가 필요하다. 데스크톱과 모바일에 동일한 사이즈를 적용하면 어느 한쪽에서 반드시 정보 손실이 발생한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">학원 수강 안내 페이지 사례</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">온라인 입시 학원의 수강 상세 페이지를 가정한다. 커리큘럼 표와 강사 소개 이미지가 혼재하는 구조에서 이미지 너비를 1,200px로 설정하면, 강사 소개 이미지는 선명하지만 커리큘럼 표가 모바일에서 가로 스크롤 영역으로 밀려난다. 이 경우 이미지 섹션과 텍스트 섹션의 너비 기준을 분리 설계하거나, 전체 기준을 860px로 통일하고 이미지 품질을 레티나 대응으로 보완하는 것이 현실적인 해결책이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 상세페이지 사이즈를 바꾸면 기존 이미지를 전부 다시 제작해야 하나</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기존 이미지가 권장 너비보다 크게 제작되어 있다면 리사이징으로 대응 가능하다. 반대로 기존 이미지가 권장 너비보다 작으면 확대 시 화질이 저하되므로 재제작이 필요하다. 작업 전 기존 이미지의 원본 해상도를 먼저 확인한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 모바일과 데스크톱에 다른 사이즈를 적용할 수 있나</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자사몰(카페24, 아임웹)에서는 반응형 CSS를 통해 디바이스별로 다른 너비 기준을 적용할 수 있다. 다만 상세페이지 이미지 자체는 하나의 파일로 올라가므로, 이미지 내부에 텍스트를 삽입한 경우 모바일 렌더링에서 텍스트가 작아지는 문제가 생긴다. 텍스트는 이미지 외부 HTML 영역에 배치하는 것이 구조적으로 안전하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 상세페이지 총 이미지 용량 기준은 어떻게 잡아야 하나</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">플랫폼별 업로드 제한과 별개로, 사용자 경험 기준에서 상세페이지 총 용량은 3MB 이하를 권장한다. 이미지가 많은 경우 WebP 형식으로 변환하면 동일 품질 대비 파일 크기를 줄일 수 있다. 이미지 최적화 없이 너비와 해상도만 높이면 로딩 지연이 발생한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 상세페이지 사이즈 기준을 잡은 이후, 생성형 AI를 활용해 섹션별 카피와 레이아웃 구조를 설계하는 프롬프트 작성법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-318&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-318',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
