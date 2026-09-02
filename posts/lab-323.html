@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>카카오톡플러스 채널 운영이 고객 채널로 작동하는 원리 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="카카오톡플러스 채널 운영의 작동 원리를 채널 메시지·알림톡 구분, 업종별 설계 사례, 운영 프레임워크 중심으로 설명한다. 병원·부동산·자사몰 등 다양한 업종에 적용 가능한 실무 기준을 담았다.">
+<meta property="og:title" content="카카오톡플러스 채널 운영이 고객 채널로 작동하는 원리"><meta property="og:description" content="카카오톡플러스 채널 운영의 작동 원리를 채널 메시지·알림톡 구분, 업종별 설계 사례, 운영 프레임워크 중심으로 설명한다. 병원·부동산·자사몰 등 다양한 업종에 적용 가능한 실무 기준을 담았다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-323.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-323.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"카카오톡플러스 채널 운영이 고객 채널로 작동하는 원리","description":"카카오톡플러스 채널 운영의 작동 원리를 채널 메시지·알림톡 구분, 업종별 설계 사례, 운영 프레임워크 중심으로 설명한다. 병원·부동산·자사몰 등 다양한 업종에 적용 가능한 실무 기준을 담았다.","image":"https://images.unsplash.com/photo-1618986919688-31596e58d3e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMnx8bW9iaWxlJTIwbWVzc2FnaW5nJTIwYXBwJTIwY3VzdG9tZXIlMjBlbmdhZ2VtZW50fGVufDF8MHx8fDE3ODgzMTY2MTh8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-323.html"},"datePublished":"2026-09-02","dateModified":"2026-09-02"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"카카오톡플러스 채널과 카카오톡 비즈니스 채널은 같은 것인가","acceptedAnswer":{"@type":"Answer","text":"같은 서비스를 가리키는 표현이다. 카카오가 명칭을 변경하면서 혼용되고 있으나, 현재 공식 명칭은 카카오톡 채널이다. 채널 개설, 메시지 발송, 알림톡 연동 모두 카카오비즈니스 플랫폼에서 관리한다."}},{"@type":"Question","name":"알림톡과 채널 메시지를 동시에 운영해야 하는가","acceptedAnswer":{"@type":"Answer","text":"반드시 동시에 운영할 필요는 없다. 거래가 발생하는 업종이라면 알림톡이 먼저다. 예약, 결제, 배송처럼 고객이 기다리는 정보를 먼저 제공하고, 이후 마케팅 목적의 채널 메시지를 설계하는 순서가 자연스럽다. 거래 없이 관계 유지가 목적인 경우에는 채널 메시지만으로도 운영이 가능하다."}},{"@type":"Question","name":"채널 메시지 수신 거부율을 낮추려면 어떻게 해야 하는가","acceptedAnswer":{"@type":"Answer","text":"발송 빈도와 내용의 관련성이 핵심이다. 고객이 관심을 표명한 시점과 무관하게 주기적으로 광고성 메시지를 보내면 차단으로 이어진다. 고객의 행동(구매, 예약, 문의)을 기준으로 메시지 발송 시점을 설계하고, 메시지 안에 고객이 즉시 활용할 수 있는 정보나 기능을 담는 방향이 차단을 줄이는 구조적 접근이다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#0c4a6e;color:#7dd3fc;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">메시징 & 채널 운영</span><span class="post-date">2026. 9. 2.</span></div>
+  <h1 class="post-title">카카오톡플러스 채널 운영이 고객 채널로 작동하는 원리</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1618986919688-31596e58d3e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyMnx8bW9iaWxlJTIwbWVzc2FnaW5nJTIwYXBwJTIwY3VzdG9tZXIlMjBlbmdhZ2VtZW50fGVufDF8MHx8fDE3ODgzMTY2MTh8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="카카오톡플러스 채널 운영이 고객 채널로 작동하는 원리" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:12px;display:block;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카카오톡플러스 채널 운영은 단순한 메시지 발송 도구가 아니다. 고객이 브랜드와 대화하고, 정보를 받고, 행동으로 이어지는 전체 흐름을 하나의 채널 안에서 설계할 수 있는 구조다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">왜 많은 채널이 '발송'에 그치는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 브랜드는 카카오톡 채널을 열고 나서 메시지를 보내는 것에 집중한다. 프로모션 안내, 신상품 소식, 이벤트 공지. 그러나 고객 입장에서 이 메시지들은 구분되지 않는다. 수신함에 쌓이다가 차단으로 끝난다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">문제는 채널을 '발신 수단'으로만 설계했기 때문이다. 고객이 응답할 이유, 채널을 유지할 이유, 다시 열어볼 이유가 없다. 채널 운영의 출발점은 발송 횟수가 아니라 고객이 이 채널을 왜 유지하는가에 대한 답이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">채널이 작동하는 구조: 세 가지 축</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">친구 추가 시점의 첫 경험</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널에 처음 유입된 고객이 받는 웰컴 메시지는 채널 전체의 인상을 결정한다. 이 메시지가 "구독해 주셔서 감사합니다"로 끝난다면 고객은 채널을 닫는다. 반면 웰컴 메시지가 즉시 쓸 수 있는 쿠폰, 예약 링크, 또는 자주 묻는 질문 버튼을 포함한다면 고객은 채널을 도구로 인식한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반 자사몰을 운영하는 의류 브랜드라면 웰컴 메시지에 신규 가입 할인 쿠폰 코드와 함께 "사이즈 가이드 보기" 버튼을 배치할 수 있다. 고객은 채널 추가 직후 실질적인 행동을 하게 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">메시지 유형의 구분</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카카오톡플러스 채널에서 발송되는 메시지는 크게 두 가지로 나뉜다. 채널 메시지(구 카카오톡 채널 메시지)와 알림톡이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널 메시지는 마케팅 목적의 광고성 메시지다. 친구 추가 고객에게만 발송되며, 수신 동의 상태를 관리해야 한다. 알림톡은 거래 기반의 정보성 메시지다. 예약 확인, 배송 안내, 결제 완료 등 고객이 이미 기대하고 있는 정보를 전달한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 두 유형을 혼용하거나 알림톡 자리에 광고성 내용을 넣으면 카카오 정책 위반이 된다. <strong style="color:#f1f5f9;font-weight:700;">채널 운영의 신뢰는 이 구분을 지키는 것에서 시작한다.</strong></p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">버튼과 링크: 채널을 행동으로 연결하는 장치</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">메시지 안에 배치된 버튼은 채널과 외부 서비스를 연결하는 접점이다. 병원이라면 "진료 예약하기" 버튼이 예약 시스템으로 연결되고, 학원이라면 "수강 신청" 버튼이 결제 페이지로 이어진다. 버튼이 없는 메시지는 고객에게 다음 행동을 요구하지 않는다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별로 채널이 작동하는 방식</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">피부과·의원</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">진료 예약 후 알림톡으로 예약 확인 메시지가 발송된다. 진료 전날 리마인드 메시지가 나가고, 진료 완료 후 채널 메시지로 재방문 안내가 이어진다. 고객은 채널을 통해 병원과의 관계를 지속적으로 인식한다. 채널이 없다면 이 흐름은 전화 한 통으로 끊긴다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 중개</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">매물 업데이트를 채널 메시지로 정기 발송한다. 고객이 관심 지역을 사전에 등록했다면, 해당 조건에 맞는 매물이 나왔을 때 개별 메시지를 보낼 수 있다. 중개사 입장에서 채널은 잠재 고객을 유지하는 장치다. 광고비를 쓰지 않고도 이미 관심을 표명한 고객과 접점을 유지한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">아임웹 기반 식품 자사몰</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">정기 구독 상품을 운영하는 식품 브랜드라면 구독 갱신 전 알림톡, 배송 출발 알림, 수령 후 리뷰 요청 메시지를 순서대로 설계할 수 있다. 각 메시지는 고객의 구매 여정에서 자연스러운 시점에 등장한다. 메시지가 고객의 행동 흐름과 맞닿아 있을 때 채널은 유지된다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1686061594183-8c864f508b00?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNnx8bWFya2V0aW5nJTIwYXV0b21hdGlvbiUyMHdvcmtmbG93JTIwZGFzaGJvYXJkJTIwYW5hbHl0aWNzfGVufDF8MHx8fDE3ODgzMTY2MTl8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="카카오톡플러스 채널 운영이 고객 채널로 작동하는 원리" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:10px;display:block;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">채널 운영을 설계하는 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카카오톡플러스 채널 운영을 설계할 때 다음 세 가지 질문을 기준으로 삼는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫째, 고객이 이 채널을 추가하는 이유는 무엇인가. 할인, 정보, 편의 중 어떤 가치를 제공하는지 명확해야 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 메시지가 고객의 행동 시점과 맞닿아 있는가. 구매 직후, 예약 직후, 상담 완료 직후처럼 고객이 이미 행동한 시점에 메시지가 연결될 때 반응률이 올라간다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 채널 메시지와 알림톡의 역할이 분리되어 있는가. 광고성 내용은 채널 메시지로, 거래 기반 정보는 알림톡으로 구분한다. 이 구분이 무너지면 고객의 신뢰도 무너진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">발송 비용 측면에서는, 알림톡은 건당 약 8~15원 수준의 비용이 발생하며 대행사와 계약 조건에 따라 달라진다. 월 3,000건 발송 기준으로 건당 10원이면 월 30,000원이다. 채널 메시지는 친구 수에 따라 과금 구조가 다르므로 카카오 공식 정책을 기준으로 확인해야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계: 채널 운영을 자동화하는 방법</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널의 구조를 이해했다면, 다음 과제는 이 흐름을 자동화하는 것이다. 고객 행동에 따라 메시지가 자동으로 발송되는 시나리오를 설계하면 운영자의 반복 작업이 줄고 고객 경험은 일관성을 유지한다. 다음 글에서는 카카오톡플러스 채널과 CRM 도구를 연동해 자동화 메시지 시나리오를 구성하는 방법을 다룬다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">자주 묻는 질문</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 카카오톡플러스 채널과 카카오톡 비즈니스 채널은 같은 것인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">같은 서비스를 가리키는 표현이다. 카카오가 명칭을 변경하면서 혼용되고 있으나, 현재 공식 명칭은 카카오톡 채널이다. 채널 개설, 메시지 발송, 알림톡 연동 모두 카카오비즈니스 플랫폼에서 관리한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 알림톡과 채널 메시지를 동시에 운영해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">반드시 동시에 운영할 필요는 없다. 거래가 발생하는 업종이라면 알림톡이 먼저다. 예약, 결제, 배송처럼 고객이 기다리는 정보를 먼저 제공하고, 이후 마케팅 목적의 채널 메시지를 설계하는 순서가 자연스럽다. 거래 없이 관계 유지가 목적인 경우에는 채널 메시지만으로도 운영이 가능하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 채널 메시지 수신 거부율을 낮추려면 어떻게 해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">발송 빈도와 내용의 관련성이 핵심이다. 고객이 관심을 표명한 시점과 무관하게 주기적으로 광고성 메시지를 보내면 차단으로 이어진다. 고객의 행동(구매, 예약, 문의)을 기준으로 메시지 발송 시점을 설계하고, 메시지 안에 고객이 즉시 활용할 수 있는 정보나 기능을 담는 방향이 차단을 줄이는 구조적 접근이다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-323&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-323',cta_type:'retous_main',category:'메시징 & 채널 운영'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
