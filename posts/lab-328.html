@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>왜 마케터는 고객 생애주기를 설계하고도 이탈 구간을 반복해서 놓치는가 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="고객 생애주기를 설계하고도 이탈 구간을 반복해서 놓치는 이유는 단계 정의의 문제가 아니다. 전환 구간의 이탈 신호를 측정하지 않기 때문이다. 구조적 원인과 설계 프레임워크를 정리했다.">
+<meta property="og:title" content="왜 마케터는 고객 생애주기를 설계하고도 이탈 구간을 반복해서 놓치는가"><meta property="og:description" content="고객 생애주기를 설계하고도 이탈 구간을 반복해서 놓치는 이유는 단계 정의의 문제가 아니다. 전환 구간의 이탈 신호를 측정하지 않기 때문이다. 구조적 원인과 설계 프레임워크를 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-328.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-328.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"왜 마케터는 고객 생애주기를 설계하고도 이탈 구간을 반복해서 놓치는가","description":"고객 생애주기를 설계하고도 이탈 구간을 반복해서 놓치는 이유는 단계 정의의 문제가 아니다. 전환 구간의 이탈 신호를 측정하지 않기 때문이다. 구조적 원인과 설계 프레임워크를 정리했다.","image":"https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxfHxjdXN0b21lciUyMGxpZmVjeWNsZSUyMGRhc2hib2FyZCUyMGFuYWx5dGljc3xlbnwxfDB8fHwxNzg4NDgwMjE2fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-328.html"},"datePublished":"2026-09-04","dateModified":"2026-09-04"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"고객 생애주기 설계를 처음 시작할 때 어디서부터 시작해야 하는가","acceptedAnswer":{"@type":"Answer","text":"이탈 데이터가 가장 많이 쌓인 구간부터 시작한다. 전체 생애주기를 한 번에 설계하려는 시도는 실행 단계에서 무너진다. 현재 운영 중인 CRM 또는 예약 시스템에서 '행동 완료 후 다음 행동이 발생하지 않은 비율'이 가장 높은 지점을 찾아 그 구간에 집중한다."}},{"@type":"Question","name":"이탈 신호를 감지하려면 어떤 데이터가 최소한으로 필요한가","acceptedAnswer":{"@type":"Answer","text":"채널별 행동 로그와 고객 식별자가 연결된 데이터가 기본이다. 이메일 발송 여부, 오픈 여부, 링크 클릭 여부, 웹사이트 방문 여부, 구매 또는 예약 완료 여부가 동일한 고객 ID로 묶여야 한다. 이 연결이 없으면 이탈 신호 감지가 아니라 채널별 지표 나열에 그친다."}},{"@type":"Question","name":"생애주기 이탈 설계를 자동화할 때 가장 흔한 실수는 무엇인가","acceptedAnswer":{"@type":"Answer","text":"트리거 조건을 너무 단순하게 설정하는 것이다. '마지막 방문 후 7일 경과'처럼 시간 단일 조건으로 자동화를 구성하면, 실제로 구매 의향이 높은 고객에게도 이탈 방어 메시지가 발송된다. 트리거는 시간 조건과 행동 조건을 AND로 결합해야 한다. '마지막 방문 후 7일 경과이면서 장바구니에 상품이 담긴 상태'처럼 복합 조건으로 구성하는 것이 최소 기준이다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#065f46;color:#6ee7b7;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">CRM & 그로스</span><span class="post-date">2026. 9. 4.</span></div>
+  <h1 class="post-title">왜 마케터는 고객 생애주기를 설계하고도 이탈 구간을 반복해서 놓치는가</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxfHxjdXN0b21lciUyMGxpZmVjeWNsZSUyMGRhc2hib2FyZCUyMGFuYWx5dGljc3xlbnwxfDB8fHwxNzg4NDgwMjE2fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="왜 마케터는 고객 생애주기를 설계하고도 이탈 구간을 반복해서 놓치는가" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:12px;display:block;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객 생애주기를 설계한 마케터가 이탈 구간을 반복해서 놓치는 이유는 단순 실수가 아니다. 구조적으로 잘못된 관찰 지점에서 데이터를 읽기 때문이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">생애주기 설계와 이탈 감지 사이의 간극</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">대부분의 마케터는 고객 생애주기를 '단계'로 구분한다. 신규 유입, 첫 구매, 재구매, 휴면, 이탈. 이 단계 구분 자체는 틀리지 않는다. 문제는 단계와 단계 사이, 즉 전환 구간을 설계하지 않는다는 점이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객이 이탈하는 순간은 '휴면 단계'가 아니다. 첫 구매 이후 두 번째 접점을 경험하지 못한 시점, 멤버십에 가입했지만 혜택을 인지하지 못한 시점, 상담 예약 후 24시간 이내 확인 메시지를 받지 못한 시점이다. 이 구간은 단계 레이블에 포함되지 않기 때문에 대시보드에 잡히지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반 자사몰을 운영하는 뷰티 브랜드를 예로 들면, 첫 구매 고객의 재방문 여부를 '30일 후 재구매 여부'로만 측정하는 경우가 많다. 그러나 실제 이탈은 구매 후 3일 이내, 브랜드 스토리나 사용 가이드 콘텐츠를 접하지 못한 시점에 이미 결정된다. 30일 데이터는 결과를 보여줄 뿐, 원인 구간을 가리킨다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">이탈이 반복되는 세 가지 구조적 원인</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">측정 기준이 행동이 아닌 시간으로 설정되어 있다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">'마지막 구매 후 90일 경과'를 이탈 기준으로 삼는 것은 시간 기반 측정이다. 이 방식은 고객이 실제로 어떤 행동을 하다가 멈췄는지를 보지 않는다. 행동 기반 측정은 다르다. '장바구니 담기 후 결제 미완료', '콘텐츠 3회 이상 조회 후 문의 없음', '예약 완료 후 내원 취소'처럼 행동의 단절 지점을 기준으로 삼는다. 이 두 방식의 차이는 개입 타이밍에서 결정적으로 갈린다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">생애주기 설계가 마케팅팀 내부에서만 완결된다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원 업종을 예로 들면, 마케팅팀은 신규 상담 신청자에게 자동화 문자를 발송하는 흐름을 설계한다. 그러나 실제 상담 이후 등록 여부를 결정짓는 변수는 상담 교사의 응대 방식, 커리큘럼 설명의 구체성, 학부모 질문에 대한 응답 속도다. 이 구간은 마케팅 자동화 플로우 바깥에 있다. 생애주기 설계가 마케팅 채널 내부에서만 완결되면, 실제 이탈이 발생하는 오프라인 접점은 영구적으로 사각지대로 남는다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">이탈 신호를 단일 채널 데이터로만 읽는다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이메일 오픈율이 낮아진 고객을 이탈 위험군으로 분류하는 것은 일반적인 접근이다. 그러나 같은 고객이 인스타그램 광고를 클릭하거나, 카카오 채널에서 쿠폰을 저장했다면 이탈 위험군이 아니다. 채널별 데이터가 통합되지 않은 상태에서 단일 지표로 이탈을 판단하면, 실제로는 활성 상태인 고객에게 이탈 방어 메시지를 발송하는 역효과가 발생한다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.pexels.com/photos/5922543/pexels-photo-5922543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="왜 마케터는 고객 생애주기를 설계하고도 이탈 구간을 반복해서 놓치는가" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:10px;display:block;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">이탈 구간을 설계에 포함하는 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">고객 생애주기를 재설계할 때는 단계 정의보다 <strong style="color:#f1f5f9;font-weight:700;">전환 조건과 이탈 신호를 먼저 명세화</strong>하는 순서가 필요하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 전환 조건 정의</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">각 단계 간 이동이 발생하려면 고객이 어떤 행동을 완료해야 하는지 구체적으로 적는다. '신규 고객이 재구매 고객이 되려면'이 아니라, '첫 구매 후 7일 이내 브랜드 콘텐츠를 1회 이상 소비하고, 14일 이내 두 번째 방문이 발생해야 재구매 확률이 유지된다'처럼 행동 단위로 기술한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 이탈 신호 목록 작성</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">각 전환 구간에서 발생할 수 있는 이탈 신호를 열거한다. 부동산 중개업의 경우 '매물 상세 페이지 3회 이상 조회 후 상담 신청 없음'이 이탈 신호다. 의원의 경우 '진료 후 재예약 안내 문자 수신 확인 없음'이 해당한다. 신호는 채널별로 분리하지 않고 고객 행동 단위로 통합해 목록화한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 개입 조건과 메시지 분리</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이탈 신호가 감지된 즉시 동일한 프로모션 메시지를 발송하는 방식은 작동하지 않는다. 이탈 신호의 유형에 따라 개입 메시지를 구분해야 한다. 정보 탐색 중 이탈한 고객에게는 콘텐츠 기반 접근이 맞고, 가격 비교 단계에서 이탈한 고객에게는 비교 기준을 제공하는 메시지가 맞다. 같은 이탈 구간이라도 신호의 맥락이 다르면 개입 방식도 달라야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">아임웹 기반으로 운영되는 라이프스타일 소품 자사몰을 가정하면, 장바구니 이탈 고객에게 24시간 이내 자동 문자를 발송하는 것은 이미 일반화된 접근이다. 그러나 이 브랜드가 놓치는 구간은 '첫 구매 완료 후 패키징 언박싱 경험'이다. 배송 완료 알림 이후 3일 이내 리뷰 작성이나 SNS 태그가 발생하지 않으면, 이 고객은 브랜드 경험을 내면화하지 못한 상태다. 이 구간에 브랜드 스토리 이메일이나 사용 방법 콘텐츠를 삽입하면 두 번째 구매 전환 구간의 공백을 메울 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">피부과 의원의 경우, 시술 후 재방문 주기가 4주인 시술 유형에서 3주 시점에 재예약 안내가 발송되지 않으면 이탈이 발생한다. 이 구간을 CRM 자동화에 포함하지 않으면 의료진은 환자가 경쟁 의원으로 이동한 후에야 데이터로 인지하게 된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 고객 생애주기 설계를 처음 시작할 때 어디서부터 시작해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이탈 데이터가 가장 많이 쌓인 구간부터 시작한다. 전체 생애주기를 한 번에 설계하려는 시도는 실행 단계에서 무너진다. 현재 운영 중인 CRM 또는 예약 시스템에서 '행동 완료 후 다음 행동이 발생하지 않은 비율'이 가장 높은 지점을 찾아 그 구간에 집중한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 이탈 신호를 감지하려면 어떤 데이터가 최소한으로 필요한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널별 행동 로그와 고객 식별자가 연결된 데이터가 기본이다. 이메일 발송 여부, 오픈 여부, 링크 클릭 여부, 웹사이트 방문 여부, 구매 또는 예약 완료 여부가 동일한 고객 ID로 묶여야 한다. 이 연결이 없으면 이탈 신호 감지가 아니라 채널별 지표 나열에 그친다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 생애주기 이탈 설계를 자동화할 때 가장 흔한 실수는 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">트리거 조건을 너무 단순하게 설정하는 것이다. '마지막 방문 후 7일 경과'처럼 시간 단일 조건으로 자동화를 구성하면, 실제로 구매 의향이 높은 고객에게도 이탈 방어 메시지가 발송된다. 트리거는 시간 조건과 행동 조건을 AND로 결합해야 한다. '마지막 방문 후 7일 경과이면서 장바구니에 상품이 담긴 상태'처럼 복합 조건으로 구성하는 것이 최소 기준이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다음 글에서는 이 프레임워크를 실제 CRM 자동화 플로우에 적용하는 방법, 즉 트리거 설계와 메시지 분기 구조를 단계별로 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-328&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-328',cta_type:'retous_main',category:'CRM & 그로스'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
