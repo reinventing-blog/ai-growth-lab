@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>카카오채널추가 유도 설계가 반복 실패하는 진짜 원인 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="카카오채널추가 유도가 반복 실패하는 이유는 문구가 아니라 설계 구조에 있다. 타이밍, 메시지, 신뢰 세 축을 기준으로 업종별 유도 설계 방식을 진단한다.">
+<meta property="og:title" content="카카오채널추가 유도 설계가 반복 실패하는 진짜 원인"><meta property="og:description" content="카카오채널추가 유도가 반복 실패하는 이유는 문구가 아니라 설계 구조에 있다. 타이밍, 메시지, 신뢰 세 축을 기준으로 업종별 유도 설계 방식을 진단한다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-367.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-367.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"카카오채널추가 유도 설계가 반복 실패하는 진짜 원인","description":"카카오채널추가 유도가 반복 실패하는 이유는 문구가 아니라 설계 구조에 있다. 타이밍, 메시지, 신뢰 세 축을 기준으로 업종별 유도 설계 방식을 진단한다.","image":"https://images.unsplash.com/photo-1502892247800-37f114ca1e24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxNXx8bW9iaWxlJTIwbm90aWZpY2F0aW9uJTIwY2hhbm5lbCUyMHN1YnNjcmlwdGlvbiUyMGxhcHRvcHxlbnwxfDB8fHwxNzg5Njk4OTY3fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-367.html"},"datePublished":"2026-09-18","dateModified":"2026-09-18"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"R 안내판. 운영자 대부분은 이 세 접점에 동일한 문구를 붙인다. \"채널 추가하고 혜택 받기\"라는 문장이 대표적이다.","acceptedAnswer":{"@type":"Answer","text":"문제는 이 문구가 방문자 입장에서 아무런 판단 근거를 제공하지 않는다는 점이다. 혜택이 무엇인지, 얼마나 자주 메시지가 오는지, 언제든 해제할 수 있는지를 알 수 없다. 정보가 부재한 상태에서 사람은 기본값인 거절을 선택한다. 채널추가 유도 설계의 실패는 대개 두 가지 오해에서 비롯된다. 첫째, \"혜택을 주면 추가한다\"는 단순 교환 논리. 둘째, \"노출 횟수를 늘리면 전환된다\"는 반복 노출 논리. 두 논리 모두 방문자의 정보 처리 방식을 무시한다."}},{"@type":"Question","name":"채널추가 유도 팝업을 띄우는 최적 시점은 언제인가","acceptedAnswer":{"@type":"Answer","text":"진입 즉시 노출하는 팝업은 대부분 닫힌다. 방문자가 특정 행동을 완료한 직후가 가장 수락률이 높은 시점이다. 주문 완료, 예약 확정, 상품 찜하기 직후처럼 방문자의 의도가 확인된 순간에 요청해야 한다. 시간 기반(30초 후 팝업)보다 행동 기반(결제 완료 후 팝업) 트리거가 맥락에 맞다."}},{"@type":"Question","name":"채널추가 유도 문구에서 가장 흔한 실수는 무엇인가","acceptedAnswer":{"@type":"Answer","text":"\"혜택을 받아보세요\"처럼 혜택의 내용이 없는 추상적 문구가 가장 흔한 실패 패턴이다. 방문자는 어떤 혜택인지, 얼마나 자주 오는지를 알아야 판단할 수 있다. 문구 안에 기능명, 발송 빈도, 해제 방법 중 최소 두 가지를 포함해야 한다."}},{"@type":"Question","name":"채널추가 유도와 광고성 메시지 수신 동의는 같은가","acceptedAnswer":{"@type":"Answer","text":"다르다. 카카오채널 추가는 채널과의 관계 형성이고, 광고성 메시지 수신 동의는 별도 약관 동의 항목이다. 채널을 추가해도 광고성 메시지 수신에 동의하지 않으면 마케팅 메시지를 발송할 수 없다. 유도 설계 시 두 단계를 혼동하면 실제 발송 가능한 수신자 수가 예상보다 적게 집계된다. 채널추가 이후 수신 동의를 별도로 유도하는 흐름을 설계에 포함해야 한다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#0c4a6e;color:#7dd3fc;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">메시징 & 채널 운영</span><span class="post-date">2026. 9. 18.</span></div>
+  <h1 class="post-title">카카오채널추가 유도 설계가 반복 실패하는 진짜 원인</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1502892247800-37f114ca1e24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxNXx8bW9iaWxlJTIwbm90aWZpY2F0aW9uJTIwY2hhbm5lbCUyMHN1YnNjcmlwdGlvbiUyMGxhcHRvcHxlbnwxfDB8fHwxNzg5Njk4OTY3fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="카카오채널추가 유도 설계가 반복 실패하는 진짜 원인" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:12px;display:block;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카카오채널추가 유도가 계속 실패한다면, 메시지 문구나 버튼 위치의 문제가 아닐 가능성이 높다. 대부분의 실패는 설계 단계에서 이미 결정된다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">문제 정의: 왜 채널추가 유도는 반복해서 막히는가</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카카오채널 추가를 유도하는 접점은 크게 세 가지다. 웹사이트 팝업, 구매·예약 완료 화면, 오프라인 QR 안내판. 운영자 대부분은 이 세 접점에 동일한 문구를 붙인다. "채널 추가하고 혜택 받기"라는 문장이 대표적이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">문제는 이 문구가 방문자 입장에서 아무런 판단 근거를 제공하지 않는다는 점이다. 혜택이 무엇인지, 얼마나 자주 메시지가 오는지, 언제든 해제할 수 있는지를 알 수 없다. 정보가 부재한 상태에서 사람은 기본값인 거절을 선택한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널추가 유도 설계의 실패는 대개 두 가지 오해에서 비롯된다. 첫째, "혜택을 주면 추가한다"는 단순 교환 논리. 둘째, "노출 횟수를 늘리면 전환된다"는 반복 노출 논리. 두 논리 모두 방문자의 정보 처리 방식을 무시한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">인사이트: 채널추가를 막는 세 가지 구조적 결함</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">결함 1. 가치 제안이 운영자 언어로 쓰여 있다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"최신 소식과 이벤트 정보를 받아보세요"는 운영자가 보내고 싶은 것을 나열한 문장이다. 방문자가 받고 싶은 것을 말하지 않는다. 피부과 클리닉이라면 "시술 후 관리 일정 알림과 예약 변경 안내를 받을 수 있습니다"가 훨씬 구체적이다. 학원이라면 "수업 결석 처리 전 사전 안내와 보강 일정을 채널로 확인합니다"처럼 실용 기능 중심으로 써야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">결함 2. 채널추가 요청 시점이 관계 형성 이전이다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">자사몰(카페24, 아임웹 기반)을 운영하는 경우, 메인 페이지 진입 직후 팝업으로 채널추가를 유도하는 패턴이 흔하다. 방문자가 브랜드를 인식하기도 전에 알림 수신 동의를 요청하는 구조다. 이 시점의 요청은 거의 작동하지 않는다. 채널추가 유도는 방문자가 브랜드에 무언가를 기대하게 된 이후, 즉 상품 상세 페이지 하단, 장바구니 이탈 직전, 주문 완료 화면에서 이루어져야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">결함 3. 수신 거부에 대한 불안을 해소하지 않는다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">방문자가 채널추가를 주저하는 핵심 이유 중 하나는 "나중에 끄기 어려울 것 같다"는 막연한 우려다. 이 불안을 설계 안에서 직접 해소해야 한다. "언제든 채널 차단 가능"이라는 한 줄을 추가하는 것만으로도 심리적 마찰이 줄어든다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">프레임워크: 채널추가 유도 설계의 세 축</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">유도 설계는 타이밍, 메시지, 신뢰 세 축으로 구성된다.</strong></p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">첫째, 타이밍 축. 채널추가 요청은 방문자의 행동 기반으로 트리거해야 한다. 단순 페이지 진입이 아니라, 특정 상품을 3회 이상 조회했거나, 예약 페이지에 2분 이상 머물렀거나, 결제를 완료한 직후처럼 의도가 명확한 시점을 기준으로 삼는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">둘째, 메시지 축. 채널추가 유도 문구는 방문자가 얻는 기능을 구체적으로 서술해야 한다. "혜택"이라는 추상어 대신 "재고 입고 알림", "예약 확정 문자 대신 카카오 알림", "할인 코드 즉시 발송" 같은 기능 명사를 쓴다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">셋째, 신뢰 축. 발송 빈도와 해제 방법을 명시한다. 예를 들어 "월 2~3회 유용한 정보만 발송, 채널 차단으로 즉시 해제"처럼 구체적으로 적는다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.pexels.com/photos/6669813/pexels-photo-6669813.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="카카오채널추가 유도 설계가 반복 실패하는 진짜 원인" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:10px;display:block;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">사례: 업종별 설계 적용 방식</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개 플랫폼의 경우, 매물 상세 페이지 하단에 "이 매물 가격 변동 시 카카오로 알림 받기" 버튼을 배치하는 방식을 적용할 수 있다. 방문자는 이미 해당 매물에 관심을 가진 상태이므로 채널추가의 이유가 명확하다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반 자사몰이라면, 주문 완료 페이지에서 "배송 출발 알림을 카카오로 받으시겠습니까?"라는 단일 질문 형태로 유도하는 구조가 적합하다. 이메일 알림 대신 카카오를 선택하는 구조로 설계하면 채널추가가 부가적 행동이 아니라 주문 프로세스의 일부로 인식된다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원의 경우, 수강 신청 완료 화면에서 "수업 일정 변경과 결석 처리 안내를 카카오로 받습니다"라는 문구와 함께 채널추가를 유도한다. 학부모나 수강생 입장에서 이 채널은 마케팅 수신이 아니라 운영 안내 채널로 인식된다. 이 맥락 차이가 수락 여부를 가른다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">세 사례의 공통점은 채널추가의 이유가 방문자의 현재 상황과 직결된다는 점이다. 막연한 혜택 약속이 아니라, 지금 이 사람이 필요한 정보를 받는 수단으로 채널을 제시한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계: 설계 점검 체크리스트 예고</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">채널추가 유도 설계를 점검하려면 현재 운영 중인 유도 접점 각각에 대해 타이밍, 메시지, 신뢰 세 축을 기준으로 진단해야 한다. 다음 글에서는 접점별 진단 체크리스트와 문구 교체 기준을 구체적으로 다룬다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 채널추가 유도 팝업을 띄우는 최적 시점은 언제인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">진입 즉시 노출하는 팝업은 대부분 닫힌다. 방문자가 특정 행동을 완료한 직후가 가장 수락률이 높은 시점이다. 주문 완료, 예약 확정, 상품 찜하기 직후처럼 방문자의 의도가 확인된 순간에 요청해야 한다. 시간 기반(30초 후 팝업)보다 행동 기반(결제 완료 후 팝업) 트리거가 맥락에 맞다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 채널추가 유도 문구에서 가장 흔한 실수는 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">"혜택을 받아보세요"처럼 혜택의 내용이 없는 추상적 문구가 가장 흔한 실패 패턴이다. 방문자는 어떤 혜택인지, 얼마나 자주 오는지를 알아야 판단할 수 있다. 문구 안에 기능명, 발송 빈도, 해제 방법 중 최소 두 가지를 포함해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 채널추가 유도와 광고성 메시지 수신 동의는 같은가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">다르다. 카카오채널 추가는 채널과의 관계 형성이고, 광고성 메시지 수신 동의는 별도 약관 동의 항목이다. 채널을 추가해도 광고성 메시지 수신에 동의하지 않으면 마케팅 메시지를 발송할 수 없다. 유도 설계 시 두 단계를 혼동하면 실제 발송 가능한 수신자 수가 예상보다 적게 집계된다. 채널추가 이후 수신 동의를 별도로 유도하는 흐름을 설계에 포함해야 한다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#022c22,#064e3b);border:1px solid #065f46;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">CRM을 발송 도구가 아닌 운영 시스템으로 바꾸고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#6ee7b7;line-height:1.6;">Retous는 고객의 상태를 추적하고, 행동 기반 자동화 캠페인을 설계하는 CRM 솔루션입니다.</p><a href="https://www.reinventing.kr/retous?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-367&utm_content=retous_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-367',cta_type:'retous_main',category:'메시징 & 채널 운영'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#059669,#0d9488);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Retous 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
