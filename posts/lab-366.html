@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>스마트스토어 상세페이지 구매 전환이 결정되는 구조적 원리 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="스마트스토어 상세페이지 구매 전환은 디자인이 아닌 정보 배치 구조로 결정된다. 방문자의 세 가지 의심을 순서대로 해소하는 프레임워크와 업종별 적용 사례를 정리했다.">
+<meta property="og:title" content="스마트스토어 상세페이지 구매 전환이 결정되는 구조적 원리"><meta property="og:description" content="스마트스토어 상세페이지 구매 전환은 디자인이 아닌 정보 배치 구조로 결정된다. 방문자의 세 가지 의심을 순서대로 해소하는 프레임워크와 업종별 적용 사례를 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-366.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-366.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"스마트스토어 상세페이지 구매 전환이 결정되는 구조적 원리","description":"스마트스토어 상세페이지 구매 전환은 디자인이 아닌 정보 배치 구조로 결정된다. 방문자의 세 가지 의심을 순서대로 해소하는 프레임워크와 업종별 적용 사례를 정리했다.","image":"https://images.unsplash.com/photo-1733503711059-acde98cd7fdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxMXx8ZWNvbW1lcmNlJTIwcHJvZHVjdCUyMHBhZ2UlMjBsYXB0b3AlMjBjb252ZXJzaW9ufGVufDF8MHx8fDE3ODk2OTIwNTZ8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-366.html"},"datePublished":"2026-09-18","dateModified":"2026-09-18"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"형식으로 구매 버튼 바로 위에 배치하면 이탈을 줄인다.","acceptedAnswer":{"@type":"Answer","text":"부동산 중개 업종에서도 같은 원리가 작동한다. 매물 상세 페이지에서 방문자가 가장 많이 이탈하는 지점은 중개 수수료 계산 방식이 불분명할 때다. 수수료 산정 기준을 명시한 페이지와 그렇지 않은 페이지는 문의 전환율에서 명확한 차이를 만든다."}},{"@type":"Question","name":"상세페이지 길이는 얼마나 되어야 하나","acceptedAnswer":{"@type":"Answer","text":"정해진 길이는 없다. 기준은 방문자의 세 가지 의심(적합성, 신뢰, 구매 시점)이 모두 해소되었는가다. 단가가 낮고 구매 결정이 단순한 제품은 짧아도 된다. 고관여 제품이나 서비스일수록 근거를 쌓는 데 더 많은 공간이 필요하다."}},{"@type":"Question","name":"리뷰가 없는 신규 판매자는 신뢰를 어떻게 만드나","acceptedAnswer":{"@type":"Answer","text":"리뷰 대신 사용 가능한 신뢰 요소는 여러 가지다. 제조 과정 영상, 원재료 출처 명시, 판매자 본인의 사용 경험 서술, 관련 자격증이나 인증서 이미지가 여기에 해당한다. 리뷰는 신뢰의 한 형태일 뿐이며, 유일한 형태가 아니다."}},{"@type":"Question","name":"생성형 AI로 상세페이지 문구를 작성해도 되나","acceptedAnswer":{"@type":"Answer","text":"작성 자체는 가능하다. 단, AI가 생성한 문구는 맥락 설정과 근거 제시 측면에서 검토가 필요하다. AI는 일반적인 표현을 유창하게 생성하지만, 특정 구매자의 상황에 맞는 언어나 실제 제품의 차별화 근거는 판매자가 직접 입력해야 한다. AI 문구를 그대로 쓰는 것과 판매자의 정보를 반영해 다듬는 것은 전환율에서 다른 결과를 만든다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#7c2d12;color:#fdba74;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 콘텐츠 & 프롬프트</span><span class="post-date">2026. 9. 18.</span></div>
+  <h1 class="post-title">스마트스토어 상세페이지 구매 전환이 결정되는 구조적 원리</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1733503711059-acde98cd7fdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwxMXx8ZWNvbW1lcmNlJTIwcHJvZHVjdCUyMHBhZ2UlMjBsYXB0b3AlMjBjb252ZXJzaW9ufGVufDF8MHx8fDE3ODk2OTIwNTZ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="스마트스토어 상세페이지 구매 전환이 결정되는 구조적 원리" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:12px;display:block;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">스마트스토어 상세페이지의 구매 전환율은 디자인이 아니라 정보 배치의 논리에 의해 결정된다. 방문자는 페이지를 읽지 않는다. 스캔한다. 그 스캔 경로 위에 구매 판단의 근거가 놓여 있을 때만 전환이 일어난다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">방문자는 '설득'이 아니라 '확인'을 원한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">상세페이지를 제작하는 판매자 대부분은 제품의 장점을 설명하는 데 집중한다. 그러나 방문자의 실제 행동은 다르다. 그들은 이미 구매를 고려하고 있는 상태로 페이지에 들어온다. 필요한 것은 설득이 아니라 의심을 해소하는 정보다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">의심의 종류는 세 가지로 압축된다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">이 제품이 내 상황에 맞는가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">이 판매자를 믿을 수 있는가</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">지금 사야 하는 이유가 있는가</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">상세페이지가 이 세 가지 질문에 순서대로 답하지 못하면, 방문자는 뒤로 가기를 누른다. 구조가 없는 페이지는 정보가 많아도 신뢰를 만들지 못한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">구매 전환을 만드는 정보 배치 프레임워크</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">1단계: 첫 화면에서 맥락을 고정한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">스크롤 없이 보이는 첫 화면은 방문자가 "내 얘기다"라고 느끼는 순간을 만들어야 한다. 제품명이나 브랜드명이 아니라, 구매자가 처한 상황이나 해결하려는 문제를 언어화하는 것이 우선이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 자사몰(카페24, 아임웹)을 운영하는 반려동물 간식 브랜드라면 "강아지 간식"이라는 제품명보다 "소화가 약한 강아지를 위한 단일 원료 간식"이라는 맥락 문장이 스캔 단계에서 더 강하게 작동한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">2단계: 신뢰 근거를 증거 형태로 제시한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">주장과 증거는 다르다. "고품질"은 주장이다. "국내 HACCP 인증 공장에서 생산"은 증거다. 리뷰 숫자, 인증 마크, 사용 전후 비교 이미지, 성분표 원본 이미지가 모두 증거의 범주에 들어간다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원 업종을 예로 들면, 수강 후기를 텍스트로만 나열하는 것보다 수강생의 실제 결과물(작문 샘플, 시험 점수 변화 캡처)을 함께 제시할 때 방문자의 체류 시간이 달라진다. 병원 업종에서는 시술 전후 사진보다 의료진의 자격 이력과 학술 활동 기록이 신뢰 형성에 더 직접적으로 작용하는 경우가 많다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3단계: 구매 장벽을 미리 제거한다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">방문자가 구매 직전에 멈추는 이유는 대부분 예측 가능하다. 배송 기간, 환불 조건, 사이즈 선택 기준, 재료 알레르기 여부 같은 항목들이다. 이 정보를 FAQ 형식으로 구매 버튼 바로 위에 배치하면 이탈을 줄인다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개 업종에서도 같은 원리가 작동한다. 매물 상세 페이지에서 방문자가 가장 많이 이탈하는 지점은 중개 수수료 계산 방식이 불분명할 때다. 수수료 산정 기준을 명시한 페이지와 그렇지 않은 페이지는 문의 전환율에서 명확한 차이를 만든다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">구조가 무너지는 흔한 실패 패턴</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">정보 과잉과 정보 부재는 같은 결과를 낳는다</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">스마트스토어 상세페이지에서 흔히 나타나는 두 가지 극단이 있다. 하나는 이미지를 수십 장 올려놓고 정작 구매자가 알고 싶은 스펙 정보가 없는 경우다. 다른 하나는 스펙 표만 가득하고 이 제품이 어떤 맥락에서 쓰이는지 보여주는 장면이 없는 경우다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">전자는 감성은 있지만 근거가 없고, 후자는 근거는 있지만 맥락이 없다. <strong style="color:#f1f5f9;font-weight:700;">구매 전환이 일어나는 페이지는 맥락과 근거를 모두 갖춘다.</strong></p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">모바일 스캔 경로를 무시한 설계</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">스마트스토어 구매의 대부분은 모바일에서 발생한다. 모바일 환경에서 방문자의 시선은 이미지 하단 텍스트, 굵은 글씨, 리뷰 별점 순서로 이동한다. PC용으로 설계된 긴 텍스트 블록은 모바일에서 읽히지 않는다. 소제목과 짧은 단락으로 분절된 구조가 모바일 스캔에 적합하다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1748609160056-7b95f30041f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyNXx8ZGF0YSUyMGFuYWx5dGljcyUyMHdvcmtmbG93JTIwZWNvbW1lcmNlJTIwZGFzaGJvYXJkfGVufDF8MHx8fDE3ODk2OTIwNTd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="스마트스토어 상세페이지 구매 전환이 결정되는 구조적 원리" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:10px;display:block;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 적용 사례</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가정용 공기청정기를 판매하는 스마트스토어 판매자가 있다고 가정하자. 기존 페이지는 필터 교체 주기, 소음 데시벨, 적용 면적을 표 형식으로 나열했다. 구조를 바꿔 첫 화면에 "새집 입주 후 두통이 잦다면"이라는 상황 문장을 배치하고, 실내 공기질 측정 비교 영상을 두 번째 섹션에 놓고, 구매 버튼 위에 "필터 교체 비용은 연 1회, 개당 18,000원"이라는 유지비 정보를 추가했다. 이 변경은 정보의 양을 늘린 것이 아니라 배치의 순서를 바꾼 것이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원 수강 신청 페이지에서도 같은 접근이 가능하다. 커리큘럼 설명보다 "이런 학생에게 맞는 과정입니다"라는 대상자 명시가 먼저 나올 때, 문의 버튼 클릭까지의 경로가 짧아진다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 상세페이지 길이는 얼마나 되어야 하나</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">정해진 길이는 없다. 기준은 방문자의 세 가지 의심(적합성, 신뢰, 구매 시점)이 모두 해소되었는가다. 단가가 낮고 구매 결정이 단순한 제품은 짧아도 된다. 고관여 제품이나 서비스일수록 근거를 쌓는 데 더 많은 공간이 필요하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 리뷰가 없는 신규 판매자는 신뢰를 어떻게 만드나</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">리뷰 대신 사용 가능한 신뢰 요소는 여러 가지다. 제조 과정 영상, 원재료 출처 명시, 판매자 본인의 사용 경험 서술, 관련 자격증이나 인증서 이미지가 여기에 해당한다. 리뷰는 신뢰의 한 형태일 뿐이며, 유일한 형태가 아니다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 생성형 AI로 상세페이지 문구를 작성해도 되나</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">작성 자체는 가능하다. 단, AI가 생성한 문구는 맥락 설정과 근거 제시 측면에서 검토가 필요하다. AI는 일반적인 표현을 유창하게 생성하지만, 특정 구매자의 상황에 맞는 언어나 실제 제품의 차별화 근거는 판매자가 직접 입력해야 한다. AI 문구를 그대로 쓰는 것과 판매자의 정보를 반영해 다듬는 것은 전환율에서 다른 결과를 만든다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계: 상세페이지 구조 점검 체크리스트</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">스마트스토어 상세페이지의 구매 전환은 카피라이팅 기술보다 정보 구조의 문제다. 다음 글에서는 지금 운영 중인 페이지를 스스로 진단할 수 있는 항목별 체크리스트를 다룬다. 첫 화면, 신뢰 섹션, 구매 장벽 제거 영역을 각각 어떤 기준으로 평가하는지 구체적인 판단 기준과 함께 제시한다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#1e3a5f);border:1px solid #4c1d95;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">그로스 마케팅 구조에 대해 더 알고 싶다면</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing의 플라이휠 그로스 접근 방식을 확인해 보세요.</p><a href="https://www.reinventing.kr/?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-366&utm_content=reinventing_main" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-366',cta_type:'reinventing_main',category:'AI 콘텐츠 & 프롬프트'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#6366f1,#2563eb);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Reinventing 알아보기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
