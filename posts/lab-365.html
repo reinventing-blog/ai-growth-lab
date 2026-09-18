@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>구글스프레드시트 로그인 팀 공유 환경 도입 전 점검해야 할 체크리스트 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="구글스프레드시트 로그인 기반 팀 공유 환경 도입 전 반드시 확인해야 할 접근 권한, 계정 구조, 편집 이력 관리 기준을 업종별 사례와 함께 정리했습니다.">
+<meta property="og:title" content="구글스프레드시트 로그인 팀 공유 환경 도입 전 점검해야 할 체크리스트"><meta property="og:description" content="구글스프레드시트 로그인 기반 팀 공유 환경 도입 전 반드시 확인해야 할 접근 권한, 계정 구조, 편집 이력 관리 기준을 업종별 사례와 함께 정리했습니다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-365.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-365.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"구글스프레드시트 로그인 팀 공유 환경 도입 전 점검해야 할 체크리스트","description":"구글스프레드시트 로그인 기반 팀 공유 환경 도입 전 반드시 확인해야 할 접근 권한, 계정 구조, 편집 이력 관리 기준을 업종별 사례와 함께 정리했습니다.","image":"https://images.unsplash.com/photo-1576267423429-569309b31e84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOHx8dGVhbSUyMGNvbGxhYm9yYXRpb24lMjBzcHJlYWRzaGVldCUyMGxhcHRvcCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODk2OTE3ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-365.html"},"datePublished":"2026-09-18","dateModified":"2026-09-18"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"구글 워크스페이스 유료 계정 없이도 팀 공유가 가능한가","acceptedAnswer":{"@type":"Answer","text":"개인 구글 계정으로도 팀 공유는 가능하다. 다만 개인 계정 기반 공유는 계정 관리 주체가 개인에게 귀속되므로, 담당자가 퇴사하거나 계정을 변경하면 파일 소유권 이전 절차가 복잡해진다. 조직 단위로 안정적인 운영을 원한다면 구글 워크스페이스 도입을 검토하는 것이 현실적이다."}},{"@type":"Question","name":"링크 공유와 계정 공유를 혼용해도 되는가","acceptedAnswer":{"@type":"Answer","text":"혼용 자체는 기술적으로 가능하다. 그러나 혼용하면 접근 이력 추적이 어려워지고, 권한 회수 시 링크를 재생성해야 하는 번거로움이 생긴다. 원칙적으로 내부 구성원은 계정 기반, 단기 외부 협력은 링크 기반으로 구분하되, 링크는 열람 전용으로 제한하는 것이 기준점이 된다."}},{"@type":"Question","name":"구글스프레드시트 로그인 공유 환경에서 데이터 백업은 어떻게 해야 하는가","acceptedAnswer":{"@type":"Answer","text":"구글스프레드시트는 자동 저장과 버전 이력을 제공하지만, 파일 자체가 삭제되면 복구가 제한된다. 중요한 파일은 주기적으로 엑셀 또는 CSV 형식으로 로컬 백업하거나, 구글 드라이브의 공유 드라이브(Shared Drive) 기능을 활용해 파일 소유권을 조직 단위로 귀속시키는 방식이 안전하다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#3b1d8a;color:#c4b5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">자동화 & 워크플로우</span><span class="post-date">2026. 9. 18.</span></div>
+  <h1 class="post-title">구글스프레드시트 로그인 팀 공유 환경 도입 전 점검해야 할 체크리스트</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1576267423429-569309b31e84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOHx8dGVhbSUyMGNvbGxhYm9yYXRpb24lMjBzcHJlYWRzaGVldCUyMGxhcHRvcCUyMHdvcmtmbG93fGVufDF8MHx8fDE3ODk2OTE3ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="구글스프레드시트 로그인 팀 공유 환경 도입 전 점검해야 할 체크리스트" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:12px;display:block;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구글스프레드시트 로그인 방식으로 팀 데이터를 공유하려는 조직이 늘고 있다. 그러나 막상 도입하고 나서야 권한 충돌, 데이터 유출 위험, 편집 이력 혼선 같은 문제를 마주치는 경우가 적지 않다. 이 글은 팀 공유 환경을 구성하기 전에 반드시 짚어야 할 항목을 구조적으로 정리한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">1. 문제 정의: 공유 설정의 허점은 운영 초기에 드러나지 않는다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구글스프레드시트는 링크 하나로 접근을 열어줄 수 있다는 점에서 편의성이 높다. 그러나 이 편의성이 문제의 시작이 되기도 한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">가장 흔한 사례는 세 가지다.</p>
+
+<ul style="margin:16px 0 22px 24px;padding:0;">
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">링크를 아는 누구나 편집할 수 있도록 설정한 채 외부 협력사에 공유</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">구글 계정 없는 팀원이 생겨 뷰어 접근조차 막히는 상황</li>
+<li style="margin-bottom:10px;line-height:1.8;color:#cbd5e1;">여러 명이 동시에 같은 셀을 수정하면서 이력이 뒤섞이는 혼란</li>
+</ul>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 세 가지는 모두 초기 설정 단계에서 충분히 예방할 수 있다. 하지만 "일단 공유부터 하고 나중에 정리하자"는 방식으로 접근하면, 나중에 정리할 시점이 오지 않는 경우가 많다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">2. 인사이트: 로그인 방식과 권한 구조는 별개로 설계해야 한다</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구글스프레드시트의 공유 방식은 크게 두 축으로 나뉜다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;"><strong style="color:#f1f5f9;font-weight:700;">로그인(계정) 기반 공유</strong>와 링크 기반 공유다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">계정 기반 공유는 특정 구글 계정에만 접근을 허용하므로 추적과 통제가 쉽다. 반면 링크 기반 공유는 접근성이 높지만, 링크가 외부로 유출되면 접근 범위를 되돌리기 어렵다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">팀 공유 환경에서 로그인 방식을 선택했다면, 그다음 단계는 권한 등급을 역할별로 분리하는 것이다. 구글스프레드시트는 뷰어, 댓글 작성자, 편집자 세 단계를 제공한다. 이 세 단계를 팀 내 직무 구조에 맞게 매핑하지 않으면, 편집 권한이 필요 없는 구성원이 데이터를 수정하거나 삭제하는 사고가 발생한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">3. 프레임워크: 도입 전 점검해야 할 4가지 기준</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3-1. 접근 범위 기준 설정</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">먼저 "누가 이 시트에 접근해야 하는가"를 목록으로 작성한다. 내부 팀원, 외부 협력사, 임시 참여자를 구분하고, 각각에게 어떤 수준의 접근이 필요한지를 명시한다. 외부 협력사라면 특정 시트 탭만 공유하는 방식이 전체 파일 공유보다 안전하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3-2. 구글 계정 보유 여부 확인</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구글스프레드시트 로그인 기반 공유는 구글 계정을 전제로 한다. 팀 내 구글 계정이 없는 구성원이 있다면, 링크 공유로 전환하거나 구글 워크스페이스 계정을 별도로 발급해야 한다. 이 단계를 건너뛰면 공유 설정 완료 후 특정 구성원만 접근하지 못하는 상황이 생긴다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3-3. 편집 이력 관리 정책 수립</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구글스프레드시트는 변경 이력을 자동으로 저장한다. 그러나 누가 언제 무엇을 수정했는지를 사후에 추적하려면, 계정 기반 로그인이 반드시 필요하다. 링크 기반으로 익명 접근을 허용하면 편집자 정보가 "익명 사용자"로만 기록된다. 데이터 무결성이 중요한 업무라면 이 지점이 결정적 차이를 만든다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">3-4. 시트 구조와 탭 분리 설계</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">하나의 파일에 여러 부서의 데이터를 모아두면 공유 설정이 복잡해진다. 구글스프레드시트는 파일 단위로 공유 권한이 적용되므로, 탭별로 접근을 다르게 설정할 수 없다. 민감한 데이터는 별도 파일로 분리하거나, 특정 탭을 숨김 처리한 뒤 편집 권한을 제한하는 방식으로 설계해야 한다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1632835254927-12db1c11522f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOHx8dGVhbSUyMGRhdGElMjBzaGFyaW5nJTIwYXV0b21hdGlvbiUyMHdvcmtmbG93JTIwZGFzaGJvYXJkfGVufDF8MHx8fDE3ODk2OTE3ODN8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="구글스프레드시트 로그인 팀 공유 환경 도입 전 점검해야 할 체크리스트" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:10px;display:block;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">4. 업종별 적용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰 운영팀 (카페24 기반 이커머스)</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24로 운영하는 자사몰 팀에서 재고 현황과 프로모션 일정을 구글스프레드시트로 관리하는 경우를 가정한다. 이 팀은 마케터, 물류 담당자, 외부 디자인 에이전시가 하나의 파일을 공유한다. 이때 외부 에이전시에게 전체 편집 권한을 주면, 재고 수량이나 원가 정보가 포함된 탭까지 열람 가능해진다. 올바른 접근은 에이전시용 탭을 별도 파일로 분리하고, 해당 파일에만 에이전시 계정을 초대하는 방식이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">학원 운영팀</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">강사별 수업 일정과 학생 출결 데이터를 구글스프레드시트로 공유하는 학원을 가정한다. 이 경우 강사마다 자신의 수업 데이터만 편집할 수 있어야 하고, 원장은 전체를 열람할 수 있어야 한다. 그러나 구글스프레드시트는 셀 단위 권한 설정을 지원하지 않는다. 대안은 강사별 시트를 분리하거나, 보호된 범위 기능을 활용해 타인의 셀 수정을 차단하는 것이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">부동산 중개 사무소</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">매물 정보와 고객 상담 이력을 팀 내에서 공유하는 중개 사무소를 가정한다. 이 경우 고객 개인정보가 포함된 열은 열람 권한을 제한해야 한다. 계정 기반 로그인 없이 링크로만 공유하면, 파일 링크가 외부로 나갔을 때 고객 정보 전체가 노출될 수 있다. 개인정보보호법 관점에서 이는 단순한 운영 실수가 아니라 법적 리스크로 이어진다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 구글 워크스페이스 유료 계정 없이도 팀 공유가 가능한가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">개인 구글 계정으로도 팀 공유는 가능하다. 다만 개인 계정 기반 공유는 계정 관리 주체가 개인에게 귀속되므로, 담당자가 퇴사하거나 계정을 변경하면 파일 소유권 이전 절차가 복잡해진다. 조직 단위로 안정적인 운영을 원한다면 구글 워크스페이스 도입을 검토하는 것이 현실적이다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 링크 공유와 계정 공유를 혼용해도 되는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">혼용 자체는 기술적으로 가능하다. 그러나 혼용하면 접근 이력 추적이 어려워지고, 권한 회수 시 링크를 재생성해야 하는 번거로움이 생긴다. 원칙적으로 내부 구성원은 계정 기반, 단기 외부 협력은 링크 기반으로 구분하되, 링크는 열람 전용으로 제한하는 것이 기준점이 된다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 구글스프레드시트 로그인 공유 환경에서 데이터 백업은 어떻게 해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">구글스프레드시트는 자동 저장과 버전 이력을 제공하지만, 파일 자체가 삭제되면 복구가 제한된다. 중요한 파일은 주기적으로 엑셀 또는 CSV 형식으로 로컬 백업하거나, 구글 드라이브의 공유 드라이브(Shared Drive) 기능을 활용해 파일 소유권을 조직 단위로 귀속시키는 방식이 안전하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">5. 다음 단계: 자동화 워크플로우로 연결하기</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">팀 공유 환경이 안정적으로 구성되면, 구글스프레드시트는 단순한 데이터 저장소를 넘어 자동화 워크플로우의 허브로 기능할 수 있다. 다음 글에서는 구글스프레드시트와 외부 도구를 연결해 반복 업무를 줄이는 구체적인 방법을 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-365&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-365',cta_type:'flywheel_consult',category:'자동화 & 워크플로우'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
