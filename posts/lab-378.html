@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8F8PVCQ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI분석이란 무엇인가: 마케터가 실무에서 마주치는 데이터 해석 구조 | AI Growth Lab</title>
+<link rel="icon" type="image/png" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<link rel="apple-touch-icon" href="https://ai-growth-lab.reinventing.kr/logo.png">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="AI분석이란 무엇인지, 마케터가 실무에서 마주치는 기술·예측·처방 분석의 구조와 해석 방법을 업종별 사례와 함께 정리했다.">
+<meta property="og:title" content="AI분석이란 무엇인가: 마케터가 실무에서 마주치는 데이터 해석 구조"><meta property="og:description" content="AI분석이란 무엇인지, 마케터가 실무에서 마주치는 기술·예측·처방 분석의 구조와 해석 방법을 업종별 사례와 함께 정리했다.">
+<meta property="og:url" content="https://ai-growth-lab.reinventing.kr/posts/lab-378.html">
+<link rel="canonical" href="https://ai-growth-lab.reinventing.kr/posts/lab-378.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI분석이란 무엇인가: 마케터가 실무에서 마주치는 데이터 해석 구조","description":"AI분석이란 무엇인지, 마케터가 실무에서 마주치는 기술·예측·처방 분석의 구조와 해석 방법을 업종별 사례와 함께 정리했다.","image":"https://images.unsplash.com/photo-1712904321974-d3724af75e49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOXx8bWFya2V0aW5nJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwbGFwdG9wJTIwZGF0YXxlbnwxfDB8fHwxNzkwMTIyNTY4fDA&ixlib=rb-4.1.0&q=80&w=1080","author":{"@type":"Organization","name":"Reinventing","url":"https://www.reinventing.kr/"},"publisher":{"@type":"Organization","name":"Reinventing","logo":{"@type":"ImageObject","url":"https://ai-growth-lab.reinventing.kr/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-growth-lab.reinventing.kr/posts/lab-378.html"},"datePublished":"2026-09-23","dateModified":"2026-09-23"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"AI분석과 기존 데이터 분석은 무엇이 다른가","acceptedAnswer":{"@type":"Answer","text":"기존 데이터 분석은 분석가가 가설을 세우고 데이터를 검증하는 방식으로 진행된다. AI분석은 대규모 데이터에서 사람이 미처 설정하지 못한 가설을 자동으로 탐색하고 패턴을 추출한다. 속도와 범위에서 차이가 있지만, 해석의 책임은 여전히 사람에게 있다."}},{"@type":"Question","name":"마케터가 AI분석을 시작할 때 가장 먼저 해야 할 것은 무엇인가","acceptedAnswer":{"@type":"Answer","text":"데이터 정의부터 시작해야 한다. 어떤 데이터가 어느 기간 동안 어떤 기준으로 수집되었는지를 먼저 파악하지 않으면, AI가 제안하는 패턴의 신뢰도를 판단할 수 없다. 도구를 먼저 선택하는 것보다 분석 목적과 데이터 범위를 먼저 정의하는 것이 순서다."}},{"@type":"Question","name":"AI분석 결과를 보고서나 의사결정에 활용할 때 주의할 점은 무엇인가","acceptedAnswer":{"@type":"Answer","text":"AI가 제안한 패턴과 해석을 그대로 인용하면 출처와 근거가 불분명해진다. 보고서에 활용할 때는 어떤 데이터를 기반으로 어떤 분석 방식이 적용되었는지를 명시해야 한다. 또한 AI분석 결과는 현재 시점의 데이터 패턴이므로, 시간이 지나면 재검증이 필요하다."}}]}</script>
+<meta property="og:image" content="https://ai-growth-lab.reinventing.kr/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+nav{background:rgba(10,15,30,.95);border-bottom:1px solid #1e293b;padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:16px;font-weight:800;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{padding:6px 12px;border-radius:6px;font-size:12px;color:#94a3b8;transition:all .2s;}
+.nav-links a:hover{background:#1e293b;color:#e2e8f0;}
+.post-container{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.cat-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:#1e3a5f;color:#93c5fd;}
+.post-date{font-size:13px;color:#64748b;}
+.post-title{font-size:32px;font-weight:800;color:#f1f5f9;line-height:1.3;margin-bottom:32px;}
+.post-content h3{font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;}
+.post-content h4{font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;}
+.post-content p{margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;}
+.post-content ul{margin:16px 0 22px 24px;}
+.post-content li{margin-bottom:10px;line-height:1.8;color:#cbd5e1;}
+.post-content strong{color:#f1f5f9;font-weight:700;}
+.post-content blockquote{border-left:4px solid #6366f1;margin:28px 0;padding:14px 20px;background:rgba(99,102,241,.08);border-radius:0 8px 8px 0;}
+.post-content figure{margin:32px 0;} .post-content figure img{width:100%;border-radius:10px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1e293b;border-radius:8px;font-size:14px;color:#94a3b8;margin-bottom:48px;transition:all .2s;}
+.back-link:hover{background:#334155;color:#e2e8f0;}
+.post-footer{margin-top:48px;padding-top:24px;border-top:1px solid #1e293b;font-size:13px;color:#64748b;}
+.post-footer a{color:#818cf8;}
+footer{background:#070c18;border-top:1px solid #1e293b;padding:32px 24px;text-align:center;}
+footer p{font-size:13px;color:#475569;} footer a{color:#818cf8;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-inner{height:56px;}
+  .nav-links{display:none;}
+  .logo{font-size:16px;}
+  .post-container{padding:32px 20px 64px;}
+  .back-link{margin-bottom:28px;font-size:13px;padding:9px 14px;}
+  .post-title{font-size:26px;line-height:1.3;letter-spacing:-0.02em;margin-bottom:24px;word-break:keep-all;}
+  .post-content p{font-size:15px;line-height:1.85;}
+  .post-content h3{font-size:19px;line-height:1.35;word-break:keep-all;}
+  .post-content figure img{height:auto !important;max-height:280px;object-fit:cover;}
+}
+@media(max-width:420px){ .post-title{font-size:23px;} }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8F8PVCQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav><div class="nav-inner">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="logo">AI Growth Lab</a>
+  <div class="nav-links">
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=crm">CRM & 그로스</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=ai">AI 실무 활용</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=automation">자동화 & 워크플로우</a>
+    <a href="https://ai-growth-lab.reinventing.kr/?cat=content">AI 콘텐츠 & 프롬프트</a>
+  </div>
+</div></nav>
+<div class="post-container">
+  <a href="https://ai-growth-lab.reinventing.kr/" class="back-link">← 전체 글 목록</a>
+  <div class="post-meta"><span class="cat-badge">AI 실무 활용</span><span class="post-date">2026. 9. 23.</span></div>
+  <h1 class="post-title">AI분석이란 무엇인가: 마케터가 실무에서 마주치는 데이터 해석 구조</h1>
+  <div class="post-content"><figure style="margin:0 0 32px;"><img src="https://images.unsplash.com/photo-1712904321974-d3724af75e49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHwyOXx8bWFya2V0aW5nJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwbGFwdG9wJTIwZGF0YXxlbnwxfDB8fHwxNzkwMTIyNTY4fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI분석이란 무엇인가: 마케터가 실무에서 마주치는 데이터 해석 구조" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:12px;display:block;"></figure>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케터가 실무에서 AI분석을 처음 접할 때 가장 많이 하는 실수는 "AI가 알아서 답을 준다"는 기대를 품는 것이다. AI분석은 자동화된 예언이 아니라, 데이터를 구조화하고 패턴을 추출하는 해석 체계다. 이 글은 그 구조를 실무 언어로 정리한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">AI분석이 실무에서 작동하는 방식</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI분석은 크게 세 단계로 작동한다. 데이터 수집, 패턴 인식, 해석 제안이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">마케터가 흔히 착각하는 지점은 세 번째 단계, 즉 해석 제안을 최종 판단으로 받아들이는 것이다. AI는 과거 데이터를 기반으로 패턴을 압축한다. 그 패턴이 미래에도 동일하게 작동한다는 보장은 없다. 마케터의 역할은 AI가 제안한 해석을 맥락에 맞게 검증하는 것이다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예를 들어 자사몰(카페24, 아임웹 기반)을 운영하는 의류 브랜드가 AI분석 도구를 통해 "목요일 오후 7시 이후 장바구니 이탈률이 높다"는 패턴을 발견했다고 가정하자. AI는 이 패턴을 숫자로 제시하지만, 그것이 배송 정책 때문인지, 결제 UX 문제인지, 아니면 단순히 모바일 환경의 네트워크 문제인지는 마케터가 추가 데이터와 현장 맥락을 통해 판단해야 한다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">마케터가 실제로 다루는 AI분석의 세 가지 유형</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">기술 분석: 무슨 일이 일어났는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기술 분석은 과거 데이터를 요약한다. 방문자 수, 전환율, 평균 체류 시간 같은 지표가 여기에 해당한다. AI는 이 데이터를 자동으로 집계하고 시각화하지만, 숫자 자체는 원인을 설명하지 않는다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">학원 마케터라면 수강 신청이 특정 기간에 집중되는 패턴을 기술 분석으로 확인할 수 있다. 하지만 그 집중이 광고 효과인지, 시즌 수요인지, 경쟁 학원의 폐원 영향인지는 기술 분석만으로 알 수 없다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">예측 분석: 무슨 일이 일어날 것인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">예측 분석은 과거 패턴을 바탕으로 미래를 추정한다. <strong style="color:#f1f5f9;font-weight:700;">예측 분석의 신뢰도는 데이터의 양과 질에 비례한다.</strong> 데이터가 충분하지 않거나 외부 변수가 많은 업종에서는 예측의 정확도가 낮아진다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">부동산 중개 업무를 예로 들면, AI가 특정 지역의 매물 문의 증가 시점을 예측할 수 있다. 그러나 금리 변화나 정책 발표 같은 외부 변수는 모델이 학습한 범위 밖에 있을 수 있다. 예측을 참고 기준으로 쓰되, 단일 판단 근거로 삼는 것은 위험하다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">처방 분석: 무엇을 해야 하는가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">처방 분석은 특정 목표를 달성하기 위한 행동을 제안한다. 생성형 AI와 결합된 마케팅 도구들이 "이 고객군에게 이 메시지를 보내라"는 식의 처방을 자동으로 생성하는 방식이 여기에 해당한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">처방 분석은 세 유형 중 가장 강력하지만, 가장 많은 검증이 필요하다. AI가 제안한 처방이 브랜드 톤, 법적 규제, 업종 관행과 충돌할 수 있기 때문이다. 병원 마케팅에서 AI가 제안한 문구가 의료법상 과장 광고 기준에 걸릴 수 있다는 사실은 실무에서 자주 발생하는 충돌 사례다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">실무에서 쓸 수 있는 AI분석 프레임워크</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI분석을 실무에 적용할 때 다음 세 가지 질문을 순서대로 던지면 해석 오류를 줄일 수 있다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">1. <strong style="color:#f1f5f9;font-weight:700;">이 분석은 무엇을 기반으로 만들어졌는가</strong> — 학습 데이터의 출처, 기간, 범위를 확인한다.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">2. 이 패턴은 우리 업종의 맥락과 일치하는가 — 범용 모델이 제안하는 패턴이 특정 업종에 맞지 않는 경우가 있다.</p>
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">3. 이 해석을 실행으로 옮기기 전에 검증할 수 있는 소규모 테스트가 있는가 — 처방을 전면 적용하기 전에 제한된 범위에서 먼저 확인한다.</p>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">이 프레임워크는 AI분석 도구의 종류와 무관하게 적용된다. 도구가 바뀌어도 질문의 구조는 동일하다.</p>
+
+
+<figure style="margin:32px 0;"><img src="https://images.unsplash.com/photo-1786340436214-76fd497c650b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MzkwNjB8MHwxfHNlYXJjaHw4fHx3b3JrZmxvdyUyMGF1dG9tYXRpb24lMjBhbmFseXRpY3MlMjByZXN1bHRzJTIwZGFzaGJvYXJkfGVufDF8MHx8fDE3OTAxMjI1NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="AI분석이란 무엇인가: 마케터가 실무에서 마주치는 데이터 해석 구조" style="width:100%;aspect-ratio:3 / 2;object-fit:cover;border-radius:10px;display:block;"></figure>
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">업종별 AI분석 활용 사례</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">자사몰 운영사</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">카페24 기반으로 운영되는 뷰티 자사몰이 AI분석을 통해 재구매 고객군의 행동 패턴을 세분화했다고 가정하자. 첫 구매 후 14일 이내에 콘텐츠 페이지를 재방문한 고객이 그렇지 않은 고객보다 재구매로 이어지는 비율이 높다는 패턴이 나타났다. 이 인사이트를 바탕으로 콘텐츠 노출 시점을 조정하는 자동화 흐름을 설계할 수 있다. 다만 이 패턴이 모든 시즌에 동일하게 나타나는지는 분기별로 재확인해야 한다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">학원</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">입시 학원이 AI분석으로 상담 신청자의 유입 경로와 등록 전환 사이의 관계를 분석했다고 가정하자. 특정 키워드 광고를 통해 유입된 상담 신청자가 등록까지 걸리는 평균 기간이 다른 경로보다 짧다는 패턴이 확인되면, 해당 키워드에 대한 상담 응대 속도와 후속 연락 타이밍을 조정하는 근거로 쓸 수 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">병원</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">피부과가 예약 취소 패턴을 AI분석으로 추적했다고 가정하자. 특정 요일과 시간대에 취소가 집중된다는 패턴이 나타나면, 그 시간대의 예약 구조나 사전 안내 방식을 검토하는 출발점이 된다. AI가 제안하는 해석이 아니라, 패턴을 발견한 뒤 현장 운영자와 함께 원인을 추적하는 과정이 실무 AI분석의 실제 모습이다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">FAQ</h3>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI분석과 기존 데이터 분석은 무엇이 다른가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">기존 데이터 분석은 분석가가 가설을 세우고 데이터를 검증하는 방식으로 진행된다. AI분석은 대규모 데이터에서 사람이 미처 설정하지 못한 가설을 자동으로 탐색하고 패턴을 추출한다. 속도와 범위에서 차이가 있지만, 해석의 책임은 여전히 사람에게 있다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. 마케터가 AI분석을 시작할 때 가장 먼저 해야 할 것은 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">데이터 정의부터 시작해야 한다. 어떤 데이터가 어느 기간 동안 어떤 기준으로 수집되었는지를 먼저 파악하지 않으면, AI가 제안하는 패턴의 신뢰도를 판단할 수 없다. 도구를 먼저 선택하는 것보다 분석 목적과 데이터 범위를 먼저 정의하는 것이 순서다.</p>
+
+<h4 style="font-size:18px;font-weight:600;color:#e2e8f0;margin:32px 0 10px;">Q. AI분석 결과를 보고서나 의사결정에 활용할 때 주의할 점은 무엇인가</h4>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI가 제안한 패턴과 해석을 그대로 인용하면 출처와 근거가 불분명해진다. 보고서에 활용할 때는 어떤 데이터를 기반으로 어떤 분석 방식이 적용되었는지를 명시해야 한다. 또한 AI분석 결과는 현재 시점의 데이터 패턴이므로, 시간이 지나면 재검증이 필요하다.</p>
+
+<h3 style="font-size:22px;font-weight:700;color:#f1f5f9;margin:48px 0 14px;padding-top:20px;border-top:1px solid #1e293b;">다음 단계: 실무 적용을 위한 준비</h3>
+
+<p style="margin:0 0 22px;line-height:1.9;font-size:16px;color:#cbd5e1;">AI분석의 구조를 이해했다면, 다음 단계는 자신의 업종과 데이터 환경에 맞는 분석 흐름을 설계하는 것이다. 어떤 데이터를 수집하고, 어떤 질문을 던지고, 어떤 기준으로 해석을 검증할지를 정의하는 과정이 AI분석 실무 활용의 핵심이다. 다음 글에서는 업종별 AI분석 설계 방법을 구체적인 흐름으로 다룬다.</p><div style="margin:48px 0;padding:32px 36px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #4338ca;border-radius:12px;text-align:center;"><p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#ffffff;">지금 우리 팀의 그로스 구조를 점검할 시점인가요?</p><p style="margin:0 0 20px;font-size:14px;color:#a5b4fc;line-height:1.6;">Reinventing은 마케팅 구조를 진단하고, 유입·유지·매출이 실제로 작동하는 성장 시스템을 설계합니다.</p><a href="https://www.reinventing.kr/flyWheelGrowth?utm_source=ai-growth-lab&utm_medium=blog&utm_campaign=LAB-378&utm_content=flywheel_consult" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',content_id:'LAB-378',cta_type:'flywheel_consult',category:'AI 실무 활용'});" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#ffffff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">플라이휠 그로스 진단 문의하기 →</a></div></div>
+  <div class="post-footer"><em>AI Growth Lab은 <a href="https://www.reinventing.kr/">Reinventing</a>이 운영하는 그로스 마케팅 인사이트 미디어입니다.</em></div>
+</div>
+<footer><p>AI Growth Lab · <a href="https://www.reinventing.kr/">Reinventing</a> · <a href="https://www.reinventing.kr/retous">Retous</a> · <a href="https://www.reinventing.kr/flyWheelGrowth">플라이휠 그로스 컨설팅</a></p></footer>
+</body></html>
